@@ -1,0 +1,20 @@
+{
+    "trailingComma": "none",
+    "tabWidth": 4,
+    "printWidth": 120,
+    "overrides": [
+        {
+            "files": [
+                "*.css",
+                "*.scss",
+                "*.sass",
+                "*.less"
+            ],
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ],
+    "semi": true,
+    "singleQuote": false
+}
