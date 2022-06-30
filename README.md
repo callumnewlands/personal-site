@@ -38,7 +38,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 ### Installation options
 
@@ -88,7 +88,7 @@ delete the plugin configuration lines:
 -    enable = true
 -
 -  [plugins.inputs]
--    enable = false 
+-    enable = false
 ```
 
 If you’d like to remove the `netlify-plugin-cypress` build plugin entirely, you’d need to delete the entire block above
@@ -102,4 +102,5 @@ And lastly if you’d like to remove Cypress entirely, delete the entire `cypres
 file. Then remove the dependency using:
 
 ```bash
-npm 
+npm
+```
