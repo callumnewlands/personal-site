@@ -1,7 +1,8 @@
-import "../styles/globals.css";
+import "../styles/globals.scss";
+import "antd/dist/antd.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 function Application({ Component, pageProps }: AppProps) {
@@ -11,12 +12,10 @@ function Application({ Component, pageProps }: AppProps) {
                 <title>Next.js Starter!</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
+            <NavBar />
             <main>
-                <Header title="Welcome to my app!" />
                 <Component {...pageProps} />
             </main>
-
             <Footer />
         </div>
     );
