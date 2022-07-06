@@ -35,3 +35,4 @@ yarn-error.log*
 
 # IntelliJ Files
 .idea/
+/cypress/videos/
