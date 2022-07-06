@@ -5,11 +5,11 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "export": "next export"
+        "export": "next export",
+        "test": "cypress run"
     },
     "dependencies": {
         "antd": "^4.21.4",
-        "cypress": "^10.0.3",
         "next": "^12.1.5",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
@@ -18,6 +18,7 @@
     "devDependencies": {
         "@netlify/plugin-nextjs": "^4.9.1",
         "@types/react": "^18.0.14",
+        "cypress": "^10.0.3",
         "prettier": "2.7.1",
         "typescript": "^4.7.4"
     }
