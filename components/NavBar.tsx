@@ -44,7 +44,14 @@ export default function NavBar() {
         <div className={styles.header}>
             <Link href={"/"}>
                 <a>
-                    <h1 className={styles.header_logo}>Logo</h1>
+                    <div className={styles.header_logo}>
+                        <img src="/logo-vector-green.svg" alt="Callum Newlands Logo" />
+                        <div className={styles.header_logo_text}>
+                            <h1>Callum Newlands</h1>
+                            <h2>Software Developer</h2>
+                        </div>
+                    </div>
+
                 </a>
             </Link>
             <Menu onClick={(e) => setCurrent(e.key)} selectedKeys={[current]} mode="horizontal" items={pages} />

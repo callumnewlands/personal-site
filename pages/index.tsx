@@ -1,3 +1,5 @@
+import SlidingMasthead from "../components/SlidingMasthead";
+
 export default function Home() {
     return (
         <>
