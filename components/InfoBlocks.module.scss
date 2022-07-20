@@ -1,0 +1,13 @@
+.block {
+  img, svg {
+    max-width: 5rem;
+  }
+}
+
+.blocks_list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 80%;
+  gap: 2rem;
+}
