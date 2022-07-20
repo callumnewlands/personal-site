@@ -15,14 +15,20 @@ export default function FullWidthButton({
                                         }: FullWidthButtonProps) {
     if (href) {
         return (
-            <div className={styles.button_container}><Link href={href} passHref><Button type={"primary"} size={"large"}
-                                                                                        href={href}
-                                                                                        onClick={onClick}>{children}</Button></Link>
+            <div className={styles.button_container}>
+                <Link href={href} passHref>
+                    <Button type={"primary"} size={"large"} href={href} onClick={onClick}>
+                        {children}
+                    </Button>
+                </Link>
             </div>
         );
     }
     return (
-        <div className={styles.button_container}><Button type={"primary"} size={"large"} href={href}
-                                                         onClick={onClick}>{children}</Button></div>
+        <div className={styles.button_container}>
+            <Button type={"primary"} size={"large"} href={href} onClick={onClick}>
+                {children}
+            </Button>
+        </div>
     );
 }
