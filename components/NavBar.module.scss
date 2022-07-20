@@ -12,6 +12,7 @@
   z-index: 1;
   position: sticky;
   top: 0;
+  background: white;
 
   :global(.ant-menu-horizontal) {
     border-bottom: 0;
@@ -33,6 +34,7 @@
       justify-content: flex-end;
       align-self: flex-end;
       height: 100%;
+      white-space: nowrap;
 
       h1, h2 {
         font-family: 'Alegreya Sans SC', sans-serif;
@@ -59,5 +61,11 @@
       height: 100%;
       width: auto;
     }
+  }
+
+  &_menu {
+    flex-grow: 1;
+    justify-content: flex-end;
+    width: 0; // Allows AntD responsive resizing with flex-grow
   }
 }

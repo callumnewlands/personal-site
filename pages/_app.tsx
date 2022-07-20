@@ -5,6 +5,7 @@ import Head from "next/head";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
+
 function Application({ Component, pageProps }: AppProps) {
     return (
         <div className="container">

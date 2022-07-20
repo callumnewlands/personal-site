@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppstoreOutlined, MailOutlined } from "@ant-design/icons";
+import { CommentOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import styles from "./NavBar.module.scss";
@@ -9,17 +9,17 @@ const pages: MenuProps["items"] = [
     {
         label: "Portfolio",
         page: "work",
-        icon: <MailOutlined />
+        icon: <SolutionOutlined />
     },
     {
         label: "About",
         page: "about",
-        icon: <AppstoreOutlined />
+        icon: <UserOutlined />
     },
     {
-        label: "Contact",
+        label: "Contact Me",
         page: "contact",
-        icon: <AppstoreOutlined />
+        icon: <CommentOutlined />
     }
 ].map((page: LinkType) => ({
     label: (
@@ -54,7 +54,8 @@ export default function NavBar() {
 
                 </a>
             </Link>
-            <Menu onClick={(e) => setCurrent(e.key)} selectedKeys={[current]} mode="horizontal" items={pages} />
+            <Menu onClick={(e) => setCurrent(e.key)} selectedKeys={[current]} mode="horizontal" items={pages}
+                  className={styles.header_menu} />
         </div>
     );
 }
