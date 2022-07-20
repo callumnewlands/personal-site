@@ -9,6 +9,7 @@ import forestGenerator from "../public/forestgenerator.jpg";
 import dataViz from "../public/dataviz.png";
 import spydify from "../public/spydify.png";
 import mathsPlanner from "../public/mathsplanner.png";
+import WavesDiv from "../components/WavesDiv";
 
 const { Title } = Typography;
 
@@ -74,6 +75,11 @@ export default function Home() {
             <FullWidthButton href={"/contact"}>Contact Me</FullWidthButton>
             <MoodBoardGrid {...moodBoardData} />
             <FullWidthButton href={"/work"}>Find Out More</FullWidthButton>
+            <WavesDiv>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque nisi, varius tincidunt pharetra
+                vitae, consectetur in nisi. Mauris lobortis lacinia leo vel lacinia. Nunc rutrum auctor purus eu
+                imperdiet. Praesent dui augue, mattis eu ullamcorper",
+            </WavesDiv>
         </>
     );
 }
