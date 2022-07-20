@@ -8,8 +8,7 @@ export default function WavesDiv({ children }: { children?: React.ReactNode }) {
                 xmlns="http://www.w3.org/2000/svg"
                 id="visual"
                 viewBox="0 446.49 900 154.51"
-                transform="scale(1, 0.5)"
-                style={{ marginTop: "-10%" }}
+                preserveAspectRatio={"none"}
                 className={styles.waves_divider + " " + styles.waves_divider_top}
             >
                 <path
@@ -39,8 +38,7 @@ export default function WavesDiv({ children }: { children?: React.ReactNode }) {
                 id="visual"
                 version="1.1"
                 viewBox="0 0 900 159"
-                transform={"scale(1, 0.5)"}
-                style={{ marginBottom: "-10%" }}
+                preserveAspectRatio={"none"}
                 className={styles.waves_divider + " " + styles.waves_divider_bottom}
             >
                 <path
