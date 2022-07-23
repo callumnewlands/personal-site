@@ -1,7 +1,7 @@
 import * as React from "react";
-import styles from "./WavesDiv.module.scss";
+import styles from "./WavesDivider.module.scss";
 
-export default function WavesDiv({ children }: { children?: React.ReactNode }) {
+export default function WavesDivider({ children }: { children?: React.ReactNode }) {
     return (
         <>
             <svg
