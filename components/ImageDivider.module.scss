@@ -1,0 +1,41 @@
+@import "../styles/variables";
+
+.divider {
+  background-color: $hunter-green;
+  display: flex;
+  flex-direction: row;
+  min-height: 13rem;
+  width: calc(100vw - 17px);
+  margin: 2rem 0;
+
+  &_text_panel, &_image_container {
+    height: auto;
+    width: auto;
+    flex-grow: 1;
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_image_container {
+    position: relative;
+  }
+
+  &_text_container {
+    max-width: 70%;
+    padding: 4rem 1rem;
+
+
+    &_title {
+      color: $off-white !important;
+      font-weight: bold;
+    }
+
+    &_text {
+      color: $off-white;
+      font-weight: 600;
+    }
+  }
+
+}
