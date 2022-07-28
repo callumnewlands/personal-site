@@ -4,11 +4,11 @@ import FullWidthButton from "../components/FullWidthButton";
 import MoodBoardGrid from "../components/MoodBoardGrid";
 import { Typography } from "antd";
 
-import insightHousing from "../public/insighthousing.png";
-import forestGenerator from "../public/forestgenerator.jpg";
-import dataViz from "../public/dataviz.png";
-import spydify from "../public/spydify.png";
-import mathsPlanner from "../public/mathsplanner.png";
+import insightHousing from "../public/screenshots/insighthousing.png";
+import forestGenerator from "../public/screenshots/forestgenerator.jpg";
+import dataViz from "../public/screenshots/dataviz.png";
+import spydify from "../public/screenshots/spydify.png";
+import mathsPlanner from "../public/screenshots/mathsplanner.png";
 import WavesDivider from "../components/WavesDivider";
 
 const { Title } = Typography;
@@ -16,7 +16,7 @@ const { Title } = Typography;
 export default function Home() {
     const infoData = [
         {
-            icon: <img src={"/code-screen.png"} alt={"Illustration of a stylised coding screen"} />,
+            icon: <img src={"/illustrations/code-screen.png"} alt={"Illustration of a stylised coding screen"} />,
             title: "Coding is what I do",
             content:
                 "I have been programming for " +
@@ -27,21 +27,21 @@ export default function Home() {
                 "and am now working as a freelance, full-stack, web and desktop application developer."
         },
         {
-            icon: <img src={"/painting.png"} alt={"Illustration of a painting"} />,
+            icon: <img src={"/illustrations/painting.png"} alt={"Illustration of a painting"} />,
             title: "I have a passion for UI/UX",
             content:
                 "Elegant designs and efficient, accessible user interactions are at the heart of application development. " +
                 "I love finding clean and beautiful solutions to user experience problems through UI design and implementation. "
         },
         {
-            icon: <img src={"/smartphone-or-tablet.png"} alt={"Illustration of a tablet"} />,
+            icon: <img src={"/illustrations/smartphone-or-tablet.png"} alt={"Illustration of a tablet"} />,
             title: "Something about any technology",
             content:
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " +
                 "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         },
         {
-            icon: <img src={"/lightbulb.png"} alt={"Illustration of a lightbulb"} />,
+            icon: <img src={"/illustrations/lightbulb.png"} alt={"Illustration of a lightbulb"} />,
             title: "Something about ideas/problem solving any project",
             content:
                 "Ultrices dui sapien eget mi proin sed libero enim. Et egestas quis ipsum suspendisse ultrices gravida " +

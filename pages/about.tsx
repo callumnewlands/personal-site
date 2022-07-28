@@ -28,7 +28,7 @@ export default function AboutPage() {
         {
             title: "React",
             description: "string",
-            imagePath: "/netliheart.svg",
+            imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
         {
@@ -39,7 +39,7 @@ export default function AboutPage() {
         }, {
             title: "React",
             description: "string",
-            imagePath: "/netliheart.svg",
+            imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
         {
@@ -50,7 +50,7 @@ export default function AboutPage() {
         }, {
             title: "React",
             description: "string",
-            imagePath: "/netliheart.svg",
+            imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
         {
@@ -76,14 +76,14 @@ export default function AboutPage() {
 
                 <div className={styles.about_header_panel}>
                     <img
-                        src="/about_large.svg"
+                        src="/illustrations/about_large.svg"
                         className={styles.about_header_illustrations}
                         alt="Illustrations of a person coding, playing with a target, working out and playing the guitar."
                     />
                 </div>
             </div>
             <ImageDivider
-                imagePath={"/archery.jpg"}
+                imagePath={"/photos/archery.jpg"}
                 imageAlt={"Photo of me shooting a bow with trees in the background"}
                 title={"My Story"}
                 text={
