@@ -3,6 +3,7 @@ import styles from "../styles/about.module.scss";
 import React from "react";
 import ImageDivider from "../components/ImageDivider";
 import CustomVerticalTimeline from "../components/CustomVerticalTimeline";
+import CardGrid from "../components/CardGrid";
 
 const { Title, Text } = Typography;
 
@@ -20,6 +21,43 @@ export default function AboutPage() {
             title: "Art Director",
             location: "San Francisco, CA",
             description: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing"
+        }
+    ];
+
+    const toolsData = [
+        {
+            title: "React",
+            description: "string",
+            imagePath: "/netliheart.svg",
+            imageAlt: "alt"
+        },
+        {
+            title: "HTML",
+            description: "string",
+            imagePath: "/logo-vector-green.svg",
+            imageAlt: "alt"
+        }, {
+            title: "React",
+            description: "string",
+            imagePath: "/netliheart.svg",
+            imageAlt: "alt"
+        },
+        {
+            title: "HTML",
+            description: "string",
+            imagePath: "/logo-vector-green.svg",
+            imageAlt: "alt"
+        }, {
+            title: "React",
+            description: "string",
+            imagePath: "/netliheart.svg",
+            imageAlt: "alt"
+        },
+        {
+            title: "HTML",
+            description: "string",
+            imagePath: "/logo-vector-green.svg",
+            imageAlt: "alt"
         }
     ];
 
@@ -57,9 +95,12 @@ export default function AboutPage() {
                 }
             />
             <div className={styles.about_left_panel}>
+
+                <Title level={2}>Experience and Education</Title>
                 <CustomVerticalTimeline data={timelineData} />
             </div>
-            <p>Under Construction</p>
+            <Title level={2}>Skills and Technologies</Title>
+            <CardGrid data={toolsData} />
         </>
     );
 }
