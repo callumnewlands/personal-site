@@ -28,7 +28,7 @@ export default function InfoBlocks({ data }: InfoBlocksProps) {
     return (
         <div className={styles.blocks_list}>
             {data.map((item) => (
-                <InfoBlock {...item} />
+                <InfoBlock key={item.title} {...item} />
             ))}
         </div>
     );

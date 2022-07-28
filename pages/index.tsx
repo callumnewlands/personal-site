@@ -21,10 +21,10 @@ export default function Home() {
             content:
                 "I have been programming for " +
                 (new Date().getFullYear() - 2011).toString() +
-                " years, including " +
+                " years, including 4 years at degree-level and " +
                 (new Date().getFullYear() - 2020).toString() +
-                " years commercial experience (and counting). I have a Master's degree in Computer Science and am " +
-                "now working as a freelance, full-stack, web and desktop application developer."
+                " years commercial experience (and counting). I have a First-class Master's degree in Computer Science " +
+                "and am now working as a freelance, full-stack, web and desktop application developer."
         },
         {
             icon: <img src={"/painting.png"} alt={"Illustration of a painting"} />,
