@@ -27,7 +27,6 @@ function Card({ title = undefined, description = undefined, imagePath, imageAlt 
                     objectFit={"contain"}
                 />
                 <div className={styles.grid_card_face + " " + styles.grid_card_face_back}>
-                    {/*TODO: format title and description*/}
                     <Title level={4}>{title}</Title>
                     <Text>{description}</Text>
                 </div>
