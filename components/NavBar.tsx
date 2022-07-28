@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { CommentOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, CommentOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { Button, Menu } from "antd";
 import styles from "./NavBar.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const pages: MenuProps["items"] = [
     {
         label: "Portfolio",
-        page: "work",
+        page: "portfolio",
         icon: <SolutionOutlined />
     },
     {
@@ -38,7 +39,10 @@ interface LinkType {
 }
 
 export default function NavBar() {
+    const router = useRouter();
     const [current, setCurrent] = useState<string>("mail");
+
+    const isPortfolioPage = router.route.match("/portfolio/.+");
 
     return (
         <div className={styles.header}>
@@ -51,11 +55,23 @@ export default function NavBar() {
                             <h2>Software Developer</h2>
                         </div>
                     </div>
-
                 </a>
             </Link>
-            <Menu onClick={(e) => setCurrent(e.key)} selectedKeys={[current]} mode="horizontal" items={pages}
-                  className={styles.header_menu} />
+            {isPortfolioPage ? (
+                <Link href={"/portfolio"} passHref>
+                    <Button icon={<ArrowLeftOutlined />} type={"text"}>
+                        Back to All Projects
+                    </Button>
+                </Link>
+            ) : (
+                <Menu
+                    onClick={(e) => setCurrent(e.key)}
+                    selectedKeys={[current]}
+                    mode="horizontal"
+                    items={pages}
+                    className={styles.header_menu}
+                />
+            )}
         </div>
     );
 }
