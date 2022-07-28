@@ -1,0 +1,16 @@
+.button_container {
+
+  &_full_width {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+  }
+
+  :global(.ant-btn) {
+    padding: 0.1rem 1rem;
+    box-sizing: content-box;
+    border-radius: 12px;
+  }
+}

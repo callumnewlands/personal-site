@@ -1,6 +1,6 @@
 import SlidingMasthead from "../components/SlidingMasthead";
 import InfoBlocks from "../components/InfoBlocks";
-import FullWidthButton from "../components/FullWidthButton";
+import { FullWidthButton } from "../components/Buttons";
 import MoodBoardGrid from "../components/MoodBoardGrid";
 import { Typography } from "antd";
 
@@ -81,7 +81,7 @@ export default function Home() {
             <InfoBlocks data={infoData} />
             <FullWidthButton href={"/contact"}>Contact Me</FullWidthButton>
             <MoodBoardGrid {...moodBoardData} />
-            <FullWidthButton href={"/work"}>Find Out More</FullWidthButton>
+            <FullWidthButton href={"/portfolio"}>Find Out More</FullWidthButton>
             <WavesDivider>
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque nisi, varius tincidunt pharetra
                 vitae, consectetur in nisi. Mauris lobortis lacinia leo vel lacinia. Nunc rutrum auctor purus eu
