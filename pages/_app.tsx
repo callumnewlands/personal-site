@@ -17,6 +17,10 @@ function Application({ Component, pageProps }: AppProps) {
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#07959a" />
                 <meta name="msapplication-TileColor" content="#00aba9" />
                 <meta name="theme-color" content="#07959a" />
+                <link
+                    rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700;800&display=swap"
+                />
             </Head>
             <NavBar />
             <main>

@@ -35,7 +35,7 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItem; i
             {item.tags.map((tag, i) => (
                 <Tag color={tagColours[i]}>{tag}</Tag>
             ))}
-            <div>{item.desc}</div>
+            <Text>{item.desc}</Text>
             {item.link && (
                 <CustomButton href={item.link} newTab>
                     Visit Site
