@@ -40,6 +40,28 @@ export const portfolio: PortfolioItem[] = [
     }
 ];
 
+function PortfolioListItem({ item, flip = false }: { item: PortfolioItem; flip?: boolean }) {
+    const image = (
+        <div className={styles.list_item_image_container}>
+            <img src={item.featuredImage} alt={`Screenshot of the ${item.title} application`} />
+        </div>
+    );
+
+    return (
+        <div className={styles.list_item}>
+            {flip && image}
+            <div className={styles.list_item_description}>
+                <Title level={2}>{item.title}</Title>
+                <Text>{item.shortDesc}</Text>
+                <Link href={`/portfolio/${item.id}`} passHref={true}>
+                    <Button>Read More &gt;</Button>
+                </Link>
+            </div>
+            {!flip && image}
+        </div>
+    );
+}
+
 export default function Portfolio() {
     return (
         <>
@@ -56,10 +78,11 @@ export default function Portfolio() {
                 </Text>
             </div>
             <Divider />
-            {portfolio.map(item => <>
-                {item.title}
-                <Link href={`/portfolio/${item.id}`} passHref={true}><Button>View</Button></Link>
-            </>)}
+            <div className={styles.list}>
+                {portfolio.map((item, i) => (
+                    <PortfolioListItem item={item} flip={i % 2 == 0} />
+                ))}
+            </div>
         </>
     );
 }
