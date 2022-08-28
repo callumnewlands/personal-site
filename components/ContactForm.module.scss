@@ -1,0 +1,21 @@
+.contact_form {
+  max-width: 25rem;
+}
+
+.options_buttons_container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button_right {
+
+  :global(.ant-form-item-control-input-content) {
+    display: flex;
+
+    button {
+      margin-left: auto;
+    }
+  }
+}

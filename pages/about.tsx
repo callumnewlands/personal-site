@@ -5,7 +5,7 @@ import ImageDivider from "../components/ImageDivider";
 import CustomVerticalTimeline from "../components/CustomVerticalTimeline";
 import CardGrid from "../components/CardGrid";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 export default function AboutPage() {
 
