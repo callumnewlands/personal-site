@@ -1,9 +1,20 @@
-$imageOffsetX: 11rem;
-$imageOffsetY: -47px;
+$imageOffsetX: 10.5rem;
+$imageOffsetY: -20px;
 
 .contact_page {
-  max-width: 50rem;
+  max-width: 60rem;
   margin-right: $imageOffsetX;
+}
+
+.contact_form_container {
+  max-width: 30rem;
+  margin-top: 1rem;
+}
+
+.contact_title {
+  width: 100%;
+  text-align: start;
+  margin-top: 1rem;
 }
 
 .contact_header {
@@ -15,6 +26,11 @@ $imageOffsetY: -47px;
   margin-left: 0.5rem;
   position: relative;
   width: 100%;
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 0.5rem;
+  }
 
   &_panel {
     display: flex;

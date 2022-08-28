@@ -8,8 +8,8 @@ const { Title } = Typography;
 export default function ContactPage() {
     return (
         <>
-            <Title>Contact Me</Title>
             <div className={styles.contact_page}>
+                <Title className={styles.contact_title}>Contact Me</Title>
                 <div className={styles.contact_header}>
                     <div className={styles.contact_header_panel}>
                         <p>Need a developer? Have a question or idea? Just want to say “Hi”? </p>
@@ -23,7 +23,9 @@ export default function ContactPage() {
                         />
                     </div>
                 </div>
-                <ContactForm />
+                <div className={styles.contact_form_container}>
+                    <ContactForm />
+                </div>
             </div>
         </>
     );
