@@ -104,11 +104,13 @@ export default function ContactForm() {
             name={formName}
             method={"POST"}
             onFinish={handleSubmit}
+            requiredMark={false}
         >
             <Form.Item className={`hidden`} style={{ display: `none` }} name="bot-field">
                 <Input type={`hidden`} />
             </Form.Item>
-            <Form.Item label="What are you inquiring about?" name="inquiry" initialValue={radioOptions[0].value}>
+            <Form.Item label="What are you inquiring about?" name="inquiry" initialValue={radioOptions[0].value}
+                       rules={[{ required: true }]}>
                 <Radio.Group className={styles.options_buttons_container}>
                     {radioOptions.map((o, i) => (
                         <Radio.Button key={"inquiry_option_" + i} value={o.value}>
@@ -142,8 +144,8 @@ export default function ContactForm() {
         <form name={formName} data-netlify="true" data-netlify-honeypot="bot-field" hidden>
             <fieldset>
                 {radioOptions.map((o, i) => (
-                    <label>
-                        <input key={"inquiry_hidden_" + i} type="radio" name="inquiry" value={o.value} />
+                    <label key={"inquiry_hidden_" + i}>
+                        <input type="radio" name="inquiry" value={o.value} />
                         {o.label}
                     </label>
                 ))}
