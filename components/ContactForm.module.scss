@@ -5,7 +5,10 @@
     font-weight: 600;
   }
 
-  :global(.ant-radio-button-wrapper), input, textarea, button {
+  :global(.ant-radio-button-wrapper),
+  input,
+  textarea,
+  button {
     border-radius: 6px;
   }
 
