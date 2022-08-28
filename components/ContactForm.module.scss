@@ -4,6 +4,18 @@
   label {
     font-weight: 600;
   }
+
+  :global(.ant-radio-button-wrapper), input, textarea, button {
+    border-radius: 6px;
+  }
+
+  :global(.ant-radio-button-wrapper) {
+    border-left-width: 1px;
+
+    &::before {
+      display: none;
+    }
+  }
 }
 
 .options_buttons_container {
