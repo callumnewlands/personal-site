@@ -63,7 +63,13 @@
         background: $viridian-green;
         border-radius: 8px;
 
-        &, h1, h2, h3, h4, p, span {
+        &,
+        h1,
+        h2,
+        h3,
+        h4,
+        p,
+        span {
           color: $off-white;
           margin-bottom: 0;
         }

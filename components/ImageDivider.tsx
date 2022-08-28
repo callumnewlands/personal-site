@@ -16,17 +16,13 @@ export default function ImageDivider({ imagePath, imageAlt, title, text }: Image
     return (
         <div className={styles.divider}>
             <div className={styles.divider_image_container}>
-                <Image
-                    src={imagePath}
-                    alt={imageAlt}
-                    layout={"fill"}
-                    objectFit={"cover"}
-                    quality={100}
-                />
+                <Image src={imagePath} alt={imageAlt} layout={"fill"} objectFit={"cover"} quality={100} />
             </div>
             <div className={styles.divider_text_panel}>
                 <div className={styles.divider_text_container}>
-                    <Title level={3} className={styles.divider_text_container_title}>{title}</Title>
+                    <Title level={3} className={styles.divider_text_container_title}>
+                        {title}
+                    </Title>
                     <Text className={styles.divider_text_container_text}>{text}</Text>
                 </div>
             </div>

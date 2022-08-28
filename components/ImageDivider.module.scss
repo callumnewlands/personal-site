@@ -8,7 +8,8 @@
   width: calc(100vw - 17px);
   margin: 2rem 0;
 
-  &_text_panel, &_image_container {
+  &_text_panel,
+  &_image_container {
     height: auto;
     width: auto;
     flex-grow: 1;
@@ -26,7 +27,6 @@
     max-width: 70%;
     padding: 4rem 1rem;
 
-
     &_title {
       color: $off-white !important;
       font-weight: bold;
@@ -37,5 +37,4 @@
       font-weight: 600;
     }
   }
-
 }

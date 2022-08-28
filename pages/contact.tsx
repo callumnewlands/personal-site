@@ -6,7 +6,8 @@ import styles from "../styles/contact.module.scss";
 const { Title } = Typography;
 
 export default function ContactPage() {
-    return (<>
+    return (
+        <>
             <Title>Contact Me</Title>
             <div className={styles.contact_page}>
                 <div className={styles.contact_header}>
@@ -25,6 +26,5 @@ export default function ContactPage() {
                 <ContactForm />
             </div>
         </>
-
     );
 }
