@@ -10,17 +10,25 @@ interface CustomButtonProps {
     newTab?: boolean;
 }
 
-
 export function CustomButton({
-                                 children, href = undefined, newTab = false, onClick = (() => {
-    }), additionalClasses = undefined
+                                 children,
+                                 href = undefined,
+                                 newTab = false,
+                                 onClick = () => {
+                                 },
+                                 additionalClasses = undefined
                              }: CustomButtonProps & { additionalClasses?: string }) {
     if (href) {
         return (
             <div className={styles.button_container + " " + additionalClasses}>
                 <Link href={href} passHref>
-                    <Button type={"primary"} size={"large"} href={href} onClick={onClick}
-                            target={newTab ? "_blank" : undefined}>
+                    <Button
+                        type={"primary"}
+                        size={"large"}
+                        href={href}
+                        onClick={onClick}
+                        target={newTab ? "_blank" : undefined}
+                    >
                         {children}
                     </Button>
                 </Link>

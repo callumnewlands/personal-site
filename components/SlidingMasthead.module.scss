@@ -1,6 +1,12 @@
 .masthead {
   height: 100vh;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(111, 193, 196, 0.43) 35.94%, rgba(7, 149, 154, 0.67) 68.23%, #07959A 99.48%);
+  background: linear-gradient(
+                  180deg,
+                  rgba(255, 255, 255, 0) 0%,
+                  rgba(111, 193, 196, 0.43) 35.94%,
+                  rgba(7, 149, 154, 0.67) 68.23%,
+                  #07959a 99.48%
+  );
   width: 100vw;
   display: flex;
   justify-content: flex-end;

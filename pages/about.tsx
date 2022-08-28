@@ -8,7 +8,6 @@ import CardGrid from "../components/CardGrid";
 const { Title } = Typography;
 
 export default function AboutPage() {
-
     const timelineData = [
         {
             date: "2011 -- present",
@@ -27,9 +26,13 @@ export default function AboutPage() {
     const awardsData = [
         {
             title: "First-class MEng Computer Science Degree (Hons.) -- 87%",
-            description: <>University of Southampton, School of Electronics and Computer Science (ECS). UCAS: G401.
-                Accredited by the <a href="https://www.bcs.org/">British Computer Society</a> and <a
-                    href="https://www.theiet.org/">Institution of Engineering and Technology.</a></>,
+            description: (
+                <>
+                    University of Southampton, School of Electronics and Computer Science (ECS). UCAS: G401. Accredited
+                    by the <a href="https://www.bcs.org/">British Computer Society</a> and{" "}
+                    <a href="https://www.theiet.org/">Institution of Engineering and Technology.</a>
+                </>
+            ),
             imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
@@ -41,25 +44,29 @@ export default function AboutPage() {
         },
         {
             title: "BAE Systems Applied Intelligence Prize",
-            description: "Awarded to the student achieving the top mark in the year for Part 2 Computer Science at the University of Southampton",
+            description:
+                "Awarded to the student achieving the top mark in the year for Part 2 Computer Science at the University of Southampton",
             imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
         {
             title: "Winton Capital Management Prize",
-            description: "Awarded to the student achieving the top mark in the year for Part 1 Computer Science at the University of Southampton",
+            description:
+                "Awarded to the student achieving the top mark in the year for Part 1 Computer Science at the University of Southampton",
             imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
         {
             title: "Netcraft Prizes 2018, 2019, 2021",
-            description: "Awarded to the top 10 students in the year for Computer Science at the University of Southampton in Parts 1 and 3, and for being one of the top 50 students in the country in the Computer Science A-level.",
+            description:
+                "Awarded to the top 10 students in the year for Computer Science at the University of Southampton in Parts 1 and 3, and for being one of the top 50 students in the country in the Computer Science A-level.",
             imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
         {
             title: "ECS Excellence Scholarship Award",
-            description: "1 of 3 available scholarships. Based on pre-University academic performance, and is a recognition of the hard work and achievements that you have made on your journey to higher education. Being a recipient means that, in the view of the judging panel of Admissions Tutors, you had one of the highest achievements of all students coming to ECS that year.",
+            description:
+                "1 of 3 available scholarships. Based on pre-University academic performance, and is a recognition of the hard work and achievements that you have made on your journey to higher education. Being a recipient means that, in the view of the judging panel of Admissions Tutors, you had one of the highest achievements of all students coming to ECS that year.",
             imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         }
@@ -77,7 +84,8 @@ export default function AboutPage() {
             description: "string",
             imagePath: "/logo-vector-green.svg",
             imageAlt: "alt"
-        }, {
+        },
+        {
             title: "React",
             description: "string",
             imagePath: "/illustrations/netliheart.svg",
@@ -88,7 +96,8 @@ export default function AboutPage() {
             description: "string",
             imagePath: "/logo-vector-green.svg",
             imageAlt: "alt"
-        }, {
+        },
+        {
             title: "React",
             description: "string",
             imagePath: "/illustrations/netliheart.svg",
@@ -136,7 +145,6 @@ export default function AboutPage() {
                 }
             />
             <div className={styles.about_panels}>
-
                 <div className={styles.about_panels_panel}>
                     <Title level={2}>Experience and Education</Title>
                     <CustomVerticalTimeline data={timelineData} />
@@ -147,7 +155,7 @@ export default function AboutPage() {
                         itemLayout="horizontal"
                         className={styles.awards_list}
                         dataSource={awardsData}
-                        renderItem={item => (
+                        renderItem={(item) => (
                             <List.Item>
                                 <List.Item.Meta
                                     avatar={<img src={item.imagePath} alt={item.imageAlt} />}
