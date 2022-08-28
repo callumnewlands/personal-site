@@ -1,0 +1,31 @@
+$imageOffsetX: 11rem;
+$imageOffsetY: -47px;
+
+.contact_page {
+  max-width: 50rem;
+  margin-right: $imageOffsetX;
+}
+
+.contact_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
+  justify-content: center;
+  margin-left: 0.5rem;
+  position: relative;
+  width: 100%;
+
+  &_panel {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+    &_image {
+      position: absolute;
+      right: calc(-#{$imageOffsetX});
+      top: $imageOffsetY;
+      max-width: 15rem;
+    }
+  }
+}
