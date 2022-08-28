@@ -11,13 +11,12 @@ interface CustomButtonProps {
 }
 
 export function CustomButton({
-                                 children,
-                                 href = undefined,
-                                 newTab = false,
-                                 onClick = () => {
-                                 },
-                                 additionalClasses = undefined
-                             }: CustomButtonProps & { additionalClasses?: string }) {
+    children,
+    href = undefined,
+    newTab = false,
+    onClick = () => {},
+    additionalClasses = undefined
+}: CustomButtonProps & { additionalClasses?: string }) {
     if (href) {
         return (
             <div className={styles.button_container + " " + additionalClasses}>

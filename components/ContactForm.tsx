@@ -109,8 +109,12 @@ export default function ContactForm() {
             <Form.Item className={`hidden`} style={{ display: `none` }} name="bot-field">
                 <Input type={`hidden`} />
             </Form.Item>
-            <Form.Item label="What are you inquiring about?" name="inquiry" initialValue={radioOptions[0].value}
-                       rules={[{ required: true }]}>
+            <Form.Item
+                label="What are you inquiring about?"
+                name="inquiry"
+                initialValue={radioOptions[0].value}
+                rules={[{ required: true }]}
+            >
                 <Radio.Group className={styles.options_buttons_container}>
                     {radioOptions.map((o, i) => (
                         <Radio.Button key={"inquiry_option_" + i} value={o.value}>
