@@ -35,6 +35,7 @@ export default function ContactForm() {
     ];
 
     const handleSubmit = (values: { [key: string]: string }) => {
+        console.log("submit");
         if (values[`bot-field`] === undefined) {
             delete values[`bot-field`];
         }
@@ -96,7 +97,7 @@ export default function ContactForm() {
                 >
                     <Radio.Group className={styles.options_buttons_container}>
                         {radioOptions.map((o, i) => (
-                            <Radio.Button value={o.value}>{o.label}</Radio.Button>
+                            <Radio.Button key={"inquiry_option_" + i} value={o.value}>{o.label}</Radio.Button>
                         ))}
                     </Radio.Group>
                 </Form.Item>
@@ -110,7 +111,7 @@ export default function ContactForm() {
                     <Input.TextArea placeholder="Your message" rows={5} />
                 </Form.Item>
                 <Form.Item className={styles.button_right}>
-                    <Button type="primary">Send Message &gt;</Button>
+                    <Button type="primary" htmlType={"submit"}>Send Message &gt;</Button>
                 </Form.Item>
             </Form>
         </>
