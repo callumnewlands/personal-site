@@ -11,7 +11,6 @@ $mobileWidth: 700px;
   width: calc(100vw - 17px);
   margin: 2rem 0;
 
-
   @media (max-width: $mobileWidth) {
     flex-direction: column;
     height: fit-content;
@@ -30,7 +29,6 @@ $mobileWidth: 700px;
 
   &_image_container {
     position: relative;
-
 
     @media (max-width: $mobileWidth) {
       min-height: 15rem;

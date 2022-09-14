@@ -8,6 +8,11 @@ body {
     Helvetica Neue, sans-serif;
 }
 
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
 }

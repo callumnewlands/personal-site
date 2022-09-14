@@ -86,25 +86,25 @@ export default function AboutPage() {
             imageAlt: "alt"
         },
         {
-            title: "React",
+            title: "React2",
             description: "string",
             imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
         {
-            title: "HTML",
+            title: "HTML2",
             description: "string",
             imagePath: "/logo-vector-green.svg",
             imageAlt: "alt"
         },
         {
-            title: "React",
+            title: "React3",
             description: "string",
             imagePath: "/illustrations/netliheart.svg",
             imageAlt: "alt"
         },
         {
-            title: "HTML",
+            title: "HTML3",
             description: "string",
             imagePath: "/logo-vector-green.svg",
             imageAlt: "alt"
