@@ -27,9 +27,10 @@ function propsToImageComponent(props?: MoodBoardImageProps): React.ReactNode {
         <Image
             src={props?.src || ""}
             alt={props?.alt}
-            layout={"fill"}
+            layout={"responsive"}
             objectFit={"cover"}
             objectPosition={"top"}
+            placeholder={"blur"}
             quality={100}
         />
     );
@@ -64,11 +65,11 @@ export default function MoodBoardGrid({
                     <Title level={2}>{title}</Title>
                     <Text>{description}</Text>
                 </div>
-                <div className={styles.mood_board_layout_top_left}>{propsToImageComponent(topLeft)}</div>
+                <div className={styles.mood_board_layout_bottom_right}>{propsToImageComponent(bottomRight)}</div>
                 <div className={styles.mood_board_layout_top_centre}>{propsToImageComponent(topCentre)}</div>
+                <div className={styles.mood_board_layout_top_left}>{propsToImageComponent(topLeft)}</div>
                 <div className={styles.mood_board_layout_top_right}>{propsToImageComponent(topRight)}</div>
                 <div className={styles.mood_board_layout_bottom_left}>{propsToImageComponent(bottomLeft)}</div>
-                <div className={styles.mood_board_layout_bottom_right}>{propsToImageComponent(bottomRight)}</div>
             </div>
         </div>
     );

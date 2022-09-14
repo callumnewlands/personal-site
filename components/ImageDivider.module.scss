@@ -1,5 +1,8 @@
 @import "../styles/variables";
 
+$largeWidth: 900px;
+$mobileWidth: 700px;
+
 .divider {
   background-color: $hunter-green;
   display: flex;
@@ -7,6 +10,12 @@
   min-height: 13rem;
   width: calc(100vw - 17px);
   margin: 2rem 0;
+
+
+  @media (max-width: $mobileWidth) {
+    flex-direction: column;
+    height: fit-content;
+  }
 
   &_text_panel,
   &_image_container {
@@ -21,11 +30,24 @@
 
   &_image_container {
     position: relative;
+
+
+    @media (max-width: $mobileWidth) {
+      min-height: 15rem;
+    }
   }
 
   &_text_container {
     max-width: 70%;
-    padding: 4rem 1rem;
+    padding: 2rem 0;
+
+    @media (min-width: $largeWidth) {
+      padding: 4rem 1rem;
+    }
+
+    @media (max-width: $mobileWidth) {
+      max-width: 80%;
+    }
 
     &_title {
       color: $off-white !important;

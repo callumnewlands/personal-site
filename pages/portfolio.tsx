@@ -130,6 +130,24 @@ developer -- in particular, I developed the graph visualisation component. For d
         screenshotWidths: [4, 4, 4, 4, 2, 1]
     },
     {
+        id: "suac",
+        title: "Southampton University Archery Club Website",
+        shortDesc: "A complete re-design and implementation of a new UI/UX WordPress theme for the website and " +
+            "content layout reorganisation so that the site is more visually appealing and the information is more " +
+            "easily accessible",
+        desc: `
+TODO
+`,
+        startDate: "2020",
+        endDate: "2021",
+        type: "",
+        tags: [],
+        featuredImage: "/screenshots/suac.png",
+        link: "http://archery.susu.org",
+        screenshotsDirectory: "/screenshots/something",
+        screenshotWidths: []
+    },
+    {
         id: "insighthousing",
         title: "InsightHousing",
         shortDesc: "TODO",
@@ -140,23 +158,7 @@ TODO
         endDate: "2021",
         type: "",
         tags: [],
-        featuredImage: "/screenshots/something",
-        link: "",
-        screenshotsDirectory: "/screenshots/something",
-        screenshotWidths: []
-    },
-    {
-        id: "suac",
-        title: "Southampton University Archery Club Website",
-        shortDesc: "TODO",
-        desc: `
-TODO
-`,
-        startDate: "2020",
-        endDate: "2021",
-        type: "",
-        tags: [],
-        featuredImage: "/screenshots/something",
+        featuredImage: "/screenshots/insighthousing-wide.png",
         link: "",
         screenshotsDirectory: "/screenshots/something",
         screenshotWidths: []
@@ -184,7 +186,7 @@ function PortfolioListItem({ item, flip = false }: { item: PortfolioItem; flip?:
                     ))}
                 </div>
                 <Link href={`/portfolio/${item.id}`} passHref={true}>
-                    <Button>Read More &gt;</Button>
+                    <Button type={"primary"}>Read More &gt;</Button>
                 </Link>
             </div>
             {!flip && image}

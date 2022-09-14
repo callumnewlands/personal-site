@@ -17,31 +17,42 @@
   }
 }
 
+$mobile-portfolio-width: 914px;
+$largeWidth: 1000px;
+
 .list {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
+
+  @media (min-width: $largeWidth) {
+    gap: 3rem;
+  }
 }
 
 // List items
-$mobile-portfolio-width: 766px;
-
 .list_item {
-  border: 1px solid $viridian-green;
-  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px 2px;
+
+  border-radius: 12px;
   display: flex;
   flex-direction: row;
   width: 100%;
   max-width: 100rem;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.2rem;
   flex-wrap: wrap;
-  row-gap: 1rem;
+  row-gap: 1.5rem;
   column-gap: 3rem;
+
+  @media (min-width: $largeWidth) {
+    padding: 1.5rem 2rem;
+  }
 
   &_description {
     display: flex;
     flex-direction: column;
     flex: 1 1 15rem;
+    min-width: 25rem;
     gap: 1em;
 
     h2 {
@@ -54,6 +65,11 @@ $mobile-portfolio-width: 766px;
 
     :global(.ant-btn) {
       width: fit-content;
+      align-self: flex-end;
+
+      @media (min-width: $largeWidth) {
+        align-self: flex-start;
+      }
     }
   }
 
@@ -63,7 +79,7 @@ $mobile-portfolio-width: 766px;
     max-width: 100%;
     height: auto;
     flex: 1 0 20rem;
-    margin: auto 0;
+    min-width: 24em;
 
     @media (max-width: $mobile-portfolio-width) {
       order: -1;
@@ -71,7 +87,8 @@ $mobile-portfolio-width: 766px;
 
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }
