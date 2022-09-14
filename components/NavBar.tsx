@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeftOutlined, CommentOutlined, MenuOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
@@ -42,10 +42,51 @@ export default function NavBar() {
     const router = useRouter();
     const [current, setCurrent] = useState<string>("mail");
 
-    const isPortfolioPage = router.route.match("/portfolio/.+");
+    const isHomePage = router.route.match("^/$");
+    const isPortfolioPage = router.route.match("^/portfolio/.+$");
+
+    const ref = useRef<HTMLDivElement>(null);
+    const shadowDef = "0 0 4px 0 rgba(0, 0, 0, 0.25)";
+    const getHomePageStyles = useCallback(() => {
+        let backgroundColor, boxShadow;
+        if (typeof window === "undefined") {
+            backgroundColor = "transparent";
+            boxShadow = "none";
+        } else {
+            backgroundColor = (window.scrollY || window.pageYOffset) >= window.innerHeight ? "white" : "transparent";
+            boxShadow = (window.scrollY || window.pageYOffset) >= window.innerHeight - 100 ? shadowDef : "none";
+        }
+        return { backgroundColor, boxShadow };
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!ref?.current) {
+                return;
+            } else if (!isHomePage) {
+                ref.current.style.backgroundColor = "white";
+                ref.current.style.boxShadow = shadowDef;
+                return;
+            }
+            const style = getHomePageStyles();
+            ref.current.style.backgroundColor = style.backgroundColor;
+            ref.current.style.boxShadow = style.boxShadow;
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [isHomePage]);
+
+    const homePageStyles = getHomePageStyles();
 
     return (
-        <div className={styles.header}>
+        <div
+            className={styles.header}
+            ref={ref}
+            style={{
+                backgroundColor: isHomePage ? homePageStyles.backgroundColor : "white",
+                boxShadow: isHomePage ? homePageStyles.boxShadow : shadowDef
+            }}
+        >
             <Link href={"/"}>
                 <a>
                     <div className={styles.header_logo}>

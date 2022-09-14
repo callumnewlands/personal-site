@@ -65,7 +65,9 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItem; i
                     <div
                         key={"screenshot-img-" + i}
                         className={
-                            styles.screenshot_wrapper + " " + (styles["screenshot_wrapper_" + (item.screenshotWidths?.[i] || "")])
+                            styles.screenshot_wrapper +
+                            " " +
+                            styles["screenshot_wrapper_" + (item.screenshotWidths?.[i] || "")]
                         }
                     >
                         <img src={src || ""} alt={`Screenshot of the ${item.title} application`} />

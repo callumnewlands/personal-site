@@ -14,8 +14,6 @@ $small-mobile-width: 360px;
   z-index: 2;
   position: sticky;
   top: 0;
-  background: white;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
 
   @media (min-width: $mobile-width) {
     padding: 1rem 2rem;

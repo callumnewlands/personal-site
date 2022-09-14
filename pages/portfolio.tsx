@@ -132,7 +132,8 @@ developer -- in particular, I developed the graph visualisation component. For d
     {
         id: "suac",
         title: "Southampton University Archery Club Website",
-        shortDesc: "A complete re-design and implementation of a new UI/UX WordPress theme for the website and " +
+        shortDesc:
+            "A complete re-design and implementation of a new UI/UX WordPress theme for the website and " +
             "content layout reorganisation so that the site is more visually appealing and the information is more " +
             "easily accessible",
         desc: `
