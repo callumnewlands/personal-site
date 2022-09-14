@@ -59,20 +59,24 @@ export default function Home() {
         topLeft: {
             src: insightHousing,
             alt: "Screenshot of the InsightHousing application",
-            link: "#"
+            link: "/portfolio/insighthousing"
         },
         topCentre: {
             src: forestGenerator,
             alt: "Screenshot of the ForestGenerator application",
-            link: "#"
+            link: "/portfolio/forestgenerator"
         },
         topRight: {
             src: dataViz,
             alt: "Screenshot of two data visualisation charts created for a data story about the viability of electric cars",
-            link: "#"
+            link: "/portfolio"
         },
-        bottomLeft: { src: spydify, alt: "Screenshot of the Spydify application", link: "#" },
-        bottomRight: { src: mathsPlanner, alt: "Screenshot of the MathsPlanner application", link: "#" }
+        bottomLeft: { src: spydify, alt: "Screenshot of the Spydify application", link: "/portfolio/spydify" },
+        bottomRight: {
+            src: mathsPlanner,
+            alt: "Screenshot of the MathsPlanner application",
+            link: "/portfolio/mathsplanner"
+        }
     };
 
     return (

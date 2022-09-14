@@ -1,5 +1,8 @@
 @use "styles/variables";
 
+$mobile-width: 660px;
+$small-mobile-width: 360px;
+
 .header {
   width: 100%;
   height: 100px;
@@ -7,12 +10,16 @@
   justify-content: space-between;
   align-items: center;
   flex-grow: 0;
-  padding: 1rem 2rem;
-  z-index: 1;
+  padding: 1rem;
+  z-index: 2;
   position: sticky;
   top: 0;
   background: white;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+
+  @media (min-width: $mobile-width) {
+    padding: 1rem 2rem;
+  }
 
   :global(.ant-menu-horizontal) {
     border-bottom: 0;
@@ -36,6 +43,13 @@
       height: 100%;
       white-space: nowrap;
 
+      @media (max-width: 340px) {
+        // For extra-narrow screens e.g. Galaxy Fold
+        max-width: 50%;
+        white-space: normal;
+        height: fit-content;
+      }
+
       h1,
       h2 {
         font-family: "Alegreya Sans SC", sans-serif;
@@ -45,21 +59,51 @@
       }
 
       h1 {
+        $logo-h1-font-size: 2rem;
+        $logo-h1-line-height: 1.8rem;
+
         font-weight: 800;
-        font-size: 2rem;
-        line-height: 1.8rem;
+        font-size: calc(#{$logo-h1-font-size} / 1.2);
+        line-height: calc(#{$logo-h1-line-height} / 1.2);
+
+        @media (min-width: $mobile-width) {
+          font-size: $logo-h1-font-size;
+          line-height: $logo-h1-line-height;
+        }
+
+        @media (max-width: $small-mobile-width) {
+          font-size: calc(#{$logo-h1-font-size} / 1.4);
+          line-height: calc(#{$logo-h1-line-height} / 1.4);
+        }
       }
 
       h2 {
+        $logo-h2-font-size: 1.4rem;
+        $logo-h2-line-height: 1.3rem;
+
         font-weight: 700;
-        font-size: 1.4rem;
-        line-height: 1.3rem;
+        font-size: calc(#{$logo-h2-font-size} / 1.2);
+        line-height: calc(#{$logo-h2-line-height} / 1.2);
+
+        @media (min-width: $mobile-width) {
+          font-size: $logo-h2-font-size;
+          line-height: $logo-h2-line-height;
+        }
+
+        @media (max-width: $small-mobile-width) {
+          font-size: calc(#{$logo-h2-font-size} / 1.4);
+          line-height: calc(#{$logo-h2-line-height} / 1.4);
+        }
       }
     }
 
     img {
-      height: 100%;
+      height: 80%;
       width: auto;
+
+      @media (min-width: $mobile-width) {
+        height: 100%;
+      }
     }
   }
 
@@ -67,5 +111,18 @@
     flex-grow: 1;
     justify-content: flex-end;
     width: 0; // Allows AntD responsive resizing with flex-grow
+
+    :global(.ant-menu-item) {
+      padding: 0 15px !important;
+    }
+
+    :global(.anticon) {
+      font-size: 1.2rem;
+    }
+
+    :global(.ant-menu-title-content) {
+      margin-left: 5px !important;
+      font-size: 1rem;
+    }
   }
 }

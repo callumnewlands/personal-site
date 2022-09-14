@@ -23,8 +23,8 @@
   gap: 3rem;
 }
 
-
 // List items
+$mobile-portfolio-width: 766px;
 
 .list_item {
   border: 1px solid $viridian-green;
@@ -34,8 +34,9 @@
   width: 100%;
   max-width: 100rem;
   padding: 1.5rem 2rem;
-  gap: 4rem;
   flex-wrap: wrap;
+  row-gap: 1rem;
+  column-gap: 3rem;
 
   &_description {
     display: flex;
@@ -59,15 +60,20 @@
   &_image_container {
     position: relative;
     width: 50%;
+    max-width: 100%;
     height: auto;
     flex: 1 0 20rem;
+    margin: auto 0;
+
+    @media (max-width: $mobile-portfolio-width) {
+      order: -1;
+    }
 
     img {
       width: 100%;
       height: auto;
     }
   }
-
 }
 
 // Main portfolio pages
@@ -80,7 +86,6 @@
 }
 
 .header {
-
   &_panels {
     display: flex;
     flex-direction: row;
@@ -149,19 +154,22 @@
   font-size: 13pt;
 }
 
-.header, .screenshots {
-
+.header,
+.screenshots {
   @media (min-width: 1100px) {
     max-width: 90%;
   }
-
 }
+
+$screenshots-gap-lg: 3rem;
+$screenshots-gap-md: 2rem;
+$screenshots-gap-sm: 1rem;
 
 .screenshots {
   margin: 3rem 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: $screenshots-gap-sm;
 
   .screenshot_wrapper {
     width: fit-content;
@@ -176,15 +184,18 @@
     }
 
     &_3 {
-      flex-basis: 75%;
+      flex-basis: calc(75% - #{$screenshots-gap-sm} / 2);
+      min-width: min(18rem, 100%);
     }
 
     &_2 {
-      flex-basis: 50%;
+      flex-basis: calc(50% - #{$screenshots-gap-sm} / 2);
+      min-width: min(16rem, 100%);
     }
 
     &_1 {
-      flex-basis: 25%;
+      flex-basis: calc(25% - #{$screenshots-gap-sm} / 2);
+      min-width: min(8rem, 100%);
     }
 
     img {
@@ -196,6 +207,40 @@
 
       @media (min-width: 1100px) {
         max-height: 40rem;
+      }
+    }
+  }
+
+  @media (min-width: 1100px) {
+    gap: $screenshots-gap-lg;
+    .screenshot_wrapper {
+      &_3 {
+        flex-basis: calc(75% - #{$screenshots-gap-lg} / 2);
+      }
+
+      &_2 {
+        flex-basis: calc(50% - #{$screenshots-gap-lg} / 2);
+      }
+
+      &_1 {
+        flex-basis: calc(25% - #{$screenshots-gap-lg} / 2);
+      }
+    }
+  }
+
+  @media (min-width: 900px) {
+    gap: $screenshots-gap-md;
+    .screenshot_wrapper {
+      &_3 {
+        flex-basis: calc(75% - #{$screenshots-gap-md} / 2);
+      }
+
+      &_2 {
+        flex-basis: calc(50% - #{$screenshots-gap-md} / 2);
+      }
+
+      &_1 {
+        flex-basis: calc(25% - #{$screenshots-gap-md} / 2);
       }
     }
   }

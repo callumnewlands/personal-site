@@ -1,14 +1,29 @@
 $imageOffsetX: 10.5rem;
 $imageOffsetY: -20px;
+$imageDisappearWidth: 532px;
+$imageBackgroundWidth: 570px;
 
 .contact_page {
   max-width: 60rem;
   margin-right: $imageOffsetX;
+
+  @media (max-width: $imageBackgroundWidth) {
+    margin-right: 0;
+  }
 }
 
 .contact_form_container {
   max-width: 30rem;
   margin-top: 1rem;
+
+  :global(.ant-form-item) {
+    &:nth-child(0),
+    &:nth-child(2) {
+      @media (min-width: $imageDisappearWidth) and (max-width: $imageBackgroundWidth) {
+        margin-right: calc(#{$imageOffsetX} + 10px);
+      }
+    }
+  }
 }
 
 .contact_title {
@@ -37,11 +52,26 @@ $imageOffsetY: -20px;
     flex-direction: column;
     width: fit-content;
 
+    @media (max-width: $imageBackgroundWidth) {
+      p:first-of-type {
+        background: white;
+      }
+    }
+
     &_image {
       position: absolute;
       right: calc(-#{$imageOffsetX});
       top: $imageOffsetY;
       max-width: 15rem;
+
+      @media (max-width: $imageDisappearWidth) {
+        display: none;
+      }
+
+      @media (max-width: $imageBackgroundWidth) {
+        right: 2rem;
+        z-index: -1;
+      }
     }
   }
 }
