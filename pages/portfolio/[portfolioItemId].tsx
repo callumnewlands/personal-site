@@ -3,6 +3,7 @@ import { Tag, Typography } from "antd";
 import { CustomButton } from "../../components/Buttons";
 import { tagColours } from "../../common/helpers";
 import * as React from "react";
+import ReactMarkdown from "react-markdown";
 import styles from "../../styles/portfolio.module.scss";
 
 const glob = require("fast-glob");
@@ -13,7 +14,7 @@ export interface PortfolioItem {
     id: string;
     title: string;
     shortDesc: string;
-    desc: string[];
+    desc: string;
     startDate: string;
     endDate?: string | null;
     type: string;
@@ -48,9 +49,7 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItem; i
                     </div>
                     <div className={styles.header_panels_right}>
                         <div className={styles.description_container}>
-                            {item.desc.map((d, i) => (
-                                <Text key={"description-" + i}>{d}</Text>
-                            ))}
+                            <ReactMarkdown>{item.desc}</ReactMarkdown>
                         </div>
                         {item.link && (
                             <CustomButton href={item.link} newTab>
@@ -66,7 +65,7 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItem; i
                     <div
                         key={"screenshot-img-" + i}
                         className={
-                            styles.screenshot_wrapper + " " + (styles.screenshot_wrapper + item.screenshotWidths?.[i])
+                            styles.screenshot_wrapper + " " + (styles["screenshot_wrapper_" + (item.screenshotWidths?.[i] || "")])
                         }
                     >
                         <img src={src || ""} alt={`Screenshot of the ${item.title} application`} />
