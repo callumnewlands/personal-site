@@ -13,6 +13,7 @@
     & > * {
       filter: drop-shadow(6px 6px 8px rgba(0, 0, 0, 0.3));
       cursor: pointer;
+      position: relative;
 
       &:hover {
         filter: drop-shadow(16px 10px 16px rgba(0, 0, 0, 0.4));
