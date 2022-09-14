@@ -36,7 +36,11 @@ function propsToImageComponent(props?: MoodBoardImageProps): React.ReactNode {
 
     if (props) {
         if (props.link) {
-            return <Link href={props.link}>{image}</Link>;
+            return (
+                <Link href={props.link}>
+                    <a>{image}</a>
+                </Link>
+            );
         } else {
             return image;
         }
@@ -45,14 +49,14 @@ function propsToImageComponent(props?: MoodBoardImageProps): React.ReactNode {
 }
 
 export default function MoodBoardGrid({
-                                          title,
-                                          description,
-                                          topLeft,
-                                          topCentre,
-                                          topRight,
-                                          bottomLeft,
-                                          bottomRight
-                                      }: MoodBoardGridProps) {
+    title,
+    description,
+    topLeft,
+    topCentre,
+    topRight,
+    bottomLeft,
+    bottomRight
+}: MoodBoardGridProps) {
     return (
         <div className={styles.mood_board}>
             <div className={styles.mood_board_layout}>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowLeftOutlined, CommentOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, CommentOutlined, MenuOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
 import styles from "./NavBar.module.scss";
@@ -70,6 +70,7 @@ export default function NavBar() {
                     mode="horizontal"
                     items={pages}
                     className={styles.header_menu}
+                    overflowedIndicator={<MenuOutlined />}
                 />
             )}
         </div>
