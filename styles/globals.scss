@@ -56,3 +56,14 @@ code {
   text-align: start;
   width: 100%;
 }
+
+.read_more {
+  display: block;
+  overflow-y: hidden;
+
+  &_button {
+    cursor: pointer;
+    color: gray;
+    font-weight: 600;
+  }
+}

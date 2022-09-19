@@ -5,6 +5,7 @@ import { tagColours } from "../../common/helpers";
 import * as React from "react";
 import ReactMarkdown from "react-markdown";
 import styles from "../../styles/portfolio.module.scss";
+import { ReadMore } from "../../components/ReadMore";
 
 const glob = require("fast-glob");
 
@@ -49,7 +50,7 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItem; i
                     </div>
                     <div className={styles.header_panels_right}>
                         <div className={styles.description_container}>
-                            <ReactMarkdown>{item.desc}</ReactMarkdown>
+                            <ReadMore><ReactMarkdown>{item.desc}</ReactMarkdown></ReadMore>
                         </div>
                         {item.link && (
                             <CustomButton href={item.link} newTab>
