@@ -43,6 +43,6 @@ export function CustomButton({
     );
 }
 
-export function FullWidthButton(props: CustomButtonProps) {
-    return <CustomButton {...props} additionalClasses={styles.button_container_full_width} />;
+export function FullWidthButton({ noMargin=false, ...props }: CustomButtonProps & { noMargin?: boolean }) {
+    return <CustomButton {...props} additionalClasses={styles.button_container_full_width + " " + (noMargin? styles.button_container_full_width_no_margin : "")} />;
 }

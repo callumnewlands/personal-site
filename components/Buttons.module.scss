@@ -5,6 +5,10 @@
     justify-content: center;
     align-items: center;
     margin: 3rem 0;
+
+    &_no_margin {
+      margin: 0 0 0.5rem;
+    }
   }
 
   :global(.ant-btn) {
