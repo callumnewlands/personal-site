@@ -115,7 +115,7 @@ $small-mobile-width: 360px;
     }
 
     :global(.anticon) {
-      font-size: 1.2rem;
+      font-size: 1.7rem !important; // Controls size of icons in NavBar menu
     }
 
     :global(.ant-menu-title-content) {

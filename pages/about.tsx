@@ -43,14 +43,14 @@ export default function AboutPage() {
             imageAlt: "University of Southampton Logo"
         },
         {
-            title: "BAE Systems Applied Intelligence Prize",
+            title: "BAE Systems Applied Intelligence Prize 2019",
             description:
                 "Awarded to the student achieving the top mark in the year for Part 2 Computer Science at the University of Southampton.",
             imagePath: "/other/bae_logo.png",
             imageAlt: "BAE Systems Applied Intelligence Logo"
         },
         {
-            title: "Winton Capital Management Prize",
+            title: "Winton Capital Management Prize 2018/19",
             description:
                 "Awarded to the student achieving the top mark in the year for Part 1 Computer Science at the University of Southampton.",
             imagePath: "/other/winton_logo.png",

@@ -1,26 +1,27 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { CommentOutlined, MenuOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
+import Icon, { MenuOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import styles from "./NavBar.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Contact, PersonLaptop, Portfolio } from "../svgs";
 
 const pages: MenuProps["items"] = [
     {
         label: "Portfolio",
         page: "portfolio",
-        icon: <SolutionOutlined />
+        icon: <Icon component={() => <Portfolio />} />
     },
     {
         label: "About",
         page: "about",
-        icon: <UserOutlined />
+        icon: <Icon component={() => <PersonLaptop />} />
     },
     {
         label: "Contact Me",
         page: "contact",
-        icon: <CommentOutlined />
+        icon: <Icon component={() => <Contact />} />
     }
 ].map((page: LinkType) => ({
     label: (
@@ -43,7 +44,6 @@ export default function NavBar() {
     const [current, setCurrent] = useState<string>("mail");
 
     const isHomePage = router.route.match("^/$");
-    const isPortfolioPage = router.route.match("^/portfolio/.+$");
 
     const ref = useRef<HTMLDivElement>(null);
     const shadowDef = "0 0 4px 0 rgba(0, 0, 0, 0.25)";
