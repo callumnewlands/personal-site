@@ -33,42 +33,42 @@ export default function AboutPage() {
                     <a href="https://www.theiet.org/">Institution of Engineering and Technology.</a>
                 </>
             ),
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
+            imagePath: "/other/uos_logo_old.jpg",
+            imageAlt: "University of Southampton Logo"
         },
         {
             title: "Dean's List Award for Outstanding Achievement",
             description: "University of Southampton. Awarded for a degree average above 80%.",
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
+            imagePath: "/other/uos_logo_old.jpg",
+            imageAlt: "University of Southampton Logo"
         },
         {
             title: "BAE Systems Applied Intelligence Prize",
             description:
-                "Awarded to the student achieving the top mark in the year for Part 2 Computer Science at the University of Southampton",
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
+                "Awarded to the student achieving the top mark in the year for Part 2 Computer Science at the University of Southampton.",
+            imagePath: "/other/bae_logo.png",
+            imageAlt: "BAE Systems Applied Intelligence Logo"
         },
         {
             title: "Winton Capital Management Prize",
             description:
-                "Awarded to the student achieving the top mark in the year for Part 1 Computer Science at the University of Southampton",
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
+                "Awarded to the student achieving the top mark in the year for Part 1 Computer Science at the University of Southampton.",
+            imagePath: "/other/winton_logo.png",
+            imageAlt: "Winton Capital Management Logo"
         },
         {
             title: "Netcraft Prizes 2018, 2019, 2021",
             description:
                 "Awarded to the top 10 students in the year for Computer Science at the University of Southampton in Parts 1 and 3, and for being one of the top 50 students in the country in the Computer Science A-level.",
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
+            imagePath: "/other/netcraft_logo.png",
+            imageAlt: "Netcraft Logo"
         },
         {
             title: "ECS Excellence Scholarship Award",
             description:
                 "1 of 3 available scholarships. Based on pre-University academic performance, and is a recognition of the hard work and achievements that you have made on your journey to higher education. Being a recipient means that, in the view of the judging panel of Admissions Tutors, you had one of the highest achievements of all students coming to ECS that year.",
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
+            imagePath: "/other/ecs_logo.png",
+            imageAlt: "University of Southampton Electronics and Computer Science (ECS) Logo"
         }
     ];
 
