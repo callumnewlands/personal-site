@@ -81,7 +81,19 @@ $mobileWidth: 450px;
 }
 
 .awards_list {
+  :global(.ant-list-item-meta) {
+    align-items: center;
+
+    &:global(-avatar) {
+      width: 7rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+
   img {
-    max-width: 5rem;
+    max-width: 100%;
+    max-height: 7rem;
   }
 }
