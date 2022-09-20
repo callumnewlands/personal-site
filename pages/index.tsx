@@ -84,7 +84,9 @@ export default function Home() {
             <FullWidthButton href={"/portfolio"}>Find Out More</FullWidthButton>
             <WavesDivider>
                 <InfoBlocks data={infoData} />
-                <FullWidthButton href={"/contact"} noMargin>Contact Me</FullWidthButton>
+                <FullWidthButton href={"/contact"} noMargin>
+                    Contact Me
+                </FullWidthButton>
             </WavesDivider>
         </>
     );

@@ -175,7 +175,10 @@ function PortfolioListItem({ item, flip = false }: { item: PortfolioItem; flip?:
 
     const gradient = styles.gradient;
     return (
-        <div className={styles.list_item} style={{ background: `linear-gradient(${(flip? 200 : 160)}deg, ${gradient})` } }>
+        <div
+            className={styles.list_item}
+            style={{ background: `linear-gradient(${flip ? 200 : 160}deg, ${gradient})` }}
+        >
             {flip && image}
             <div className={styles.list_item_description}>
                 <Title level={2}>{item.title}</Title>
