@@ -20,9 +20,10 @@ interface MoodBoardGridProps {
     topRight?: MoodBoardImageProps;
     bottomLeft?: MoodBoardImageProps;
     bottomRight?: MoodBoardImageProps;
+    priority?: boolean;
 }
 
-function propsToImageComponent(props?: MoodBoardImageProps): React.ReactNode {
+function propsToImageComponent(props?: MoodBoardImageProps, priority?: boolean): React.ReactNode {
     const image = (
         <Image
             src={props?.src || ""}
@@ -32,6 +33,7 @@ function propsToImageComponent(props?: MoodBoardImageProps): React.ReactNode {
             objectPosition={"top"}
             placeholder={"blur"}
             quality={100}
+            priority={priority}
         />
     );
 
@@ -56,7 +58,8 @@ export default function MoodBoardGrid({
     topCentre,
     topRight,
     bottomLeft,
-    bottomRight
+    bottomRight,
+    priority = false
 }: MoodBoardGridProps) {
     return (
         <div className={styles.mood_board}>
@@ -65,11 +68,15 @@ export default function MoodBoardGrid({
                     <Title level={2}>{title}</Title>
                     <Text>{description}</Text>
                 </div>
-                <div className={styles.mood_board_layout_bottom_right}>{propsToImageComponent(bottomRight)}</div>
-                <div className={styles.mood_board_layout_top_centre}>{propsToImageComponent(topCentre)}</div>
-                <div className={styles.mood_board_layout_top_left}>{propsToImageComponent(topLeft)}</div>
-                <div className={styles.mood_board_layout_top_right}>{propsToImageComponent(topRight)}</div>
-                <div className={styles.mood_board_layout_bottom_left}>{propsToImageComponent(bottomLeft)}</div>
+                <div className={styles.mood_board_layout_bottom_right}>
+                    {propsToImageComponent(bottomRight, priority)}
+                </div>
+                <div className={styles.mood_board_layout_top_centre}>{propsToImageComponent(topCentre, priority)}</div>
+                <div className={styles.mood_board_layout_top_left}>{propsToImageComponent(topLeft, priority)}</div>
+                <div className={styles.mood_board_layout_top_right}>{propsToImageComponent(topRight, priority)}</div>
+                <div className={styles.mood_board_layout_bottom_left}>
+                    {propsToImageComponent(bottomLeft, priority)}
+                </div>
             </div>
         </div>
     );
