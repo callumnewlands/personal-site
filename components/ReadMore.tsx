@@ -13,11 +13,7 @@ export function ReadMore({ maxHeight = "11.5rem", children }: ReadMoreProps) {
 
     return (
         <>
-            <div
-                ref={ref}
-                className={"read_more"}
-                style={{ ...(!showMore ? { maxHeight } : {}) }}
-            >
+            <div ref={ref} className={"read_more"} style={{ ...(!showMore ? { maxHeight } : {}) }}>
                 {children}
             </div>
             {isOverflowing && (

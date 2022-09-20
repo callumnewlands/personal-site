@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowLeftOutlined, CommentOutlined, MenuOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
+import { CommentOutlined, MenuOutlined, SolutionOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Button, Menu } from "antd";
+import { Menu } from "antd";
 import styles from "./NavBar.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -98,22 +98,14 @@ export default function NavBar() {
                     </div>
                 </a>
             </Link>
-            {isPortfolioPage ? (
-                <Link href={"/portfolio"} passHref>
-                    <Button icon={<ArrowLeftOutlined />} type={"text"}>
-                        Back to All Projects
-                    </Button>
-                </Link>
-            ) : (
-                <Menu
-                    onClick={(e) => setCurrent(e.key)}
-                    selectedKeys={[current]}
-                    mode="horizontal"
-                    items={pages}
-                    className={styles.header_menu}
-                    overflowedIndicator={<MenuOutlined />}
-                />
-            )}
+            <Menu
+                onClick={(e) => setCurrent(e.key)}
+                selectedKeys={[current]}
+                mode="horizontal"
+                items={pages}
+                className={styles.header_menu}
+                overflowedIndicator={<MenuOutlined />}
+            />
         </div>
     );
 }

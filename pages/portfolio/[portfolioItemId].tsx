@@ -1,11 +1,13 @@
 import { portfolio } from "../portfolio";
-import { Tag, Typography } from "antd";
+import { Button, Tag, Typography } from "antd";
 import { CustomButton } from "../../components/Buttons";
 import { tagColours } from "../../common/helpers";
 import * as React from "react";
 import ReactMarkdown from "react-markdown";
 import styles from "../../styles/portfolio.module.scss";
 import { ReadMore } from "../../components/ReadMore";
+import Link from "next/link";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const glob = require("fast-glob");
 
@@ -30,6 +32,11 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItem; i
     return (
         <>
             <div className={styles.header}>
+                <Link href={"/portfolio"} passHref>
+                    <Button icon={<ArrowLeftOutlined />} type={"text"} style={{ paddingLeft: 0, paddingRight: 0 }}>
+                        Back to All Projects
+                    </Button>
+                </Link>
                 <div className={styles.item_title}>
                     <Title>{item.title}</Title>
                 </div>
@@ -50,7 +57,9 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItem; i
                     </div>
                     <div className={styles.header_panels_right}>
                         <div className={styles.description_container}>
-                            <ReadMore><ReactMarkdown>{item.desc}</ReactMarkdown></ReadMore>
+                            <ReadMore>
+                                <ReactMarkdown>{item.desc}</ReactMarkdown>
+                            </ReadMore>
                         </div>
                         {item.link && (
                             <CustomButton href={item.link} newTab>
