@@ -24,38 +24,36 @@ export default function Home() {
                 " years, including 4 years at degree-level and " +
                 (new Date().getFullYear() - 2020).toString() +
                 " years commercial experience (and counting). I have a First-class Master's degree in Computer Science " +
-                "and am now working as a freelance, full-stack, web and desktop application developer."
+                "(4.0 GPA equivalent) and am now working as a freelance, full-stack, web and desktop application developer."
         },
         {
-            icon: <img src={"/illustrations/painting.png"} alt={"Illustration of a painting"} />,
+            icon: <img src={"/illustrations/painting-dark-bg-2.svg"} alt={"Illustration of a painting"} />,
             title: "I have a passion for UI/UX",
             content:
                 "Elegant designs and efficient, accessible user interactions are at the heart of application development. " +
                 "I love finding clean and beautiful solutions to user experience problems through UI design and implementation. "
         },
         {
-            icon: <img src={"/illustrations/smartphone-or-tablet.png"} alt={"Illustration of a tablet"} />,
-            title: "Something about any technology",
+            icon: <img src={"/illustrations/smartphone-or-tablet-dark-bg.svg"} alt={"Illustration of a tablet"} />,
+            title: "I can work with any technology",
             content:
-                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " +
-                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                "I work with a broad range of technologies from Java and SpringBoot to React and TypeScript and lots in-between. " +
+                "As well as this, my past experience and studies allow me to quickly become proficient in new tools and technologies."
         },
         {
-            icon: <img src={"/illustrations/lightbulb.png"} alt={"Illustration of a lightbulb"} />,
-            title: "Something about ideas/problem solving any project",
+            icon: <img src={"/illustrations/lightbulb-dark-bg-2.svg"} alt={"Illustration of a lightbulb"} />,
+            title: "No problem is too big or small",
             content:
-                "Ultrices dui sapien eget mi proin sed libero enim. Et egestas quis ipsum suspendisse ultrices gravida " +
-                "dictum fusce. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa. Tortor consequat " +
-                "id porta nibh venenatis. Nunc sed id semper risus in hendrerit gravida rutrum. "
+                "Need a simple website for your business? Or a fully-fledged, scalable, web-app with a database connection " +
+                "and complex data-processing algorithms? Or something in-between? I can work on any size project, just get in touch!"
         }
     ];
 
     const moodBoardData = {
         title: "My Work",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque nisi, varius tincidunt pharetra vitae, " +
-            "consectetur in nisi. Mauris lobortis lacinia leo vel lacinia. Nunc rutrum auctor purus eu imperdiet. Praesent " +
-            "dui augue, mattis eu ullamcorper",
+            "Below are some examples of my previous work. Why not click on one of the screenshots to find out more about " +
+            "the project and what was involved in it?",
         topLeft: {
             src: insightHousing,
             alt: "Screenshot of the InsightHousing application",
@@ -82,14 +80,11 @@ export default function Home() {
     return (
         <>
             <SlidingMasthead />
-            <InfoBlocks data={infoData} />
-            <FullWidthButton href={"/contact"}>Contact Me</FullWidthButton>
             <MoodBoardGrid {...moodBoardData} />
             <FullWidthButton href={"/portfolio"}>Find Out More</FullWidthButton>
             <WavesDivider>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque nisi, varius tincidunt pharetra
-                vitae, consectetur in nisi. Mauris lobortis lacinia leo vel lacinia. Nunc rutrum auctor purus eu
-                imperdiet. Praesent dui augue, mattis eu ullamcorper",
+                <InfoBlocks data={infoData} />
+                <FullWidthButton href={"/contact"} noMargin>Contact Me</FullWidthButton>
             </WavesDivider>
         </>
     );

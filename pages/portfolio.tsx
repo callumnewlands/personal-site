@@ -173,8 +173,10 @@ function PortfolioListItem({ item, flip = false }: { item: PortfolioItem; flip?:
         </div>
     );
 
+    const gradient = "rgba(255,255,255,0) 0%, rgba(250,253,253,0.67) 43%, rgba(173,220,222,0.67) 71%, rgba(7,149,154,0.6702031154258579) 100%";
+
     return (
-        <div className={styles.list_item}>
+        <div className={styles.list_item} style={{ background: `linear-gradient(${(flip? 200 : 160)}deg, ${gradient})` } }>
             {flip && image}
             <div className={styles.list_item_description}>
                 <Title level={2}>{item.title}</Title>

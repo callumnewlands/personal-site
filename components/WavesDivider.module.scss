@@ -19,8 +19,8 @@
     color: $off-white;
     min-height: 16rem;
     width: 100vw;
-    padding-left: calc((100vw - min(90rem, 90%)) / 2);
-    padding-right: calc((100vw - min(90rem, 90%)) / 2);
+    padding-left: calc((100vw - min(90rem, 100%)) / 2);
+    padding-right: calc((100vw - min(90rem, 100%)) / 2 + 5px); // 5px to offset scroll bar
     display: flex;
     flex-direction: column;
     justify-content: center;

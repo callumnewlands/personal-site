@@ -66,12 +66,12 @@ $mobileWidth: 600px;
       margin-right: 0;
       padding-bottom: 1rem;
 
-      @media (min-width: $medWidth) {
-        margin-right: 5rem;
+      h2 {
+        margin-top: 0.5rem !important;
       }
 
       @media (max-width: $smallWidth) {
-        grid-area: 1 / 1 / span 2 / span 2;
+        grid-area: 1 / 1 / span 2 / span 3;
       }
     }
 

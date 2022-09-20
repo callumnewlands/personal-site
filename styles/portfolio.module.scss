@@ -24,6 +24,8 @@ $largeWidth: 1000px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 
   @media (min-width: $largeWidth) {
     gap: 3rem;
@@ -32,7 +34,7 @@ $largeWidth: 1000px;
 
 // List items
 .list_item {
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px 2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 3px 4px 0, rgba(0, 0, 0, 0.08) 5px 2px 8px 0;
 
   border-radius: 12px;
   display: flex;

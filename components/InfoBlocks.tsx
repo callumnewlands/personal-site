@@ -16,11 +16,19 @@ const { Title, Text } = Typography;
 
 export function InfoBlock({ icon, title, content }: InfoBlockProps) {
     return (
-        <div className={styles.block}>
+        <>
+        <div className={styles.block + " " + styles.block_topper}>
+            <div className={styles.block_icon_container}>
             {icon}
-            <Title level={5}>{title}</Title>
-            <Text>{content}</Text>
+            </div>
+            <Title level={5} className={styles.block_title}>{title}</Title>
         </div>
+        <div className={styles.block}>
+            <div className={styles.block_text}>
+            <Text>{content}</Text>
+            </div>
+        </div>
+        </>
     );
 }
 
