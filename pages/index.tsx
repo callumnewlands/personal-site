@@ -80,7 +80,7 @@ export default function Home() {
     return (
         <>
             <SlidingMasthead />
-            <MoodBoardGrid {...moodBoardData} />
+            <MoodBoardGrid {...moodBoardData} priority />
             <FullWidthButton href={"/portfolio"}>Find Out More</FullWidthButton>
             <WavesDivider>
                 <InfoBlocks data={infoData} />

@@ -1,5 +1,14 @@
 @import "variables";
 
+$mobile-portfolio-width: 967px; // Needs set to the breakpoint where the content wraps
+$largeWidth: 1000px;
+
+$gradient: rgba(255,255,255,0) 0%, rgba(250,253,253,0.67) 43%, rgba(173,220,222,0.67) 71%, rgba(7,149,154,0.6702031154258579) 100%;
+
+:export {
+  gradient: $gradient
+}
+
 .intro {
   display: flex;
   flex-direction: column;
@@ -17,15 +26,13 @@
   }
 }
 
-$mobile-portfolio-width: 914px;
-$largeWidth: 1000px;
-
 .list {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin-top: 1rem;
   margin-bottom: 3rem;
+  max-width: 100%;
 
   @media (min-width: $largeWidth) {
     gap: 3rem;
@@ -35,7 +42,6 @@ $largeWidth: 1000px;
 // List items
 .list_item {
   box-shadow: rgba(0, 0, 0, 0.1) 1px 3px 4px 0, rgba(0, 0, 0, 0.08) 5px 2px 8px 0;
-
   border-radius: 12px;
   display: flex;
   flex-direction: row;
@@ -46,8 +52,13 @@ $largeWidth: 1000px;
   row-gap: 1.5rem;
   column-gap: 3rem;
 
+
+  @media (max-width: $mobile-portfolio-width) {
+    padding: 0.8rem 0.6rem;
+    background: linear-gradient(-20deg, $gradient) !important;
+  }
   @media (min-width: $largeWidth) {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1.7rem;
   }
 
   &_description {
@@ -56,6 +67,10 @@ $largeWidth: 1000px;
     flex: 1 1 15rem;
     min-width: 25rem;
     gap: 1em;
+
+    @media (max-width: $mobile-portfolio-width) {
+      min-width: unset;
+    }
 
     h2 {
       margin: 0 !important;
@@ -85,12 +100,14 @@ $largeWidth: 1000px;
 
     @media (max-width: $mobile-portfolio-width) {
       order: -1;
+      min-width: unset;
     }
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 10px;
     }
   }
 }
