@@ -56,15 +56,16 @@ export default function NavBar() {
 
     const ref = useRef<HTMLDivElement>(null);
     const getHomePageStyles = useCallback(() => {
-        let backgroundColor : BackgroundColor, boxShadow : BoxShadow, visibility : Visibility;
+        let backgroundColor: BackgroundColor, boxShadow: BoxShadow, visibility: Visibility;
         if (typeof window === "undefined") {
             backgroundColor = homeBackground;
             boxShadow = "none";
             visibility = "hidden";
         } else {
-            backgroundColor = (window.scrollY || window.pageYOffset) >= window.innerHeight ? standardBackground : homeBackground;
+            backgroundColor =
+                (window.scrollY || window.pageYOffset) >= window.innerHeight ? standardBackground : homeBackground;
             boxShadow = (window.scrollY || window.pageYOffset) >= window.innerHeight - 100 ? shadowDef : "none";
-            visibility =  (window.scrollY || window.pageYOffset) >= window.innerHeight ? "visible" : "hidden";
+            visibility = (window.scrollY || window.pageYOffset) >= window.innerHeight ? "visible" : "hidden";
         }
         return { backgroundColor, boxShadow, visibility };
     }, []);
@@ -102,7 +103,7 @@ export default function NavBar() {
         >
             <Link href={"/"}>
                 <a>
-                    <Logo className={styles.header_logo}/>
+                    <Logo className={styles.header_logo} />
                 </a>
             </Link>
             <Menu
