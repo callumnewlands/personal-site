@@ -6,6 +6,12 @@ import styles from "./NavBar.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Contact, PersonLaptop, Portfolio } from "../svgs";
+import { Property } from "csstype";
+import Logo from "./Logo";
+
+type Visibility = Property.Visibility;
+type BoxShadow = Property.BoxShadow;
+type BackgroundColor = Property.BackgroundColor;
 
 const pages: MenuProps["items"] = [
     {
@@ -44,19 +50,23 @@ export default function NavBar() {
     const [current, setCurrent] = useState<string>("mail");
 
     const isHomePage = router.route.match("^/$");
+    const shadowDef = "0 0 4px 0 rgba(0, 0, 0, 0.25)";
+    const homeBackground = "#00000066";
+    const standardBackground = "white";
 
     const ref = useRef<HTMLDivElement>(null);
-    const shadowDef = "0 0 4px 0 rgba(0, 0, 0, 0.25)";
     const getHomePageStyles = useCallback(() => {
-        let backgroundColor, boxShadow;
+        let backgroundColor : BackgroundColor, boxShadow : BoxShadow, visibility : Visibility;
         if (typeof window === "undefined") {
-            backgroundColor = "transparent";
+            backgroundColor = homeBackground;
             boxShadow = "none";
+            visibility = "hidden";
         } else {
-            backgroundColor = (window.scrollY || window.pageYOffset) >= window.innerHeight ? "white" : "transparent";
+            backgroundColor = (window.scrollY || window.pageYOffset) >= window.innerHeight ? standardBackground : homeBackground;
             boxShadow = (window.scrollY || window.pageYOffset) >= window.innerHeight - 100 ? shadowDef : "none";
+            visibility =  (window.scrollY || window.pageYOffset) >= window.innerHeight ? "visible" : "hidden";
         }
-        return { backgroundColor, boxShadow };
+        return { backgroundColor, boxShadow, visibility };
     }, []);
 
     useEffect(() => {
@@ -66,11 +76,13 @@ export default function NavBar() {
             } else if (!isHomePage) {
                 ref.current.style.backgroundColor = "white";
                 ref.current.style.boxShadow = shadowDef;
+                ref.current.style.visibility = "visible";
                 return;
             }
             const style = getHomePageStyles();
             ref.current.style.backgroundColor = style.backgroundColor;
             ref.current.style.boxShadow = style.boxShadow;
+            ref.current.style.visibility = style.visibility;
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
@@ -83,19 +95,14 @@ export default function NavBar() {
             className={styles.header}
             ref={ref}
             style={{
-                backgroundColor: isHomePage ? homePageStyles.backgroundColor : "white",
-                boxShadow: isHomePage ? homePageStyles.boxShadow : shadowDef
+                backgroundColor: isHomePage ? homePageStyles.backgroundColor : standardBackground,
+                boxShadow: isHomePage ? homePageStyles.boxShadow : shadowDef,
+                visibility: isHomePage ? homePageStyles.visibility : "visible"
             }}
         >
             <Link href={"/"}>
                 <a>
-                    <div className={styles.header_logo}>
-                        <img src="/logo-vector-green.svg" alt="Callum Newlands Logo" />
-                        <div className={styles.header_logo_text}>
-                            <h1>Callum Newlands</h1>
-                            <h2>Software Developer</h2>
-                        </div>
-                    </div>
+                    <Logo className={styles.header_logo}/>
                 </a>
             </Link>
             <Menu
