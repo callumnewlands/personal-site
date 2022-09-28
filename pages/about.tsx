@@ -10,21 +10,34 @@ export default function AboutPage() {
     const timelineData = [
         {
             date: "2020 -- present",
-            title: "TODO",
+            title: "Full-stack Developer",
             location: "Freelance",
-            description: "..."
+            description: "Frontend Development, Backend Development, User Experience, Visual Design, Codebase Management, CI/CD, Testing"
+        },
+        {
+            date: "2019",
+            title: "Summer Intern (Developer)",
+            location: "Black Pepper Software",
+            description: "Software Development, Agile, Story Cards and Estimation, Issue Management, CI/CD, Acceptance Testing"
         },
         {
             date: "2018 -- 2022",
-            title: "TODO",
+            title: "MEng Computer Science",
             location: "University of Southampton",
-            description: "..."
+            description: "Programming, Software Development, Human-Computer Interaction, Databases, AI/Machine Learning," +
+                " Deep learning, Computer Hardware, Embedded Programming, Web and Cloud Development, Data Visualisation"
+        },
+        {
+            date: "2016",
+            title: "Work Experience",
+            location: "Black Pepper Software",
+            description: "Employee Shadowing, Development Projects, Software Development, Testing"
         },
         {
             date: "2011 -- 2018",
-            title: "TODO",
+            title: "Secondary School",
             location: "Lawrence Sheriff School, Rugby",
-            description: "..."
+            description: "Maths, English, Computer Science, Further Maths, Physics, Electronics"
         },
     ];
 
@@ -151,7 +164,7 @@ export default function AboutPage() {
                 }
             />
             <div className={styles.about_panels}>
-                <div className={styles.about_panels_panel}>
+                <div className={styles.about_panels_panel + " " + styles.about_panels_panel_left}>
                     <Title level={2}>Experience and Education</Title>
                     <CustomVerticalTimeline data={timelineData} />
                 </div>
