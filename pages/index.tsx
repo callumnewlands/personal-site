@@ -2,7 +2,6 @@ import SlidingMasthead from "../components/SlidingMasthead";
 import InfoBlocks from "../components/InfoBlocks";
 import { FullWidthButton } from "../components/Buttons";
 import MoodBoardGrid from "../components/MoodBoardGrid";
-import { Typography } from "antd";
 
 import insightHousing from "../public/screenshots/insighthousing.png";
 import forestGenerator from "../public/screenshots/forestgenerator.jpg";
@@ -10,8 +9,6 @@ import dataViz from "../public/screenshots/dataviz.png";
 import spydify from "../public/screenshots/spydify.png";
 import mathsPlanner from "../public/screenshots/mathsplanner.png";
 import WavesDivider from "../components/WavesDivider";
-
-const { Title } = Typography;
 
 export default function Home() {
     const infoData = [
