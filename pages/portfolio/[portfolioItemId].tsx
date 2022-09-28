@@ -26,6 +26,7 @@ export interface PortfolioItem {
     link?: string | null;
     screenshotsDirectory: string;
     screenshotWidths: number[];
+    disablePage?: boolean;
 }
 
 export default function PortfolioItem({ item, images }: { item: PortfolioItem; images: string[] }) {
@@ -61,7 +62,7 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItem; i
                                 <ReactMarkdown>{item.desc}</ReactMarkdown>
                             </ReadMore>
                         </div>
-                        {item.link && (
+                        {item?.link && (
                             <CustomButton href={item.link} newTab>
                                 Visit Site
                             </CustomButton>

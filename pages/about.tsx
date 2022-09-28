@@ -3,24 +3,29 @@ import styles from "../styles/about.module.scss";
 import React from "react";
 import ImageDivider from "../components/ImageDivider";
 import CustomVerticalTimeline from "../components/CustomVerticalTimeline";
-import CardGrid from "../components/CardGrid";
 
 const { Title } = Typography;
 
 export default function AboutPage() {
     const timelineData = [
         {
-            date: "2011 -- present",
-            title: "Creative Director",
-            location: "Miami, FL",
-            description: "Creative Direction, User Experience, Visual Design, Project Management, Team Leading"
+            date: "2020 -- present",
+            title: "TODO",
+            location: "Freelance",
+            description: "..."
         },
         {
-            date: "2010 -- 2011",
-            title: "Art Director",
-            location: "San Francisco, CA",
-            description: "Creative Direction, User Experience, Visual Design, SEO, Online Marketing"
-        }
+            date: "2018 -- 2022",
+            title: "TODO",
+            location: "University of Southampton",
+            description: "..."
+        },
+        {
+            date: "2011 -- 2018",
+            title: "TODO",
+            location: "Lawrence Sheriff School, Rugby",
+            description: "..."
+        },
     ];
 
     const awardsData = [
@@ -124,7 +129,7 @@ export default function AboutPage() {
                     </div>
                 </div>
 
-                <div className={styles.about_header_panel}>
+                <div className={styles.about_header_panel + " " + styles.about_header_panel_illustrations_container}>
                     <img
                         src="/illustrations/about_large.svg"
                         className={styles.about_header_illustrations}
@@ -137,11 +142,12 @@ export default function AboutPage() {
                 imageAlt={"Photo of me shooting a bow with trees in the background"}
                 title={"My Story"}
                 text={
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque nisi, varius tincidunt " +
-                    "pharetra vitae, consectetur in nisi. Mauris lobortis lacinia leo vel lacinia. Nunc rutrum auctor " +
-                    "purus eu imperdiet. Praesent dui augue, mattis eu ullamcorper. Nunc neque nisi, varius tincidunt " +
-                    "pharetra vitae, consectetur in nisi. Mauris lobortis lacinia leo vel lacinia. Nunc rutrum auctor " +
-                    "purus eu imperdiet. Praesent dui augue, mattis eu ullamcorper."
+                    "I wrote my first computer program in 2010 and, ever since, my passion for developing great software " +
+                    "has only increased. I studied computer science at school and university -- being top of the class " +
+                    "in nearly all years -- and I am now working as a part-time, freelance, full-stack developer to " +
+                    "support my semi-professional competitive archery career. When I'm not working, playing with new " +
+                    "gadgets, or training at the range and gym, you can probably find me playing my Scottish smallpipes, " +
+                    "strumming on my guitars or hiking halfway up a mountain with my partner."
                 }
             />
             <div className={styles.about_panels}>
@@ -167,8 +173,8 @@ export default function AboutPage() {
                     />
                 </div>
             </div>
-            <Title level={2}>Skills and Technologies</Title>
-            <CardGrid data={toolsData} />
+            {/*<Title level={2}>Skills and Technologies</Title>*/}
+            {/*<CardGrid data={toolsData} />*/}
         </>
     );
 }
