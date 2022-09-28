@@ -1,3 +1,4 @@
 export { PortfolioIcon as Portfolio } from "./PortfolioIcon";
 export { PersonLaptopIcon as PersonLaptop } from "./PersonLaptopIcon";
-export { ContactIcon as Contact } from "./ContactIcon"
+export { ContactIcon as Contact } from "./ContactIcon";
+export { UpworkLogo } from "./UpworkLogo";
