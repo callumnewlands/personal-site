@@ -2,6 +2,7 @@
 
 $text-background: rgb(0, 0, 0, 0.35);
 $bottom-separation: 9rem; // For content to sit below nav bar after scrolling
+$mobileWidth: 500px;
 
 .masthead {
   height: 100vh;
@@ -27,18 +28,23 @@ $bottom-separation: 9rem; // For content to sit below nav bar after scrolling
   &_midground {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     flex-direction: column;
     z-index: 0;
     margin-right: 0;
     width: min(30rem, 100%);
     position: absolute;
-    right: 0;
     gap: 2em;
 
-    @media (min-width: 600px) {
-      margin-right: 5rem;
+    @media (min-width: $mobileWidth) {
+      margin-right: 2rem;
       width: min(30rem, 80%);
+      right: 0;
+      align-items: flex-end;
+    }
+
+    @media (min-width: 1000px) {
+      margin-right: 5rem;
     }
   }
 
@@ -51,6 +57,8 @@ $bottom-separation: 9rem; // For content to sit below nav bar after scrolling
   }
 
   &_bottom_button {
+    max-width: 100%;
+    white-space: pre-wrap;
     height: fit-content !important;
     margin-bottom: 1rem !important;
 
@@ -63,7 +71,7 @@ $bottom-separation: 9rem; // For content to sit below nav bar after scrolling
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
@@ -89,6 +97,7 @@ $bottom-separation: 9rem; // For content to sit below nav bar after scrolling
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
 
   .logo {
   }
@@ -101,18 +110,21 @@ $bottom-separation: 9rem; // For content to sit below nav bar after scrolling
   h2 {
     color: white;
     text-align: center;
-    margin-left: 1rem;
+
+    @media (min-width: $mobileWidth) {
+      margin-left: 1rem;
+    }
   }
 
   h1 {
     font-weight: 900;
-    font-size: min(15vw, 6rem);
-    line-height: min(18vw, 6.5rem);
+    font-size: min(min(12vw, 12vh), 6rem);
+    line-height: min(min(13vw, 14vh), 6.5rem);
   }
 
   h2 {
     font-weight: 600;
-    font-size: min(8vw, 2rem);
-    line-height: min(9vw, 2.5rem);
+    font-size: min(min(8vw, 10vh), 2rem);
+    line-height: min(min(9vw, 11vh), 2.5rem);
   }
 }

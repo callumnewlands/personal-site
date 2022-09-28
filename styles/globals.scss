@@ -13,11 +13,10 @@ html {
 
   // Cannot use currently in Firefox due bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1753188
   @-moz-document url-prefix() {
-
     scroll-snap-type: none;
   }
   // Fallback in case the 'hack' above fails
-  @supports (-moz-appearance:none) {
+  @supports (-moz-appearance: none) {
     scroll-snap-type: none;
   }
 }

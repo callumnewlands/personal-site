@@ -5,6 +5,7 @@ $small-mobile-width: 360px;
 
 .header {
   width: 100%;
+  overflow: hidden;
   height: 100px;
   display: flex;
   justify-content: space-between;
