@@ -76,8 +76,12 @@ $illustrationsMax: 30rem;
 
   &_panel {
     flex-grow: 1;
-    flex-basis: 25rem;
+    flex-basis: 22rem;
     height: fit-content;
+
+    &_left {
+      flex-grow: 2;
+    }
 
     h2 {
       text-align: center;
