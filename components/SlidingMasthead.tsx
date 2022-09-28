@@ -3,6 +3,8 @@ import { Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import Logo from "./Logo";
 import React, { useRef } from "react";
+import Image from "next/image";
+import banner from "../public/photos/_2JB1835.jpg";
 
 function SlidingMasthead() {
     const pageStartRef = useRef<HTMLDivElement>(null);
@@ -18,8 +20,13 @@ function SlidingMasthead() {
         <>
             <div className={styles.masthead}>
                 <div className={styles.masthead_background}>
-                    <img
-                        src={"/photos/_2JB1835.jpg"}
+                    <Image
+                        src={banner}
+                        layout={"fill"}
+                        objectFit={"cover"}
+                        quality={100}
+                        priority={true}
+                        placeholder="blur"
                         alt={"Photo of Callum Newlands sitting in from of a screen with a virtual forest scene on it."}
                     />
                 </div>
