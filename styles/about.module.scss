@@ -3,6 +3,7 @@
 $mediumWidth: 900px;
 $smallWidth: 700px;
 $mobileWidth: 450px;
+$illustrationsMax: 30rem;
 
 .about_header {
   display: flex;
@@ -28,6 +29,10 @@ $mobileWidth: 450px;
     display: flex;
     flex-direction: column;
     width: fit-content;
+
+    &_illustrations_container {
+      max-width: $illustrationsMax;
+    }
   }
 
   &_descriptors {
@@ -46,13 +51,13 @@ $mobileWidth: 450px;
   }
 
   &_illustrations {
-    max-width: min(30rem, 100%);
+    max-width: min(#{$illustrationsMax}, 100%);
 
     @media (max-width: $smallWidth) {
       position: relative;
       margin-top: -10rem;
       align-self: flex-end;
-      max-width: min(30rem, 70%);
+      max-width: min(#{$illustrationsMax}, 70%);
     }
 
     @media (max-width: $mobileWidth) {

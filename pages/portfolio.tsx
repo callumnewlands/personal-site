@@ -20,7 +20,7 @@ A full-stack web-application designed and developed for TeachEezy ltd. which **g
 maths teachers, in the form of lesson starters**, which help to reduce teacher workload and improve student learning.
     
 The application was developed using a **React.js** frontend to ensure high levels of interactivity and useability and a 
-**Java/SpringBoot** backend for running the backend API which can generate infinite question variations from templates 
+**Java/Spring Boot** backend for running the backend API which can generate infinite question variations from templates 
 encoded in a bespoke system language covering the whole KS3 specification.
 
 During the project, I was the **primary developer** and worked closely with the client and a designer to analyse the
@@ -130,6 +130,36 @@ developer -- in particular, I developed the graph visualisation component. For d
         screenshotWidths: [4, 4, 4, 4, 2, 1]
     },
     {
+        id: "vrl",
+        title: "Veterans Rebuilding Life",
+        shortDesc:
+            "A complete re-design and implementation of a new prototype website for the Veterans Rebuilding Life charity. " +
+            "The project involved designing a new web presence for the charity and developing a prototype version of the " +
+            "site along with a custom CMS, PayPal integration and SEO optimisation. ",
+        desc: `
+`,
+        startDate: "2021",
+        endDate: "2022",
+        type: "Website Prototype Re-Design",
+        tags: [
+            "Strapi",
+            "React",
+            "TypeScript",
+            "UI/UX Design",
+            "Figma",
+            "Volunteer",
+            "PayPal",
+            "AWS EC2",
+            "AWS S3",
+            "MeiliSearch"
+        ],
+        featuredImage: "/screenshots/vrl.png",
+        link: "https://www.figma.com/file/pJ0oCoqXT0SadzyAEYXyaw/Design",
+        screenshotsDirectory: "/screenshots/something",
+        screenshotWidths: [],
+        disablePage: true
+    },
+    {
         id: "suac",
         title: "Southampton University Archery Club Website",
         shortDesc:
@@ -137,32 +167,61 @@ developer -- in particular, I developed the graph visualisation component. For d
             "content layout reorganisation so that the site is more visually appealing and the information is more " +
             "easily accessible",
         desc: `
-TODO
+This project was carried out as a volunteer for my university archery club. The previous site was looking very dated and
+was very hard to find any information on due to it becoming cluttered and disorganised over the previous decade.
+
+To fix it, I carried out a complete re-design and implementation of a new UI/UX WordPress theme for the website and 
+content layout reorganisation so that the site is more visually appealing and the information is more easily accessible.
+
+The new design includes lots of images to promote engagement and incorporates more modern-looking design features such 
+as flat buttons, a new colour scheme to match the club's rebranded competition kit, and a new multi-level menu navigation
+system to better categorise the wealth of information available on the site.  
 `,
         startDate: "2020",
         endDate: "2021",
-        type: "",
-        tags: [],
+        type: "WordPress Website",
+        tags: ["WordPress", "UI/UX Design", "Content Reorganisation", "Volunteer"],
         featuredImage: "/screenshots/suac.png",
         link: "http://archery.susu.org",
-        screenshotsDirectory: "/screenshots/something",
+        screenshotsDirectory: "/screenshots/suac",
         screenshotWidths: []
     },
     {
         id: "insighthousing",
         title: "InsightHousing",
-        shortDesc: "TODO",
+        shortDesc:
+            "A prototype web-based application which uses open data to allow users to compare housing/living " +
+            "metrics-of-interest easily and efficiently with a particular focus on first time buyers and people looking " +
+            "to relocate.",
         desc: `
-TODO
+A prototype web-based application which uses open data to allow users to compare housing/living metrics-of-interest 
+easily and efficiently with a particular focus on first time buyers and people looking to relocate.
+
+The prototype developed for this project (as part of my university degree) allows users to easily digest information 
+about different regions of the UK as well as to personalize the experience by filtering the information based on
+the metrics that they are interested in.
+
+The application contained the following features:
+ * A custom score-based ranking algorithm for each area in the UK
+ * Integration of several open datasets to create additional value within the product
+ * An interactive map of the UK which can be panned around and zoomed into
+ * The ability to toggle which factors are important to filter and update the map and data presented interactively
+ * Accessible fonts, colours and designs 
+ * The ability to click on a UK council area to bring up a breakdown of the statistics used
+ * A three-tier plan-based pricing structure  
+
+Within the group of 4 members, I was the frontend developer and was in charge of designs and developing a React 
+application which integrates with the MapBox api, and displays the back-end api data in an interactive and engaging 
+manner.
 `,
-        startDate: "2020",
-        endDate: "2021",
-        type: "",
-        tags: [],
+        startDate: "2022",
+        endDate: "2022",
+        type: "Full-stack web application",
+        tags: ["React", "MapBox", "AntDesign", "TypeScript", "Spring Boot", "PostgreSQL", "Open Data"],
         featuredImage: "/screenshots/insighthousing-wide.png",
-        link: "",
-        screenshotsDirectory: "/screenshots/something",
-        screenshotWidths: []
+        link: null,
+        screenshotsDirectory: "/screenshots/insighthousing",
+        screenshotWidths: [4, 4, 2, 2, 4]
     }
 ];
 
@@ -190,9 +249,17 @@ function PortfolioListItem({ item, flip = false }: { item: PortfolioItem; flip?:
                         </Tag>
                     ))}
                 </div>
-                <Link href={`/portfolio/${item.id}`} passHref={true}>
-                    <Button type={"primary"}>Read More &gt;</Button>
-                </Link>
+                {!item?.disablePage ? (
+                    <Link href={`/portfolio/${item.id}`} passHref={true}>
+                        <Button type={"primary"}>Read More &gt;</Button>
+                    </Link>
+                ) : (
+                    item?.link && (
+                        <a href={item?.link} target="_blank" rel="noopener noreferrer" style={{width: "fit-content"}}>
+                            <Button type={"default"}>Visit Site</Button>
+                        </a>
+                    )
+                )}
             </div>
             {!flip && image}
         </div>
@@ -205,13 +272,13 @@ export default function Portfolio() {
             <div className={styles.intro}>
                 <Title level={1}>My Work</Title>
                 <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque nisi, varius tincidunt pharetra
-                    vitae, consectetur in nisi. Mauris lobortis lacinia leo vel lacinia. Nunc rutrum auctor purus eu
-                    imperdiet. Praesent dui augue, mattis eu ullamcorper{" "}
+                    I have been creating bespoke websites and applications since 2019. I specialise in both frontend and
+                    backend application development, and I'm currently working on expanding my user interface/user
+                    experience (UI/UX) design skills.
                 </Text>
                 <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque nisi, varius tincidunt pharetra
-                    vitae, consectetur in nisi.{" "}
+                    Here are a few examples of my most recent development work and projects from the last few years
+                    including full-stack web applications, desktop applications and static websites.
                 </Text>
             </div>
             <Divider />
