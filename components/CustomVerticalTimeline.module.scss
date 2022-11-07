@@ -60,6 +60,16 @@
     border-right-color: $viridian-green;
   }
 
+  &_secondary_location {
+    font-weight: 400;
+    font-size: 0.9em;
+    line-height: 1.3;
+
+    a {
+      font-weight: 500;
+    }
+  }
+
   :global(.vertical-timeline-element-icon) {
     width: 10px;
     height: 10px;

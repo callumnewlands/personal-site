@@ -4,7 +4,7 @@ import { DownOutlined } from "@ant-design/icons";
 import Logo from "./Logo";
 import React, { useRef } from "react";
 import Image from "next/image";
-import banner from "../public/photos/_2JB1835.jpg";
+import banner from "../public/photos/2JB1835.webp";
 
 function SlidingMasthead() {
     const pageStartRef = useRef<HTMLDivElement>(null);

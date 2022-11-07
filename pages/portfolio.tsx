@@ -4,6 +4,7 @@ import styles from "../styles/portfolio.module.scss";
 import { PortfolioItem } from "./portfolio/[portfolioItemId]";
 import { tagColours } from "../common/helpers";
 import * as React from "react";
+import Head from "next/head";
 
 const { Title, Text } = Typography;
 
@@ -51,7 +52,7 @@ As well as this, a full suite of unit and integration tests were developed to en
             "PostgreSQL",
             "Stripe"
         ],
-        featuredImage: "/screenshots/mathsplanner.png",
+        featuredImage: "/screenshots/mathsplanner.webp",
         link: "https://mathsplanner.app/",
         screenshotsDirectory: "/screenshots/mathsplanner",
         screenshotWidths: [4, 4, 4, 2, 2, 4, 1, 2]
@@ -87,7 +88,7 @@ A demonstration video can be found on [YouTube](https://youtu.be/82JUq6yR35Y).
         endDate: "2021",
         type: "Open-source desktop application",
         tags: ["Java", "OpenGL", "LWJGL", "FasterXML: Jackson"],
-        featuredImage: "/screenshots/forestgenerator.jpg",
+        featuredImage: "/screenshots/forestgenerator.webp",
         link: "https://github.com/callumnewlands/ForestGenerator",
         screenshotsDirectory: "/screenshots/forestgenerator",
         screenshotWidths: [4, 1, 1, 1, 2, 2, 2, 2, 4, 4]
@@ -124,7 +125,7 @@ developer -- in particular, I developed the graph visualisation component. For d
         endDate: "2021",
         type: "Full-stack web application",
         tags: ["VueJS", "D3", "Python", "Flask", "Cloud Firestore", "Spotify"],
-        featuredImage: "/screenshots/spydify.png",
+        featuredImage: "/screenshots/spydify.webp",
         link: "https://spydify.web.app/",
         screenshotsDirectory: "/screenshots/spydify",
         screenshotWidths: [4, 4, 4, 4, 2, 1]
@@ -153,7 +154,7 @@ developer -- in particular, I developed the graph visualisation component. For d
             "AWS S3",
             "MeiliSearch"
         ],
-        featuredImage: "/screenshots/vrl.png",
+        featuredImage: "/screenshots/vrl.webp",
         link: "https://www.figma.com/file/pJ0oCoqXT0SadzyAEYXyaw/Design",
         screenshotsDirectory: "/screenshots/something",
         screenshotWidths: [],
@@ -181,7 +182,7 @@ system to better categorise the wealth of information available on the site.
         endDate: "2021",
         type: "WordPress Website",
         tags: ["WordPress", "UI/UX Design", "Content Reorganisation", "Volunteer"],
-        featuredImage: "/screenshots/suac.png",
+        featuredImage: "/screenshots/suac.webp",
         link: "http://archery.susu.org",
         screenshotsDirectory: "/screenshots/suac",
         screenshotWidths: []
@@ -218,7 +219,7 @@ manner.
         endDate: "2022",
         type: "Full-stack web application",
         tags: ["React", "MapBox", "AntDesign", "TypeScript", "Spring Boot", "PostgreSQL", "Open Data"],
-        featuredImage: "/screenshots/insighthousing-wide.png",
+        featuredImage: "/screenshots/insighthousing-wide.webp",
         link: null,
         screenshotsDirectory: "/screenshots/insighthousing",
         screenshotWidths: [4, 4, 2, 2, 4]
@@ -255,7 +256,7 @@ function PortfolioListItem({ item, flip = false }: { item: PortfolioItem; flip?:
                     </Link>
                 ) : (
                     item?.link && (
-                        <a href={item?.link} target="_blank" rel="noopener noreferrer" style={{width: "fit-content"}}>
+                        <a href={item?.link} target="_blank" rel="noopener noreferrer" style={{ width: "fit-content" }}>
                             <Button type={"default"}>Visit Site</Button>
                         </a>
                     )
@@ -269,6 +270,13 @@ function PortfolioListItem({ item, flip = false }: { item: PortfolioItem; flip?:
 export default function Portfolio() {
     return (
         <>
+            <Head>
+                <title>Portfolio | Callum Newlands | Freelance Web and Desktop Application Developer</title>
+                <meta
+                    name="description"
+                    content="Examples of my previous web and desktop development and design work."
+                />
+            </Head>
             <div className={styles.intro}>
                 <Title level={1}>My Work</Title>
                 <Text>

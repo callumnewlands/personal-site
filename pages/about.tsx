@@ -2,29 +2,36 @@ import { List, Typography } from "antd";
 import styles from "../styles/about.module.scss";
 import React from "react";
 import ImageDivider from "../components/ImageDivider";
-import CustomVerticalTimeline from "../components/CustomVerticalTimeline";
+import CustomVerticalTimeline, { TimelineElementProps } from "../components/CustomVerticalTimeline";
+import archeryImage from "../public/photos/archery.webp";
+import Link from "next/link";
+import Head from "next/head";
 
 const { Title } = Typography;
 
 export default function AboutPage() {
-    const timelineData = [
+    const timelineData: TimelineElementProps[] = [
         {
             date: "2020 -- present",
             title: "Full-stack Developer",
             location: "Freelance",
-            description: "Frontend Development, Backend Development, User Experience, Visual Design, Codebase Management, CI/CD, Testing"
+            secondaryLocation: <Link href={"/portfolio"}>Portfolio</Link>,
+            description:
+                "Frontend Development, Backend Development, User Experience, Visual Design, Codebase Management, CI/CD, Testing"
         },
         {
             date: "2019",
             title: "Summer Intern (Developer)",
             location: "Black Pepper Software",
-            description: "Software Development, Agile, Story Cards and Estimation, Issue Management, CI/CD, Acceptance Testing"
+            description:
+                "Software Development, Agile, Story Cards and Estimation, Issue Management, CI/CD, Acceptance Testing"
         },
         {
             date: "2018 -- 2022",
             title: "MEng Computer Science",
             location: "University of Southampton",
-            description: "Programming, Software Development, Human-Computer Interaction, Databases, AI/Machine Learning," +
+            description:
+                "Programming, Software Development, Human-Computer Interaction, Databases, AI/Machine Learning," +
                 " Deep learning, Computer Hardware, Embedded Programming, Web and Cloud Development, Data Visualisation"
         },
         {
@@ -38,7 +45,7 @@ export default function AboutPage() {
             title: "Secondary School",
             location: "Lawrence Sheriff School, Rugby",
             description: "Maths, English, Computer Science, Further Maths, Physics, Electronics"
-        },
+        }
     ];
 
     const awardsData = [
@@ -59,6 +66,20 @@ export default function AboutPage() {
             description: "University of Southampton. Awarded for a degree average above 80%.",
             imagePath: "/other/uos_logo_old.jpg",
             imageAlt: "University of Southampton Logo"
+        },
+        {
+            title: "British Computer Society Prize 2021/22",
+            description:
+                "Awarded to the student achieving the top mark in the year for Part 4 Computer Science at the University of Southampton.",
+            imagePath: "/other/BCS_logo.svg",
+            imageAlt: "British Computer Society -- The Chartered Institute for IT: Logo"
+        },
+        {
+            title: "ECS Group Design Project Prize 2021/22",
+            description:
+                "Awarded for a notable MEng group design project (GDP) in Electronics and Computer Science at the University of Southampton.",
+            imagePath: "/other/ecs_logo.png",
+            imageAlt: "University of Southampton Electronics and Computer Science (ECS) Logo"
         },
         {
             title: "BAE Systems Applied Intelligence Prize 2019",
@@ -131,6 +152,13 @@ export default function AboutPage() {
 
     return (
         <>
+            <Head>
+                <title>About Me | Callum Newlands | Freelance Web and Desktop Application Developer</title>
+                <meta
+                    name="description"
+                    content="About Callum Newlands - His story, awards and achievements, timeline of experience and skills."
+                />
+            </Head>
             <div className={styles.about_header}>
                 <div className={styles.about_header_panel}>
                     <Title>Hi, I'm Callum</Title>
@@ -151,7 +179,7 @@ export default function AboutPage() {
                 </div>
             </div>
             <ImageDivider
-                imagePath={"/photos/archery.jpg"}
+                imagePath={archeryImage}
                 imageAlt={"Photo of me shooting a bow with trees in the background"}
                 title={"My Story"}
                 text={

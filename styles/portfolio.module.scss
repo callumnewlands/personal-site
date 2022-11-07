@@ -109,7 +109,6 @@ $gradient: rgba(255, 255, 255, 0) 0%, rgba(250, 253, 253, 0.67) 43%, rgba(173, 2
       border-radius: 10px;
     }
   }
-
 }
 
 // Main portfolio pages
@@ -214,7 +213,8 @@ $screenshots-gap-sm: 1rem;
     align-items: center;
     position: relative;
 
-    &, &_4 {
+    &,
+    &_4 {
       flex-basis: 100%;
     }
 
