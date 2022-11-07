@@ -8,6 +8,7 @@ import styles from "../../styles/portfolio.module.scss";
 import { ReadMore } from "../../components/ReadMore";
 import Link from "next/link";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import Head from "next/head";
 
 const glob = require("fast-glob");
 
@@ -32,6 +33,10 @@ export interface PortfolioItem {
 export default function PortfolioItem({ item, images }: { item: PortfolioItem; images: string[] }) {
     return (
         <>
+            <Head>
+                <title>{item.title} | Callum Newlands | Freelance Web and Desktop Application Developer</title>
+                <meta name="description" content={`Information about my work on the ${item.title} application.`} />
+            </Head>
             <div className={styles.header}>
                 <Link href={"/portfolio"} passHref>
                     <Button icon={<ArrowLeftOutlined />} type={"text"} style={{ paddingLeft: 0, paddingRight: 0 }}>

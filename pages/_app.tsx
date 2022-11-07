@@ -10,7 +10,7 @@ function Application({ Component, pageProps }: AppProps) {
     return (
         <div className="container">
             <Head>
-                <title>Callum Newlands -- Freelance Web and Desktop Application Developer</title>
+                <title>Callum Newlands | Freelance Web and Desktop Application Developer</title>
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -18,6 +18,8 @@ function Application({ Component, pageProps }: AppProps) {
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#07959a" />
                 <meta name="msapplication-TileColor" content="#00aba9" />
                 <meta name="theme-color" content="#07959a" />
+                <meta name="author" content="Callum Newlands" />
+                <meta name="description" content="Callum Newlands' portfolio and personal about site." />
                 <link
                     rel="stylesheet"
                     href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700;800&display=swap"

@@ -19,7 +19,7 @@ export function InfoBlock({ icon, title, content }: InfoBlockProps) {
         <>
             <div className={styles.block + " " + styles.block_topper}>
                 <div className={styles.block_icon_container}>{icon}</div>
-                <Title level={5} className={styles.block_title}>
+                <Title level={3} className={styles.block_title}>
                     {title}
                 </Title>
             </div>

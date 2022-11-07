@@ -1,10 +1,10 @@
 import styles from "./ImageDivider.module.scss";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import * as React from "react";
 import { Typography } from "antd";
 
 interface ImageDividerProps {
-    imagePath: string;
+    imagePath: string | StaticImageData;
     imageAlt: string;
     title: string;
     text: string;
@@ -16,13 +16,7 @@ export default function ImageDivider({ imagePath, imageAlt, title, text }: Image
     return (
         <div className={styles.divider}>
             <div className={styles.divider_image_container}>
-                <Image
-                    src={imagePath}
-                    alt={imageAlt}
-                    layout={"fill"}
-                    objectFit={"cover"}
-                    quality={100}
-                />
+                <Image src={imagePath} alt={imageAlt} layout={"fill"} objectFit={"cover"} quality={100} />
             </div>
             <div className={styles.divider_text_panel}>
                 <div className={styles.divider_text_container}>
