@@ -22,7 +22,7 @@ function Application({ Component, pageProps }: AppProps) {
                 <meta name="description"
                       content="Callum Newlands is a freelance full-stack software developer specializing in modern web application development. Discover projects, services, and contact information." />
                 <script type="application/ld+json">
-                    {
+                    {`{
                         "@context": "https://schema.org",
                         "@type": "Person",
                         "name": "Callum Newlands",
@@ -34,7 +34,7 @@ function Application({ Component, pageProps }: AppProps) {
                         ],
                         "description": "Callum Newlands specializes in creating modern, responsive web and desktop applications.",
                         "image": "https://cnewlands.dev/logo-vector-green.svg"
-                    }
+                    }`}
                 </script>
                 <meta property="og:site_name" content="Callum Newlands · Freelance Developer" />
                 <meta property="og:title" content="Callum Newlands | Freelance Full-Stack Web Developer" />
