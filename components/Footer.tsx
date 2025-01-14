@@ -33,7 +33,7 @@ export default function Footer() {
                     </a>
                 </div>
                 <p>
-                    {`All content `}&copy;{` Callum Newlands ${new Date().getFullYear()}`}
+                    {`All content `}&copy;{` Callum Newlands 2020–${new Date().getFullYear()}`}
                 </p>
             </footer>
         </>

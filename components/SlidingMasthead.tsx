@@ -34,7 +34,6 @@ function SlidingMasthead() {
                 <div className={styles.masthead_midground}>
                     <div className={styles.text_container}>
                         <h1>Freelance Full-stack Developer</h1>
-                        <h2>Please Note: this site is a work-in-progress and currently is under construction.</h2>
                     </div>
                 </div>
 
