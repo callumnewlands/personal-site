@@ -10,7 +10,7 @@ function Application({ Component, pageProps }: AppProps) {
     return (
         <div className="container">
             <Head>
-                <title>Callum Newlands | Freelance Web and Desktop Application Developer</title>
+                <title>Callum Newlands | Freelance Full-Stack Web App Developer</title>
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -19,7 +19,33 @@ function Application({ Component, pageProps }: AppProps) {
                 <meta name="msapplication-TileColor" content="#00aba9" />
                 <meta name="theme-color" content="#07959a" />
                 <meta name="author" content="Callum Newlands" />
-                <meta name="description" content="Callum Newlands' portfolio and personal about site." />
+                <meta name="description"
+                      content="Callum Newlands is a freelance full-stack software developer specializing in modern web application development. Discover projects, services, and contact information." />
+                <script type="application/ld+json">
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Person",
+                        "name": "Callum Newlands",
+                        "jobTitle": "Freelance Full-Stack Developer",
+                        "url": "https://cnewlands.dev",
+                        "sameAs": [
+                        "https://www.linkedin.com/in/callum-newlands-80ab28174",
+                        "https://github.com/callumnewlands"
+                        ],
+                        "description": "Callum Newlands specializes in creating modern, responsive web and desktop applications.",
+                        "image": "https://cnewlands.dev/logo-vector-green.svg"
+                    }
+                </script>
+                <meta property="og:site_name" content="Callum Newlands · Freelance Developer" />
+                <meta property="og:title" content="Callum Newlands | Freelance Full-Stack Web Developer" />
+                <meta property="og:description"
+                      content="Freelance full-stack developer specializing in modern web apps." />
+                <meta property="og:image" content="https://cnewlands.dev/logo-vector-green.svg" />
+                <meta property="og:url" content="https://cnewlands.dev" />
+                <meta property="og:type" content="website" />
+                <meta name="keywords"
+                      content="freelance web developer, full-stack developer, software engineer, web applications, desktop applications, Callum Newlands, portfolio" />
+                <meta name="robots" content="index, follow" />
                 <link
                     rel="stylesheet"
                     href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700;800&display=swap"
