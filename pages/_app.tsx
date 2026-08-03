@@ -7,6 +7,21 @@ import Footer from "../components/Footer";
 import Script from "next/script";
 
 function Application({ Component, pageProps }: AppProps) {
+
+    const personLd = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Callum Newlands",
+        "jobTitle": "Freelance Full-Stack Developer",
+        "url": "https://cnewlands.dev",
+        "sameAs": [
+            "https://www.linkedin.com/in/callum-newlands-80ab28174",
+            "https://github.com/callumnewlands"
+        ],
+        "description": "Callum Newlands specializes in creating modern, responsive web and desktop applications.",
+        "image": "https://cnewlands.dev/logo-vector-green.svg"
+    }
+
     return (
         <div className="container">
             <Head>
@@ -21,21 +36,7 @@ function Application({ Component, pageProps }: AppProps) {
                 <meta name="author" content="Callum Newlands" />
                 <meta name="description"
                       content="Callum Newlands is a freelance full-stack software developer specializing in modern web application development. Discover projects, services, and contact information." />
-                <script type="application/ld+json">
-                    {`{
-                        "@context": "https://schema.org",
-                        "@type": "Person",
-                        "name": "Callum Newlands",
-                        "jobTitle": "Freelance Full-Stack Developer",
-                        "url": "https://cnewlands.dev",
-                        "sameAs": [
-                        "https://www.linkedin.com/in/callum-newlands-80ab28174",
-                        "https://github.com/callumnewlands"
-                        ],
-                        "description": "Callum Newlands specializes in creating modern, responsive web and desktop applications.",
-                        "image": "https://cnewlands.dev/logo-vector-green.svg"
-                    }`}
-                </script>
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}/>
                 <meta property="og:site_name" content="Callum Newlands · Freelance Developer" />
                 <meta property="og:title" content="Callum Newlands | Freelance Full-Stack Web Developer" />
                 <meta property="og:description"
