@@ -127,6 +127,10 @@ $illustrationsMax: 30rem;
 
     &_description {
       color: $text-muted;
+
+      a {
+        text-decoration: underline;
+      }
       font-size: 14px;
       line-height: 1.5;
     }
