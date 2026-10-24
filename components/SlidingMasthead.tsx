@@ -12,7 +12,10 @@ function SlidingMasthead() {
         if (!pageStartRef.current) {
             return;
         }
-        pageStartRef.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        // scrollIntoView is unreliable in Safari
+        const top = pageStartRef.current.getBoundingClientRect().top + window.scrollY;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
     };
 
     return (
