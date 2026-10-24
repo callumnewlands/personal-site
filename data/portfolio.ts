@@ -81,7 +81,7 @@ Part III dissertation involved the design and implementation of a 3D virtual for
 used in academic research for the training of AI-based robot-swarm steering algorithms.
 
 The system has over **500 configurable parameters**, and as a result can generate an infinite number of tree species,
-terrains and overall forest scenes. The tree models are generated with **L-systems** are distributed throughout the scene 
+terrains and overall forest scenes. The tree models are generated with **L-systems** and are distributed throughout the scene 
 using an **ecosystem simulation**. The resulting scene is then rendered with a **deferred rendering pipeline**, using a 
 Blinn-Phong shading model adapted for leaf transparency; along with high-dynamic-range tone mapping, shadow
 mapping and **post-processing shaders** for ambient occlusion and volumetric light scattering.
@@ -97,7 +97,7 @@ A demonstration video can be found on [YouTube](https://youtu.be/82JUq6yR35Y).
         featuredImage: "/screenshots/forestgenerator.webp",
         link: "https://github.com/callumnewlands/ForestGenerator",
         screenshotsDirectory: "/screenshots/forestgenerator",
-        screenshotWidths: [4, 1, 1, 1, 2, 2, 2, 2, 4, 4]
+        screenshotWidths: [4, 1, 1, 1, 2, 2, 2, 2, 4]
     },
     {
         id: "spydify",
@@ -189,7 +189,7 @@ system to better categorise the wealth of information available on the site.
         type: "WordPress Website",
         tags: ["WordPress", "UI/UX Design", "Content Reorganisation", "Volunteer"],
         featuredImage: "/screenshots/suac.webp",
-        link: "http://archery.susu.org",
+        link: "https://archery.susu.org",
         screenshotsDirectory: "/screenshots/suac",
         screenshotWidths: []
     },
