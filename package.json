@@ -13,7 +13,8 @@
         "test": "cypress run",
         "lint": "eslint common components cypress data pages scripts svgs *.js *.mjs",
         "format": "prettier --write .github common components cypress data pages scripts styles svgs \"*.{js,mjs,json,md,yaml}\"",
-        "format:check": "prettier --check .github common components cypress data pages scripts styles svgs \"*.{js,mjs,json,md,yaml}\""
+        "format:check": "prettier --check .github common components cypress data pages scripts styles svgs \"*.{js,mjs,json,md,yaml}\"",
+        "lhci": "pnpm dlx @lhci/cli@0.15.1 autorun"
     },
     "dependencies": {
         "image-size": "^2.0.4",
