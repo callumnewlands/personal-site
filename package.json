@@ -10,7 +10,8 @@
         "prebuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-seo-assets.mjs",
         "postbuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-sitemap.mjs",
         "start": "next start",
-        "test": "cypress run"
+        "test": "cypress run",
+        "lint": "eslint common components cypress data pages scripts svgs *.js *.mjs"
     },
     "dependencies": {
         "image-size": "^2.0.4",
@@ -27,6 +28,8 @@
         "@types/react-dom": "^19.3.0",
         "@types/react-vertical-timeline-component": "^3.3.6",
         "cypress": "^16.2.0",
+        "eslint": "^9.39.5",
+        "eslint-config-next": "16.4.3",
         "prettier": "2.7.1",
         "sharp": "^0.35.5",
         "typescript": "^5.9.3"

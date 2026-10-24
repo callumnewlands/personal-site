@@ -3,3 +3,4 @@ shamefullyHoist: true  # Recommended by Netlify https://docs.netlify.com/snippet
 allowBuilds:
   cypress: true
   "@parcel/watcher": false
+  unrs-resolver: false
