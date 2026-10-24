@@ -1,4 +1,4 @@
-// Builds robots.txt, sitemap.xml and the OG images before next build/dev
+// Builds robots.txt and the OG images before next build/dev
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createElement as h } from "react";
 import { ImageResponse } from "next/og.js";
@@ -19,10 +19,7 @@ const routes = [
     ...projectsWithPages.map((item) => ({ path: `/portfolio/${item.id}`, heading: item.title, subheading: item.type }))
 ];
 
-async function buildSitemap() {
-    const urls = routes.map(({ path }) => `  <url>\n    <loc>${SITE_URL}${path}</loc>\n  </url>`).join("\n");
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
-    await writeFile(new URL("sitemap.xml", publicDir), xml);
+async function buildRobots() {
     await writeFile(
         new URL("robots.txt", publicDir),
         `User-agent: *
@@ -110,5 +107,5 @@ async function buildOgImages() {
     );
 }
 
-await Promise.all([buildSitemap(), buildOgImages()]);
-console.log(`Generated robots.txt, sitemap.xml and ${routes.length} OG images`);
+await Promise.all([buildRobots(), buildOgImages()]);
+console.log(`Generated robots.txt and ${routes.length} OG images`);
