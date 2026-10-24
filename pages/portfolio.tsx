@@ -1,14 +1,21 @@
 import styles from "../styles/portfolio.module.scss";
 import { portfolio, PortfolioItem } from "../data/portfolio";
 import Head from "next/head";
+import Image from "next/image";
 import { LinkButton } from "../components/ui/Button";
 import Tag, { tagColours } from "../components/ui/Tag";
 import { Text, Title } from "../components/ui/Typography";
+import { sizedImage, SizedImage } from "../common/images";
 
-function PortfolioListItem({ item, flip }: { item: PortfolioItem; flip: boolean }) {
+function PortfolioListItem({ item, image, flip }: { item: PortfolioItem; image: SizedImage; flip: boolean }) {
     const imageElement = (
         <div className={styles.list_item_image_container}>
-            <img src={item.featuredImage} alt={`Screenshot of the ${item.title} application`} />
+            <Image
+                {...image}
+                alt={`Screenshot of the ${item.title} application`}
+                sizes="(max-width: 736px) 90vw, 45vw"
+                quality={80}
+            />
         </div>
     );
 
@@ -42,7 +49,7 @@ function PortfolioListItem({ item, flip }: { item: PortfolioItem; flip: boolean 
     );
 }
 
-export default function Portfolio() {
+export default function Portfolio({ images }: { images: SizedImage[] }) {
     return (
         <>
             <Head>
@@ -64,9 +71,17 @@ export default function Portfolio() {
             <hr />
             <div className={styles.list}>
                 {portfolio.map((item, i) => (
-                    <PortfolioListItem item={item} flip={i % 2 === 0} key={item.id} />
+                    <PortfolioListItem item={item} image={images[i]} flip={i % 2 === 0} key={item.id} />
                 ))}
             </div>
         </>
     );
+}
+
+export async function getStaticProps() {
+    return {
+        props: {
+            images: await Promise.all(portfolio.map((item) => sizedImage(item.featuredImage)))
+        }
+    };
 }
