@@ -1,32 +1,23 @@
-import { DependencyList, RefObject, useEffect, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 
-export const tagColours = [
-    "purple",
-    "volcano",
-    "cyan",
-    "lime",
-    "magenta",
-    "gold",
-    "blue",
-    "red",
-    "geekblue",
-    "orange",
-    "green",
-    "yellow"
-];
+export function cx(...classes: (string | false | null | undefined)[]) {
+    return classes.filter(Boolean).join(" ");
+}
 
-export function useOverflowing(ref: RefObject<HTMLElement>, extraDeps: DependencyList = []) {
+export function useOverflowing(ref: RefObject<HTMLElement | null>) {
     const [isOverflowing, setIsOverflowing] = useState(false);
 
     useEffect(() => {
-        const element = ref?.current;
+        const element = ref.current;
         if (!element) {
             return;
         }
-        const hasOverflowingChildren =
-            element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth;
-        setIsOverflowing(hasOverflowingChildren);
-    }, extraDeps);
+        const observer = new ResizeObserver(() =>
+            setIsOverflowing(element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth)
+        );
+        observer.observe(element);
+        return () => observer.disconnect();
+    }, [ref]);
 
     return isOverflowing;
 }
