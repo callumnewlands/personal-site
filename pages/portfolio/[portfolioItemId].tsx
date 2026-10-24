@@ -1,4 +1,4 @@
-import { portfolio } from "../portfolio";
+import { portfolio, PortfolioItem as PortfolioItemData } from "../../data/portfolio";
 import { Button, Tag, Typography } from "antd";
 import { CustomButton } from "../../components/Buttons";
 import { tagColours } from "../../common/helpers";
@@ -14,23 +14,7 @@ const glob = require("fast-glob");
 
 const { Title, Text } = Typography;
 
-export interface PortfolioItem {
-    id: string;
-    title: string;
-    shortDesc: string;
-    desc: string;
-    startDate: string;
-    endDate?: string | null;
-    type: string;
-    tags: string[];
-    featuredImage: string;
-    link?: string | null;
-    screenshotsDirectory: string;
-    screenshotWidths: number[];
-    disablePage?: boolean;
-}
-
-export default function PortfolioItem({ item, images }: { item: PortfolioItem; images: string[] }) {
+export default function PortfolioItem({ item, images }: { item: PortfolioItemData; images: string[] }) {
     return (
         <>
             <Head>
@@ -114,7 +98,7 @@ export async function getStaticProps({ params }: DynamicPageParams) {
 export async function getStaticPaths() {
     return {
         paths: portfolio.map(
-            (item: PortfolioItem): DynamicPageParams => ({
+            (item: PortfolioItemData): DynamicPageParams => ({
                 params: {
                     portfolioItemId: item.id
                 }
