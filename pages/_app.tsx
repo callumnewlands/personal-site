@@ -6,6 +6,8 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Script from "next/script";
 
+const cloudflareAnalyticsToken = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN;
+
 function Application({ Component, pageProps }: AppProps) {
 
     const personLd = {
@@ -52,17 +54,13 @@ function Application({ Component, pageProps }: AppProps) {
                     href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700;800&display=swap"
                 />
             </Head>
-            {/*<!-- Google tag (gtag.js) -->*/}
-            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y3PX0QM1E" strategy="afterInteractive" />
-            <Script id="google-analytics" strategy="afterInteractive">
-                {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'G-9Y3PX0QM1E');
-                `}
-            </Script>
+            {cloudflareAnalyticsToken && (
+                <Script
+                    src="https://static.cloudflareinsights.com/beacon.min.js"
+                    strategy="afterInteractive"
+                    data-cf-beacon={JSON.stringify({ token: cloudflareAnalyticsToken, spa: true })}
+                />
+            )}
             <NavBar />
             <main>
                 <Component {...pageProps} />
