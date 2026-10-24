@@ -1,4 +1,4 @@
-shamefullyHoist: true
+shamefullyHoist: true  # Recommended by Netlify https://docs.netlify.com/snippets/frameworks/nextjs-pnpm-support/ 
 
 allowBuilds:
   "@netlify/esbuild": true
