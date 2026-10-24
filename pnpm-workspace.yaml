@@ -1,0 +1,8 @@
+shamefullyHoist: true
+
+allowBuilds:
+  "@netlify/esbuild": true
+  cypress: true
+  sharp: true
+  "@parcel/watcher": false
+  react-vertical-timeline-component: false
