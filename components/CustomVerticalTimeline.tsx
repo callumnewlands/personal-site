@@ -1,9 +1,9 @@
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 import styles from "./CustomVerticalTimeline.module.scss";
-import { UpOutlined } from "@ant-design/icons";
+import { UpIcon } from "../svgs";
 
 export interface TimelineElementProps {
     date: string;
@@ -20,7 +20,7 @@ interface CustomVerticalTimelineProps {
 export default function CustomVerticalTimeline({ data }: CustomVerticalTimelineProps) {
     return (
         <div className={styles.timeline_wrapper}>
-            <UpOutlined className={styles.top_icon} />
+            <UpIcon className={styles.top_icon} />
             <VerticalTimeline lineColor={"#d6d6d6"} className={styles.custom_timeline}>
                 {data?.map((d) => (
                     <VerticalTimelineElement date={d.date} key={d.title + d.date}>

@@ -1,169 +1,183 @@
 import styles from "./ContactForm.module.scss";
-import { Button, Form, Input, Radio, Result } from "antd";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import Button from "./ui/Button";
+import Result from "./ui/Result";
 
-function encode(data: { [key: string]: string }) {
-    return Object.keys(data)
-        .map((key) => encodeURIComponent(key) + `=` + encodeURIComponent(data[key]))
-        .join(`&`);
+// Must match public/__forms.html
+const FORM_NAME = "Contact Form";
+const FORM_ENDPOINT = "/__forms.html";
+
+const inquiryOptions = [
+    { value: "newProject", label: "A New Project" },
+    { value: "existingQuote", label: "An Existing Quote" },
+    { value: "consultancy", label: "Consultancy" },
+    { value: "feedback", label: "Feedback/Suggestions" },
+    { value: "other", label: "Something Else" }
+];
+
+type FieldName = "name" | "email" | "message";
+type Errors = Partial<Record<FieldName, string>>;
+
+function validate(values: Record<string, string>): Errors {
+    const errors: Errors = {};
+    if (!values.name.trim()) {
+        errors.name = "Please enter your name.";
+    }
+    if (!values.email.trim()) {
+        errors.email = "Please enter your email.";
+    }
+    if (!values.message.trim()) {
+        errors.message = "Please enter your message.";
+    }
+    return errors;
+}
+
+enum Page {
+    Form,
+    Success,
+    Error
 }
 
 export default function ContactForm() {
-    const formName = "Contact Form";
-
-    enum Page {
-        Form,
-        Success,
-        Error
-    }
-
     const [currentPage, setCurrentPage] = useState<Page>(Page.Form);
-    const [error, setError] = useState<Error | null>(null);
+    const [error, setError] = useState("");
+    const [errors, setErrors] = useState<Errors>({});
+    const [submitting, setSubmitting] = useState(false);
+
     const showForm = () => {
-        setError(null);
+        setError("");
         setCurrentPage(Page.Form);
     };
-    const showSuccess = () => {
-        setError(null);
-        setCurrentPage(Page.Success);
-    };
-    const showError = (error: Error) => {
-        setError(error);
-        setCurrentPage(Page.Error);
-    };
 
-    const radioOptions = [
-        {
-            value: "newProject",
-            label: "A New Project"
-        },
-        {
-            value: "existingQuote",
-            label: "An Existing Quote"
-        },
-        {
-            value: "consultancy",
-            label: "Consultancy"
-        },
-        {
-            value: "feedback",
-            label: "Feedback/Suggestions"
-        },
-        {
-            value: "other",
-            label: "Something Else"
-        }
-    ];
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const values = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
 
-    const handleSubmit = (values: { [key: string]: string }) => {
-        if (values[`bot-field`] === undefined) {
-            delete values[`bot-field`];
+        const validationErrors = validate(values);
+        setErrors(validationErrors);
+        const firstInvalid = Object.keys(validationErrors)[0];
+        if (firstInvalid) {
+            event.currentTarget.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)?.focus();
+            return;
         }
 
-        fetch(`/`, {
-            method: `POST`,
-            headers: { "Content-Type": `application/x-www-form-urlencoded` },
-            body: encode({
-                "form-name": formName,
-                ...values
-            })
-        })
-            .then(() => showSuccess())
-            .catch((error) => showError(error));
+        setSubmitting(true);
+        try {
+            await fetch(FORM_ENDPOINT, {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(values).toString()
+            });
+            setCurrentPage(Page.Success);
+        } catch (e) {
+            setError(String(e));
+            setCurrentPage(Page.Error);
+        } finally {
+            setSubmitting(false);
+        }
     };
 
-    const successPage = (
-        <Result
-            status="success"
-            title="Message Sent Successfully!"
-            subTitle="Thanks for your inquiry, I'll aim to get back to you as soon as possible."
-            extra={[
-                <Button type="primary" onClick={showForm}>
+    if (currentPage === Page.Success) {
+        return (
+            <Result
+                success
+                title="Message Sent Successfully!"
+                message="Thanks for your inquiry, I'll aim to get back to you as soon as possible."
+            >
+                <Button variant="primary" onClick={showForm}>
                     Send Another Message
                 </Button>
-            ]}
-        />
-    );
-    const errorPage = (
-        <Result
-            status="error"
-            title="There was an error submitting your form:"
-            subTitle={error ? "Details:" + error : "No further details available."}
-            extra={[
-                <Button type="primary" onClick={showForm}>
+            </Result>
+        );
+    }
+
+    if (currentPage === Page.Error) {
+        return (
+            <Result
+                success={false}
+                title="There was an error submitting your form:"
+                message={error ? "Details: " + error : "No further details available."}
+            >
+                <Button variant="primary" onClick={showForm}>
                     Try Again
                 </Button>
-            ]}
-        />
-    );
+            </Result>
+        );
+    }
 
-    const formPage = (
-        <Form
-            layout={"vertical"}
-            className={styles.contact_form}
-            name={formName}
-            method={"POST"}
-            onFinish={handleSubmit}
-            requiredMark={false}
-        >
-            <Form.Item className={`hidden`} style={{ display: `none` }} name="bot-field">
-                <Input type={`hidden`} />
-            </Form.Item>
-            <Form.Item
-                label="What are you inquiring about?"
-                name="inquiry"
-                initialValue={radioOptions[0].value}
-                rules={[{ required: true }]}
-            >
-                <Radio.Group className={styles.options_buttons_container}>
-                    {radioOptions.map((o, i) => (
-                        <Radio.Button key={"inquiry_option_" + i} value={o.value}>
-                            {o.label}
-                        </Radio.Button>
-                    ))}
-                </Radio.Group>
-            </Form.Item>
-            <Form.Item label="Name" name={"name"} rules={[{ required: true, message: `Please enter your name.` }]}>
-                <Input placeholder="Joe Smith" />
-            </Form.Item>
-            <Form.Item label="Email" name={"email"} rules={[{ required: true, message: `Please enter your email.` }]}>
-                <Input placeholder="email@example.com" />
-            </Form.Item>
-            <Form.Item
-                label="Message"
-                name={"message"}
-                rules={[{ required: true, message: `Please enter your message.` }]}
-            >
-                <Input.TextArea placeholder="Your message" rows={5} />
-            </Form.Item>
-            <Form.Item className={styles.button_right}>
-                <Button type="primary" htmlType={"submit"}>
-                    Send Message &gt;
-                </Button>
-            </Form.Item>
-        </Form>
-    );
+    const fieldProps = (name: FieldName) => ({
+        id: `contact-${name}`,
+        name,
+        "aria-invalid": errors[name] ? true : undefined,
+        "aria-describedby": errors[name] ? `contact-${name}-error` : undefined,
+        onChange: () => errors[name] && setErrors({ ...errors, [name]: undefined }),
+        className: styles.input + (errors[name] ? " " + styles.input_error : "")
+    });
 
-    const netlifyForm = (
-        <form name={formName} data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-            <fieldset>
-                {radioOptions.map((o, i) => (
-                    <label key={"inquiry_hidden_" + i}>
-                        <input type="radio" name="inquiry" value={o.value} />
-                        {o.label}
-                    </label>
-                ))}
-            </fieldset>
-            <input type="text" name="name" />
-            <input type="email" name="email" />
-            <textarea name="message" />
-        </form>
-    );
+    const fieldError = (name: FieldName) =>
+        errors[name] && (
+            <div id={`contact-${name}-error`} className={styles.field_error}>
+                {errors[name]}
+            </div>
+        );
 
     return (
-        <>
-            {netlifyForm}
-            {currentPage === Page.Success ? successPage : currentPage === Page.Error ? errorPage : formPage}
-        </>
+        <form
+            className={styles.contact_form}
+            name={FORM_NAME}
+            method="POST"
+            onSubmit={handleSubmit}
+            noValidate
+        >
+            <input type="hidden" name="form-name" value={FORM_NAME} />
+            <p className={styles.honeypot} aria-hidden="true">
+                <label>
+                    Don&apos;t fill this out if you&apos;re human:{" "}
+                    <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                </label>
+            </p>
+
+            <fieldset className={styles.field}>
+                <legend className={styles.label}>What are you inquiring about?</legend>
+                <div className={styles.options_buttons_container}>
+                    {inquiryOptions.map((o, i) => (
+                        <label key={o.value} className={styles.radio_button}>
+                            <input type="radio" name="inquiry" value={o.value} defaultChecked={i === 0} />
+                            <span>{o.label}</span>
+                        </label>
+                    ))}
+                </div>
+            </fieldset>
+
+            <div className={styles.field}>
+                <label htmlFor="contact-name" className={styles.label}>
+                    Name
+                </label>
+                <input type="text" placeholder="Joe Smith" autoComplete="name" {...fieldProps("name")} />
+                {fieldError("name")}
+            </div>
+
+            <div className={styles.field}>
+                <label htmlFor="contact-email" className={styles.label}>
+                    Email
+                </label>
+                <input type="email" placeholder="email@example.com" autoComplete="email" {...fieldProps("email")} />
+                {fieldError("email")}
+            </div>
+
+            <div className={styles.field}>
+                <label htmlFor="contact-message" className={styles.label}>
+                    Message
+                </label>
+                <textarea placeholder="Your message" rows={5} {...fieldProps("message")} />
+                {fieldError("message")}
+            </div>
+
+            <div className={styles.field + " " + styles.button_right}>
+                <Button variant="primary" type="submit" disabled={submitting}>
+                    {submitting ? "Sending..." : "Send Message >"}
+                </Button>
+            </div>
+        </form>
     );
 }

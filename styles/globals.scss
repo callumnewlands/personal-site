@@ -1,11 +1,21 @@
-@import "variables";
+@use "base";
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Helvetica Neue, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, sans-serif !important;
+  font-family:
+    Helvetica Neue,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    sans-serif !important;
 }
 
 html {
@@ -63,7 +73,11 @@ main {
 
   &_button {
     cursor: pointer;
-    color: gray;
+    color: #595959;
     font-weight: 600;
+    padding: 0;
+    background: none;
+    border: 0;
+    text-align: left;
   }
 }

@@ -1,119 +1,85 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import Icon, { MenuOutlined } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { useEffect, useState } from "react";
 import styles from "./NavBar.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Contact, PersonLaptop, Portfolio } from "../svgs";
-import { Property } from "csstype";
+import { Contact, MenuIcon, PersonLaptop, Portfolio } from "../svgs";
 import Logo from "./Logo";
+import { cx } from "../common/helpers";
 
-type Visibility = Property.Visibility;
-type BoxShadow = Property.BoxShadow;
-type BackgroundColor = Property.BackgroundColor;
-
-const pages: MenuProps["items"] = [
+const pages = [
     {
         label: "Portfolio",
         page: "portfolio",
-        icon: <Icon component={() => <Portfolio />} />
+        icon: <Portfolio />
     },
     {
         label: "About",
         page: "about",
-        icon: <Icon component={() => <PersonLaptop />} />
+        icon: <PersonLaptop />
     },
     {
         label: "Contact Me",
         page: "contact",
-        icon: <Icon component={() => <Contact />} />
+        icon: <Contact />
     }
-].map((page: LinkType) => ({
-    label: (
-        <Link href={`/${page.page}`}>
-            <a>{page.label}</a>
-        </Link>
-    ),
-    key: page.page,
-    icon: page.icon
-}));
-
-interface LinkType {
-    label: string;
-    page: string;
-    icon: JSX.Element;
-}
+];
 
 export default function NavBar() {
     const router = useRouter();
-    const [current, setCurrent] = useState<string>("mail");
-
-    const isHomePage = router.route.match("^/$");
-    const shadowDef = "0 0 4px 0 rgba(0, 0, 0, 0.25)";
-    const homeBackground = "#00000066";
-    const standardBackground = "white";
-
-    const ref = useRef<HTMLDivElement>(null);
-    const getHomePageStyles = useCallback(() => {
-        let backgroundColor: BackgroundColor, boxShadow: BoxShadow, visibility: Visibility;
-        if (typeof window === "undefined") {
-            backgroundColor = homeBackground;
-            boxShadow = "none";
-            visibility = "hidden";
-        } else {
-            backgroundColor =
-                (window.scrollY || window.pageYOffset) >= window.innerHeight ? standardBackground : homeBackground;
-            boxShadow = (window.scrollY || window.pageYOffset) >= window.innerHeight - 100 ? shadowDef : "none";
-            visibility = (window.scrollY || window.pageYOffset) >= window.innerHeight ? "visible" : "hidden";
-        }
-        return { backgroundColor, boxShadow, visibility };
-    }, []);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const isHomePage = router.pathname === "/";
+    const [overMasthead, setOverMasthead] = useState(true);
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (!ref?.current) {
-                return;
-            } else if (!isHomePage) {
-                ref.current.style.backgroundColor = "white";
-                ref.current.style.boxShadow = shadowDef;
-                ref.current.style.visibility = "visible";
-                return;
-            }
-            const style = getHomePageStyles();
-            ref.current.style.backgroundColor = style.backgroundColor;
-            ref.current.style.boxShadow = style.boxShadow;
-            ref.current.style.visibility = style.visibility;
+        if (!isHomePage) {
+            return;
+        }
+        // clientHeight matches the svh masthead, innerHeight changes as mobile toolbars collapse
+        const update = () => setOverMasthead(window.scrollY < document.documentElement.clientHeight);
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+        window.addEventListener("resize", update);
+        return () => {
+            window.removeEventListener("scroll", update);
+            window.removeEventListener("resize", update);
         };
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
     }, [isHomePage]);
 
-    const homePageStyles = getHomePageStyles();
-
     return (
-        <div
-            className={styles.header}
-            ref={ref}
-            style={{
-                backgroundColor: isHomePage ? homePageStyles.backgroundColor : standardBackground,
-                boxShadow: isHomePage ? homePageStyles.boxShadow : shadowDef,
-                visibility: isHomePage ? homePageStyles.visibility : "visible"
-            }}
-        >
-            <Link href={"/"}>
-                <a>
-                    <Logo className={styles.header_logo} />
-                </a>
+        <header className={cx(styles.header, isHomePage && overMasthead && styles.header_hidden)}>
+            <Link href={"/"} aria-label="Callum Newlands home">
+                <Logo className={styles.header_logo} />
             </Link>
-            <Menu
-                onClick={(e) => setCurrent(e.key)}
-                selectedKeys={[current]}
-                mode="horizontal"
-                items={pages}
-                className={styles.header_menu}
-                overflowedIndicator={<MenuOutlined />}
-            />
-        </div>
+            <nav className={styles.header_menu} aria-label="Main">
+                <button
+                    type="button"
+                    className={styles.header_menu_toggle}
+                    aria-label="Menu"
+                    aria-expanded={menuOpen}
+                    aria-controls="nav-menu"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                >
+                    <MenuIcon />
+                </button>
+                <ul id="nav-menu" className={cx(styles.header_menu_list, menuOpen && styles.header_menu_list_open)}>
+                    {pages.map((page) => {
+                        const isActive = router.pathname.startsWith(`/${page.page}`);
+                        return (
+                            <li key={page.page}>
+                                <Link
+                                    href={`/${page.page}`}
+                                    className={cx(styles.header_menu_item, isActive && styles.header_menu_item_active)}
+                                    aria-current={isActive ? "page" : undefined}
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    <span className={styles.header_menu_icon}>{page.icon}</span>
+                                    <span className={styles.header_menu_label}>{page.label}</span>
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+        </header>
     );
 }

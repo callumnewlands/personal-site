@@ -1,24 +1,68 @@
+@use "../styles/variables" as *;
+
 .contact_form {
   width: 100%;
+}
 
-  label {
-    font-weight: 600;
+.field {
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  padding: 0 0 8px;
+  font-weight: 600;
+  color: $text;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 4px 11px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $text;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: $radius;
+  transition: all 0.3s;
+
+  &::placeholder {
+    color: #999;
   }
 
-  :global(.ant-radio-button-wrapper),
-  input,
-  textarea,
-  button {
-    border-radius: 6px;
+  &:hover {
+    border-color: $primary-light;
   }
 
-  :global(.ant-radio-button-wrapper) {
-    border-left-width: 1px;
-
-    &::before {
-      display: none;
-    }
+  &:focus {
+    outline: 0;
+    border-color: $primary-light;
+    box-shadow: 0 0 0 2px rgba($primary, 0.2);
   }
+
+  &_error,
+  &_error:hover,
+  &_error:focus {
+    border-color: $error;
+  }
+
+  &_error:focus {
+    box-shadow: 0 0 0 2px rgba($error, 0.2);
+  }
+}
+
+textarea.input {
+  resize: vertical;
+}
+
+.field_error {
+  margin-top: 4px;
+  color: $error;
+  font-size: 14px;
 }
 
 .options_buttons_container {
@@ -28,12 +72,52 @@
   justify-content: center;
 }
 
-.button_right {
-  :global(.ant-form-item-control-input-content) {
-    display: flex;
+.radio_button {
+  position: relative;
+  cursor: pointer;
 
-    button {
-      margin-left: auto;
-    }
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  span {
+    display: inline-block;
+    height: 32px;
+    padding: 0 15px;
+    line-height: 30px;
+    font-size: 14px;
+    color: $text;
+    background: #fff;
+    border: 1px solid $border;
+    border-radius: $radius;
+    transition: all 0.3s;
+  }
+
+  &:hover span {
+    color: $primary-light;
+  }
+
+  input:checked + span {
+    color: $primary;
+    border-color: $primary;
+  }
+
+  input:focus-visible + span {
+    box-shadow: 0 0 0 3px rgba($primary, 0.2);
+  }
+}
+
+.honeypot {
+  display: none;
+}
+
+.button_right {
+  display: flex;
+
+  & > * {
+    margin-left: auto;
   }
 }

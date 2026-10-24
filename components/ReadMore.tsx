@@ -9,17 +9,22 @@ interface ReadMoreProps {
 export function ReadMore({ maxHeight = "11.5rem", children }: ReadMoreProps) {
     const [showMore, setShowMore] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
-    const isOverflowing = useOverflowing(ref, [showMore]);
+    const isOverflowing = useOverflowing(ref);
 
     return (
         <>
             <div ref={ref} className={"read_more"} style={{ ...(!showMore ? { maxHeight } : {}) }}>
                 {children}
             </div>
-            {isOverflowing && (
-                <span className={"read_more_button"} onClick={() => setShowMore(true)}>
+            {!showMore && (
+                <button
+                    type="button"
+                    className={"read_more_button"}
+                    onClick={() => setShowMore(true)}
+                    style={isOverflowing ? undefined : { visibility: "hidden" }}
+                >
                     Read More...
-                </span>
+                </button>
             )}
         </>
     );

@@ -162,7 +162,7 @@ developer -- in particular, I developed the graph visualisation component. For d
         ],
         featuredImage: "/screenshots/vrl.webp",
         link: "https://www.figma.com/file/pJ0oCoqXT0SadzyAEYXyaw/Design",
-        screenshotsDirectory: "/screenshots/something",
+        screenshotsDirectory: "",
         screenshotWidths: [],
         disablePage: true
     },
@@ -231,3 +231,5 @@ manner.
         screenshotWidths: [4, 4, 2, 2, 4]
     }
 ];
+
+export const projectsWithPages = portfolio.filter((item) => !item.disablePage);

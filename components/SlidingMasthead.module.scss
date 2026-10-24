@@ -1,4 +1,4 @@
-@use "styles/variables";
+@use "../styles/variables";
 
 $text-background: rgb(0, 0, 0, 0.35);
 $bottom-separation: 9rem; // For content to sit below nav bar after scrolling
@@ -58,6 +58,10 @@ $mobileWidth: 500px;
 
   &_bottom_button {
     max-width: 100%;
+    padding: 4px 15px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
     white-space: pre-wrap;
     height: fit-content !important;
     margin-bottom: 1rem !important;
@@ -98,7 +102,6 @@ $mobileWidth: 500px;
   top: 0;
   left: 0;
   overflow: hidden;
-
 }
 
 .text_container {

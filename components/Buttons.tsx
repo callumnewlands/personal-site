@@ -1,57 +1,20 @@
 import * as React from "react";
 import styles from "./Buttons.module.scss";
-import { Button } from "antd";
-import Link from "next/link";
+import { LinkButton } from "./ui/Button";
+import { cx } from "../common/helpers";
 
-interface CustomButtonProps {
-    children?: React.ReactNode;
-    href?: string;
-    onClick?: React.MouseEventHandler<HTMLElement>;
-    newTab?: boolean;
+interface FullWidthButtonProps {
+    href: string;
+    noMargin?: boolean;
+    children: React.ReactNode;
 }
 
-export function CustomButton({
-    children,
-    href = undefined,
-    newTab = false,
-    onClick = () => {},
-    additionalClasses = undefined
-}: CustomButtonProps & { additionalClasses?: string }) {
-    if (href) {
-        return (
-            <div className={styles.button_container + " " + additionalClasses}>
-                <Link href={href} passHref>
-                    <Button
-                        type={"primary"}
-                        size={"large"}
-                        href={href}
-                        onClick={onClick}
-                        target={newTab ? "_blank" : undefined}
-                    >
-                        {children}
-                    </Button>
-                </Link>
-            </div>
-        );
-    }
+export function FullWidthButton({ href, noMargin = false, children }: FullWidthButtonProps) {
     return (
-        <div className={styles.button_container}>
-            <Button type={"primary"} size={"large"} href={href} onClick={onClick}>
+        <div className={cx(styles.button_container, noMargin && styles.button_container_no_margin)}>
+            <LinkButton variant="primary" large href={href} className={styles.button}>
                 {children}
-            </Button>
+            </LinkButton>
         </div>
-    );
-}
-
-export function FullWidthButton({ noMargin = false, ...props }: CustomButtonProps & { noMargin?: boolean }) {
-    return (
-        <CustomButton
-            {...props}
-            additionalClasses={
-                styles.button_container_full_width +
-                " " +
-                (noMargin ? styles.button_container_full_width_no_margin : "")
-            }
-        />
     );
 }
