@@ -1,7 +1,8 @@
 import styles from "../styles/portfolio.module.scss";
 import { portfolio, PortfolioItem } from "../data/portfolio";
-import Head from "next/head";
+import { pages } from "../data/pages";
 import Image from "next/image";
+import Seo from "../components/Seo";
 import { LinkButton } from "../components/ui/Button";
 import Tag, { tagColours } from "../components/ui/Tag";
 import { Text, Title } from "../components/ui/Typography";
@@ -52,10 +53,7 @@ function PortfolioListItem({ item, image, flip }: { item: PortfolioItem; image: 
 export default function Portfolio({ images }: { images: SizedImage[] }) {
     return (
         <>
-            <Head>
-                <title>Portfolio | Callum Newlands | Freelance Web and Desktop Application Developer</title>
-                <meta name="description" content="Examples of my previous web and desktop development and design work." />
-            </Head>
+            <Seo {...pages.portfolio} />
             <div className={styles.intro}>
                 <Title level={1}>My Work</Title>
                 <Text>

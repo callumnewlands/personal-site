@@ -9,7 +9,8 @@ import dataViz from "../public/screenshots/dataviz.webp";
 import spydify from "../public/screenshots/spydify.webp";
 import mathsPlanner from "../public/screenshots/mathsplanner.webp";
 import WavesDivider from "../components/WavesDivider";
-import Head from "next/head";
+import Seo from "../components/Seo";
+import { pages } from "../data/pages";
 
 export default function Home() {
     const infoData = [
@@ -77,13 +78,7 @@ export default function Home() {
 
     return (
         <>
-            <Head>
-                <title>Callum Newlands | Freelance Web and Desktop Application Developer</title>
-                <meta
-                    name="description"
-                    content="Callum Newlands' portfolio and personal site containing examples of his work and information on available development services."
-                />
-            </Head>
+            <Seo {...pages.home} />
             <SlidingMasthead />
             <MoodBoardGrid {...moodBoardData} />
             <FullWidthButton href={"/portfolio"}>Find Out More</FullWidthButton>

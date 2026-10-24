@@ -3,8 +3,9 @@ import ImageDivider from "../components/ImageDivider";
 import CustomVerticalTimeline, { TimelineElementProps } from "../components/CustomVerticalTimeline";
 import archeryImage from "../public/photos/archery.webp";
 import Link from "next/link";
-import Head from "next/head";
+import Seo from "../components/Seo";
 import { Title } from "../components/ui/Typography";
+import { pages } from "../data/pages";
 
 export default function AboutPage() {
     const timelineData: TimelineElementProps[] = [
@@ -110,13 +111,7 @@ export default function AboutPage() {
 
     return (
         <>
-            <Head>
-                <title>About Me | Callum Newlands | Freelance Web and Desktop Application Developer</title>
-                <meta
-                    name="description"
-                    content="About Callum Newlands - His story, awards and achievements, timeline of experience and skills."
-                />
-            </Head>
+            <Seo {...pages.about} type="profile" />
             <div className={styles.about_header}>
                 <div className={styles.about_header_panel}>
                     <Title>Hi, I&apos;m Callum</Title>

@@ -1,18 +1,13 @@
 import ContactForm from "../components/ContactForm";
 import styles from "../styles/contact.module.scss";
-import Head from "next/head";
+import Seo from "../components/Seo";
 import { Title } from "../components/ui/Typography";
+import { pages } from "../data/pages";
 
 export default function ContactPage() {
     return (
         <>
-            <Head>
-                <title>Contact | Callum Newlands | Freelance Web and Desktop Application Developer</title>
-                <meta
-                    name="description"
-                    content="Contact page to get in touch with Callum Newlands regarding development work, web-development or full-stack development."
-                />
-            </Head>
+            <Seo {...pages.contact} />
             <div className={styles.contact_page}>
                 <Title className={styles.contact_title}>Contact Me</Title>
                 <div className={styles.contact_header}>
