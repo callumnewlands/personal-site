@@ -1,5 +1,6 @@
 import { projectsWithPages, PortfolioItem as PortfolioItemData } from "../../data/portfolio";
 import Head from "next/head";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import styles from "../../styles/portfolio.module.scss";
 import buttonStyles from "../../components/Buttons.module.scss";
@@ -9,9 +10,18 @@ import Tag, { tagColours } from "../../components/ui/Tag";
 import { Title } from "../../components/ui/Typography";
 import { ArrowLeftIcon } from "../../svgs";
 import { cx } from "../../common/helpers";
+import { sizedImage, SizedImage } from "../../common/images";
 import glob from "fast-glob";
 
-export default function PortfolioItem({ item, images }: { item: PortfolioItemData; images: string[] }) {
+// Rough rendered widths for the screenshot_wrapper_1-4 classes
+const SCREENSHOT_SIZES: { [width: number]: string } = {
+    1: "(max-width: 700px) 90vw, 25vw",
+    2: "(max-width: 700px) 90vw, 45vw",
+    3: "(max-width: 700px) 90vw, 70vw",
+    4: "90vw"
+};
+
+export default function PortfolioItem({ item, images }: { item: PortfolioItemData; images: SizedImage[] }) {
     return (
         <>
             <Head>
@@ -64,15 +74,22 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItemDat
             </div>
 
             <div className={styles.screenshots}>
-                {images.map((src, i) => (
+                {images.map((image, i) => (
                     <div
-                        key={src}
+                        key={image.src}
                         className={cx(
                             styles.screenshot_wrapper,
                             styles["screenshot_wrapper_" + item.screenshotWidths?.[i]]
                         )}
                     >
-                        <img src={src} alt={`Screenshot of the ${item.title} application`} loading="lazy" />
+                        <Image
+                            {...image}
+                            alt={`Screenshot of the ${item.title} application`}
+                            sizes={SCREENSHOT_SIZES[item.screenshotWidths?.[i] || 4]}
+                            quality={80}
+                            preload={i === 0}
+                            fetchPriority={i === 0 ? undefined : "low"}
+                        />
                     </div>
                 ))}
             </div>
@@ -89,13 +106,12 @@ export async function getStaticProps({ params }: DynamicPageParams) {
     if (!item) {
         return { notFound: true };
     }
-    const images: string[] = await glob(
-        `public${item.screenshotsDirectory}/*.{jpg,JPG,jpeg,JPEG,png,PNG,bmp,BMP,svg,SVG}`
-    );
+    const files: string[] = await glob(`public${item.screenshotsDirectory}/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP}`);
+    const images = await Promise.all(files.map((file) => sizedImage(file.replace("public", ""))));
     return {
         props: {
             item,
-            images: images.map((src) => src.replace("public", ""))
+            images
         }
     };
 }
