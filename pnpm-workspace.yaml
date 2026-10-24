@@ -1,0 +1,8 @@
+shamefullyHoist: true  # Recommended by Netlify https://docs.netlify.com/snippets/frameworks/nextjs-pnpm-support/ 
+
+allowBuilds:
+  "@netlify/esbuild": true
+  cypress: true
+  sharp: true
+  "@parcel/watcher": false
+  react-vertical-timeline-component: false
