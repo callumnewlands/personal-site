@@ -6,7 +6,6 @@ export default function WavesDivider({ children }: { children?: React.ReactNode 
         <>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                id="visual"
                 viewBox="0 446.49 900 154.51"
                 preserveAspectRatio={"none"}
                 className={styles.waves_divider + " " + styles.waves_divider_top}
@@ -35,8 +34,6 @@ export default function WavesDivider({ children }: { children?: React.ReactNode 
             <div className={styles.waves_main}>{children}</div>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                id="visual"
-                version="1.1"
                 viewBox="0 0 900 159"
                 preserveAspectRatio={"none"}
                 className={styles.waves_divider + " " + styles.waves_divider_bottom}

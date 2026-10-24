@@ -111,45 +111,6 @@ export default function AboutPage() {
         }
     ];
 
-    const toolsData = [
-        {
-            title: "React",
-            description: "string",
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
-        },
-        {
-            title: "HTML",
-            description: "string",
-            imagePath: "/logo-vector-green.svg",
-            imageAlt: "alt"
-        },
-        {
-            title: "React2",
-            description: "string",
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
-        },
-        {
-            title: "HTML2",
-            description: "string",
-            imagePath: "/logo-vector-green.svg",
-            imageAlt: "alt"
-        },
-        {
-            title: "React3",
-            description: "string",
-            imagePath: "/illustrations/netliheart.svg",
-            imageAlt: "alt"
-        },
-        {
-            title: "HTML3",
-            description: "string",
-            imagePath: "/logo-vector-green.svg",
-            imageAlt: "alt"
-        }
-    ];
-
     return (
         <>
             <Head>
@@ -214,8 +175,6 @@ export default function AboutPage() {
                     />
                 </div>
             </div>
-            {/*<Title level={2}>Skills and Technologies</Title>*/}
-            {/*<CardGrid data={toolsData} />*/}
         </>
     );
 }

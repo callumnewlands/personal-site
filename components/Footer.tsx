@@ -7,13 +7,19 @@ export default function Footer() {
         <>
             <footer className={styles.footer}>
                 <div className={styles.footer_icons}>
-                    <a href={"https://github.com/callumnewlands"} aria-label="GitHub" target={"_blank"}>
+                    <a
+                        href={"https://github.com/callumnewlands"}
+                        aria-label="GitHub"
+                        target={"_blank"}
+                        rel="noopener noreferrer"
+                    >
                         <GithubFilled />
                     </a>
                     <a
                         href={"https://www.linkedin.com/in/callum-newlands-80ab28174/"}
                         aria-label="LinkedIn"
                         target={"_blank"}
+                        rel="noopener noreferrer"
                     >
                         <LinkedinFilled />
                     </a>
@@ -21,6 +27,7 @@ export default function Footer() {
                         href={"https://www.upwork.com/freelancers/~014de11efc605b0708"}
                         aria-label="Upwork"
                         target={"_blank"}
+                        rel="noopener noreferrer"
                     >
                         <Icon component={() => <UpworkLogo />} />
                     </a>
@@ -28,6 +35,7 @@ export default function Footer() {
                         href={"https://www.instagram.com/callumnewlands_archery/"}
                         aria-label="Instagram"
                         target={"_blank"}
+                        rel="noopener noreferrer"
                     >
                         <InstagramFilled />
                     </a>

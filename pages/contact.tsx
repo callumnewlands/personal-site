@@ -11,7 +11,6 @@ export default function ContactPage() {
         <>
             <Head>
                 <title>Contact | Callum Newlands | Freelance Web and Desktop Application Developer</title>
-                <meta name="keywords" />
                 <meta
                     name="description"
                     content="Contact page to get in touch with Callum Newlands regarding development work, web-development or full-stack development."
@@ -27,7 +26,6 @@ export default function ContactPage() {
                     <div className={styles.contact_header_panel + " " + styles.contact_header_panel_image}>
                         <img
                             src="/illustrations/contact.svg"
-                            className={styles.about_header_illustrations}
                             alt="Illustrations of a person throwing a paper aeroplane."
                         />
                     </div>
