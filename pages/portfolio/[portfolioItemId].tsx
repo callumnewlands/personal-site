@@ -1,7 +1,6 @@
 import { projectsWithPages, PortfolioItem as PortfolioItemData } from "../../data/portfolio";
 import { TITLE_SUFFIX } from "../../data/pages";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
 import styles from "../../styles/portfolio.module.scss";
 import buttonStyles from "../../components/Buttons.module.scss";
 import { ReadMore } from "../../components/ReadMore";
@@ -12,7 +11,11 @@ import { Title } from "../../components/ui/Typography";
 import { ArrowLeftIcon } from "../../svgs";
 import { sizedImage, SizedImage } from "../../common/images";
 import { cx } from "../../common/helpers";
-import glob from "fast-glob";
+import { readdir } from "node:fs/promises";
+import path from "node:path";
+import { marked } from "marked";
+
+const SCREENSHOT_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
 
 // Rough rendered widths for the screenshot_wrapper_1-4 classes
 const SCREENSHOT_SIZES: { [width: number]: string } = {
@@ -22,7 +25,13 @@ const SCREENSHOT_SIZES: { [width: number]: string } = {
     4: "90vw"
 };
 
-export default function PortfolioItem({ item, images }: { item: PortfolioItemData; images: SizedImage[] }) {
+interface PortfolioItemProps {
+    item: PortfolioItemData;
+    descHtml: string;
+    images: SizedImage[];
+}
+
+export default function PortfolioItem({ item, descHtml, images }: PortfolioItemProps) {
     return (
         <>
             <Seo
@@ -56,7 +65,7 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItemDat
                     <div className={styles.header_panels_right}>
                         <div className={styles.description_container}>
                             <ReadMore>
-                                <ReactMarkdown>{item.desc}</ReactMarkdown>
+                                <div dangerouslySetInnerHTML={{ __html: descHtml }} />
                             </ReadMore>
                         </div>
                         {item?.link && (
@@ -109,11 +118,17 @@ export async function getStaticProps({ params }: DynamicPageParams) {
     if (!item) {
         return { notFound: true };
     }
-    const files: string[] = await glob(`public${item.screenshotsDirectory}/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP}`);
-    const images = await Promise.all(files.map((file) => sizedImage(file.replace("public", ""))));
+    const files = await readdir(path.join(process.cwd(), "public", item.screenshotsDirectory));
+    const images = await Promise.all(
+        files
+            .filter((file) => SCREENSHOT_EXTENSIONS.includes(path.extname(file).toLowerCase()))
+            .sort()
+            .map((file) => sizedImage(`${item.screenshotsDirectory}/${file}`))
+    );
     return {
         props: {
             item,
+            descHtml: await marked.parse(item.desc),
             images
         }
     };
