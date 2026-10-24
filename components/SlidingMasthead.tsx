@@ -42,11 +42,11 @@ function SlidingMasthead() {
                         <Logo className={styles.logo} />
                     </div>
                     <button type="button" className={styles.masthead_bottom_button} onClick={scrollToStart}>
-                        <h2>
+                        <span className={styles.masthead_bottom_button_text}>
                             <span className={styles.text_container}>Find out how I can help you</span>
                             <br />
                             <DownIcon />
-                        </h2>
+                        </span>
                     </button>
                 </div>
             </div>

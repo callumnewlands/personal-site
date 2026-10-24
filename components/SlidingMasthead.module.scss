@@ -66,8 +66,10 @@ $mobileWidth: 500px;
     height: fit-content !important;
     margin-bottom: 1rem !important;
 
-    h2 {
-      margin: 0 !important;
+    &_text {
+      display: block;
+      font-size: 1.5em;
+      font-weight: 500;
       color: white;
     }
   }
