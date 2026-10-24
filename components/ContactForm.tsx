@@ -15,6 +15,8 @@ const inquiryOptions = [
     { value: "other", label: "Something Else" }
 ];
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 type FieldName = "name" | "email" | "message";
 type Errors = Partial<Record<FieldName, string>>;
 
@@ -25,6 +27,8 @@ function validate(values: Record<string, string>): Errors {
     }
     if (!values.email.trim()) {
         errors.email = "Please enter your email.";
+    } else if (!EMAIL_PATTERN.test(values.email.trim())) {
+        errors.email = "Please enter a valid email address.";
     }
     if (!values.message.trim()) {
         errors.message = "Please enter your message.";
