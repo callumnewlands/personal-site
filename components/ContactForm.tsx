@@ -63,11 +63,14 @@ export default function ContactForm() {
 
         setSubmitting(true);
         try {
-            await fetch(FORM_ENDPOINT, {
+            const res = await fetch(FORM_ENDPOINT, {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams(values).toString()
             });
+            if (!res.ok) {
+                throw new Error(res.status + " " + res.statusText);
+            }
             setCurrentPage(Page.Success);
         } catch (e) {
             setError(String(e));
@@ -126,6 +129,7 @@ export default function ContactForm() {
             className={styles.contact_form}
             name={FORM_NAME}
             method="POST"
+            action={FORM_ENDPOINT}
             onSubmit={handleSubmit}
             noValidate
         >
