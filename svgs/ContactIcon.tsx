@@ -1,8 +1,15 @@
-import * as React from "react";
 import { SVGProps } from "react";
 
 export const ContactIcon = (props: SVGProps<SVGSVGElement>) => (
-    <svg width={"1em"} height={"1em"} viewBox={"0 0 443 443"} fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+        width={"1em"}
+        height={"1em"}
+        viewBox={"0 0 443 443"}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        {...props}
+    >
         <path
             fillRule="evenodd"
             clipRule="evenodd"

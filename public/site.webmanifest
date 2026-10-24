@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Callum Newlands, Freelance Developer",
+    "short_name": "Callum Newlands",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -15,5 +15,6 @@
     ],
     "theme_color": "#07959a",
     "background_color": "#07959a",
-    "display": "standalone"
+    "display": "standalone",
+    "start_url": "/"
 }

@@ -97,13 +97,15 @@ export async function getStaticProps({ params }: DynamicPageParams) {
 
 export async function getStaticPaths() {
     return {
-        paths: portfolio.map(
-            (item: PortfolioItemData): DynamicPageParams => ({
-                params: {
-                    portfolioItemId: item.id
-                }
-            })
-        ),
+        paths: portfolio
+            .filter((item) => !item.disablePage)
+            .map(
+                (item: PortfolioItemData): DynamicPageParams => ({
+                    params: {
+                        portfolioItemId: item.id
+                    }
+                })
+            ),
         fallback: false
     };
 }

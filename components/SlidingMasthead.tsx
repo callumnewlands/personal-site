@@ -27,7 +27,7 @@ function SlidingMasthead() {
                         quality={100}
                         priority={true}
                         placeholder="blur"
-                        alt={"Photo of Callum Newlands sitting in from of a screen with a virtual forest scene on it."}
+                        alt={"Photo of Callum Newlands sitting in front of a screen with a virtual forest scene on it."}
                     />
                 </div>
 
