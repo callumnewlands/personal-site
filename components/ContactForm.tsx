@@ -15,6 +15,8 @@ const inquiryOptions = [
     { value: "other", label: "Something Else" }
 ];
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 type FieldName = "name" | "email" | "message";
 type Errors = Partial<Record<FieldName, string>>;
 
@@ -25,6 +27,8 @@ function validate(values: Record<string, string>): Errors {
     }
     if (!values.email.trim()) {
         errors.email = "Please enter your email.";
+    } else if (!EMAIL_PATTERN.test(values.email.trim())) {
+        errors.email = "Please enter a valid email address.";
     }
     if (!values.message.trim()) {
         errors.message = "Please enter your message.";
@@ -63,11 +67,14 @@ export default function ContactForm() {
 
         setSubmitting(true);
         try {
-            await fetch(FORM_ENDPOINT, {
+            const res = await fetch(FORM_ENDPOINT, {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams(values).toString()
             });
+            if (!res.ok) {
+                throw new Error(res.status + " " + res.statusText);
+            }
             setCurrentPage(Page.Success);
         } catch (e) {
             setError(String(e));
@@ -126,6 +133,7 @@ export default function ContactForm() {
             className={styles.contact_form}
             name={FORM_NAME}
             method="POST"
+            action={FORM_ENDPOINT}
             onSubmit={handleSubmit}
             noValidate
         >
