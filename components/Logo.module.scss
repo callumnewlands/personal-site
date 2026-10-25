@@ -1,4 +1,4 @@
-@use "styles/variables";
+@use "../styles/variables";
 
 $mobile-width: 660px;
 $small-mobile-width: 360px;
@@ -26,51 +26,51 @@ $small-mobile-width: 360px;
       white-space: normal;
       height: fit-content;
     }
+  }
 
-    h1,
-    h2 {
-      font-family: "Alegreya Sans SC", sans-serif;
-      font-style: normal;
-      margin: 0 !important;
-      color: variables.$viridian-green;
+  &_name,
+  &_title {
+    display: block;
+    margin: 0;
+    font-family: var(--font-logo), "Alegreya Sans SC", sans-serif;
+    color: variables.$viridian-green;
+  }
+
+  &_name {
+    $logo-h1-font-size: 2rem;
+    $logo-h1-line-height: 1.8rem;
+
+    font-weight: 800;
+    font-size: calc(#{$logo-h1-font-size} / 1.2);
+    line-height: calc(#{$logo-h1-line-height} / 1.2);
+
+    @media (min-width: $mobile-width) {
+      font-size: $logo-h1-font-size;
+      line-height: $logo-h1-line-height;
     }
 
-    h1 {
-      $logo-h1-font-size: 2rem;
-      $logo-h1-line-height: 1.8rem;
+    @media (max-width: $small-mobile-width) {
+      font-size: calc(#{$logo-h1-font-size} / 1.4);
+      line-height: calc(#{$logo-h1-line-height} / 1.4);
+    }
+  }
 
-      font-weight: 800;
-      font-size: calc(#{$logo-h1-font-size} / 1.2);
-      line-height: calc(#{$logo-h1-line-height} / 1.2);
+  &_title {
+    $logo-h2-font-size: 1.4rem;
+    $logo-h2-line-height: 1.3rem;
 
-      @media (min-width: $mobile-width) {
-        font-size: $logo-h1-font-size;
-        line-height: $logo-h1-line-height;
-      }
+    font-weight: 700;
+    font-size: calc(#{$logo-h2-font-size} / 1.2);
+    line-height: calc(#{$logo-h2-line-height} / 1.2);
 
-      @media (max-width: $small-mobile-width) {
-        font-size: calc(#{$logo-h1-font-size} / 1.4);
-        line-height: calc(#{$logo-h1-line-height} / 1.4);
-      }
+    @media (min-width: $mobile-width) {
+      font-size: $logo-h2-font-size;
+      line-height: $logo-h2-line-height;
     }
 
-    h2 {
-      $logo-h2-font-size: 1.4rem;
-      $logo-h2-line-height: 1.3rem;
-
-      font-weight: 700;
-      font-size: calc(#{$logo-h2-font-size} / 1.2);
-      line-height: calc(#{$logo-h2-line-height} / 1.2);
-
-      @media (min-width: $mobile-width) {
-        font-size: $logo-h2-font-size;
-        line-height: $logo-h2-line-height;
-      }
-
-      @media (max-width: $small-mobile-width) {
-        font-size: calc(#{$logo-h2-font-size} / 1.4);
-        line-height: calc(#{$logo-h2-line-height} / 1.4);
-      }
+    @media (max-width: $small-mobile-width) {
+      font-size: calc(#{$logo-h2-font-size} / 1.4);
+      line-height: calc(#{$logo-h2-line-height} / 1.4);
     }
   }
 

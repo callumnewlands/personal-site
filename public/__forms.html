@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Forms</title>
+</head>
+<body>
+<!-- Hidden form definitions for Netlify Forms detection. Field names must match components/ContactForm.tsx -->
+<form name="Contact Form" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="Contact Form" />
+    <input name="bot-field" />
+    <fieldset>
+        <input type="radio" name="inquiry" value="newProject" />
+        <input type="radio" name="inquiry" value="existingQuote" />
+        <input type="radio" name="inquiry" value="consultancy" />
+        <input type="radio" name="inquiry" value="feedback" />
+        <input type="radio" name="inquiry" value="other" />
+    </fieldset>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+</form>
+</body>
+</html>

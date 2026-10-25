@@ -1,10 +1,17 @@
-import "../styles/antd.less";
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
+import { Alegreya_Sans_SC } from "next/font/google";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import Script from "next/script";
+
+const logoFont = Alegreya_Sans_SC({
+    weight: ["500", "700", "800"],
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-logo"
+});
 
 const cloudflareAnalyticsToken = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN;
 
@@ -25,8 +32,9 @@ function Application({ Component, pageProps }: AppProps) {
     }
 
     return (
-        <div className="container">
+        <div className={"container " + logoFont.variable}>
             <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <title>Callum Newlands | Freelance Full-Stack Web App Developer</title>
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -47,10 +55,6 @@ function Application({ Component, pageProps }: AppProps) {
                 <meta name="keywords"
                       content="freelance web developer, full-stack developer, software engineer, web applications, desktop applications, Callum Newlands, portfolio" />
                 <meta name="robots" content="index, follow" />
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700;800&display=swap"
-                />
             </Head>
             {cloudflareAnalyticsToken && (
                 <Script

@@ -1,0 +1,36 @@
+@use "../../styles/variables" as *;
+
+.result {
+  padding: 48px 32px;
+  text-align: center;
+
+  &_icon {
+    margin-bottom: 24px;
+    font-size: 72px;
+    line-height: 1;
+
+    &_success {
+      color: $success;
+    }
+
+    &_error {
+      color: $error;
+    }
+  }
+
+  &_title {
+    color: $text;
+    font-size: 24px;
+    line-height: 1.8;
+  }
+
+  &_message {
+    color: $text-muted;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  &_actions {
+    margin: 24px 0 0;
+  }
+}

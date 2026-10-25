@@ -1,13 +1,10 @@
-import { List, Typography } from "antd";
 import styles from "../styles/about.module.scss";
-import React from "react";
 import ImageDivider from "../components/ImageDivider";
 import CustomVerticalTimeline, { TimelineElementProps } from "../components/CustomVerticalTimeline";
 import archeryImage from "../public/photos/archery.webp";
 import Link from "next/link";
 import Head from "next/head";
-
-const { Title } = Typography;
+import { Title } from "../components/ui/Typography";
 
 export default function AboutPage() {
     const timelineData: TimelineElementProps[] = [
@@ -122,7 +119,7 @@ export default function AboutPage() {
             </Head>
             <div className={styles.about_header}>
                 <div className={styles.about_header_panel}>
-                    <Title>Hi, I'm Callum</Title>
+                    <Title>Hi, I&apos;m Callum</Title>
                     <div className={styles.about_header_descriptors}>
                         <span>Developer,</span>
                         <span>Archer,</span>
@@ -159,20 +156,19 @@ export default function AboutPage() {
                 </div>
                 <div className={styles.about_panels_panel}>
                     <Title level={2}>Awards and Achievements</Title>
-                    <List
-                        itemLayout="horizontal"
-                        className={styles.awards_list}
-                        dataSource={awardsData}
-                        renderItem={(item) => (
-                            <List.Item>
-                                <List.Item.Meta
-                                    avatar={<img src={item.imagePath} alt={item.imageAlt} />}
-                                    title={item.title}
-                                    description={item.description}
-                                />
-                            </List.Item>
-                        )}
-                    />
+                    <ul className={styles.awards_list}>
+                        {awardsData.map((item) => (
+                            <li key={item.title} className={styles.awards_list_item}>
+                                <div className={styles.awards_list_item_avatar}>
+                                    <img src={item.imagePath} alt={item.imageAlt} loading="lazy" />
+                                </div>
+                                <div className={styles.awards_list_item_content}>
+                                    <h3 className={styles.awards_list_item_title}>{item.title}</h3>
+                                    <div className={styles.awards_list_item_description}>{item.description}</div>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </>

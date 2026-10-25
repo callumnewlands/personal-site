@@ -1,10 +1,7 @@
-import React from "react";
-import { Typography } from "antd";
 import ContactForm from "../components/ContactForm";
 import styles from "../styles/contact.module.scss";
 import Head from "next/head";
-
-const { Title } = Typography;
+import { Title } from "../components/ui/Typography";
 
 export default function ContactPage() {
     return (

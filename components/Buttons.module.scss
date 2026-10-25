@@ -1,17 +1,15 @@
 .button_container {
-  &_full_width {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
 
-    &_no_margin {
-      margin: 0 0 0.5rem;
-    }
+  &_no_margin {
+    margin: 0 0 0.5rem;
   }
 
-  :global(.ant-btn) {
+  .button {
     padding: 0.1rem 1rem;
     box-sizing: content-box;
     border-radius: 12px;

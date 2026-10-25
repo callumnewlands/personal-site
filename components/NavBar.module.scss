@@ -1,11 +1,10 @@
-@use "styles/variables";
+@use "../styles/variables";
 
 $mobile-width: 660px;
 $small-mobile-width: 360px;
 
 .header {
   width: 100%;
-  overflow: hidden;
   height: 100px;
   display: flex;
   justify-content: space-between;
@@ -15,32 +14,93 @@ $small-mobile-width: 360px;
   z-index: 2;
   position: sticky;
   top: 0;
+  background: white;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+
+  &_hidden {
+    visibility: hidden;
+  }
 
   @media (min-width: $mobile-width) {
     padding: 1rem 2rem;
   }
 
-  :global(.ant-menu-horizontal) {
-    border-bottom: 0;
-    background-color: transparent;
-  }
-
   &_menu {
     flex-grow: 1;
+    display: flex;
     justify-content: flex-end;
-    width: 0; // Allows AntD responsive resizing with flex-grow
+    position: relative;
 
-    :global(.ant-menu-item) {
-      padding: 0 15px !important;
+    &_toggle {
+      display: none;
+      padding: 0 15px;
+      font-size: 1.7rem;
+      line-height: 0;
+      color: variables.$text;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+
+      @media (max-width: $mobile-width) {
+        display: block;
+      }
     }
 
-    :global(.anticon) {
-      font-size: 1.7rem !important; // Controls size of icons in NavBar menu
+    &_list {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      @media (max-width: $mobile-width) {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1rem);
+        right: 0;
+        flex-direction: column;
+        min-width: 12rem;
+        padding: 4px 0;
+        background: white;
+        border-radius: variables.$radius;
+        box-shadow:
+          0 3px 6px -4px rgba(0, 0, 0, 0.12),
+          0 6px 16px 0 rgba(0, 0, 0, 0.08),
+          0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+        &_open {
+          display: flex;
+        }
+      }
     }
 
-    :global(.ant-menu-title-content) {
-      margin-left: 5px !important;
+    &_item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      height: 46px;
+      padding: 0 15px;
       font-size: 1rem;
+      color: variables.$text;
+      border-bottom: 2px solid transparent;
+      transition:
+        color 0.3s,
+        border-color 0.3s;
+
+      &:hover,
+      &_active {
+        color: variables.$primary;
+        border-bottom-color: variables.$primary;
+      }
+
+      @media (max-width: $mobile-width) {
+        height: 40px;
+        border-bottom: 0;
+      }
+    }
+
+    &_icon {
+      display: inline-flex;
+      font-size: 1.7rem; // Controls size of icons in NavBar menu
     }
   }
 }
