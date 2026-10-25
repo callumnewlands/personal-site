@@ -3,7 +3,9 @@ import styles from "./Footer.module.scss";
 import { GithubIcon, InstagramIcon, LinkedinIcon, UpworkLogo } from "../svgs";
 import { SOCIAL_LINKS } from "../common/site";
 
-const icons: Record<string, ReactNode> = {
+type SocialPlatform = keyof typeof SOCIAL_LINKS;
+
+const icons: Record<SocialPlatform, ReactNode> = {
     GitHub: <GithubIcon />,
     LinkedIn: <LinkedinIcon />,
     Upwork: <UpworkLogo />,
@@ -14,7 +16,7 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.footer_icons}>
-                {Object.entries(SOCIAL_LINKS).map(([label, href]) => (
+                {(Object.entries(SOCIAL_LINKS) as [SocialPlatform, string][]).map(([label, href]) => (
                     <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer">
                         {icons[label]}
                     </a>
