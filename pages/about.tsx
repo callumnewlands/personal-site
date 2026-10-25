@@ -1,7 +1,15 @@
 import styles from "../styles/about.module.scss";
 import ImageDivider from "../components/ImageDivider";
 import CustomVerticalTimeline, { TimelineElementProps } from "../components/CustomVerticalTimeline";
+import Image from "next/image";
 import archeryImage from "../public/photos/archery.webp";
+import aboutIllustration from "../public/illustrations/about_large.svg";
+import uosLogo from "../public/other/uos_logo_old.jpg";
+import bcsLogo from "../public/other/BCS_logo.svg";
+import ecsLogo from "../public/other/ecs_logo.png";
+import baeLogo from "../public/other/bae_logo.png";
+import wintonLogo from "../public/other/winton_logo.png";
+import netcraftLogo from "../public/other/netcraft_logo.png";
 import Link from "next/link";
 import Seo from "../components/Seo";
 import { Title } from "../components/ui/Typography";
@@ -56,55 +64,55 @@ export default function AboutPage() {
                     <a href="https://www.theiet.org/">Institution of Engineering and Technology.</a>
                 </>
             ),
-            imagePath: "/other/uos_logo_old.jpg",
+            image: uosLogo,
             imageAlt: "University of Southampton Logo"
         },
         {
             title: "Dean's List Award for Outstanding Achievement",
             description: "University of Southampton. Awarded for a degree average above 80%.",
-            imagePath: "/other/uos_logo_old.jpg",
+            image: uosLogo,
             imageAlt: "University of Southampton Logo"
         },
         {
             title: "British Computer Society Prize 2021/22",
             description:
                 "Awarded to the student achieving the top mark in the year for Part 4 Computer Science at the University of Southampton.",
-            imagePath: "/other/BCS_logo.svg",
+            image: bcsLogo,
             imageAlt: "British Computer Society -- The Chartered Institute for IT: Logo"
         },
         {
             title: "ECS Group Design Project Prize 2021/22",
             description:
                 "Awarded for a notable MEng group design project (GDP) in Electronics and Computer Science at the University of Southampton.",
-            imagePath: "/other/ecs_logo.png",
+            image: ecsLogo,
             imageAlt: "University of Southampton Electronics and Computer Science (ECS) Logo"
         },
         {
             title: "BAE Systems Applied Intelligence Prize 2019",
             description:
                 "Awarded to the student achieving the top mark in the year for Part 2 Computer Science at the University of Southampton.",
-            imagePath: "/other/bae_logo.png",
+            image: baeLogo,
             imageAlt: "BAE Systems Applied Intelligence Logo"
         },
         {
             title: "Winton Capital Management Prize 2018/19",
             description:
                 "Awarded to the student achieving the top mark in the year for Part 1 Computer Science at the University of Southampton.",
-            imagePath: "/other/winton_logo.png",
+            image: wintonLogo,
             imageAlt: "Winton Capital Management Logo"
         },
         {
             title: "Netcraft Prizes 2018, 2019, 2021",
             description:
                 "Awarded to the top 10 students in the year for Computer Science at the University of Southampton in Parts 1 and 3, and for being one of the top 50 students in the country in the Computer Science A-level.",
-            imagePath: "/other/netcraft_logo.png",
+            image: netcraftLogo,
             imageAlt: "Netcraft Logo"
         },
         {
             title: "ECS Excellence Scholarship Award",
             description:
                 "1 of 3 available scholarships. Based on pre-University academic performance, and is a recognition of the hard work and achievements that you have made on your journey to higher education. Being a recipient means that, in the view of the judging panel of Admissions Tutors, you had one of the highest achievements of all students coming to ECS that year.",
-            imagePath: "/other/ecs_logo.png",
+            image: ecsLogo,
             imageAlt: "University of Southampton Electronics and Computer Science (ECS) Logo"
         }
     ];
@@ -124,11 +132,9 @@ export default function AboutPage() {
                 </div>
 
                 <div className={styles.about_header_panel + " " + styles.about_header_panel_illustrations_container}>
-                    {/* eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs */}
-                    <img
-                        src="/illustrations/about_large.svg"
-                        width={776}
-                        height={618}
+                    <Image
+                        src={aboutIllustration}
+                        loading="eager"
                         className={styles.about_header_illustrations}
                         alt="Illustrations of a person coding, playing with a target, working out and playing the guitar."
                     />
@@ -158,7 +164,7 @@ export default function AboutPage() {
                         {awardsData.map((item) => (
                             <li key={item.title} className={styles.awards_list_item}>
                                 <div className={styles.awards_list_item_avatar}>
-                                    <img src={item.imagePath} alt={item.imageAlt} loading="lazy" />
+                                    <Image src={item.image} alt={item.imageAlt} sizes="7rem" />
                                 </div>
                                 <div className={styles.awards_list_item_content}>
                                     <h3 className={styles.awards_list_item_title}>{item.title}</h3>

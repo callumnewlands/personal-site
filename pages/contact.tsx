@@ -1,4 +1,6 @@
+import Image from "next/image";
 import ContactForm from "../components/ContactForm";
+import contactIllustration from "../public/illustrations/contact.svg";
 import styles from "../styles/contact.module.scss";
 import Seo from "../components/Seo";
 import { Title } from "../components/ui/Typography";
@@ -16,12 +18,10 @@ export default function ContactPage() {
                         <p>Get in touch!</p>
                     </div>
                     <div className={styles.contact_header_panel + " " + styles.contact_header_panel_image}>
-                        {/* eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs */}
-                        <img
-                            src="/illustrations/contact.svg"
-                            width={310}
-                            height={347}
+                        <Image
+                            src={contactIllustration}
                             alt="Illustrations of a person throwing a paper aeroplane."
+                            loading="eager"
                         />
                     </div>
                 </div>
