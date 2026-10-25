@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  e2e:
+    name: Lint and Cypress
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm build
+      - uses: cypress-io/github-action@v7
+        with:
+          install: false
+          start: pnpm start
+          wait-on: http://127.0.0.1:3000
+          browser: chrome
+
+  lighthouse:
+    name: Lighthouse (${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - run: pnpm build
+      - run: pnpm lhci
+        env:
+          LIGHTHOUSE_SHARD: ${{ strategy.job-index }}
+          LIGHTHOUSE_SHARDS: ${{ strategy.job-total }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: lighthouse-reports-${{ matrix.shard }}
+          path: .lighthouseci

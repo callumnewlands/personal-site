@@ -16,6 +16,7 @@ export default function ContactPage() {
                         <p>Get in touch!</p>
                     </div>
                     <div className={styles.contact_header_panel + " " + styles.contact_header_panel_image}>
+                        {/* eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs */}
                         <img
                             src="/illustrations/contact.svg"
                             alt="Illustrations of a person throwing a paper aeroplane."
