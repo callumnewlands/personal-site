@@ -54,3 +54,4 @@ jobs:
         with:
           name: lighthouse-reports-${{ matrix.shard }}
           path: .lighthouseci
+          include-hidden-files: true
