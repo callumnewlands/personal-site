@@ -1,0 +1,9 @@
+{
+    "numberOfRuns": 3,
+    "minScores": {
+        "performance": 0.85,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95
+    }
+}
