@@ -12,7 +12,10 @@ function SlidingMasthead() {
         if (!pageStartRef.current) {
             return;
         }
-        pageStartRef.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        // scrollIntoView is unreliable in Safari
+        const top = pageStartRef.current.getBoundingClientRect().top + window.scrollY;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
     };
 
     return (
@@ -42,11 +45,11 @@ function SlidingMasthead() {
                         <Logo className={styles.logo} />
                     </div>
                     <button type="button" className={styles.masthead_bottom_button} onClick={scrollToStart}>
-                        <h2>
+                        <span className={styles.masthead_bottom_button_text}>
                             <span className={styles.text_container}>Find out how I can help you</span>
                             <br />
                             <DownIcon />
-                        </h2>
+                        </span>
                     </button>
                 </div>
             </div>

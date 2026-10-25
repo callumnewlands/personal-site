@@ -8,7 +8,7 @@ $mobileWidth: 700px;
   display: flex;
   flex-direction: row;
   min-height: 13rem;
-  width: calc(100vw - 17px);
+  width: 100vw;
   margin: 2rem 0;
 
   @media (max-width: $mobileWidth) {
@@ -50,6 +50,9 @@ $mobileWidth: 700px;
     &_title {
       color: $off-white !important;
       font-weight: bold;
+      font-size: 24px;
+      line-height: 1.35;
+      margin-top: 0 !important;
     }
 
     &_text {

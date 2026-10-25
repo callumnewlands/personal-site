@@ -39,9 +39,8 @@ $mobileWidth: 600px;
       flex-direction: column;
     }
 
-    & > * {
+    & > :not(.mood_board_layout_description) {
       filter: drop-shadow(6px 6px 8px rgba(0, 0, 0, 0.3));
-      cursor: pointer;
       position: relative;
 
       &:hover {
