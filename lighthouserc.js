@@ -1,7 +1,9 @@
-const { readFileSync } = require("node:fs");
+const { existsSync, readFileSync } = require("node:fs");
 
-// Every page in the sitemap written by the postbuild, served locally
-const urls = [...readFileSync("public/sitemap.xml", "utf8").matchAll(/<loc>(.*?)<\/loc>/g)].map((match) =>
+// Every page in the sitemap written by the postbuild, served locally. The CI summary job loads this
+// config for its thresholds without building, so there's no sitemap there
+const sitemap = existsSync("public/sitemap.xml") ? readFileSync("public/sitemap.xml", "utf8") : "";
+const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) =>
     match[1].replace(/^https?:\/\/[^/]+/, "http://localhost:3000")
 );
 

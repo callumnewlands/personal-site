@@ -55,3 +55,19 @@ jobs:
           name: lighthouse-reports-${{ matrix.shard }}
           path: .lighthouseci
           include-hidden-files: true
+
+  lighthouse-summary:
+    name: Lighthouse summary
+    needs: lighthouse
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: lighthouse-reports-*
+          path: reports
+      - run: node scripts/lighthouse-summary.mjs reports/*
