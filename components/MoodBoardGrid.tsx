@@ -2,9 +2,7 @@ import * as React from "react";
 import styles from "./MoodBoardGrid.module.scss";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { Typography } from "antd";
-
-const { Title, Text } = Typography;
+import { Text, Title } from "./ui/Typography";
 
 interface MoodBoardImageProps {
     src: string | StaticImageData;
@@ -23,32 +21,22 @@ interface MoodBoardGridProps {
     priority?: boolean;
 }
 
-function propsToImageComponent(props?: MoodBoardImageProps, priority?: boolean): React.ReactNode {
+function propsToImageComponent(props?: MoodBoardImageProps, preload?: boolean): React.ReactNode {
+    if (!props) {
+        return undefined;
+    }
     const image = (
         <Image
-            src={props?.src || ""}
-            alt={props?.alt}
-            layout={"responsive"}
-            objectFit={"cover"}
-            objectPosition={"top"}
+            src={props.src}
+            alt={props.alt}
+            sizes="(max-width: 600px) 90vw, (max-width: 780px) 60vw, 40vw"
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
             placeholder={"blur"}
-            quality={100}
-            priority={priority}
+            quality={80}
+            preload={preload}
         />
     );
-
-    if (props) {
-        if (props.link) {
-            return (
-                <Link href={props.link}>
-                    <a>{image}</a>
-                </Link>
-            );
-        } else {
-            return image;
-        }
-    }
-    return undefined;
+    return props.link ? <Link href={props.link}>{image}</Link> : image;
 }
 
 export default function MoodBoardGrid({

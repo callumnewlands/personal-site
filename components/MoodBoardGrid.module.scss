@@ -48,8 +48,9 @@ $mobileWidth: 600px;
         filter: drop-shadow(16px 10px 16px rgba(0, 0, 0, 0.4));
       }
 
-      span {
-        position: unset !important;
+      a {
+        display: block;
+        height: 100%;
       }
 
       &,

@@ -1,6 +1,5 @@
 import styles from "./Footer.module.scss";
-import Icon, { GithubFilled, InstagramFilled, LinkedinFilled } from "@ant-design/icons";
-import { UpworkLogo } from "../svgs";
+import { GithubIcon, InstagramIcon, LinkedinIcon, UpworkLogo } from "../svgs";
 
 export default function Footer() {
     return (
@@ -13,7 +12,7 @@ export default function Footer() {
                         target={"_blank"}
                         rel="noopener noreferrer"
                     >
-                        <GithubFilled />
+                        <GithubIcon />
                     </a>
                     <a
                         href={"https://www.linkedin.com/in/callum-newlands-80ab28174/"}
@@ -21,7 +20,7 @@ export default function Footer() {
                         target={"_blank"}
                         rel="noopener noreferrer"
                     >
-                        <LinkedinFilled />
+                        <LinkedinIcon />
                     </a>
                     <a
                         href={"https://www.upwork.com/freelancers/~014de11efc605b0708"}
@@ -29,7 +28,7 @@ export default function Footer() {
                         target={"_blank"}
                         rel="noopener noreferrer"
                     >
-                        <Icon component={() => <UpworkLogo />} />
+                        <UpworkLogo />
                     </a>
                     <a
                         href={"https://www.instagram.com/callumnewlands_archery/"}
@@ -37,7 +36,7 @@ export default function Footer() {
                         target={"_blank"}
                         rel="noopener noreferrer"
                     >
-                        <InstagramFilled />
+                        <InstagramIcon />
                     </a>
                 </div>
                 <p>

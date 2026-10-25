@@ -1,6 +1,6 @@
 import * as React from "react";
 import styles from "./InfoBlocks.module.scss";
-import { Typography } from "antd";
+import { Text, Title } from "./ui/Typography";
 
 interface InfoBlockProps {
     icon: React.ReactNode;
@@ -12,9 +12,7 @@ interface InfoBlocksProps {
     data: InfoBlockProps[];
 }
 
-const { Title, Text } = Typography;
-
-export function InfoBlock({ icon, title, content }: InfoBlockProps) {
+function InfoBlock({ icon, title, content }: InfoBlockProps) {
     return (
         <>
             <div className={styles.block + " " + styles.block_topper}>

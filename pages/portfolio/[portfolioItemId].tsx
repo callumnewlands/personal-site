@@ -1,18 +1,15 @@
-import { portfolio, PortfolioItem as PortfolioItemData } from "../../data/portfolio";
-import { Button, Tag, Typography } from "antd";
-import { CustomButton } from "../../components/Buttons";
-import { tagColours } from "../../common/helpers";
-import * as React from "react";
+import { projectsWithPages, PortfolioItem as PortfolioItemData } from "../../data/portfolio";
+import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import styles from "../../styles/portfolio.module.scss";
+import buttonStyles from "../../components/Buttons.module.scss";
 import { ReadMore } from "../../components/ReadMore";
-import Link from "next/link";
-import { ArrowLeftOutlined } from "@ant-design/icons";
-import Head from "next/head";
-
-const glob = require("fast-glob");
-
-const { Title, Text } = Typography;
+import { LinkButton } from "../../components/ui/Button";
+import Tag, { tagColours } from "../../components/ui/Tag";
+import { Title } from "../../components/ui/Typography";
+import { ArrowLeftIcon } from "../../svgs";
+import { cx } from "../../common/helpers";
+import glob from "fast-glob";
 
 export default function PortfolioItem({ item, images }: { item: PortfolioItemData; images: string[] }) {
     return (
@@ -22,11 +19,9 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItemDat
                 <meta name="description" content={`Information about my work on the ${item.title} application.`} />
             </Head>
             <div className={styles.header}>
-                <Link href={"/portfolio"} passHref>
-                    <Button icon={<ArrowLeftOutlined />} type={"text"} style={{ paddingLeft: 0, paddingRight: 0 }}>
-                        Back to All Projects
-                    </Button>
-                </Link>
+                <LinkButton href={"/portfolio"} variant="text" icon={<ArrowLeftIcon />} className={styles.back_button}>
+                    Back to All Projects
+                </LinkButton>
                 <div className={styles.item_title}>
                     <Title>{item.title}</Title>
                 </div>
@@ -39,7 +34,7 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItemDat
                         <div className={styles.type}>{item.type}</div>
                         <div className={styles.tags_container}>
                             {item.tags.map((tag, i) => (
-                                <Tag color={tagColours[i]} key={tag}>
+                                <Tag colour={tagColours[i % tagColours.length]} key={tag}>
                                     {tag}
                                 </Tag>
                             ))}
@@ -52,9 +47,17 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItemDat
                             </ReadMore>
                         </div>
                         {item?.link && (
-                            <CustomButton href={item.link} newTab>
-                                Visit Site
-                            </CustomButton>
+                            <div className={buttonStyles.button_container}>
+                                <LinkButton
+                                    variant="primary"
+                                    large
+                                    href={item.link}
+                                    newTab
+                                    className={buttonStyles.button}
+                                >
+                                    Visit Site
+                                </LinkButton>
+                            </div>
                         )}
                     </div>
                 </div>
@@ -63,14 +66,13 @@ export default function PortfolioItem({ item, images }: { item: PortfolioItemDat
             <div className={styles.screenshots}>
                 {images.map((src, i) => (
                     <div
-                        key={"screenshot-img-" + i}
-                        className={
-                            styles.screenshot_wrapper +
-                            " " +
-                            styles["screenshot_wrapper_" + (item.screenshotWidths?.[i] || "")]
-                        }
+                        key={src}
+                        className={cx(
+                            styles.screenshot_wrapper,
+                            styles["screenshot_wrapper_" + item.screenshotWidths?.[i]]
+                        )}
                     >
-                        <img src={src || ""} alt={`Screenshot of the ${item.title} application`} />
+                        <img src={src} alt={`Screenshot of the ${item.title} application`} loading="lazy" />
                     </div>
                 ))}
             </div>
@@ -83,9 +85,12 @@ interface DynamicPageParams {
 }
 
 export async function getStaticProps({ params }: DynamicPageParams) {
-    const item = portfolio.find((item) => item.id === params.portfolioItemId);
+    const item = projectsWithPages.find((item) => item.id === params.portfolioItemId);
+    if (!item) {
+        return { notFound: true };
+    }
     const images: string[] = await glob(
-        `public${item?.screenshotsDirectory}/*.{jpg,JPG,jpeg,JPEG,png,PNG,bmp,BMP,svg,SVG}`
+        `public${item.screenshotsDirectory}/*.{jpg,JPG,jpeg,JPEG,png,PNG,bmp,BMP,svg,SVG}`
     );
     return {
         props: {
@@ -97,15 +102,11 @@ export async function getStaticProps({ params }: DynamicPageParams) {
 
 export async function getStaticPaths() {
     return {
-        paths: portfolio
-            .filter((item) => !item.disablePage)
-            .map(
-                (item: PortfolioItemData): DynamicPageParams => ({
-                    params: {
-                        portfolioItemId: item.id
-                    }
-                })
-            ),
+        paths: projectsWithPages.map((item): DynamicPageParams => ({
+            params: {
+                portfolioItemId: item.id
+            }
+        })),
         fallback: false
     };
 }

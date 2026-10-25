@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@use "../styles/variables" as *;
 
 .timeline_wrapper {
   display: flex;
@@ -74,7 +74,10 @@
     width: 10px;
     height: 10px;
     background: white;
-    box-shadow: 0 0 0 4px #d6d6d6, inset 0 2px 2px rgb(0 0 0 / 30%), 0 3px 2px 3px rgb(0 0 0 / 20%);
+    box-shadow:
+      0 0 0 4px #d6d6d6,
+      inset 0 2px 2px rgb(0 0 0 / 30%),
+      0 3px 2px 3px rgb(0 0 0 / 20%);
     top: 18px;
     left: 16px;
 

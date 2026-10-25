@@ -3,14 +3,5 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "22"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-[[plugins]]
-  package = "netlify-plugin-cypress"
-  [plugins.inputs.postBuild]
-    enable = true
-
-  [plugins.inputs]
-    enable = false
+  NODE_VERSION = "24"
+  CYPRESS_INSTALL_BINARY = "0"

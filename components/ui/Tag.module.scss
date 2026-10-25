@@ -1,0 +1,86 @@
+@use "../../styles/variables" as *;
+@use "sass:list";
+
+// background, border, text
+$tag-palette: (
+  "purple": (
+    #f9f0ff,
+    #d3adf7,
+    #531dab
+  ),
+  "rust": (
+    #fff2e8,
+    #ffbb96,
+    #ad2102
+  ),
+  "teal": (
+    #e6fffb,
+    #87e8de,
+    #006d75
+  ),
+  "olive": (
+    #fcffe6,
+    #eaff8f,
+    #3f6600
+  ),
+  "pink": (
+    #fff0f6,
+    #ffadd2,
+    #c41d7f
+  ),
+  "amber": (
+    #fffbe6,
+    #ffe58f,
+    #874d00
+  ),
+  "blue": (
+    #e6f7ff,
+    #91d5ff,
+    #0050b3
+  ),
+  "red": (
+    #fff1f0,
+    #ffa39e,
+    #cf1322
+  ),
+  "indigo": (
+    #f0f5ff,
+    #adc6ff,
+    #1d39c4
+  ),
+  "orange": (
+    #fff7e6,
+    #ffd591,
+    #ad4e00
+  ),
+  "green": (
+    #f6ffed,
+    #b7eb8f,
+    #237804
+  ),
+  "mustard": (
+    #feffe6,
+    #fffb8f,
+    #614700
+  )
+);
+
+.tag {
+  display: inline-block;
+  padding: 0 7px;
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+  color: $text;
+  background: #fafafa;
+  border: 1px solid $border;
+  border-radius: $radius;
+
+  @each $name, $colours in $tag-palette {
+    &_#{$name} {
+      background: list.nth($colours, 1);
+      border-color: list.nth($colours, 2);
+      color: list.nth($colours, 3);
+    }
+  }
+}
