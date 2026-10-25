@@ -56,14 +56,14 @@ export default function MoodBoardGrid({
                     <Title level={2}>{title}</Title>
                     <Text>{description}</Text>
                 </div>
-                <div className={styles.mood_board_layout_bottom_right}>
-                    {propsToImageComponent(bottomRight, priority)}
-                </div>
-                <div className={styles.mood_board_layout_top_centre}>{propsToImageComponent(topCentre, priority)}</div>
                 <div className={styles.mood_board_layout_top_left}>{propsToImageComponent(topLeft, priority)}</div>
+                <div className={styles.mood_board_layout_top_centre}>{propsToImageComponent(topCentre, priority)}</div>
                 <div className={styles.mood_board_layout_top_right}>{propsToImageComponent(topRight, priority)}</div>
                 <div className={styles.mood_board_layout_bottom_left}>
                     {propsToImageComponent(bottomLeft, priority)}
+                </div>
+                <div className={styles.mood_board_layout_bottom_right}>
+                    {propsToImageComponent(bottomRight, priority)}
                 </div>
             </div>
         </div>

@@ -6,10 +6,11 @@ $mobileWidth: 500px;
 
 .masthead {
   height: 100vh;
+  // svh so it fits mobile Safari with the toolbar showing
+  height: 100svh;
   width: 100vw;
   margin-top: -7.5rem;
   margin-bottom: 0.5rem;
-  scroll-snap-align: center;
 
   &_background,
   &_midground,
@@ -66,8 +67,10 @@ $mobileWidth: 500px;
     height: fit-content !important;
     margin-bottom: 1rem !important;
 
-    h2 {
-      margin: 0 !important;
+    &_text {
+      display: block;
+      font-size: 1.5em;
+      font-weight: 500;
       color: white;
     }
   }
@@ -81,7 +84,6 @@ $mobileWidth: 500px;
 
 .page_start {
   height: $bottom-separation;
-  scroll-snap-align: start;
 }
 
 .logo_container,

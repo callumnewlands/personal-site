@@ -24,7 +24,7 @@ export default function ImageDivider({ imagePath, imageAlt, title, text }: Image
             </div>
             <div className={styles.divider_text_panel}>
                 <div className={styles.divider_text_container}>
-                    <Title level={3} className={styles.divider_text_container_title}>
+                    <Title level={2} className={styles.divider_text_container_title}>
                         {title}
                     </Title>
                     <Text className={styles.divider_text_container_text}>{text}</Text>
