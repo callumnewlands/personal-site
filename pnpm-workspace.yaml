@@ -1,5 +1,6 @@
-shamefullyHoist: true  # Recommended by Netlify https://docs.netlify.com/snippets/frameworks/nextjs-pnpm-support/ 
+shamefullyHoist: true # Recommended by Netlify https://docs.netlify.com/snippets/frameworks/nextjs-pnpm-support/
 
 allowBuilds:
   cypress: true
   "@parcel/watcher": false
+  unrs-resolver: false

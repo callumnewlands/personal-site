@@ -26,6 +26,7 @@ export default function Home() {
                 "(4.0 GPA equivalent) and am now working as a freelance, full-stack, web and desktop application developer."
         },
         {
+            // eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs
             icon: <img src={"/illustrations/painting-dark-bg-2.svg"} alt={"Illustration of a painting"} />,
             title: "I have a passion for UI/UX",
             content:
@@ -33,6 +34,7 @@ export default function Home() {
                 "I love finding clean and beautiful solutions to user experience problems through UI design and implementation. "
         },
         {
+            // eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs
             icon: <img src={"/illustrations/smartphone-or-tablet-dark-bg.svg"} alt={"Illustration of a tablet"} />,
             title: "I can work with any technology",
             content:
@@ -40,6 +42,7 @@ export default function Home() {
                 "As well as this, my past experience and studies allow me to quickly become proficient in new tools and technologies."
         },
         {
+            // eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs
             icon: <img src={"/illustrations/lightbulb-dark-bg-2.svg"} alt={"Illustration of a lightbulb"} />,
             title: "No problem is too big or small",
             content:
