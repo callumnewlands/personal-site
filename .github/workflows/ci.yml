@@ -24,7 +24,7 @@ jobs:
         with:
           install: false
           start: pnpm start
-          wait-on: http://localhost:3000
+          wait-on: http://127.0.0.1:3000
 
   lighthouse:
     name: Lighthouse
