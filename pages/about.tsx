@@ -124,6 +124,7 @@ export default function AboutPage() {
                 </div>
 
                 <div className={styles.about_header_panel + " " + styles.about_header_panel_illustrations_container}>
+                    {/* eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs */}
                     <img
                         src="/illustrations/about_large.svg"
                         className={styles.about_header_illustrations}
