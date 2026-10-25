@@ -4,11 +4,4 @@
 
 [build.environment]
   NODE_VERSION = "24"
-
-[[plugins]]
-  package = "netlify-plugin-cypress"
-  [plugins.inputs.postBuild]
-    enable = true
-
-  [plugins.inputs]
-    enable = false
+  CYPRESS_INSTALL_BINARY = "0"
