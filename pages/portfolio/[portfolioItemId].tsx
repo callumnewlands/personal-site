@@ -1,16 +1,17 @@
 import { projectsWithPages, PortfolioItem as PortfolioItemData } from "../../data/portfolio";
-import Head from "next/head";
+import { TITLE_SUFFIX } from "../../data/pages";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import styles from "../../styles/portfolio.module.scss";
 import buttonStyles from "../../components/Buttons.module.scss";
 import { ReadMore } from "../../components/ReadMore";
+import Seo from "../../components/Seo";
 import { LinkButton } from "../../components/ui/Button";
 import Tag, { tagColours } from "../../components/ui/Tag";
 import { Title } from "../../components/ui/Typography";
 import { ArrowLeftIcon } from "../../svgs";
-import { cx } from "../../common/helpers";
 import { sizedImage, SizedImage } from "../../common/images";
+import { cx } from "../../common/helpers";
 import glob from "fast-glob";
 
 // Rough rendered widths for the screenshot_wrapper_1-4 classes
@@ -24,10 +25,12 @@ const SCREENSHOT_SIZES: { [width: number]: string } = {
 export default function PortfolioItem({ item, images }: { item: PortfolioItemData; images: SizedImage[] }) {
     return (
         <>
-            <Head>
-                <title>{item.title} | Callum Newlands | Freelance Web and Desktop Application Developer</title>
-                <meta name="description" content={`Information about my work on the ${item.title} application.`} />
-            </Head>
+            <Seo
+                title={`${item.title} | ${TITLE_SUFFIX}`}
+                description={item.shortDesc}
+                path={`/portfolio/${item.id}`}
+                type="article"
+            />
             <div className={styles.header}>
                 <LinkButton href={"/portfolio"} variant="text" icon={<ArrowLeftIcon />} className={styles.back_button}>
                     Back to All Projects
