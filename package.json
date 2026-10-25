@@ -11,9 +11,9 @@
         "postbuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-sitemap.mjs",
         "start": "next start",
         "test": "cypress run",
-        "lint": "eslint common components cypress data pages scripts svgs *.js *.mjs",
-        "format": "prettier --write .github common components cypress data pages scripts styles svgs \"*.{js,mjs,json,md,yaml}\"",
-        "format:check": "prettier --check .github common components cypress data pages scripts styles svgs \"*.{js,mjs,json,md,yaml}\"",
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
         "lhci": "pnpm dlx @lhci/cli@0.15.1 autorun"
     },
     "dependencies": {
@@ -26,6 +26,7 @@
         "sass": "^1.106.1"
     },
     "devDependencies": {
+        "@eslint/compat": "^2.1.1",
         "@types/node": "^24",
         "@types/react": "^19.3.0",
         "@types/react-dom": "^19.3.0",
