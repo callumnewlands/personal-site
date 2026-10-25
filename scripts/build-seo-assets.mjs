@@ -63,8 +63,8 @@ function ogImage({ heading, subheading }, { logo, photo }) {
                     justifyContent: "space-between",
                     width: "62%",
                     padding: "64px",
-                    background: "#44344f",
-                    color: "#fafcfc"
+                    background: "#fafcfc",
+                    color: "#262626"
                 }
             },
             h(
@@ -73,7 +73,7 @@ function ogImage({ heading, subheading }, { logo, photo }) {
                 h("img", { src: logo, width: 72, height: 72 }),
                 h(
                     "div",
-                    { style: { display: "flex", flexDirection: "column", fontSize: 30, color: "#5fd3d7" } },
+                    { style: { display: "flex", flexDirection: "column", fontSize: 30, color: "#07959a" } },
                     h("span", { style: { fontWeight: 700 } }, "Callum Newlands"),
                     h("span", { style: { fontSize: 22 } }, "Software Developer")
                 )
@@ -86,9 +86,9 @@ function ogImage({ heading, subheading }, { logo, photo }) {
                     { style: { fontSize: heading.length > 22 ? 56 : 68, fontWeight: 800, lineHeight: 1.1 } },
                     heading
                 ),
-                h("div", { style: { fontSize: 30, color: "#cdc8d0" } }, subheading)
+                h("div", { style: { fontSize: 30, color: "#666" } }, subheading)
             ),
-            h("div", { style: { fontSize: 24, color: "#5fd3d7" } }, SITE_URL.replace(/^https?:\/\//, ""))
+            h("div", { style: { fontSize: 24, color: "#07959a" } }, SITE_URL.replace(/^https?:\/\//, ""))
         ),
         h("img", { src: photo, width: 456, height: 630, style: { objectFit: "cover" } })
     );
