@@ -19,6 +19,8 @@ export default function ContactPage() {
                         {/* eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs */}
                         <img
                             src="/illustrations/contact.svg"
+                            width={310}
+                            height={347}
                             alt="Illustrations of a person throwing a paper aeroplane."
                         />
                     </div>

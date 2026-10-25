@@ -35,6 +35,11 @@ svg {
   vertical-align: middle;
 }
 
+// Keeps the aspect ratio when CSS only sets a width on an img with width/height attributes
+img {
+  height: auto;
+}
+
 a {
   color: $primary;
   text-decoration: none;

@@ -127,6 +127,8 @@ export default function AboutPage() {
                     {/* eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs */}
                     <img
                         src="/illustrations/about_large.svg"
+                        width={776}
+                        height={618}
                         className={styles.about_header_illustrations}
                         alt="Illustrations of a person coding, playing with a target, working out and playing the guitar."
                     />
