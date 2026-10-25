@@ -11,7 +11,7 @@
         "postbuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-sitemap.mjs",
         "start": "next start",
         "test": "cypress run",
-        "lint": "eslint .",
+        "lint": "eslint . --max-warnings 0",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "lhci": "pnpm dlx @lhci/cli@0.15.1 autorun"
