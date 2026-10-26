@@ -4,12 +4,10 @@
 -->
 <style>
 /* Fonts: self-hosted, SIL Open Font License (licences in fonts/) */
-@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:600;font-display:block;src:url(fonts/bricolage-grotesque-latin-600-normal.woff2) format('woff2')}
 @font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:block;src:url(fonts/bricolage-grotesque-latin-800-normal.woff2) format('woff2')}
 @font-face{font-family:'Commissioner';font-style:normal;font-weight:400;font-display:block;src:url(fonts/commissioner-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Commissioner';font-style:normal;font-weight:500;font-display:block;src:url(fonts/commissioner-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Commissioner';font-style:normal;font-weight:600;font-display:block;src:url(fonts/commissioner-latin-600-normal.woff2) format('woff2')}
-@font-face{font-family:'Commissioner';font-style:normal;font-weight:700;font-display:block;src:url(fonts/commissioner-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Red Hat Mono';font-style:normal;font-weight:500;font-display:block;src:url(fonts/red-hat-mono-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Quicksand';font-style:normal;font-weight:700;font-display:block;src:url(fonts/quicksand-latin-700-normal.woff2) format('woff2')}
 
@@ -33,7 +31,7 @@ body{margin:0;background:#fafcfc}
 .g code{white-space:nowrap;font-family:'Red Hat Mono',ui-monospace,monospace;font-weight:500;font-variant-ligatures:none;font-size:16px;background:#eef3f1;padding:1px 6px;border-radius:4px}
 .g table{border-collapse:collapse;width:100%;font-size:17px}
 .g td,.g th{text-align:left;vertical-align:top;padding:9px 12px 9px 0;border-top:1px solid #dfe7e5}
-.g th{font-weight:700;color:#3a4b47;border-top:0;padding-top:0}
+.g th{font-weight:600;color:#3a4b47;border-top:0;padding-top:0}
 .g .sw{display:inline-block;width:34px;height:34px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(27,43,40,0.12);vertical-align:middle}
 .g .why{color:#3a4b47}
 .g .why b{color:#1b2b28}
@@ -41,7 +39,8 @@ body{margin:0;background:#fafcfc}
 .g .do{background:#f0f7f5;border-radius:10px;padding:12px 14px}
 .g .dont{background:#fbeeed;border-radius:10px;padding:12px 14px}
 .g .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.g .lbl{font-size:15px;font-weight:700;color:#1b2b28;margin:0 0 6px}
+.g b,.g strong{font-weight:600}
+.g .lbl{font-size:15px;font-weight:600;color:#1b2b28;margin:0 0 6px}
 .g .hd{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-0.01em}
 @page{size:A4 landscape;margin:13mm 15mm 15mm;background:#fafcfc;
  @bottom-left{content:"cnewlands.dev brand guidelines";font-family:'Commissioner',sans-serif;font-size:8pt;color:#52625e;vertical-align:top;padding-top:4mm}
@@ -88,7 +87,7 @@ tr,li,figure,.cols2>*,.cols3>*,.why,.keep{break-inside:avoid}
 <div class="cols3">
 <div class="card"><h3>Job</h3><p class="why">To turn warm leads from LinkedIn, Upwork and search into a message. It's the CV and the portfolio in one place.</p></div>
 <div class="card"><h3>Who reads it</h3><p class="why">Founders who need something full-stack built, and teams who want a review, an audit or a part-time tech lead (AI-first teams included). Most will skim it quickly before they decide whether to get in touch.</p></div>
-<div class="card"><h3>In one line</h3><p class="why">“Full-stack developer and part-time tech lead.” The rest of the site backs that up. <span class="tbc">[TBC: three personality words, in your words]</span></p></div>
+<div class="card"><h3>In one line</h3><p class="why">“Full-stack developer and part-time tech lead.” The rest of the site backs that up. <span class="tbc">[TBC: three personality words]</span></p></div>
 </div>
 </section>
 <section>
@@ -171,7 +170,7 @@ tr,li,figure,.cols2>*,.cols3>*,.why,.keep{break-inside:avoid}
 <h2>Components</h2>
 <div class="cols2">
 <div class="card"><h3>Buttons and links</h3>
-<div data-md="skip" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:14px 0 16px"><span style="background:#067a7e;color:#fff;padding:0 24px;border-radius:12px;font-weight:700;font-size:20px;min-height:56px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(27,43,40,0.22)">Send me a message<svg aria-hidden="true" fill="none" height="20" viewbox="0 0 24 24" width="20"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"></path></svg></span><span style="background:#2f5a4a;padding:14px;border-radius:12px"><span style="background:#a2dccf;color:#15231f;padding:0 24px;border-radius:12px;font-weight:700;font-size:20px;min-height:56px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,0.35)">Send me a message<svg aria-hidden="true" fill="none" height="20" viewbox="0 0 24 24" width="20"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"></path></svg></span></span><span style="color:#1b2b28;padding:0 18px;border-radius:12px;font-weight:700;font-size:18px;min-height:48px;display:inline-flex;align-items:center;gap:8px;border:2px solid #9fb8b2;background:#fff">Visit mathsplanner.app<svg aria-hidden="true" fill="none" height="16" viewbox="0 0 24 24" width="16"><path d="M8 16L16 8M9 8h7v7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></span><span style="background:#1b2b28;color:#fff;padding:0 18px;border-radius:6px;font-weight:500;font-size:18px;min-height:44px;display:inline-flex;align-items:center">Contact</span></div>
+<div data-md="skip" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:14px 0 16px"><span style="background:#067a7e;color:#fff;padding:0 24px;border-radius:12px;font-weight:600;font-size:20px;min-height:56px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(27,43,40,0.22)">Send me a message<svg aria-hidden="true" fill="none" height="20" viewbox="0 0 24 24" width="20"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"></path></svg></span><span style="background:#2f5a4a;padding:14px;border-radius:12px"><span style="background:#a2dccf;color:#15231f;padding:0 24px;border-radius:12px;font-weight:600;font-size:20px;min-height:56px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,0.35)">Send me a message<svg aria-hidden="true" fill="none" height="20" viewbox="0 0 24 24" width="20"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"></path></svg></span></span><span style="color:#1b2b28;padding:0 18px;border-radius:12px;font-weight:600;font-size:18px;min-height:48px;display:inline-flex;align-items:center;gap:8px;border:2px solid #9fb8b2;background:#fff">Visit mathsplanner.app<svg aria-hidden="true" fill="none" height="16" viewbox="0 0 24 24" width="16"><path d="M8 16L16 8M9 8h7v7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></span><span style="background:#1b2b28;color:#fff;padding:0 18px;border-radius:6px;font-weight:500;font-size:18px;min-height:44px;display:inline-flex;align-items:center">Contact</span></div>
 <ul><li><b>Raised primary:</b> one per screen. Viridian (mint on dark), 56px tall with a 12px radius and an arrow, and it lifts 2px on hover</li><li><b>Secondary:</b> outlined and 48px tall, with the outward arrow when the link leaves the site</li><li><b>Text links:</b> underlined. Icon links show the brand icon next to the name</li><li>Button labels say what will happen, like “Send me a message” or “Send it”</li></ul></div>
 <div class="card"><h3>The form</h3>
 <div data-md="skip" style="display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 16px"><span style="display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 16px;border:1.5px solid #067a7e;box-shadow:inset 0 0 0 1px #067a7e;border-radius:12px;background:#f0f7f5;font-size:18px"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #067a7e;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#067a7e"></span></span>Code review or health check</span><span style="display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 16px;border:1.5px solid #c9d7d3;border-radius:12px;background:#fff;font-size:18px"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #9fb8b2;box-sizing:border-box"></span>Not sure yet</span></div>
@@ -189,7 +188,7 @@ tr,li,figure,.cols2>*,.cols3>*,.why,.keep{break-inside:avoid}
 </section>
 <section>
 <div class="cols3">
-<div class="card"><h3>Icons</h3><p class="why">Only where they do a job: arrow, outward arrow, calendar, email, plus the LinkedIn, GitHub and Instagram icons (from Ant Design). Always next to a text label. No icon tiles, decorative icons or ticks on lists. Lists have thin rules between the items.</p></div>
+<div class="card"><h3>Icons</h3><p class="why">Only where they do a job: arrow, outward arrow, calendar, email, plus the LinkedIn, GitHub and Instagram icons (from Simple Icons). Always next to a text label. No icon tiles, decorative icons or ticks on lists. Lists have thin rules between the items.</p></div>
 <div class="card"><h3>Imagery</h3><p class="why">Real screenshots in white frames, and renders and photos in full colour without cropping. Personal photos go in white print frames with a slight tilt, and only on About. Placeholders say exactly what’s missing, like [TBC: hiking photo].</p></div>
 <div class="card"><h3>Motion</h3><p class="why">Things only move when someone does something: the button lift, link colour changes and accordions opening. Nothing fades in on scroll, and everything respects <code>prefers-reduced-motion</code>.</p></div>
 </div>
@@ -215,7 +214,7 @@ tr,li,figure,.cols2>*,.cols3>*,.why,.keep{break-inside:avoid}
 <section>
 <h2>Words</h2>
 <div class="cols2">
-<div class="card"><h3>Voice</h3><ul><li>First person, plain and specific, as if you were explaining it to a client over a coffee</li><li>Sentence case, no em dashes, and short sentences</li><li>Numbers have a source and a date. Anything unknown is a visible [TBC]</li><li>One opinion per page, in your own words</li></ul></div>
+<div class="card"><h3>Voice</h3><ul><li>First person, plain and specific, as if you were explaining it to a client over a coffee</li><li>Sentence case, no em dashes, and short sentences</li><li>Numbers have a source and a date. Anything unknown is a visible [TBC]</li><li>One opinion per page, in my own words</li></ul></div>
 <div class="card"><h3>Do and don’t</h3><div class="two" style="margin-top:10px">
 <div class="do"><p class="lbl">Do</p><p>“I look after the architecture, deployments and how we plan work.”</p></div>
 <div class="dont"><p class="lbl">Don’t</p><p>“I deliver seamless, scalable solutions that elevate your vision.”</p></div>
@@ -228,11 +227,11 @@ tr,li,figure,.cols2>*,.cols3>*,.why,.keep{break-inside:avoid}
 <div class="cols3">
 <div class="card"><h3>Accessibility</h3><ul><li>A single h1, and nav, main and footer landmarks</li><li>Alt text says what the screenshot actually shows</li><li>Decorative SVGs are hidden and fragments are labelled</li><li>The keyboard order follows the visual order</li><li>Error messages say how to fix the problem</li></ul></div>
 <div class="card"><h3>Consistency</h3><ul><li>Colours and sizes come from the tokens above</li><li>One raised button per screen</li><li>No more than two bands</li><li>Fragments sit at the top of cards on phones</li><li>The footer is the latest version (icons, 44px links)</li></ul></div>
-<div class="card"><h3>The swap test</h3><ul><li>Could this sentence appear on another developer’s site? Then rewrite it</li><li>Does every number have a source?</li><li>Is every [TBC] on the list for the content pass?</li></ul></div>
+<div class="card"><h3>The swap test</h3><ul><li>Could this sentence appear on another developer’s site? Then rewrite it</li><li>Does every number have a source?</li><li>Is every [TBC] on the to-do list?</li></ul></div>
 </div>
 </section>
 <section>
-<div class="band"><h3>Still open</h3><p>Looking back over the project pages, and the content pass: real screenshots, quotes, numbers, prices and the reply time. There are no plans for a dark mode.</p></div>
+<div class="band"><h3>Still open</h3><p>Whether project pages get a “Looking back” section, and the real screenshots, quotes, numbers, prices and reply time. No dark mode for now.</p></div>
 </section>
 </div>
 
@@ -278,7 +277,7 @@ tr,li,figure,.cols2>*,.cols3>*,.why,.keep{break-inside:avoid}
 <section>
 <h2>Deliberate exceptions</h2>
 <p class="muted" style="max-width:80ch;margin-bottom:18px">A few things on the site come close to the list but are there on purpose. Here’s why.</p>
-<div class="cols3"><div class="card"><h3>Arrows on buttons and cards</h3><p class="why">They show that something leads somewhere. They’re fine on text links too, just not on every link in a block, and an arrow should never be the only thing telling you it’s a link.</p></div><div class="card"><h3>Numbered steps in the form</h3><p class="why">The steps really are a sequence (what you need, your situation, where to reply), so the numbers are useful. Nothing else on the site is numbered unless it’s a sequence.</p></div><div class="card"><h3>Tilts and things poking out</h3><p class="why">Only the fan, the product fragments, the results tiles and the photos. Text, forms and grids stay straight.</p></div><div class="card"><h3>Status colours</h3><p class="why">Only inside product fragments, where the green, amber and red show an actual state.</p></div><div class="card"><h3>The FAQ</h3><p class="why">Only questions people have really asked <span class="tbc">[TBC: confirm the three]</span>. Otherwise it comes out.</p></div></div>
+<div class="cols3"><div class="card"><h3>Arrows on buttons and cards</h3><p class="why">They show that something leads somewhere. They’re fine on text links too, just not on every link in a block, and an arrow should never be the only thing telling you it’s a link.</p></div><div class="card"><h3>Numbered steps in the form</h3><p class="why">The steps really are a sequence (what you need, your situation, where to reply), so the numbers are useful. Nothing else on the site is numbered unless it’s a sequence.</p></div><div class="card"><h3>Tilts and things poking out</h3><p class="why">Only the fan, the product fragments, the results tiles and the photos. Text, forms and grids stay straight.</p></div><div class="card"><h3>Status colours</h3><p class="why">Only inside product fragments, where the green, amber and red show an actual state.</p></div><div class="card"><h3>The FAQ</h3><p class="why">Only questions people have really asked <span class="tbc">[TBC: which three]</span>. Otherwise it comes out.</p></div></div>
 </section>
 </div>
 

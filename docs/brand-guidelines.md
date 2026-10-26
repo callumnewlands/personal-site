@@ -2,7 +2,7 @@
 
 <!-- Generated from brand-guidelines-source/index.html by pnpm guidelines. Edit the HTML, not this file. -->
 
-The design rules for [cnewlands.dev](https://cnewlands.dev): what the site is for, colour, type, the logo, layout, components, page templates, words, the avoid-list, and how components behave. [brand-guidelines.pdf](brand-guidelines.pdf) has the same content with the swatches, logo, icons and component examples; this file is the text version, for reading here and for tools.
+The design rules for [cnewlands.dev](https://cnewlands.dev): what the site is for, colour, type, the logo, layout, components, page templates, words, the avoid-list, and how components behave. [brand-guidelines.pdf](brand-guidelines.pdf) has the same content with the swatches, logo, icons and component examples; this file is the text version, which is easier to read on GitHub and to search.
 
 How the final screens were put together, so that new pages and project write-ups look like they belong to the same site.
 
@@ -20,7 +20,7 @@ Founders who need something full-stack built, and teams who want a review, an au
 
 #### In one line
 
-“Full-stack developer and part-time tech lead.” The rest of the site backs that up. [TBC: three personality words, in your words]
+“Full-stack developer and part-time tech lead.” The rest of the site backs that up. [TBC: three personality words]
 
 ### Principles
 
@@ -250,7 +250,7 @@ Groups of tiered firs with trunks, plus a few lone trees, on rolling ground. 120
 
 #### Icons
 
-Only where they do a job: arrow, outward arrow, calendar, email, plus the LinkedIn, GitHub and Instagram icons (from Ant Design). Always next to a text label. No icon tiles, decorative icons or ticks on lists. Lists have thin rules between the items.
+Only where they do a job: arrow, outward arrow, calendar, email, plus the LinkedIn, GitHub and Instagram icons (from Simple Icons). Always next to a text label. No icon tiles, decorative icons or ticks on lists. Lists have thin rules between the items.
 
 #### Imagery
 
@@ -319,7 +319,7 @@ Fill in the template and leave out the band or the quote if there isn’t one. K
 - First person, plain and specific, as if you were explaining it to a client over a coffee
 - Sentence case, no em dashes, and short sentences
 - Numbers have a source and a date. Anything unknown is a visible [TBC]
-- One opinion per page, in your own words
+- One opinion per page, in my own words
 
 #### Do and don’t
 
@@ -361,11 +361,11 @@ Don’t
 
 - Could this sentence appear on another developer’s site? Then rewrite it
 - Does every number have a source?
-- Is every [TBC] on the list for the content pass?
+- Is every [TBC] on the to-do list?
 
 #### Still open
 
-Looking back over the project pages, and the content pass: real screenshots, quotes, numbers, prices and the reply time. There are no plans for a dark mode.
+Whether project pages get a “Looking back” section, and the real screenshots, quotes, numbers, prices and reply time. No dark mode for now.
 
 ## 4. The avoid-list
 
@@ -493,7 +493,7 @@ Only inside product fragments, where the green, amber and red show an actual sta
 
 #### The FAQ
 
-Only questions people have really asked [TBC: confirm the three]. Otherwise it comes out.
+Only questions people have really asked [TBC: which three]. Otherwise it comes out.
 
 ## 5. States and patterns
 

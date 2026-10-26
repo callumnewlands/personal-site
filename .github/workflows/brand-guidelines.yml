@@ -6,12 +6,18 @@ on:
       - docs/brand-guidelines*
       - docs/brand-guidelines-source/**
       - .github/workflows/brand-guidelines.yml
+      - package.json
+      - pnpm-lock.yaml
+      - .prettierrc.json
   push:
     branches: [main]
     paths:
       - docs/brand-guidelines*
       - docs/brand-guidelines-source/**
       - .github/workflows/brand-guidelines.yml
+      - package.json
+      - pnpm-lock.yaml
+      - .prettierrc.json
 
 jobs:
   build:
@@ -19,8 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
@@ -30,20 +34,18 @@ jobs:
         env:
           CYPRESS_INSTALL_BINARY: 0
       - run: pnpm exec playwright install --with-deps chromium
+      - run: git show HEAD:docs/brand-guidelines.pdf > "$RUNNER_TEMP/committed.pdf"
       - run: pnpm guidelines
-      # The markdown comes out the same every time, so it has to match
       - name: Check the markdown is up to date
         run: git diff --exit-code docs/brand-guidelines.md || (echo "::error::brand-guidelines.md is out of date. Run pnpm guidelines and commit it." && exit 1)
-      # The PDF differs byte for byte between machines, so only check it was rebuilt
-      - name: Check the PDF was rebuilt
-        if: github.event_name == 'pull_request'
+      # PDF bytes vary by machine, so compare the text
+      - name: Check the PDF is up to date
         run: |
-          changed=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
-          if echo "$changed" | grep -q '^docs/brand-guidelines-source/index.html$' && ! echo "$changed" | grep -q '^docs/brand-guidelines.pdf$'; then
-            echo "::error::index.html changed but brand-guidelines.pdf didn't. Run pnpm guidelines and commit it."
-            exit 1
-          fi
+          sudo apt-get install -y poppler-utils >/dev/null
+          diff <(pdftotext "$RUNNER_TEMP/committed.pdf" -) <(pdftotext docs/brand-guidelines.pdf -) \
+            || (echo "::error::brand-guidelines.pdf is out of date. Run pnpm guidelines and commit it." && exit 1)
       - uses: actions/upload-artifact@v7
+        if: always()
         with:
           name: brand-guidelines
           path: |
