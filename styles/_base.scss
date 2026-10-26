@@ -35,6 +35,11 @@ svg {
   vertical-align: middle;
 }
 
+// so width/height attrs don't stretch imgs
+img {
+  height: auto;
+}
+
 a {
   color: $primary;
   text-decoration: none;

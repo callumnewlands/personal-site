@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SlidingMasthead from "../components/SlidingMasthead";
 import InfoBlocks from "../components/InfoBlocks";
 import { FullWidthButton } from "../components/Buttons";
@@ -8,6 +9,10 @@ import forestGenerator from "../public/screenshots/forestgenerator.webp";
 import dataViz from "../public/screenshots/dataviz.webp";
 import spydify from "../public/screenshots/spydify.webp";
 import mathsPlanner from "../public/screenshots/mathsplanner.webp";
+import codeScreen from "../public/illustrations/code-screen.png";
+import painting from "../public/illustrations/painting-dark-bg-2.svg";
+import tablet from "../public/illustrations/smartphone-or-tablet-dark-bg.svg";
+import lightbulb from "../public/illustrations/lightbulb-dark-bg-2.svg";
 import WavesDivider from "../components/WavesDivider";
 import Seo from "../components/Seo";
 import { pages } from "../data/pages";
@@ -15,7 +20,7 @@ import { pages } from "../data/pages";
 export default function Home() {
     const infoData = [
         {
-            icon: <img src={"/illustrations/code-screen.png"} alt={"Illustration of a stylised coding screen"} />,
+            icon: <Image src={codeScreen} alt="Illustration of a stylised coding screen" sizes="7rem" />,
             title: "Coding is what I do",
             content:
                 "I have been programming for " +
@@ -26,24 +31,21 @@ export default function Home() {
                 "(4.0 GPA equivalent) and am now working as a freelance, full-stack, web and desktop application developer."
         },
         {
-            // eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs
-            icon: <img src={"/illustrations/painting-dark-bg-2.svg"} alt={"Illustration of a painting"} />,
+            icon: <Image src={painting} alt="Illustration of a painting" sizes="7rem" />,
             title: "I have a passion for UI/UX",
             content:
                 "Elegant designs and efficient, accessible user interactions are at the heart of application development. " +
                 "I love finding clean and beautiful solutions to user experience problems through UI design and implementation. "
         },
         {
-            // eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs
-            icon: <img src={"/illustrations/smartphone-or-tablet-dark-bg.svg"} alt={"Illustration of a tablet"} />,
+            icon: <Image src={tablet} alt="Illustration of a tablet" sizes="7rem" />,
             title: "I can work with any technology",
             content:
                 "I work with a broad range of technologies from Java and SpringBoot to React and TypeScript and lots in-between. " +
                 "As well as this, my past experience and studies allow me to quickly become proficient in new tools and technologies."
         },
         {
-            // eslint-disable-next-line @next/next/no-img-element -- next/image doesn't optimise SVGs
-            icon: <img src={"/illustrations/lightbulb-dark-bg-2.svg"} alt={"Illustration of a lightbulb"} />,
+            icon: <Image src={lightbulb} alt="Illustration of a lightbulb" sizes="7rem" />,
             title: "No problem is too big or small",
             content:
                 "Need a simple website for your business? Or a fully-fledged, scalable, web-app with a database connection " +

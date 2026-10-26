@@ -1,4 +1,5 @@
 const { readFileSync } = require("node:fs");
+const budgets = require("./lighthouse-budgets.json");
 
 // Every page in the sitemap written by the postbuild, served locally
 const urls = [...readFileSync("public/sitemap.xml", "utf8").matchAll(/<loc>(.*?)<\/loc>/g)].map((match) =>
@@ -16,15 +17,15 @@ module.exports = {
             startServerCommand: "pnpm start",
             startServerReadyPattern: "Ready",
             url: shardUrls,
-            numberOfRuns: 3
+            numberOfRuns: budgets.numberOfRuns
         },
         assert: {
-            assertions: {
-                "categories:performance": ["error", { minScore: 0.85 }],
-                "categories:accessibility": ["error", { minScore: 0.95 }],
-                "categories:best-practices": ["error", { minScore: 0.95 }],
-                "categories:seo": ["error", { minScore: 0.95 }]
-            }
+            assertions: Object.fromEntries(
+                Object.entries(budgets.minScores).map(([category, minScore]) => [
+                    `categories:${category}`,
+                    ["error", { minScore }]
+                ])
+            )
         },
         upload: {
             target: "filesystem",
