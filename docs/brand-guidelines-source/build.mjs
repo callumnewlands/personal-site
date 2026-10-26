@@ -2,7 +2,7 @@
 // Run with: pnpm guidelines (needs Chromium once: pnpm exec playwright install chromium)
 // --md-only skips the PDF
 import { chromium } from "@playwright/test";
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, join } from "node:path";
 import prettier from "prettier";
@@ -25,8 +25,16 @@ try {
     await page.evaluate(() => document.fonts.ready);
 
     if (!process.argv.includes("--md-only")) {
-        await page.pdf({ path: pdfPath, preferCSSPageSize: true, printBackground: true });
-        console.log(`Wrote ${pdfPath}`);
+        const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
+        // Chromium stamps the time in, so keep the old file if that is all that changed
+        const withoutDates = (bytes) => bytes.toString("latin1").replace(/\/(CreationDate|ModDate) \([^)]*\)/g, "");
+        const old = await readFile(pdfPath).catch(() => null);
+        if (old && withoutDates(old) === withoutDates(pdf)) {
+            console.log(`${pdfPath} unchanged`);
+        } else {
+            await writeFile(pdfPath, pdf);
+            console.log(`Wrote ${pdfPath}`);
+        }
     }
 
     // Walks the page in the browser and returns markdown blocks
