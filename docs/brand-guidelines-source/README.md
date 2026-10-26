@@ -1,18 +1,18 @@
 # Brand guidelines source
 
-`index.html` is the source for `docs/brand-guidelines.pdf`. Edit it here, then export it again.
+`index.html` is the source for `docs/brand-guidelines.pdf` and `docs/brand-guidelines.md`. Edit it here, then build both again.
 
-## Export the PDF
+## Build the PDF and markdown
 
-**In Chrome or Edge.** Open `index.html` and print it (Ctrl+P). Then set:
+```bash
+pnpm guidelines
+```
 
-- Destination: **Save as PDF**
-- Margins: **Default**
-- Options: tick **Background graphics**, untick **Headers and footers**
+`build.mjs` opens `index.html` in Playwright's Chromium, prints it to the PDF and turns the page into markdown. The first time, install Chromium with `pnpm exec playwright install chromium`. Add `--md-only` to skip the PDF. Commit both files.
 
-The page size (A4 landscape), the margins, the footer and the page numbers come from the file itself, so leave paper size and layout alone. Save over `docs/brand-guidelines.pdf`.
+CI runs the same build when anything here changes. It fails if the committed markdown doesn't match, or if `index.html` changed without the PDF. The fresh PDF is uploaded as the `brand-guidelines` artifact.
 
-**Or with a script.** `build-pdf.mjs` does the same with Playwright, writing straight to `docs/brand-guidelines.pdf`. The comment at its top explains how to run it.
+To export the PDF by hand instead, print `index.html` from Chrome or Edge (Ctrl+P) with destination **Save as PDF**, margins **Default**, **Background graphics** ticked and **Headers and footers** unticked. The page size, margins, footer and page numbers come from the file itself.
 
 ## Editing
 
@@ -24,7 +24,7 @@ The page size (A4 landscape), the margins, the footer and the page numbers come 
     - Cards, list items and table rows are never split across pages.
 - **Contents page numbers** are typed in. Browsers can't fill them in automatically, so check them after an export if pages have moved.
 - **Fonts** are in `fonts/`, with their licences (SIL Open Font License), so the PDF looks the same on any machine.
-- **The text-only version.** `docs/brand-guidelines.md` has the same text and is kept separately. When you change wording here, make the same change there.
+- **The markdown version** is generated, so don't edit `docs/brand-guidelines.md` directly. Anything that's only a picture (the logo, swatches, component examples) is left out. Mark a block `data-md="skip"` to leave it out too, or `data-md-note="..."` to replace it with a "Shown in the PDF" note.
 
 ## Where this came from
 

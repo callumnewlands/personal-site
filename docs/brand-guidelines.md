@@ -1,10 +1,12 @@
 # cnewlands.dev brand guidelines
 
+<!-- Generated from brand-guidelines-source/index.html by pnpm guidelines. Edit the HTML, not this file. -->
+
 The design rules for [cnewlands.dev](https://cnewlands.dev): what the site is for, colour, type, the logo, layout, components, page templates, words, the avoid-list, and how components behave. [brand-guidelines.pdf](brand-guidelines.pdf) has the same content with the swatches, logo, icons and component examples; this file is the text version, for reading here and for tools.
 
-## 1. Brand, colour, type and logo
-
 How the final screens were put together, so that new pages and project write-ups look like they belong to the same site.
+
+## 1. Brand, colour, type and logo
 
 ### What the site is for
 
@@ -80,35 +82,25 @@ The palette has no warm colours on purpose. Screenshots, renders and photos prov
 
 ### Type
 
-Bricolage Grotesque
-Commissioner for reading
-Red Hat Mono for code
-
-| Role | Font | Size (rem) | px at default size, and use |
-| --- | --- | --- |
-| **Display (h1)** | Bricolage 800 | `clamp(2.5rem, 1.6rem + 4vw, 5.5rem)`, lh 1, -0.02em | 40 to 88px. One per page, sentence case |
-| **Section title** | Bricolage 800 | 2.75rem; 2.5rem on phones | 44px / 40px. “More work”, “Questions”, “So far” |
-| **Chapter and card title** | Bricolage 800 | `clamp(1.875rem, 1.4rem + 1.5vw, 2.5rem)`; 2.125rem on phones | 30 to 40px / 34px. Project chapters, smaller service cards |
-| **Panel title** | Bricolage 800 | `clamp(2.25rem, 1.6rem + 2vw, 3.25rem)`; 2.5rem on phones | 36 to 52px / 40px. The two big service panels |
-| **Callout** | Bricolage 600 | `clamp(1.625rem, 1.2rem + 1.4vw, 2.25rem)`; 1.375rem on phones | 26 to 36px / 22px. Only for the headline result |
-| **Stat number** | Bricolage 800 | `clamp(2.5rem, 1.9rem + 2vw, 3.5rem)`, lh 0.95 | 40 to 56px. Only for numbers with a source |
-| **Lead** | Commissioner 400 | 1.375 to 1.625rem, lh 1.45 | 22 to 26px. Around two lines on a phone |
-| **Body** | Commissioner 400 / 500 / 600 | 1.125rem, lh 1.6, max-width 68ch | 18px. Bold is 600 (700 is too heavy) |
-| **Small** | Commissioner 400 | 1.0625rem, lh 1.55; 1rem, lh 1.6 | 17px / 16px. Card subtitles, list items, secondary text |
-| **Label and caption** | Commissioner 400 | 0.9375rem, lh 1.5 | 15px. Nothing people need to read goes smaller than this |
-| **Inputs** | Commissioner 400 | 1.0625rem | 17px. Keep it at 1rem or above, otherwise phones zoom in when the field is focused |
-| **Code** | Red Hat Mono 500 | 0.875 to 1.0625rem | 14 to 17px. Real code only. Ligatures off |
-| **Logo name** | Quicksand 700 | Outlined in the SVG, no font size | The name is part of the drawn logo |
+| Role                       | Font                         | Size (rem)                                                     | px at default size, and use                                                        |
+| -------------------------- | ---------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Display (h1)**           | Bricolage 800                | `clamp(2.5rem, 1.6rem + 4vw, 5.5rem)`, lh 1, -0.02em           | 40 to 88px. One per page, sentence case                                            |
+| **Section title**          | Bricolage 800                | 2.75rem; 2.5rem on phones                                      | 44px / 40px. “More work”, “Questions”, “So far”                                    |
+| **Chapter and card title** | Bricolage 800                | `clamp(1.875rem, 1.4rem + 1.5vw, 2.5rem)`; 2.125rem on phones  | 30 to 40px / 34px. Project chapters, smaller service cards                         |
+| **Panel title**            | Bricolage 800                | `clamp(2.25rem, 1.6rem + 2vw, 3.25rem)`; 2.5rem on phones      | 36 to 52px / 40px. The two big service panels                                      |
+| **Callout**                | Bricolage 600                | `clamp(1.625rem, 1.2rem + 1.4vw, 2.25rem)`; 1.375rem on phones | 26 to 36px / 22px. Only for the headline result                                    |
+| **Stat number**            | Bricolage 800                | `clamp(2.5rem, 1.9rem + 2vw, 3.5rem)`, lh 0.95                 | 40 to 56px. Only for numbers with a source                                         |
+| **Lead**                   | Commissioner 400             | 1.375 to 1.625rem, lh 1.45                                     | 22 to 26px. Around two lines on a phone                                            |
+| **Body**                   | Commissioner 400 / 500 / 600 | 1.125rem, lh 1.6, max-width 68ch                               | 18px. Bold is 600 (700 is too heavy)                                               |
+| **Small**                  | Commissioner 400             | 1.0625rem, lh 1.55; 1rem, lh 1.6                               | 17px / 16px. Card subtitles, list items, secondary text                            |
+| **Label and caption**      | Commissioner 400             | 0.9375rem, lh 1.5                                              | 15px. Nothing people need to read goes smaller than this                           |
+| **Inputs**                 | Commissioner 400             | 1.0625rem                                                      | 17px. Keep it at 1rem or above, otherwise phones zoom in when the field is focused |
+| **Code**                   | Red Hat Mono 500             | 0.875 to 1.0625rem                                             | 14 to 17px. Real code only. Ligatures off                                          |
+| **Logo name**              | Quicksand 700                | Outlined in the SVG, no font size                              | The name is part of the drawn logo                                                 |
 
 Use sentence case throughout. No all-caps or letter-spaced labels, no monospace labels and no headlines in two colours. Buttons and facts are set in 600. Very long single-word titles (like “swimbooker”) use the smaller title size. All the fonts are SIL OFL, so self-host them and only load the weights that are used.
 
 ### Logo
-
-Callum
-Newlands
-
-Callum
-Newlands
 
 - The mark is a single line where the moon (C) runs into the ridge (N)
 - Viridian on light backgrounds and mint on dark, with the name in ink or white
@@ -117,7 +109,7 @@ Newlands
 - Please don’t recolour, stretch or outline it, add effects, or set the name in a different font
 - The favicon and app icon are below
 
-#### Favicon and app icon
+### Favicon and app icon
 
 _Shown in the PDF: light and dark browser tabs; the mark at 16, 32 and 48px; the 16 and 32px marks enlarged; the 180px app icon and an alternative._
 
@@ -582,6 +574,4 @@ The whole card is a single link. It doesn’t lift or grow on hover.
 - Tap to see them full size. No carousels, and nothing that moves by itself
 - On phones everything stacks, with phone screenshots two to a row
 
-Wide screenshot, full width
-
-Phone screenshots, three to a row, same height
+_Shown in the PDF: a wide screenshot at full width, and phone screenshots three to a row at the same height._
