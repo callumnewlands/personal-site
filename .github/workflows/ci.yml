@@ -24,7 +24,7 @@ jobs:
               - "!docs/**"
 
   lint:
-    name: Lint
+    name: Lint and unit tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -36,6 +36,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm format:check
       - run: pnpm lint
+      - run: pnpm test:unit
 
   e2e:
     name: Playwright
