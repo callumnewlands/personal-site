@@ -38,11 +38,12 @@ jobs:
       - run: pnpm guidelines
       - name: Check the markdown is up to date
         run: git diff --exit-code docs/brand-guidelines.md || (echo "::error::brand-guidelines.md is out of date. Run pnpm guidelines and commit it." && exit 1)
-      # PDF bytes vary by machine, so compare the text
+      # PDF bytes and line breaks vary by machine, so compare the words
       - name: Check the PDF is up to date
         run: |
           sudo apt-get install -y poppler-utils >/dev/null
-          diff <(pdftotext "$RUNNER_TEMP/committed.pdf" -) <(pdftotext docs/brand-guidelines.pdf -) \
+          words() { pdftotext "$1" - | tr -s "[:space:]" "\n" | sort; }
+          diff <(words "$RUNNER_TEMP/committed.pdf") <(words docs/brand-guidelines.pdf) \
             || (echo "::error::brand-guidelines.pdf is out of date. Run pnpm guidelines and commit it." && exit 1)
       - uses: actions/upload-artifact@v7
         if: always()
