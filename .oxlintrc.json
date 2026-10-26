@@ -1,0 +1,26 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": ["typescript", "react", "nextjs", "jsx-a11y", "import"],
+    "env": { "browser": true, "node": true },
+    "categories": { "correctness": "error" },
+    "rules": {
+        "react/rules-of-hooks": "error",
+        "react/exhaustive-deps": "error",
+        "react/purity": "error",
+        "react/refs": "error",
+        "react/immutability": "error",
+        "react/set-state-in-effect": "error",
+        "react/set-state-in-render": "error",
+        "react/static-components": "error",
+        "jsx-a11y/alt-text": ["error", { "img": ["Image"] }],
+        "import/no-anonymous-default-export": "error",
+        "typescript/no-explicit-any": "error"
+    },
+    "overrides": [
+        {
+            // Lighthouse CI only loads CommonJS config
+            "files": ["lighthouserc.js"],
+            "rules": { "typescript/no-require-imports": "off" }
+        }
+    ]
+}
