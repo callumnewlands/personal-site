@@ -17,6 +17,8 @@ import WavesDivider from "../components/WavesDivider";
 import Seo from "../components/Seo";
 import { pages } from "../data/pages";
 
+const year = new Date().getFullYear();
+
 export default function Home() {
     const infoData = [
         {
@@ -24,9 +26,9 @@ export default function Home() {
             title: "Coding is what I do",
             content:
                 "I have been programming for " +
-                (new Date().getFullYear() - 2011).toString() +
+                (year - 2011).toString() +
                 " years, including 4 years at degree-level and " +
-                (new Date().getFullYear() - 2020).toString() +
+                (year - 2020).toString() +
                 " years commercial experience (and counting). I have a First-class Master's degree in Computer Science " +
                 "(4.0 GPA equivalent) and am now working as a freelance, full-stack, web and desktop application developer."
         },
