@@ -1,0 +1,54 @@
+name: Brand guidelines
+
+on:
+  pull_request:
+    paths:
+      - docs/brand-guidelines*
+      - docs/brand-guidelines-source/**
+      - .github/workflows/brand-guidelines.yml
+      - package.json
+      - pnpm-lock.yaml
+      - .prettierrc.json
+  push:
+    branches: [main]
+    paths:
+      - docs/brand-guidelines*
+      - docs/brand-guidelines-source/**
+      - .github/workflows/brand-guidelines.yml
+      - package.json
+      - pnpm-lock.yaml
+      - .prettierrc.json
+
+jobs:
+  build:
+    name: Build brand guidelines
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: git show HEAD:docs/brand-guidelines.pdf > "$RUNNER_TEMP/committed.pdf"
+      - run: pnpm guidelines
+      - name: Check the markdown is up to date
+        run: git diff --exit-code docs/brand-guidelines.md || (echo "::error::brand-guidelines.md is out of date. Run pnpm guidelines and commit it." && exit 1)
+      # PDF bytes and line breaks vary by machine, so compare the words
+      - name: Check the PDF is up to date
+        run: |
+          sudo apt-get install -y poppler-utils >/dev/null
+          words() { pdftotext "$1" - | tr -s "[:space:]" "\n" | sort; }
+          diff <(words "$RUNNER_TEMP/committed.pdf") <(words docs/brand-guidelines.pdf) \
+            || (echo "::error::brand-guidelines.pdf is out of date. Run pnpm guidelines and commit it." && exit 1)
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: brand-guidelines
+          path: |
+            docs/brand-guidelines.pdf
+            docs/brand-guidelines.md

@@ -34,3 +34,6 @@ Thumbs.db
 
 # Lighthouse CI
 /.lighthouseci/
+
+# Local planning docs
+/docs/local/
