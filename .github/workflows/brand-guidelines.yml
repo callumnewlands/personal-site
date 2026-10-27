@@ -10,7 +10,7 @@ on:
       - pnpm-lock.yaml
       - .prettierrc.json
   push:
-    branches: [main]
+    branches: [main, redesign]
     paths:
       - docs/brand-guidelines*
       - docs/brand-guidelines-source/**
@@ -19,10 +19,19 @@ on:
       - pnpm-lock.yaml
       - .prettierrc.json
 
+permissions:
+  contents: read
+
+# A new push to a PR replaces its running checks; runs on main and redesign always finish
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     name: Build brand guidelines
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
