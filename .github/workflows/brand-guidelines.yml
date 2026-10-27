@@ -10,7 +10,7 @@ on:
       - pnpm-lock.yaml
       - .prettierrc.json
   push:
-    branches: [main]
+    branches: [main, redesign]
     paths:
       - docs/brand-guidelines*
       - docs/brand-guidelines-source/**
@@ -19,10 +19,18 @@ on:
       - pnpm-lock.yaml
       - .prettierrc.json
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     name: Build brand guidelines
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -36,7 +44,7 @@ jobs:
       - run: pnpm guidelines
       - name: Check the markdown is up to date
         run: git diff --exit-code docs/brand-guidelines.md || (echo "::error::brand-guidelines.md is out of date. Run pnpm guidelines and commit it." && exit 1)
-      # PDF bytes and line breaks vary by machine, so compare the words
+      # PDF line breaks vary by machine so this check compares words not lines
       - name: Check the PDF is up to date
         run: |
           sudo apt-get install -y poppler-utils >/dev/null

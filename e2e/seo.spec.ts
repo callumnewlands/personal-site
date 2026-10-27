@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-// Written out rather than read from the site, so a page missing from the sitemap fails
+// Hard-coded so a page missing from the sitemap fails
 const sitemapPages = ["/", "/about", "/portfolio", "/contact", "/portfolio/mathsplanner"];
 
 test("serves robots.txt", async ({ request }) => {

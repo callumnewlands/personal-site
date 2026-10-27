@@ -3,13 +3,23 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, redesign]
+
+permissions:
+  contents: read
+  # needed by paths-filter
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  # Docs-only changes skip the build, Playwright and Lighthouse
+  # Skip the site checks for docs-only changes
   changes:
     name: Detect changes
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       site: ${{ steps.filter.outputs.site }}
     steps:
@@ -26,6 +36,7 @@ jobs:
   lint:
     name: Lint and unit tests
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -43,6 +54,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -65,6 +77,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
@@ -94,6 +107,7 @@ jobs:
     needs: [changes, lighthouse]
     if: always() && needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7

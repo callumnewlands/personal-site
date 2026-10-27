@@ -16,7 +16,7 @@
         "react/jsx-no-useless-fragment": "warn",
         "jsx-a11y/alt-text": ["error", { "img": ["Image"] }],
         "import/no-anonymous-default-export": "error",
-        // Stylesheets are imported for their side effects, and some packages document default imports
+        // These flag CSS side-effect imports and default imports from library docs
         "import/no-unassigned-import": "off",
         "import/no-named-as-default": "off",
         "import/no-named-as-default-member": "off",
@@ -34,12 +34,12 @@
             "rules": { "typescript/no-require-imports": "off" }
         },
         {
-            // Tests and scripts step through pages and reports one at a time on purpose
+            // Tests and scripts await each page in turn on purpose
             "files": ["e2e/**", "**/*.test.ts", "scripts/**"],
             "rules": { "no-await-in-loop": "off" }
         },
         {
-            // Code passed to page.evaluate runs in the browser, so its helpers have to be defined inside it
+            // page.evaluate runs in the browser, so helpers must be defined inside it
             "files": ["docs/brand-guidelines-source/build.mjs"],
             "rules": { "unicorn/consistent-function-scoping": "off" }
         }
