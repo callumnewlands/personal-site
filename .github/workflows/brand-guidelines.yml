@@ -22,7 +22,6 @@ on:
 permissions:
   contents: read
 
-# A new push to a PR replaces its running checks; runs on main and redesign always finish
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -45,7 +44,7 @@ jobs:
       - run: pnpm guidelines
       - name: Check the markdown is up to date
         run: git diff --exit-code docs/brand-guidelines.md || (echo "::error::brand-guidelines.md is out of date. Run pnpm guidelines and commit it." && exit 1)
-      # PDF bytes and line breaks vary by machine, so compare the words
+      # PDF line breaks vary by machine so this check compares words not lines
       - name: Check the PDF is up to date
         run: |
           sudo apt-get install -y poppler-utils >/dev/null
