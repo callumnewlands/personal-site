@@ -1,7 +1,14 @@
 import { expect, test } from "@playwright/test";
+import { projectsWithPages } from "../data/portfolio";
 
-// Hard-coded so a page missing from the sitemap fails
-const sitemapPages = ["/", "/about", "/portfolio", "/contact", "/portfolio/mathsplanner"];
+// Built from the data, not the sitemap, so a page missing from the sitemap fails
+const sitemapPages = [
+    "/",
+    "/about",
+    "/portfolio",
+    "/contact",
+    ...projectsWithPages.map((item) => `/portfolio/${item.id}`)
+];
 
 test("serves robots.txt", async ({ request }) => {
     const response = await request.get("/robots.txt");
