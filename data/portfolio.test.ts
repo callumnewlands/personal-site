@@ -1,7 +1,8 @@
 import { existsSync, readdirSync } from "node:fs";
-import { join } from "node:path";
+import { extname, join } from "node:path";
 import { describe, expect, test } from "vitest";
 import { portfolio, projectsWithPages } from "./portfolio";
+import { SCREENSHOT_EXTENSIONS } from "../common/images";
 
 const publicFile = (path: string) => join(__dirname, "..", "public", path);
 
@@ -27,7 +28,9 @@ describe.each(portfolio)("$id", (item) => {
 
 describe.each(projectsWithPages)("$id page", (item) => {
     test("has a width for each screenshot, or none", () => {
-        const screenshots = readdirSync(publicFile(item.screenshotsDirectory));
+        const screenshots = readdirSync(publicFile(item.screenshotsDirectory)).filter((file) =>
+            SCREENSHOT_EXTENSIONS.has(extname(file).toLowerCase())
+        );
         if (item.screenshotWidths.length) {
             expect(item.screenshotWidths).toHaveLength(screenshots.length);
         }
