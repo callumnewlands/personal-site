@@ -10,9 +10,10 @@ permissions:
   # needed by paths-filter
   pull-requests: read
 
+# Only PR runs share a group, so pushes to trunk branches never cancel or queue behind each other
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   # Skip the site checks for docs-only changes
@@ -118,3 +119,13 @@ jobs:
           pattern: lighthouse-reports-*
           path: reports
       - run: node scripts/lighthouse-summary.mjs reports/*
+
+  ci-passed:
+    name: CI passed
+    needs: [changes, lint, e2e, lighthouse]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: exit 1
