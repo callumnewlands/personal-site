@@ -8,7 +8,7 @@ interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 export function Title({ level = 1, className, ...props }: TitleProps) {
     const Heading = `h${level}` as const;
-    return <Heading className={cx(styles.title, styles["title_" + level], className)} {...props} />;
+    return <Heading className={cx(styles.title, styles[`title_${level}`], className)} {...props} />;
 }
 
 export function Text({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {

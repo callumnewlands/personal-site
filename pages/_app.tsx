@@ -6,6 +6,7 @@ import { Alegreya_Sans_SC } from "next/font/google";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { absoluteUrl, SITE_NAME, SITE_URL, SOCIAL_LINKS } from "../common/site";
+import { cx } from "../common/helpers";
 
 const logoFont = Alegreya_Sans_SC({
     weight: ["500", "700", "800"],
@@ -51,7 +52,7 @@ const structuredData = {
 
 function Application({ Component, pageProps }: AppProps) {
     return (
-        <div className={"container " + logoFont.variable}>
+        <div className={cx("container", logoFont.variable)}>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

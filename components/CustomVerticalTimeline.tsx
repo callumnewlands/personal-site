@@ -1,6 +1,6 @@
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import styles from "./CustomVerticalTimeline.module.scss";
 import { UpIcon } from "../svgs";

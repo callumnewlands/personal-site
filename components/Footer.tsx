@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import styles from "./Footer.module.scss";
 import { GithubIcon, InstagramIcon, LinkedinIcon, UpworkLogo } from "../svgs";
 import { SOCIAL_LINKS } from "../common/site";
@@ -12,6 +12,8 @@ const icons: Record<SocialPlatform, ReactNode> = {
     Instagram: <InstagramIcon />
 };
 
+const year = new Date().getFullYear();
+
 export default function Footer() {
     return (
         <footer className={styles.footer}>
@@ -23,7 +25,7 @@ export default function Footer() {
                 ))}
             </div>
             <p>
-                {`All content `}&copy;{` Callum Newlands 2020–${new Date().getFullYear()}`}
+                {`All content `}&copy;{` Callum Newlands 2020–${year}`}
             </p>
         </footer>
     );

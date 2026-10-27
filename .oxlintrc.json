@@ -1,0 +1,47 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": ["typescript", "react", "nextjs", "jsx-a11y", "import", "unicorn", "oxc"],
+    "env": { "browser": true, "node": true },
+    "categories": { "correctness": "error", "suspicious": "warn", "perf": "warn" },
+    "rules": {
+        "react/rules-of-hooks": "error",
+        "react/exhaustive-deps": "error",
+        "react/purity": "error",
+        "react/refs": "error",
+        "react/immutability": "error",
+        "react/set-state-in-effect": "error",
+        "react/set-state-in-render": "error",
+        "react/static-components": "error",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-no-useless-fragment": "warn",
+        "jsx-a11y/alt-text": ["error", { "img": ["Image"] }],
+        "import/no-anonymous-default-export": "error",
+        // Stylesheets are imported for their side effects, and some packages document default imports
+        "import/no-unassigned-import": "off",
+        "import/no-named-as-default": "off",
+        "import/no-named-as-default-member": "off",
+        "typescript/no-explicit-any": "error",
+        "typescript/consistent-type-definitions": "warn",
+        "typescript/consistent-type-imports": ["warn", { "disallowTypeAnnotations": false }],
+        "eqeqeq": ["warn", "always", { "null": "ignore" }],
+        "no-promise-executor-return": "warn",
+        "prefer-template": "warn"
+    },
+    "overrides": [
+        {
+            // Lighthouse CI only loads CommonJS config
+            "files": ["lighthouserc.js"],
+            "rules": { "typescript/no-require-imports": "off" }
+        },
+        {
+            // Tests and scripts step through pages and reports one at a time on purpose
+            "files": ["e2e/**", "**/*.test.ts", "scripts/**"],
+            "rules": { "no-await-in-loop": "off" }
+        },
+        {
+            // Code passed to page.evaluate runs in the browser, so its helpers have to be defined inside it
+            "files": ["docs/brand-guidelines-source/build.mjs"],
+            "rules": { "unicorn/consistent-function-scoping": "off" }
+        }
+    ]
+}

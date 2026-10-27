@@ -17,6 +17,9 @@ const header = `# cnewlands.dev brand guidelines
 
 The design rules for [cnewlands.dev](https://cnewlands.dev): what the site is for, colour, type, the logo, layout, components, page templates, words, the avoid-list, and how components behave. [brand-guidelines.pdf](brand-guidelines.pdf) has the same content with the swatches, logo, icons and component examples; this file is the text version, which is easier to read on GitHub and to search.`;
 
+// Chromium stamps the time in, so keep the old PDF if that is all that changed
+const withoutDates = (bytes) => bytes.toString("latin1").replace(/\/(CreationDate|ModDate) \([^)]*\)/g, "");
+
 let blocks;
 const browser = await chromium.launch();
 try {
@@ -26,8 +29,6 @@ try {
 
     if (!process.argv.includes("--md-only")) {
         const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
-        // Chromium stamps the time in, so keep the old file if that is all that changed
-        const withoutDates = (bytes) => bytes.toString("latin1").replace(/\/(CreationDate|ModDate) \([^)]*\)/g, "");
         const old = await readFile(pdfPath).catch(() => null);
         if (old && withoutDates(old) === withoutDates(pdf)) {
             console.log(`${pdfPath} unchanged`);
@@ -39,8 +40,8 @@ try {
 
     // Walks the page in the browser and returns markdown blocks
     blocks = await page.evaluate(() => {
-        const inlineTags = ["B", "STRONG", "CODE", "SPAN", "BR", "EM", "I", "A", "SVG", "IMG"];
-        const isInline = (node) => node.nodeType === Node.TEXT_NODE || inlineTags.includes(node.nodeName.toUpperCase());
+        const inlineTags = new Set(["B", "STRONG", "CODE", "SPAN", "BR", "EM", "I", "A", "SVG", "IMG"]);
+        const isInline = (node) => node.nodeType === Node.TEXT_NODE || inlineTags.has(node.nodeName.toUpperCase());
         const note = (text) => `_Shown in the PDF: ${text}._`;
         let sectionNumber = 0;
 
@@ -52,7 +53,7 @@ try {
             let text = "";
             for (const child of node.childNodes) text += inline(child, inTable);
             if (tag === "B" || tag === "STRONG") return `**${text.trim()}**`;
-            if (tag === "CODE") return "`" + text + "`";
+            if (tag === "CODE") return `\`${text}\``;
             return text;
         }
 
@@ -80,13 +81,12 @@ try {
         function table(el) {
             const headings = [...el.querySelectorAll("th")].map((th) => tidy(inline(th, true)));
             const columns = headings.map((heading, i) => i).filter((i) => headings[i]);
-            let md = "| " + columns.map((i) => headings[i]).join(" | ") + " |\n";
-            md += "|" + " --- |".repeat(columns.length);
+            let md = `| ${columns.map((i) => headings[i]).join(" | ")} |\n`;
+            md += `|${" --- |".repeat(columns.length)}`;
             for (const row of el.querySelectorAll("tr")) {
                 const cells = [...row.querySelectorAll("td")];
                 if (!cells.length) continue;
-                md +=
-                    "\n| " + columns.map((i) => tidy(inline(cells[i], true)).replace(/\|/g, "\\|")).join(" | ") + " |";
+                md += `\n| ${columns.map((i) => tidy(inline(cells[i], true)).replace(/\|/g, "\\|")).join(" | ")} |`;
             }
             return md;
         }
@@ -102,7 +102,7 @@ try {
             if (tag === "H3") return [`#### ${tidy(inline(el))}`];
             if (tag === "P") return [tidy(inline(el))].filter(Boolean);
             if (tag === "UL" || tag === "OL") {
-                return [...el.children].map((li) => "- " + tidy(inline(li)).replace(/\n/g, " "));
+                return [...el.children].map((li) => `- ${tidy(inline(li)).replace(/\n/g, " ")}`);
             }
             if (tag === "TABLE") return [table(el)];
             const row = captions(el);
@@ -141,9 +141,9 @@ try {
 let md = header;
 let previous = "";
 for (const text of blocks) {
-    md += text.startsWith("- ") && previous.startsWith("- ") ? "\n" + text : "\n\n" + text;
+    md += text.startsWith("- ") && previous.startsWith("- ") ? `\n${text}` : `\n\n${text}`;
     previous = text;
 }
 const options = await prettier.resolveConfig(mdPath);
-await writeFile(mdPath, await prettier.format(md + "\n", { ...options, filepath: mdPath }));
+await writeFile(mdPath, await prettier.format(`${md}\n`, { ...options, filepath: mdPath }));
 console.log(`Wrote ${mdPath}`);

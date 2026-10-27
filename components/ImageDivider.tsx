@@ -1,5 +1,6 @@
 import styles from "./ImageDivider.module.scss";
-import Image, { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Text, Title } from "./ui/Typography";
 
 interface ImageDividerProps {

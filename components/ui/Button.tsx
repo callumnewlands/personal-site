@@ -12,7 +12,7 @@ interface StyleProps {
 }
 
 function buttonClasses({ variant = "default", large, className }: StyleProps) {
-    return cx(styles.button, styles["button_" + variant], large && styles.button_large, className);
+    return cx(styles.button, styles[`button_${variant}`], large && styles.button_large, className);
 }
 
 function ButtonContent({ icon, children }: StyleProps) {

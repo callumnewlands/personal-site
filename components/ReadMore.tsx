@@ -1,4 +1,5 @@
-import { ReactNode, useRef, useState } from "react";
+import type { ReactNode } from "react";
+import { useRef, useState } from "react";
 import { useOverflowing } from "../common/helpers";
 
 interface ReadMoreProps {
@@ -13,7 +14,7 @@ export function ReadMore({ maxHeight = "11.5rem", children }: ReadMoreProps) {
 
     return (
         <>
-            <div ref={ref} className={"read_more"} style={{ ...(!showMore ? { maxHeight } : {}) }}>
+            <div ref={ref} className={"read_more"} style={!showMore ? { maxHeight } : {}}>
                 {children}
             </div>
             {!showMore && (

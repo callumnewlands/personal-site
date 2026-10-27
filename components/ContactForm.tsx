@@ -1,7 +1,9 @@
 import styles from "./ContactForm.module.scss";
-import { FormEvent, useState } from "react";
+import type { FormEvent } from "react";
+import { useState } from "react";
 import Button from "./ui/Button";
 import Result from "./ui/Result";
+import { cx } from "../common/helpers";
 
 // Must match public/__forms.html
 const FORM_NAME = "Contact Form";
@@ -73,7 +75,7 @@ export default function ContactForm() {
                 body: new URLSearchParams(values).toString()
             });
             if (!res.ok) {
-                throw new Error(res.status + " " + res.statusText);
+                throw new Error(`${res.status} ${res.statusText}`);
             }
             setCurrentPage(Page.Success);
         } catch (e) {
@@ -103,7 +105,7 @@ export default function ContactForm() {
             <Result
                 success={false}
                 title="There was an error submitting your form:"
-                message={error ? "Details: " + error : "No further details available."}
+                message={error ? `Details: ${error}` : "No further details available."}
             >
                 <Button variant="primary" onClick={showForm}>
                     Try Again
@@ -118,7 +120,7 @@ export default function ContactForm() {
         "aria-invalid": errors[name] ? true : undefined,
         "aria-describedby": errors[name] ? `contact-${name}-error` : undefined,
         onChange: () => errors[name] && setErrors({ ...errors, [name]: undefined }),
-        className: styles.input + (errors[name] ? " " + styles.input_error : "")
+        className: cx(styles.input, errors[name] && styles.input_error)
     });
 
     const fieldError = (name: FieldName) =>
@@ -181,7 +183,7 @@ export default function ContactForm() {
                 {fieldError("message")}
             </div>
 
-            <div className={styles.field + " " + styles.button_right}>
+            <div className={cx(styles.field, styles.button_right)}>
                 <Button variant="primary" type="submit" disabled={submitting}>
                     {submitting ? "Sending..." : "Send Message >"}
                 </Button>

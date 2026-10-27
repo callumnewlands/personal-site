@@ -18,5 +18,5 @@ export const tagColours = [
 ];
 
 export default function Tag({ colour, children }: { colour?: string; children: React.ReactNode }) {
-    return <span className={cx(styles.tag, colour && styles["tag_" + colour])}>{children}</span>;
+    return <span className={cx(styles.tag, colour && styles[`tag_${colour}`])}>{children}</span>;
 }

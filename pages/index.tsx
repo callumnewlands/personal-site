@@ -17,18 +17,16 @@ import WavesDivider from "../components/WavesDivider";
 import Seo from "../components/Seo";
 import { pages } from "../data/pages";
 
+const year = new Date().getFullYear();
+
 export default function Home() {
     const infoData = [
         {
             icon: <Image src={codeScreen} alt="Illustration of a stylised coding screen" sizes="7rem" />,
             title: "Coding is what I do",
             content:
-                "I have been programming for " +
-                (new Date().getFullYear() - 2011).toString() +
-                " years, including 4 years at degree-level and " +
-                (new Date().getFullYear() - 2020).toString() +
-                " years commercial experience (and counting). I have a First-class Master's degree in Computer Science " +
-                "(4.0 GPA equivalent) and am now working as a freelance, full-stack, web and desktop application developer."
+                `I have been programming for ${year - 2011} years, including 4 years at degree-level and ${year - 2020} years commercial experience (and counting). I have a First-class Master's degree in Computer Science ` +
+                `(4.0 GPA equivalent) and am now working as a freelance, full-stack, web and desktop application developer.`
         },
         {
             icon: <Image src={painting} alt="Illustration of a painting" sizes="7rem" />,
