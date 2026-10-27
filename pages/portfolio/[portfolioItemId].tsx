@@ -11,13 +11,11 @@ import Tag, { tagColours } from "../../components/ui/Tag";
 import { Title } from "../../components/ui/Typography";
 import { ArrowLeftIcon } from "../../svgs";
 import type { SizedImage } from "../../common/images";
-import { sizedImage } from "../../common/images";
+import { SCREENSHOT_EXTENSIONS, sizedImage } from "../../common/images";
 import { cx } from "../../common/helpers";
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 import { marked } from "marked";
-
-const SCREENSHOT_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 
 // Rough rendered widths for the screenshot_wrapper_1-4 classes
 const SCREENSHOT_SIZES: { [width: number]: string } = {

@@ -22,9 +22,10 @@ on:
 permissions:
   contents: read
 
+# Only PR runs share a group, so pushes to trunk branches never cancel or queue behind each other
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   build:

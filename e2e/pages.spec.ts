@@ -26,7 +26,7 @@ test("loads homepage images", async ({ page }) => {
     await page.goto("/");
     const image = page.locator("main img").first();
     await expect(image).toBeVisible();
-    expect(await image.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+    await expect.poll(() => image.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
 });
 
 test("has no page for vrl", async ({ request }) => {
@@ -36,7 +36,9 @@ test("has no page for vrl", async ({ request }) => {
 
 test("footer links use noopener", async ({ page }) => {
     await page.goto("/");
-    for (const link of await page.locator("footer a[target=_blank]").all()) {
+    const links = await page.locator("footer a[target=_blank]").all();
+    expect(links.length).toBeGreaterThan(0);
+    for (const link of links) {
         const rel = await link.getAttribute("rel");
         expect(rel).toContain("noopener");
         expect(rel).toContain("noreferrer");
