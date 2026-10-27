@@ -24,8 +24,8 @@ for (const folder of folders) {
 runs.sort((a, b) => a.url.localeCompare(b.url));
 
 let table = "## Lighthouse results\n\n";
-table += "| Page | " + Object.values(labels).join(" | ") + " |\n";
-table += "| --- |" + " --- |".repeat(Object.keys(labels).length) + "\n";
+table += `| Page | ${Object.values(labels).join(" | ")} |\n`;
+table += `| --- |${" --- |".repeat(Object.keys(labels).length)}\n`;
 for (const run of runs) {
     let row = `| \`${new URL(run.url).pathname}\` |`;
     for (const category of Object.keys(labels)) {
@@ -33,7 +33,7 @@ for (const run of runs) {
         const icon = score >= budgets.minScores[category] ? "✅" : "❌";
         row += ` ${icon} ${Math.round(score * 100)} |`;
     }
-    table += row + "\n";
+    table += `${row}\n`;
 }
 for (const folder of missing) {
     table += `\n⚠️ No results in ${folder}, so its pages are missing.\n`;

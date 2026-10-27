@@ -1,12 +1,15 @@
 import styles from "../styles/portfolio.module.scss";
-import { portfolio, PortfolioItem } from "../data/portfolio";
+import type { PortfolioItem } from "../data/portfolio";
+import { portfolio } from "../data/portfolio";
 import { pages } from "../data/pages";
 import Image from "next/image";
 import Seo from "../components/Seo";
 import { LinkButton } from "../components/ui/Button";
 import Tag, { tagColours } from "../components/ui/Tag";
 import { Text, Title } from "../components/ui/Typography";
-import { sizedImage, SizedImage } from "../common/images";
+import type { SizedImage } from "../common/images";
+import { sizedImage } from "../common/images";
+import { cx } from "../common/helpers";
 
 function PortfolioListItem({ item, image, flip }: { item: PortfolioItem; image: SizedImage; flip: boolean }) {
     const imageElement = (
@@ -21,14 +24,14 @@ function PortfolioListItem({ item, image, flip }: { item: PortfolioItem; image: 
     );
 
     return (
-        <div className={styles.list_item + (flip ? " " + styles.list_item_flipped : "")}>
+        <div className={cx(styles.list_item, flip && styles.list_item_flipped)}>
             {flip && imageElement}
             <div className={styles.list_item_description}>
                 <Title level={2}>{item.title}</Title>
                 <Text>{item.shortDesc}</Text>
                 <div className={styles.tags_container}>
                     {item.tags.map((tag, i) => (
-                        <Tag colour={tagColours[i % tagColours.length]} key={tag + i}>
+                        <Tag colour={tagColours[i % tagColours.length]} key={tag}>
                             {tag}
                         </Tag>
                     ))}

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { cx } from "../common/helpers";
 import styles from "./WavesDivider.module.scss";
 
 export default function WavesDivider({ children }: { children?: React.ReactNode }) {
@@ -8,7 +9,7 @@ export default function WavesDivider({ children }: { children?: React.ReactNode 
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 446.49 900 154.51"
                 preserveAspectRatio={"none"}
-                className={styles.waves_divider + " " + styles.waves_divider_top}
+                className={cx(styles.waves_divider, styles.waves_divider_top)}
             >
                 <path
                     d="M0 448L12.5 448.8C25 449.7 50 451.3 75 453.5C100 455.7 125 458.3 150 458C175 457.7 200 454.3 225 451.8C250 449.3 275 447.7 300 448C325 448.3 350 450.7 375 451.2C400 451.7 425 450.3 450 449C475 447.7 500 446.3 525 447C550 447.7 575 450.3 600 450.2C625 450 650 447 675 447.3C700 447.7 725 451.3 750 451C775 450.7 800 446.3 825 446.5C850 446.7 875 451.3 887.5 453.7L900 456L900 601L887.5 601C875 601 850 601 825 601C800 601 775 601 750 601C725 601 700 601 675 601C650 601 625 601 600 601C575 601 550 601 525 601C500 601 475 601 450 601C425 601 400 601 375 601C350 601 325 601 300 601C275 601 250 601 225 601C200 601 175 601 150 601C125 601 100 601 75 601C50 601 25 601 12.5 601L0 601Z"
@@ -36,7 +37,7 @@ export default function WavesDivider({ children }: { children?: React.ReactNode 
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 900 159"
                 preserveAspectRatio={"none"}
-                className={styles.waves_divider + " " + styles.waves_divider_bottom}
+                className={cx(styles.waves_divider, styles.waves_divider_bottom)}
             >
                 <path
                     d="M0 159L12.5 157.7C25 156.3 50 153.7 75 151.2C100 148.7 125 146.3 150 144.8C175 143.3 200 142.7 225 143.7C250 144.7 275 147.3 300 149.5C325 151.7 350 153.3 375 153.5C400 153.7 425 152.3 450 149.7C475 147 500 143 525 142.3C550 141.7 575 144.3 600 146.3C625 148.3 650 149.7 675 149.7C700 149.7 725 148.3 750 146.8C775 145.3 800 143.7 825 143.7C850 143.7 875 145.3 887.5 146.2L900 147L900 0L887.5 0C875 0 850 0 825 0C800 0 775 0 750 0C725 0 700 0 675 0C650 0 625 0 600 0C575 0 550 0 525 0C500 0 475 0 450 0C425 0 400 0 375 0C350 0 325 0 300 0C275 0 250 0 225 0C200 0 175 0 150 0C125 0 100 0 75 0C50 0 25 0 12.5 0L0 0Z"

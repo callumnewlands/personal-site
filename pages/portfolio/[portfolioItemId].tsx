@@ -1,4 +1,5 @@
-import { projectsWithPages, PortfolioItem as PortfolioItemData } from "../../data/portfolio";
+import type { PortfolioItem as PortfolioItemData } from "../../data/portfolio";
+import { projectsWithPages } from "../../data/portfolio";
 import { TITLE_SUFFIX } from "../../data/pages";
 import Image from "next/image";
 import styles from "../../styles/portfolio.module.scss";
@@ -9,13 +10,14 @@ import { LinkButton } from "../../components/ui/Button";
 import Tag, { tagColours } from "../../components/ui/Tag";
 import { Title } from "../../components/ui/Typography";
 import { ArrowLeftIcon } from "../../svgs";
-import { sizedImage, SizedImage } from "../../common/images";
+import type { SizedImage } from "../../common/images";
+import { sizedImage } from "../../common/images";
 import { cx } from "../../common/helpers";
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 import { marked } from "marked";
 
-const SCREENSHOT_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
+const SCREENSHOT_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 
 // Rough rendered widths for the screenshot_wrapper_1-4 classes
 const SCREENSHOT_SIZES: { [width: number]: string } = {
@@ -91,7 +93,7 @@ export default function PortfolioItem({ item, descHtml, images }: PortfolioItemP
                         key={image.src}
                         className={cx(
                             styles.screenshot_wrapper,
-                            styles["screenshot_wrapper_" + item.screenshotWidths?.[i]]
+                            styles[`screenshot_wrapper_${item.screenshotWidths?.[i]}`]
                         )}
                     >
                         <Image
@@ -114,15 +116,15 @@ interface DynamicPageParams {
 }
 
 export async function getStaticProps({ params }: DynamicPageParams) {
-    const item = projectsWithPages.find((item) => item.id === params.portfolioItemId);
+    const item = projectsWithPages.find((project) => project.id === params.portfolioItemId);
     if (!item) {
         return { notFound: true };
     }
     const files = await readdir(path.join(process.cwd(), "public", item.screenshotsDirectory));
     const images = await Promise.all(
         files
-            .filter((file) => SCREENSHOT_EXTENSIONS.includes(path.extname(file).toLowerCase()))
-            .sort()
+            .filter((file) => SCREENSHOT_EXTENSIONS.has(path.extname(file).toLowerCase()))
+            .toSorted()
             .map((file) => sizedImage(`${item.screenshotsDirectory}/${file}`))
     );
     return {

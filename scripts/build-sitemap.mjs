@@ -14,7 +14,7 @@ const paths = [
     ])
 ]
     .filter((path) => !/^\/(_|404$|500$)/.test(path))
-    .sort();
+    .toSorted();
 
 const urls = paths.map((path) => `  <url>\n    <loc>${SITE_URL}${path}</loc>\n  </url>`).join("\n");
 await writeFile(

@@ -5,6 +5,7 @@ import styles from "../styles/contact.module.scss";
 import Seo from "../components/Seo";
 import { Title } from "../components/ui/Typography";
 import { pages } from "../data/pages";
+import { cx } from "../common/helpers";
 
 export default function ContactPage() {
     return (
@@ -17,7 +18,7 @@ export default function ContactPage() {
                         <p>Need a developer? Have a question or idea? Just want to say “Hi”? </p>
                         <p>Get in touch!</p>
                     </div>
-                    <div className={styles.contact_header_panel + " " + styles.contact_header_panel_image}>
+                    <div className={cx(styles.contact_header_panel, styles.contact_header_panel_image)}>
                         <Image
                             src={contactIllustration}
                             alt="Illustrations of a person throwing a paper aeroplane."

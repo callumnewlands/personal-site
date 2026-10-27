@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import styles from "./Footer.module.scss";
 import { GithubIcon, InstagramIcon, LinkedinIcon, UpworkLogo } from "../svgs";
 import { SOCIAL_LINKS } from "../common/site";

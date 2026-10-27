@@ -1,6 +1,7 @@
 import styles from "../styles/about.module.scss";
 import ImageDivider from "../components/ImageDivider";
-import CustomVerticalTimeline, { TimelineElementProps } from "../components/CustomVerticalTimeline";
+import type { TimelineElementProps } from "../components/CustomVerticalTimeline";
+import CustomVerticalTimeline from "../components/CustomVerticalTimeline";
 import Image from "next/image";
 import archeryImage from "../public/photos/archery.webp";
 import aboutIllustration from "../public/illustrations/about_large.svg";
@@ -14,6 +15,7 @@ import Link from "next/link";
 import Seo from "../components/Seo";
 import { Title } from "../components/ui/Typography";
 import { pages } from "../data/pages";
+import { cx } from "../common/helpers";
 
 export default function AboutPage() {
     const timelineData: TimelineElementProps[] = [
@@ -131,7 +133,7 @@ export default function AboutPage() {
                     </div>
                 </div>
 
-                <div className={styles.about_header_panel + " " + styles.about_header_panel_illustrations_container}>
+                <div className={cx(styles.about_header_panel, styles.about_header_panel_illustrations_container)}>
                     <Image
                         src={aboutIllustration}
                         loading="eager"
@@ -154,7 +156,7 @@ export default function AboutPage() {
                 }
             />
             <div className={styles.about_panels}>
-                <div className={styles.about_panels_panel + " " + styles.about_panels_panel_left}>
+                <div className={cx(styles.about_panels_panel, styles.about_panels_panel_left)}>
                     <Title level={2}>Experience and Education</Title>
                     <CustomVerticalTimeline data={timelineData} />
                 </div>

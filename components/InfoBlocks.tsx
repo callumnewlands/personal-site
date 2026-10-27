@@ -1,6 +1,7 @@
 import * as React from "react";
 import styles from "./InfoBlocks.module.scss";
 import { Text, Title } from "./ui/Typography";
+import { cx } from "../common/helpers";
 
 interface InfoBlockProps {
     icon: React.ReactNode;
@@ -15,7 +16,7 @@ interface InfoBlocksProps {
 function InfoBlock({ icon, title, content }: InfoBlockProps) {
     return (
         <>
-            <div className={styles.block + " " + styles.block_topper}>
+            <div className={cx(styles.block, styles.block_topper)}>
                 <div className={styles.block_icon_container}>{icon}</div>
                 <Title level={3} className={styles.block_title}>
                     {title}
