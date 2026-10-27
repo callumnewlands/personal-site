@@ -10,7 +10,7 @@
         "prebuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-seo-assets.mjs",
         "postbuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-sitemap.mjs",
         "start": "next start",
-        "test": "cypress run",
+        "test": "playwright test",
         "lint": "eslint . --max-warnings 0",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
@@ -27,13 +27,13 @@
         "sass": "^1.106.1"
     },
     "devDependencies": {
+        "@axe-core/playwright": "^4.14.0",
         "@eslint/compat": "^2.1.1",
         "@playwright/test": "^1.64.1",
         "@types/node": "^24",
         "@types/react": "^19.3.0",
         "@types/react-dom": "^19.3.0",
         "@types/react-vertical-timeline-component": "^3.3.6",
-        "cypress": "^16.2.0",
         "eslint": "^9.39.5",
         "eslint-config-next": "16.4.3",
         "prettier": "^3.9.10",

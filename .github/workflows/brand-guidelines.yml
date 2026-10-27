@@ -31,8 +31,6 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-        env:
-          CYPRESS_INSTALL_BINARY: 0
       - run: pnpm exec playwright install --with-deps chromium
       - run: git show HEAD:docs/brand-guidelines.pdf > "$RUNNER_TEMP/committed.pdf"
       - run: pnpm guidelines

@@ -5,4 +5,3 @@
 [build.environment]
   # needed for type stripping in prebuild
   NODE_VERSION = "24"
-  CYPRESS_INSTALL_BINARY = "0"

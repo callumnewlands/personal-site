@@ -47,7 +47,7 @@ export default function NavBar() {
 
     return (
         <header className={cx(styles.header, isHomePage && overMasthead && styles.header_hidden)}>
-            <Link href={"/"} aria-label="Callum Newlands home">
+            <Link href={"/"}>
                 <Logo className={styles.header_logo} />
             </Link>
             <nav className={styles.header_menu} aria-label="Main">
