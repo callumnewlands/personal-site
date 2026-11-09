@@ -4,6 +4,8 @@ const noindex = ["branch-deploy", "deploy-preview"].includes(process.env.CONTEXT
 /** @type {import('next').NextConfig} */
 module.exports = {
     reactStrictMode: true,
+    // Demo routes are app/**/page.dev.tsx files, so only next dev builds them
+    pageExtensions: ["tsx", "ts", "jsx", "js", ...(process.env.NODE_ENV === "development" ? ["dev.tsx"] : [])],
     images: {
         qualities: [75, 80]
     },
