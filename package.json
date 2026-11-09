@@ -12,7 +12,7 @@
         "postbuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-sitemap.mjs",
         "start": "next start",
         "tokens": "style-dictionary build --config tokens/config.json",
-        "content-schema": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-content-schema.mjs",
+        "content-schema": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-content-schema.mjs && prettier --write content/projects/schema.json",
         "test": "playwright test",
         "test:unit": "vitest run",
         "lint": "oxlint --deny-warnings",
