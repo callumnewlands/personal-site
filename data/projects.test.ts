@@ -1,15 +1,9 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test } from "vitest";
-import type { Project } from "./projects";
-import {
-    checkProjects,
-    getProjectPage,
-    getProjects,
-    getProjectSlugs,
-    parseProject,
-    projectJsonSchema
-} from "./projects";
+import type { Project } from "./project-schema";
+import { projectJsonSchema } from "./project-schema";
+import { checkProjects, getProjectPage, getProjects, getProjectSlugs, parseProject } from "./projects";
 
 const directory = join("content", "projects");
 
