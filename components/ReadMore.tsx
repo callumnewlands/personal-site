@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useRef, useState } from "react";
-import { useOverflowing } from "../common/helpers";
+import { useOverflowing } from "../common/hooks";
 
 interface ReadMoreProps {
     maxHeight?: string;
