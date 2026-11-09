@@ -114,7 +114,7 @@ export default function Design() {
                         <Button type="button" disabled>
                             Send it
                         </Button>
-                        <Button type="button" sending>
+                        <Button type="button" loading loadingLabel="Sending">
                             Send it
                         </Button>
                     </div>

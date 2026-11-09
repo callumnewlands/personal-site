@@ -91,7 +91,8 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
 
-    &:hover {
+    &:hover,
+    &:active {
       color: var(--color-primary-hover);
       text-decoration-thickness: 2px;
     }

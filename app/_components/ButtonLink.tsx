@@ -1,18 +1,18 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import styles from "./Button.module.css";
+import type { ButtonStyle } from "./buttonStyle";
+import { buttonClassName } from "./buttonStyle";
 import { ArrowIcon, ExternalArrowIcon } from "./icons";
-import { cx } from "../../common/helpers";
 
-type ButtonLinkProps = {
+type ButtonLinkProps = ButtonStyle & {
     href: string;
     children: ReactNode;
-} & ({ variant?: "primary"; dark?: boolean } | { variant: "secondary"; dark?: never });
+};
 
-export default function ButtonLink({ href, variant = "primary", dark = false, children }: ButtonLinkProps) {
+export default function ButtonLink({ href, variant, dark, children }: ButtonLinkProps) {
     const external = href.startsWith("http");
-    const className = cx(styles.button, styles[variant], dark && styles.dark);
-    const icon = variant === "primary" ? <ArrowIcon /> : external && <ExternalArrowIcon />;
+    const className = buttonClassName(variant, dark);
+    const icon = variant === "secondary" ? external && <ExternalArrowIcon /> : <ArrowIcon />;
 
     if (external) {
         return (

@@ -2,36 +2,48 @@
 
 import type { ButtonHTMLAttributes } from "react";
 import styles from "./Button.module.css";
+import type { ButtonStyle } from "./buttonStyle";
+import { buttonClassName } from "./buttonStyle";
 import { ArrowIcon } from "./icons";
-import { cx } from "../../common/helpers";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    sending?: boolean;
-}
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+    ButtonStyle & {
+        loading?: boolean;
+        loadingLabel?: string;
+    };
 
-export default function Button({ sending = false, className, onClick, children, ...props }: ButtonProps) {
+export default function Button({
+    variant,
+    dark,
+    loading = false,
+    loadingLabel,
+    className,
+    onClick,
+    children,
+    ...props
+}: ButtonProps) {
     return (
         <button
             {...props}
-            className={cx(styles.button, styles.primary, className)}
-            aria-disabled={sending || undefined}
+            className={buttonClassName(variant, dark, className)}
+            aria-disabled={loading || undefined}
             onClick={(event) => {
-                if (sending) {
+                if (loading) {
                     event.preventDefault();
                     return;
                 }
                 onClick?.(event);
             }}
         >
-            {sending ? (
+            {loading ? (
                 <>
                     <span className={styles.spinner} aria-hidden="true" />
-                    Sending
+                    {loadingLabel ?? children}
                 </>
             ) : (
                 <>
                     {children}
-                    <ArrowIcon />
+                    {variant !== "secondary" && <ArrowIcon />}
                 </>
             )}
         </button>
