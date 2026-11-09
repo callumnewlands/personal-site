@@ -1,0 +1,34 @@
+@layer components {
+  .logo {
+    height: var(--size-logo-mark-nav);
+    width: auto;
+  }
+
+  .mark {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .name {
+    fill: var(--color-ink);
+  }
+
+  .dark {
+    .mark {
+      stroke: var(--color-accent);
+    }
+
+    .name {
+      fill: var(--color-on-dark);
+    }
+  }
+
+  @media (width < 48em) {
+    .logo {
+      height: var(--size-logo-mark-phone);
+    }
+  }
+}

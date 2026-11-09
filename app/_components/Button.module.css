@@ -1,0 +1,91 @@
+@layer components {
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    border-radius: var(--radius-button);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      transform 0.15s,
+      background-color 0.15s,
+      border-color 0.15s,
+      color 0.15s;
+  }
+
+  .primary {
+    min-height: var(--size-button-primary);
+    padding: 0 var(--space-5);
+    border: 0;
+    font-size: 1.1875rem;
+    color: var(--color-on-dark);
+    background: var(--color-primary);
+    box-shadow: var(--shadow-lift);
+
+    &:hover {
+      color: var(--color-on-dark);
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: none;
+    }
+
+    &:disabled {
+      color: var(--color-subtle);
+      background: var(--color-line-strong);
+      box-shadow: none;
+      transform: none;
+      cursor: not-allowed;
+    }
+
+    &[aria-disabled="true"] {
+      background: var(--color-primary);
+      transform: none;
+      cursor: progress;
+    }
+  }
+
+  .secondary {
+    min-height: var(--size-button-secondary);
+    padding: 0 1.125rem;
+    border: 2px solid var(--color-line-control);
+    font-size: var(--font-size-small);
+    color: var(--color-ink);
+    background: var(--color-surface);
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+  }
+
+  .dark {
+    --focus-ring-color: var(--color-accent);
+
+    color: var(--color-on-accent);
+    background: var(--color-accent);
+
+    &:hover {
+      color: var(--color-on-accent);
+      background: var(--color-accent-hover);
+    }
+  }
+
+  .spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2.5px solid color-mix(in srgb, currentColor 40%, transparent);
+    border-top-color: currentColor;
+    border-radius: var(--radius-round);
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      rotate: 1turn;
+    }
+  }
+}

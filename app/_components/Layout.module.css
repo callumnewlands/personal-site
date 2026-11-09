@@ -1,0 +1,25 @@
+@layer components {
+  .container {
+    max-width: calc(var(--layout-content-max) + 2 * var(--layout-gutter));
+    margin-inline: auto;
+    padding-inline: var(--layout-gutter);
+  }
+
+  .narrow {
+    max-width: calc(var(--layout-narrow-max) + 2 * var(--layout-gutter));
+  }
+
+  .section {
+    padding-block-start: clamp(var(--space-10), 8vw, var(--space-11));
+  }
+
+  .band {
+    padding-block-end: clamp(var(--space-10), 8vw, var(--space-11));
+    background: var(--color-band);
+
+    /* Viridian is only 4.35:1 on the band */
+    a:not([class]) {
+      color: var(--color-primary-hover);
+    }
+  }
+}
