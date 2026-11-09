@@ -1,5 +1,9 @@
+.title {
+  margin-block-end: var(--space-8);
+}
+
 .heading {
-  margin-block: var(--space-8) var(--space-5);
+  margin-block-end: var(--space-5);
 }
 
 .swatches {

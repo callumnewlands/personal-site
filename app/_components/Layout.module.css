@@ -10,11 +10,16 @@
   }
 
   .section {
-    padding-block-start: clamp(var(--space-10), 8vw, var(--space-11));
+    padding-block-start: var(--layout-section-space);
+
+    &:last-child,
+    &:has(+ .band) {
+      padding-block-end: var(--layout-section-space);
+    }
   }
 
   .band {
-    padding-block-end: clamp(var(--space-10), 8vw, var(--space-11));
+    padding-block-end: var(--layout-section-space);
     background: var(--color-band);
 
     /* Viridian is only 4.35:1 on the band */

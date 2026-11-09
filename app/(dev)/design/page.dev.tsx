@@ -42,7 +42,7 @@ export default function Design() {
         <>
             <Section>
                 <Container>
-                    <h1>Design tokens</h1>
+                    <h1 className={styles.title}>Design tokens</h1>
                     <h2 className={styles.heading}>Colour</h2>
                     <ul className={styles.swatches}>
                         {colours.map((name) => (
@@ -97,15 +97,17 @@ export default function Design() {
             </Section>
             <Section>
                 <Container>
-                    <h2 className={styles.heading}>Logo and buttons</h2>
+                    <h2 id="buttons" className={styles.heading}>
+                        Logo and buttons
+                    </h2>
                     <p className="caption">Hover, press and tab through these to see their states.</p>
                     <div className={styles.row}>
                         <Logo />
-                        <ButtonLink href="/contact">Send me a message</ButtonLink>
-                        <ButtonLink href="https://mathsplanner.app" variant="secondary">
-                            Visit mathsplanner.app
+                        <ButtonLink href="#buttons">Send me a message</ButtonLink>
+                        <ButtonLink href="https://cnewlands.dev" variant="secondary">
+                            Visit cnewlands.dev
                         </ButtonLink>
-                        <ButtonLink href="/#work" variant="secondary">
+                        <ButtonLink href="#buttons" variant="secondary">
                             All work
                         </ButtonLink>
                     </div>
@@ -120,7 +122,7 @@ export default function Design() {
                     </div>
                     <div className={cx(styles.row, styles.dark, "on-dark")}>
                         <Logo dark />
-                        <ButtonLink href="/contact" dark>
+                        <ButtonLink href="#buttons" dark>
                             Send me a message
                         </ButtonLink>
                     </div>
