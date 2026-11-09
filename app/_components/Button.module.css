@@ -24,13 +24,11 @@
     box-shadow: var(--shadow-lift);
 
     &:hover {
-      color: var(--color-on-dark);
       background: var(--color-primary-hover);
       transform: translateY(-2px);
     }
 
     &:active {
-      color: var(--color-on-dark);
       background: var(--color-primary-hover);
       box-shadow: var(--shadow-card);
       transform: none;
@@ -77,8 +75,11 @@
 
     &:hover,
     &:active {
-      color: var(--color-on-accent);
       background: var(--color-accent-hover);
+    }
+
+    &[aria-disabled="true"] {
+      background: var(--color-accent);
     }
   }
 
