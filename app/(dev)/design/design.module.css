@@ -45,5 +45,5 @@
 .dark {
   padding: var(--space-6);
   border-radius: var(--radius-panel);
-  background: var(--color-deep);
+  background: var(--color-footer);
 }
