@@ -1,8 +1,9 @@
-// Netlify only adds noindex to previews, not the latest deploy of each branch
-const noindex = ["branch-deploy", "deploy-preview"].includes(process.env.CONTEXT);
+import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-module.exports = {
+// Netlify only adds noindex to previews, not the latest deploy of each branch
+const noindex = process.env.CONTEXT === "branch-deploy" || process.env.CONTEXT === "deploy-preview";
+
+const nextConfig: NextConfig = {
     reactStrictMode: true,
     // Demo routes are app/**/page.dev.tsx files, so only next dev builds them
     pageExtensions: ["tsx", "ts", "jsx", "js", ...(process.env.NODE_ENV === "development" ? ["dev.tsx"] : [])],
@@ -25,3 +26,5 @@ module.exports = {
         ];
     }
 };
+
+export default nextConfig;
