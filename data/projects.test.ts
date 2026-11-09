@@ -1,9 +1,8 @@
-import { readdirSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test } from "vitest";
-import type { Project } from "./project-schema";
 import { projectJsonSchema } from "./project-schema";
-import { checkProjects, getProjectPage, getProjects, getProjectSlugs, parseProject } from "./projects";
+import { checkProjects, getProjectPage, getProjects, getProjectSlugs, loadProjects, parseProject } from "./projects";
 
 const directory = join("content", "projects");
 
@@ -34,13 +33,7 @@ const one = parseProject("one.yaml", card(1));
 const two = parseProject("two.yaml", card(2));
 
 test("every project file is valid", () => {
-    const projects: Project[] = [];
-    for (const file of readdirSync(directory)) {
-        if (file.endsWith(".yaml")) {
-            projects.push(parseProject(file, readFileSync(join(directory, file), "utf8")));
-        }
-    }
-    expect(() => checkProjects(projects)).not.toThrow();
+    expect(() => loadProjects()).not.toThrow();
 });
 
 test("sorts projects by order", () => {

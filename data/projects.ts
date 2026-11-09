@@ -34,7 +34,7 @@ export function checkProjects(projects: Project[]) {
     }
 }
 
-function loadProjects() {
+export function loadProjects() {
     const projects: Project[] = [];
     for (const file of readdirSync(directory)) {
         if (file.endsWith(".yaml")) {
@@ -45,17 +45,20 @@ function loadProjects() {
     return projects.toSorted((a, b) => a.order - b.order);
 }
 
-const projects = loadProjects();
+let projects: Project[] | undefined;
 
 export function getProjects() {
+    projects ??= loadProjects();
     return projects;
 }
 
 export function getProjectPage(slug: string) {
-    const item = projects.find((other) => other.slug === slug);
+    const item = getProjects().find((other) => other.slug === slug);
     return item?.page ? { ...item, page: item.page } : undefined;
 }
 
 export function getProjectSlugs() {
-    return projects.filter((item) => item.page).map((item) => item.slug);
+    return getProjects()
+        .filter((item) => item.page)
+        .map((item) => item.slug);
 }
