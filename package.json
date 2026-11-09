@@ -4,12 +4,13 @@
     "private": true,
     "packageManager": "pnpm@12.15.0",
     "scripts": {
-        "predev": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-seo-assets.mjs",
+        "predev": "pnpm tokens && node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-seo-assets.mjs",
         "dev": "next dev -p 3002",
         "build": "next build",
-        "prebuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-seo-assets.mjs",
+        "prebuild": "pnpm tokens && node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-seo-assets.mjs",
         "postbuild": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-sitemap.mjs",
         "start": "next start",
+        "tokens": "style-dictionary build --config tokens/config.json",
         "test": "playwright test",
         "test:unit": "vitest run",
         "lint": "oxlint --deny-warnings",
@@ -37,6 +38,7 @@
         "oxlint": "^1.91.0",
         "prettier": "^3.9.10",
         "sharp": "^0.35.5",
+        "style-dictionary": "^5.8.0",
         "typescript": "^5.9.3",
         "vitest": "^5.1.0"
     }
