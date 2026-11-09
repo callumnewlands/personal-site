@@ -1,4 +1,4 @@
-// Editors read this through the yaml-language-server comment at the top of each project file
+// Used for IDE code hints in content/projects/*.yaml files
 import { writeFile } from "node:fs/promises";
 import { projectJsonSchema } from "../data/project-schema.ts";
 

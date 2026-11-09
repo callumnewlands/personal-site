@@ -3,7 +3,7 @@ title: Watercraft
 order: 4
 card:
   line: "A field app for carp anglers: swims, spots and the patterns in their catches"
-  role: Tech lead, [TBC year]
+  role: "Tech lead, [TBC: year]"
   image:
     src: /projects/watercraft/card.jpg
     alt: ""
