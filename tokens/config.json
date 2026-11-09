@@ -1,0 +1,18 @@
+{
+    "source": ["tokens/tokens.json"],
+    "platforms": {
+        "css": {
+            "transforms": ["name/kebab", "fontFamily/css"],
+            "buildPath": "styles/",
+            "files": [{ "destination": "tokens.css", "format": "css/variables" }]
+        },
+        "js": {
+            "transforms": ["name/camel"],
+            "buildPath": "styles/",
+            "files": [
+                { "destination": "tokens.js", "format": "javascript/es6" },
+                { "destination": "tokens.d.ts", "format": "typescript/es6-declarations" }
+            ]
+        }
+    }
+}

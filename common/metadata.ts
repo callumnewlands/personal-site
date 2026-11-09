@@ -16,6 +16,15 @@ export const siteMetadata: Metadata = {
     title: TITLE_SUFFIX,
     description: pages.home.description,
     authors: [{ name: "Callum Newlands" }],
+    icons: {
+        icon: [
+            { url: "/favicon.svg", type: "image/svg+xml" },
+            { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+            { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" }
+        ],
+        apple: "/apple-touch-icon.png"
+    },
+    manifest: "/site.webmanifest",
     openGraph: { siteName: SITE_NAME, type: "website", locale: "en_GB", images: ogImages("/") },
     twitter: { card: "summary_large_image", images: ogImages("/") }
 };
