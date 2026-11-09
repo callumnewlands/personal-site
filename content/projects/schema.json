@@ -65,8 +65,8 @@
                     "description": "My role, for the facts row"
                 },
                 "years": {
-                    "type": "string",
-                    "description": "For the facts row, e.g. 2020 to now"
+                    "description": "For the facts row, e.g. 2020 to now",
+                    "type": ["string", "number"]
                 },
                 "headerImages": {
                     "type": "array",
@@ -310,10 +310,14 @@
                                         "properties": {
                                             "x": {
                                                 "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 100,
                                                 "description": "Percentage from the left"
                                             },
                                             "y": {
                                                 "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 100,
                                                 "description": "Percentage from the top"
                                             },
                                             "text": {

@@ -35,10 +35,10 @@ const page = z
         lead: z.string().describe("One line under the title"),
         client: z.string(),
         role: z.string().describe("My role, for the facts row"),
-        years: z.coerce.string().describe("For the facts row, e.g. 2020 to now"),
+        years: z.union([z.string(), z.number()]).transform(String).describe("For the facts row, e.g. 2020 to now"),
         headerImages: z.tuple([image, image, image]).describe("Three wide screenshots for the fan"),
         moreWork: z.tuple([z.string(), z.string()]).describe("Two project slugs for More work"),
-        liveUrl: z.url().optional().describe("Shown as the Visit button"),
+        liveUrl: z.httpUrl().optional().describe("Shown as the Visit button"),
         headlineResult: z.string().optional().describe("One or two sentences on the band after the header"),
         chapters: z
             .array(z.strictObject({ heading: z.string(), text: z.string(), figure }))
@@ -52,8 +52,8 @@ const page = z
                     markers: z
                         .array(
                             z.strictObject({
-                                x: z.number().describe("Percentage from the left"),
-                                y: z.number().describe("Percentage from the top"),
+                                x: z.number().min(0).max(100).describe("Percentage from the left"),
+                                y: z.number().min(0).max(100).describe("Percentage from the top"),
                                 text: z.string()
                             })
                         )
@@ -73,7 +73,7 @@ const page = z
             })
             .optional()
             .describe("A row of work cards after the results"),
-        links: z.array(z.strictObject({ label: z.string(), href: z.url() })).optional()
+        links: z.array(z.strictObject({ label: z.string(), href: z.httpUrl() })).optional()
     })
     .describe("The project page. Leave it out and the work card doesn't link anywhere");
 
