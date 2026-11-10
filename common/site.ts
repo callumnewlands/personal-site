@@ -1,6 +1,7 @@
 // No imports here, it's also used by scripts/build-seo-assets.mjs
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://cnewlands.dev").replace(/\/$/, "");
 export const SITE_NAME = "Callum Newlands, Freelance Developer";
+export const EMAIL = "callum@cnewlands.dev";
 
 export const SOCIAL_LINKS = {
     GitHub: "https://github.com/callumnewlands",
