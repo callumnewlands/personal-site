@@ -1,29 +1,21 @@
 @layer components {
+  .symbol {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
   .logo {
+    --logo-mark: var(--color-primary);
+    --logo-name: var(--color-ink);
+
     height: var(--size-logo-mark-nav);
     width: auto;
   }
 
-  .mark {
-    fill: none;
-    stroke: var(--color-primary);
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .name {
-    fill: var(--color-ink);
-  }
-
   .dark {
-    .mark {
-      stroke: var(--color-accent);
-    }
-
-    .name {
-      fill: var(--color-on-dark);
-    }
+    --logo-mark: var(--color-accent);
+    --logo-name: var(--color-on-dark);
   }
 
   @media (width < 48em) {

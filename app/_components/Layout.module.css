@@ -12,8 +12,7 @@
   .section {
     padding-block-start: var(--layout-section-space);
 
-    &:last-child,
-    &:has(+ .band) {
+    &:not(:has(+ .section:not(.band))) {
       padding-block-end: var(--layout-section-space);
     }
   }

@@ -1,0 +1,21 @@
+@layer components {
+  .treeline {
+    /* Grows past 1440px so the tallest trees aren't cropped */
+    height: max(120px, 100vw / 12);
+    /* Overlaps the section below so no seam shows at fractional zoom levels */
+    margin-block-end: -1px;
+    mask-position: center bottom;
+    mask-size: cover;
+    mask-repeat: no-repeat;
+  }
+
+  .footer {
+    background: var(--color-footer);
+    mask-image: url("/treeline-footer.svg");
+  }
+
+  .band-top {
+    background: var(--color-band);
+    mask-image: url("/treeline-band-top.svg");
+  }
+}
