@@ -6,7 +6,7 @@
     <title>Forms</title>
 </head>
 <body>
-<!-- Hidden form definitions for Netlify Forms detection. Field names must match components/ContactForm.tsx -->
+<!-- Hidden form definitions for Netlify Forms detection. Field names must match components/ContactForm.tsx and app/_components/enquiry.ts -->
 <form name="Contact Form" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input type="hidden" name="form-name" value="Contact Form" />
     <input name="bot-field" />
@@ -20,6 +20,21 @@
     <input type="text" name="name" />
     <input type="email" name="email" />
     <textarea name="message"></textarea>
+</form>
+<form name="enquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="enquiry" />
+    <input name="bot-field" />
+    <fieldset>
+        <input type="radio" name="need" value="Part-time tech lead" />
+        <input type="radio" name="need" value="Code review or health check" />
+        <input type="radio" name="need" value="CI/CD and workflow" />
+        <input type="radio" name="need" value="New build or MVP" />
+        <input type="radio" name="need" value="Not sure yet" />
+        <input type="radio" name="need" value="Something else" />
+    </fieldset>
+    <textarea name="situation"></textarea>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
 </form>
 </body>
 </html>
