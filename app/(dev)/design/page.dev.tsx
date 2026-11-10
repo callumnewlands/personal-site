@@ -5,6 +5,7 @@ import Button from "../../_components/Button";
 import ButtonLink from "../../_components/ButtonLink";
 import { Container, Section } from "../../_components/Layout";
 import Logo from "../../_components/Logo";
+import Treeline from "../../_components/Treeline";
 import styles from "./design.module.css";
 import { cx } from "../../../common/helpers";
 
@@ -54,6 +55,7 @@ export default function Design() {
                     </ul>
                 </Container>
             </Section>
+            <Treeline variant="band-top" />
             <Section band>
                 <Container>
                     <h2 className={styles.heading}>Type</h2>
