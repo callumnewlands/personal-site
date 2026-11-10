@@ -1,3 +1,3 @@
 export default function NotFound() {
-    return <h1>This page isn’t here</h1>;
+    return <h1>This page isn&rsquo;t here</h1>;
 }
