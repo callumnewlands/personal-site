@@ -1,0 +1,475 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string"
+        },
+        "order": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991,
+            "description": "Position in the home page work grid"
+        },
+        "card": {
+            "type": "object",
+            "properties": {
+                "line": {
+                    "type": "string",
+                    "description": "One line on what the project is"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role and years, e.g. Tech lead, 2022 to now"
+                },
+                "image": {
+                    "type": "object",
+                    "properties": {
+                        "src": {
+                            "type": "string",
+                            "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                        },
+                        "alt": {
+                            "type": "string",
+                            "description": "What the image shows. Empty only when the text next to it says it all"
+                        }
+                    },
+                    "required": ["src", "alt"],
+                    "additionalProperties": false
+                },
+                "tags": {
+                    "maxItems": 3,
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Quiet tags on the image"
+                }
+            },
+            "required": ["line", "role", "image", "tags"],
+            "additionalProperties": false,
+            "description": "The work card on the home page and in More work"
+        },
+        "page": {
+            "type": "object",
+            "properties": {
+                "lead": {
+                    "type": "string",
+                    "description": "One line under the title"
+                },
+                "client": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "My role, for the facts row"
+                },
+                "years": {
+                    "description": "For the facts row, e.g. 2020 to now",
+                    "type": ["string", "number"]
+                },
+                "headerImages": {
+                    "type": "array",
+                    "prefixItems": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "src": {
+                                    "type": "string",
+                                    "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                                },
+                                "alt": {
+                                    "type": "string",
+                                    "description": "What the image shows. Empty only when the text next to it says it all"
+                                }
+                            },
+                            "required": ["src", "alt"],
+                            "additionalProperties": false
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "src": {
+                                    "type": "string",
+                                    "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                                },
+                                "alt": {
+                                    "type": "string",
+                                    "description": "What the image shows. Empty only when the text next to it says it all"
+                                }
+                            },
+                            "required": ["src", "alt"],
+                            "additionalProperties": false
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "src": {
+                                    "type": "string",
+                                    "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                                },
+                                "alt": {
+                                    "type": "string",
+                                    "description": "What the image shows. Empty only when the text next to it says it all"
+                                }
+                            },
+                            "required": ["src", "alt"],
+                            "additionalProperties": false
+                        }
+                    ],
+                    "items": false,
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "description": "Three wide screenshots for the fan"
+                },
+                "moreWork": {
+                    "type": "array",
+                    "prefixItems": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "items": false,
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "description": "Two project slugs for More work"
+                },
+                "liveUrl": {
+                    "description": "Shown as the Visit button",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "headlineResult": {
+                    "description": "One or two sentences on the band after the header",
+                    "type": "string"
+                },
+                "chapters": {
+                    "description": "Text and a figure, alternating sides. Separate paragraphs with a blank line",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "heading": {
+                                "type": "string"
+                            },
+                            "text": {
+                                "type": "string"
+                            },
+                            "figure": {
+                                "oneOf": [
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "const": "fragment"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "description": "Which product fragment component to draw"
+                                            },
+                                            "screenshot": {
+                                                "description": "A screenshot overlapping the fragment",
+                                                "type": "object",
+                                                "properties": {
+                                                    "src": {
+                                                        "type": "string",
+                                                        "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                                                    },
+                                                    "alt": {
+                                                        "type": "string",
+                                                        "description": "What the image shows. Empty only when the text next to it says it all"
+                                                    },
+                                                    "caption": {
+                                                        "type": "string",
+                                                        "description": "Shown under the image"
+                                                    }
+                                                },
+                                                "required": ["src", "alt", "caption"],
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": ["type", "name"],
+                                        "additionalProperties": false
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "const": "screenshot"
+                                            },
+                                            "image": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "src": {
+                                                        "type": "string",
+                                                        "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                                                    },
+                                                    "alt": {
+                                                        "type": "string",
+                                                        "description": "What the image shows. Empty only when the text next to it says it all"
+                                                    },
+                                                    "caption": {
+                                                        "type": "string",
+                                                        "description": "Shown under the image"
+                                                    }
+                                                },
+                                                "required": ["src", "alt", "caption"],
+                                                "additionalProperties": false
+                                            },
+                                            "second": {
+                                                "description": "A smaller second screenshot",
+                                                "type": "object",
+                                                "properties": {
+                                                    "src": {
+                                                        "type": "string",
+                                                        "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                                                    },
+                                                    "alt": {
+                                                        "type": "string",
+                                                        "description": "What the image shows. Empty only when the text next to it says it all"
+                                                    },
+                                                    "caption": {
+                                                        "type": "string",
+                                                        "description": "Shown under the image"
+                                                    }
+                                                },
+                                                "required": ["src", "alt", "caption"],
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": ["type", "image"],
+                                        "additionalProperties": false
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "const": "timeline"
+                                            },
+                                            "steps": {
+                                                "minItems": 1,
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "string"
+                                                        },
+                                                        "text": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": ["date", "text"],
+                                                    "additionalProperties": false
+                                                }
+                                            }
+                                        },
+                                        "required": ["type", "steps"],
+                                        "additionalProperties": false
+                                    }
+                                ],
+                                "description": "The figure beside a chapter's text"
+                            }
+                        },
+                        "required": ["heading", "text", "figure"],
+                        "additionalProperties": false
+                    }
+                },
+                "inUse": {
+                    "description": "The green band showing the product in use",
+                    "type": "object",
+                    "properties": {
+                        "heading": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
+                        },
+                        "screenshot": {
+                            "type": "object",
+                            "properties": {
+                                "src": {
+                                    "type": "string",
+                                    "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                                },
+                                "alt": {
+                                    "type": "string",
+                                    "description": "What the image shows. Empty only when the text next to it says it all"
+                                },
+                                "markers": {
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "x": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 100,
+                                                "description": "Percentage from the left"
+                                            },
+                                            "y": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 100,
+                                                "description": "Percentage from the top"
+                                            },
+                                            "text": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["x", "y", "text"],
+                                        "additionalProperties": false
+                                    },
+                                    "description": "Numbered markers, with their text as the legend"
+                                }
+                            },
+                            "required": ["src", "alt", "markers"],
+                            "additionalProperties": false
+                        },
+                        "screenshots": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "src": {
+                                        "type": "string",
+                                        "description": "Path under public/, e.g. /projects/mathsplanner/card.jpg"
+                                    },
+                                    "alt": {
+                                        "type": "string",
+                                        "description": "What the image shows. Empty only when the text next to it says it all"
+                                    },
+                                    "caption": {
+                                        "type": "string",
+                                        "description": "Shown under the image"
+                                    }
+                                },
+                                "required": ["src", "alt", "caption"],
+                                "additionalProperties": false
+                            },
+                            "description": "Smaller screenshots under the numbered one"
+                        }
+                    },
+                    "required": ["heading", "text", "screenshot", "screenshots"],
+                    "additionalProperties": false
+                },
+                "results": {
+                    "description": "Three results tiles",
+                    "type": "array",
+                    "prefixItems": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "type": "string",
+                                    "description": "The number, or [TBC]"
+                                },
+                                "label": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": ["value", "label"],
+                            "additionalProperties": false
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "type": "string",
+                                    "description": "The number, or [TBC]"
+                                },
+                                "label": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": ["value", "label"],
+                            "additionalProperties": false
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "type": "string",
+                                    "description": "The number, or [TBC]"
+                                },
+                                "label": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": ["value", "label"],
+                            "additionalProperties": false
+                        }
+                    ],
+                    "items": false,
+                    "minItems": 3,
+                    "maxItems": 3
+                },
+                "quote": {
+                    "type": "object",
+                    "properties": {
+                        "text": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "role": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["text", "name", "role"],
+                    "additionalProperties": false
+                },
+                "related": {
+                    "description": "A row of work cards after the results",
+                    "type": "object",
+                    "properties": {
+                        "heading": {
+                            "type": "string"
+                        },
+                        "slugs": {
+                            "minItems": 1,
+                            "maxItems": 3,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "Up to three project slugs"
+                        }
+                    },
+                    "required": ["heading", "slugs"],
+                    "additionalProperties": false
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "label": {
+                                "type": "string"
+                            },
+                            "href": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        },
+                        "required": ["label", "href"],
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "required": ["lead", "client", "role", "years", "headerImages", "moreWork"],
+            "additionalProperties": false,
+            "description": "The project page. Leave it out and the work card doesn't link anywhere"
+        }
+    },
+    "required": ["title", "order", "card"],
+    "additionalProperties": false
+}

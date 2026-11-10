@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=./schema.json
+title: Angling Trust events
+order: 3
+card:
+  line: Coaching and events marketplace, built on swimbooker for the Angling Trust
+  role: "Tech lead, [TBC: year]"
+  image:
+    src: /projects/angling-trust-events/card.jpg
+    alt: ""
+  tags: [Marketplace]

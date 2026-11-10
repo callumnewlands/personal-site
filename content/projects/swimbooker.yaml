@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=./schema.json
+title: swimbooker
+order: 1
+card:
+  line: Booking, payments and fishery management for UK fishing lakes
+  role: Tech lead and only full-stack developer, 2022 to now
+  image:
+    src: /projects/swimbooker/card.jpg
+    alt: ""
+  tags: [Booking platform, Next.js, Python]

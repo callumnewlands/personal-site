@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=./schema.json
+title: ForestGenerator
+order: 6
+card:
+  line: Whole woodlands grown from rules, one tree at a time
+  role: MEng research, now used by other researchers
+  image:
+    src: /projects/forestgenerator/card.jpg
+    alt: ""
+  tags: [Research, OpenGL]

@@ -1,0 +1,93 @@
+# yaml-language-server: $schema=./schema.json
+title: Maths Planner
+order: 5
+card:
+  line: A complete lesson-planning web app for maths teachers, for TeachEezy
+  role: Designed and built alone, 2020
+  image:
+    src: /projects/mathsplanner/card.jpg
+    alt: ""
+  tags: [EdTech, React]
+page:
+  lead: "[TBC: lead]"
+  client: TeachEezy
+  role: "[TBC: role]"
+  years: 2020 to now
+  liveUrl: https://mathsplanner.app/
+  headerImages:
+    - src: /projects/mathsplanner/timetable.jpg
+      alt: The weekly timetable where teachers save starters for each class
+    - src: /projects/mathsplanner/whiteboard.jpg
+      alt: The whiteboard, with a circle theorem answer worked through by hand
+    - src: /projects/mathsplanner/starter.jpg
+      alt: "A Maths Planner starter: six questions, a countdown timer and an extension question"
+  headlineResult: "[TBC: headline result]"
+  chapters:
+    - heading: "[TBC: chapter 1 heading]"
+      text: "[TBC: chapter 1 text]"
+      figure:
+        type: screenshot
+        image:
+          src: /projects/mathsplanner/timetable-close-up.jpg
+          alt: Close-up of the weekly timetable with colour-coded starters for each class
+          caption: "[TBC: caption]"
+    - heading: "[TBC: chapter 2 heading]"
+      text: "[TBC: chapter 2 text]"
+      figure:
+        type: fragment
+        name: question-template
+        screenshot:
+          src: /projects/mathsplanner/question.jpg
+          alt: "One generated question: solve 2y squared minus y plus 9 equals 6y plus 3"
+          caption: "[TBC: caption]"
+    - heading: "[TBC: chapter 3 heading]"
+      text: "[TBC: chapter 3 text]"
+      figure:
+        type: fragment
+        name: architecture
+    - heading: "[TBC: chapter 4 heading]"
+      text: "[TBC: chapter 4 text]"
+      figure:
+        type: fragment
+        name: tests
+  inUse:
+    heading: "[TBC: heading]"
+    text: "[TBC: text]"
+    screenshot:
+      src: /projects/mathsplanner/starter.jpg
+      alt: "A Maths Planner starter: six questions, a countdown timer and an extension question"
+      markers:
+        - x: 79
+          y: 5.6
+          text: "[TBC: marker 1]"
+        - x: 33.4
+          y: 16
+          text: "[TBC: marker 2]"
+        - x: 5.5
+          y: 56
+          text: "[TBC: marker 3]"
+        - x: 30
+          y: 95.5
+          text: "[TBC: marker 4]"
+    screenshots:
+      - src: /projects/mathsplanner/whiteboard.jpg
+        alt: The whiteboard, with a circle theorem answer worked through by hand
+        caption: "[TBC: caption]"
+      - src: /projects/mathsplanner/print.jpg
+        alt: The print dialog for question sheets
+        caption: "[TBC: caption]"
+      - src: /projects/mathsplanner/times-tables.jpg
+        alt: A times tables grid with a two-minute timer
+        caption: "[TBC: caption]"
+  results:
+    - value: "[TBC]"
+      label: "[TBC]"
+    - value: "[TBC]"
+      label: "[TBC]"
+    - value: "[TBC]"
+      label: "[TBC]"
+  quote:
+    text: "[TBC: quote]"
+    name: "[TBC: name]"
+    role: "[TBC: role]"
+  moreWork: [swimbooker, swimbooker-plus]
