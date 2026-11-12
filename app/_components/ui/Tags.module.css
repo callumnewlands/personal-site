@@ -1,0 +1,23 @@
+@layer components {
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .tag {
+    padding: var(--space-1) var(--space-3);
+    border: 1.5px solid var(--color-line-strong);
+    border-radius: var(--radius-tag);
+    font-size: var(--font-size-caption);
+    line-height: 1.5;
+  }
+
+  .overlay .tag {
+    border-color: color-mix(in srgb, var(--color-on-dark) 80%, transparent);
+    color: var(--color-on-dark);
+    background: var(--color-tag-on-image);
+  }
+}
