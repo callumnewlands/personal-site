@@ -1,13 +1,26 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import ts from "typescript";
+import { parse } from "@babel/parser";
 
-function property(node: ts.Node, name: string) {
-    if (!ts.isObjectLiteralExpression(node)) {
+interface SyntaxNode {
+    type: string;
+    start: number;
+    end: number;
+    [key: string]: unknown;
+}
+
+function isNode(value: unknown): value is SyntaxNode {
+    return typeof value === "object" && value !== null && "type" in value;
+}
+
+function property(node: SyntaxNode, name: string) {
+    if (node.type !== "ObjectExpression") {
         return undefined;
     }
-    const found = node.properties.find((item) => item.name?.getText() === name);
-    return found && ts.isPropertyAssignment(found) ? found.initializer : undefined;
+    const found = (node.properties as SyntaxNode[]).find(
+        (item) => item.type === "ObjectProperty" && (item.key as SyntaxNode).name === name
+    );
+    return found?.value as SyntaxNode | undefined;
 }
 
 // Removes the indent the code had inside examples.tsx, keeping its own nesting
@@ -20,24 +33,29 @@ function dedent(code: string) {
 
 // The JSX of each example's element, as written in examples.tsx, by group heading
 export function exampleSources() {
-    const file = join(process.cwd(), "app/(dev)/components/examples.tsx");
-    const tree = ts.createSourceFile(file, readFileSync(file, "utf8"), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+    const text = readFileSync(join(process.cwd(), "app/(dev)/components/examples.tsx"), "utf8");
     const sources: Record<string, string[]> = {};
 
-    tree.forEachChild(function visit(node) {
-        const heading = property(node, "heading");
-        const examples = property(node, "examples");
-        if (heading && ts.isStringLiteral(heading) && examples && ts.isArrayLiteralExpression(examples)) {
-            sources[heading.text] = examples.elements.map((example) => {
-                let element = property(example, "element")!;
-                if (ts.isParenthesizedExpression(element)) {
-                    element = element.expression;
-                }
-                return dedent(element.getText());
+    function visit(value: unknown) {
+        if (Array.isArray(value)) {
+            value.forEach(visit);
+            return;
+        }
+        if (!isNode(value)) {
+            return;
+        }
+        const heading = property(value, "heading");
+        const examples = property(value, "examples");
+        if (heading?.type === "StringLiteral" && examples?.type === "ArrayExpression") {
+            sources[heading.value as string] = (examples.elements as SyntaxNode[]).map((example) => {
+                const element = property(example, "element")!;
+                return dedent(text.slice(element.start, element.end));
             });
             return;
         }
-        node.forEachChild(visit);
-    });
+        Object.values(value).forEach(visit);
+    }
+
+    visit(parse(text, { sourceType: "module", plugins: ["typescript", "jsx"] }).program);
     return sources;
 }
