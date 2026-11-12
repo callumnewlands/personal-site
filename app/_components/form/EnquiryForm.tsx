@@ -52,9 +52,9 @@ export function EnquirySent({ takeFocus = false }: { takeFocus?: boolean }) {
     return (
         <div className={styles.card}>
             <p className={styles.sent} tabIndex={-1} ref={takeFocus ? (element) => element?.focus() : undefined}>
-                Thanks, it&rsquo;s on its way
+                Thanks for reaching out
             </p>
-            <p>I usually reply within [TBC].</p>
+            <p>I&rsquo;ll get back to you within a few days.</p>
         </div>
     );
 }
