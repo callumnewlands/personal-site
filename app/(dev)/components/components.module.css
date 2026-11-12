@@ -1,0 +1,64 @@
+.examples {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+}
+
+.example {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border: 1px dashed var(--color-line-control);
+  border-radius: var(--radius-panel);
+}
+
+.preview {
+  min-width: 0;
+}
+
+.small {
+  max-width: 16rem;
+}
+
+.narrow {
+  max-width: 28rem;
+}
+
+.medium {
+  max-width: 48rem;
+}
+
+.variants {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: var(--space-5);
+}
+
+.dark {
+  padding: var(--space-5);
+  border-radius: var(--radius-panel);
+  background: var(--color-footer);
+}
+
+.code {
+  padding: var(--space-4);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  border-radius: var(--radius-diagram);
+  font-size: var(--font-size-caption);
+  color: var(--color-on-dark);
+  background: var(--color-fragment-code);
+}
+
+.tag {
+  color: var(--color-accent);
+}
+
+.prop {
+  color: var(--color-line-control);
+}
+
+.string {
+  color: var(--color-status-diff-add-text);
+}

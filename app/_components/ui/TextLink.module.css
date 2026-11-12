@@ -1,0 +1,31 @@
+@layer components {
+  .link {
+    svg {
+      display: inline;
+      vertical-align: -0.125em;
+    }
+  }
+
+  .arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--size-target-min);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .quiet {
+    color: var(--color-ink);
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: var(--color-primary-hover);
+      text-decoration: underline;
+    }
+  }
+
+  .back svg {
+    scale: -1 1;
+  }
+}
