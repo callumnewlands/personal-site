@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { Container } from "./Layout";
+import { Container } from "../layout/Layout";
 import NavLinks from "./NavLinks";
 import styles from "./Nav.module.css";
 

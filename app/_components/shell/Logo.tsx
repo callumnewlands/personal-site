@@ -1,5 +1,5 @@
 import styles from "./Logo.module.css";
-import { cx } from "../../common/helpers";
+import { cx } from "../../../common/helpers";
 
 // Drawn once in the root layout so the nav and footer logos paint with the page
 export function LogoSymbol() {

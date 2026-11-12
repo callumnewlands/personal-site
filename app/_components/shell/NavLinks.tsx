@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Nav.module.css";
-import { cx } from "../../common/helpers";
+import { cx } from "../../../common/helpers";
 
 function current(active: boolean) {
     return active ? "page" : undefined;
@@ -13,7 +13,7 @@ export default function NavLinks() {
     const pathname = usePathname() ?? "";
 
     return (
-        <ul className={styles.links}>
+        <ul role="list" className={styles.links}>
             <li>
                 <Link
                     href="/#work"

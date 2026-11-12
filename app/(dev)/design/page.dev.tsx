@@ -1,11 +1,10 @@
 import { pageMetadata } from "../../../common/metadata";
 import { TITLE_SUFFIX } from "../../../data/pages";
 import tokens from "../../../tokens/tokens.json";
-import Button from "../../_components/Button";
-import ButtonLink from "../../_components/ButtonLink";
-import { Container, Section } from "../../_components/Layout";
-import Logo from "../../_components/Logo";
-import Treeline from "../../_components/Treeline";
+import Button from "../../_components/ui/Button";
+import { Container, Section } from "../../_components/layout/Layout";
+import Logo from "../../_components/shell/Logo";
+import Treeline from "../../_components/shell/Treeline";
 import styles from "./design.module.css";
 import { cx } from "../../../common/helpers";
 
@@ -105,13 +104,13 @@ export default function Design() {
                     <p className="caption">Hover, press and tab through these to see their states.</p>
                     <div className={styles.row}>
                         <Logo />
-                        <ButtonLink href="#buttons">Send me a message</ButtonLink>
-                        <ButtonLink href="https://cnewlands.dev" variant="secondary">
+                        <Button href="#buttons">Send me a message</Button>
+                        <Button href="https://cnewlands.dev" variant="secondary">
                             Visit cnewlands.dev
-                        </ButtonLink>
-                        <ButtonLink href="#buttons" variant="secondary">
+                        </Button>
+                        <Button href="#buttons" variant="secondary">
                             All work
-                        </ButtonLink>
+                        </Button>
                     </div>
                     <div className={styles.row}>
                         <Button type="button">Send it</Button>
@@ -124,9 +123,9 @@ export default function Design() {
                     </div>
                     <div className={cx(styles.row, styles.dark, "on-dark")}>
                         <Logo dark />
-                        <ButtonLink href="#buttons" dark>
+                        <Button href="#buttons" dark>
                             Send me a message
-                        </ButtonLink>
+                        </Button>
                     </div>
                 </Container>
             </Section>

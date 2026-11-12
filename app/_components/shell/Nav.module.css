@@ -38,15 +38,20 @@
     align-items: center;
     min-height: var(--size-target-min);
     padding: 0 1.125rem;
+    border: 1px solid transparent;
     border-radius: var(--radius-tag);
     font-weight: var(--font-weight-medium);
     color: var(--color-on-dark);
     background: var(--color-ink);
     text-decoration: none;
-    transition: transform 0.15s;
+    transition: transform var(--motion-duration) var(--motion-easing);
 
     &:hover {
       transform: translateY(-2px);
+
+      @media (prefers-reduced-motion: reduce) {
+        transform: none;
+      }
     }
 
     &:active {

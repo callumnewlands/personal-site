@@ -1,12 +1,12 @@
 import Link from "next/link";
-import ButtonLink from "./ButtonLink";
-import { Container } from "./Layout";
+import Button from "../ui/Button";
+import { Container } from "../layout/Layout";
 import Logo from "./Logo";
 import Treeline from "./Treeline";
-import { GitHubIcon, InstagramIcon, LinkedInIcon } from "./brand-icons";
+import { GitHubIcon, InstagramIcon, LinkedInIcon } from "../ui/brand-icons";
 import styles from "./Footer.module.css";
-import { cx } from "../../common/helpers";
-import { EMAIL, SOCIAL_LINKS } from "../../common/site";
+import { cx } from "../../../common/helpers";
+import { EMAIL, SOCIAL_LINKS } from "../../../common/site";
 
 const year = new Date().getFullYear();
 
@@ -25,9 +25,9 @@ export default function Footer() {
                     <div className={styles.message}>
                         <h2 className={styles.heading}>Not sure what your product needs next?</h2>
                         <div className={styles.actions}>
-                            <ButtonLink href="/contact" dark>
+                            <Button href="/contact" dark>
                                 Send me a message
-                            </ButtonLink>
+                            </Button>
                             <address>
                                 <a href={`mailto:${EMAIL}`} className={cx(styles.email, "quiet-link")}>
                                     {EMAIL}
@@ -38,7 +38,7 @@ export default function Footer() {
                     <nav aria-label="Footer" className={styles.groups}>
                         <div>
                             <p className={styles.label}>This site</p>
-                            <ul className={styles.list}>
+                            <ul role="list" className={styles.list}>
                                 <li>
                                     <Link className="quiet-link" href="/#work">
                                         Work
@@ -58,7 +58,7 @@ export default function Footer() {
                         </div>
                         <div>
                             <p className={styles.label}>Elsewhere</p>
-                            <ul className={styles.list}>
+                            <ul role="list" className={styles.list}>
                                 {elsewhere.map(({ name, href, Icon }) => (
                                     <li key={name}>
                                         <a className="quiet-link" href={href}>
