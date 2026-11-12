@@ -4,10 +4,8 @@ import Accordion from "../../_components/ui/Accordion";
 import Button from "../../_components/ui/Button";
 import Tags from "../../_components/ui/Tags";
 import TextLink from "../../_components/ui/TextLink";
-import panel from "../../_components/ui/panel.module.css";
 import type { ExampleData } from "./Example";
 import { samplePanel } from "./samples";
-import { cx } from "../../../common/helpers";
 
 export interface Group {
     heading: string;
@@ -106,11 +104,11 @@ export const groups: Group[] = [
     },
     {
         heading: "Panels",
-        intro: "White has no fill class. The others add panel.primary, panel.accent or panel.pine.",
+        intro: "A white panel is just panel. The others add panel-primary, panel-accent or panel-pine.",
         examples: [
             {
                 element: (
-                    <div className={cx(panel.panel, panel.primary)}>
+                    <div className="panel panel-primary">
                         <SectionHeading
                             level={3}
                             size="chapter"
@@ -118,7 +116,7 @@ export const groups: Group[] = [
                         >
                             Viridian panel
                         </SectionHeading>
-                        <ul role="list" className="rule-list">
+                        <ul role="list" className="ruled-list">
                             <li>Something that's included</li>
                             <li>Something else that's included</li>
                         </ul>

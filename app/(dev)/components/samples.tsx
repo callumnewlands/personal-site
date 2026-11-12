@@ -1,10 +1,9 @@
 import SectionHeading from "../../_components/layout/SectionHeading";
-import panel from "../../_components/ui/panel.module.css";
 import { cx } from "../../../common/helpers";
 
 export function samplePanel(name: string, fill?: "primary" | "accent" | "pine") {
     return (
-        <div key={name} className={cx(panel.panel, fill && panel[fill])}>
+        <div key={name} className={cx("panel", fill && `panel-${fill}`)}>
             <SectionHeading
                 level={3}
                 size="chapter"
@@ -12,7 +11,7 @@ export function samplePanel(name: string, fill?: "primary" | "accent" | "pine") 
             >
                 {name}
             </SectionHeading>
-            <ul role="list" className="rule-list">
+            <ul role="list" className="ruled-list">
                 <li>Something that's included</li>
                 <li>Something else that's included</li>
             </ul>

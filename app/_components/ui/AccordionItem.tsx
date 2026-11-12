@@ -4,7 +4,12 @@ import type { ReactNode } from "react";
 import { useId, useState } from "react";
 import styles from "./Accordion.module.css";
 
-export default function AccordionItem({ title, children }: { title: string; children: ReactNode }) {
+export interface AccordionItemProps {
+    title: string;
+    content: ReactNode;
+}
+
+export default function AccordionItem({ title, content }: AccordionItemProps) {
     const [open, setOpen] = useState(false);
     const id = useId();
 
@@ -26,7 +31,7 @@ export default function AccordionItem({ title, children }: { title: string; chil
                 </button>
             </h3>
             <div id={id} className={styles.answer} hidden={!open}>
-                {children}
+                {content}
             </div>
         </li>
     );

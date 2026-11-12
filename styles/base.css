@@ -156,8 +156,8 @@
     margin-block-start: var(--space-4);
   }
 
-  /* Rules in the text colour, for any panel fill. Lists using it need role="list" for Safari */
-  .rule-list {
+  /* Lists using it need role="list" for Safari */
+  .ruled-list {
     padding: 0;
     list-style: none;
 
@@ -165,6 +165,40 @@
       padding-block: var(--space-3);
       border-block-start: 1px solid color-mix(in srgb, currentColor 20%, transparent);
     }
+  }
+
+  .panel {
+    padding: var(--padding-panel);
+    border: 1px solid transparent;
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+  }
+
+  .panel-primary,
+  .panel-pine {
+    --focus-ring-color: var(--color-accent);
+
+    color: var(--color-on-dark);
+  }
+
+  .panel-primary {
+    background: var(--color-primary);
+  }
+
+  .panel-pine {
+    background: var(--color-dark-block);
+  }
+
+  .panel-accent {
+    color: var(--color-on-accent);
+    background: var(--color-accent);
+  }
+
+  .panel-primary,
+  .panel-pine,
+  .panel-accent {
+    --link-color: currentColor;
+    --link-hover-color: currentColor;
   }
 }
 
