@@ -343,8 +343,8 @@ export const groups: Group[] = [
     {
         heading: "ResultsTiles",
         examples: [
-            { element: <ResultsTiles results={results} source="Sample numbers, for the layout only." /> },
-            { element: <ResultsTiles results={results} source="Sample numbers." />, width: "narrow" }
+            { element: <ResultsTiles {...results} /> },
+            { element: <ResultsTiles {...results} />, width: "narrow" }
         ]
     },
     {

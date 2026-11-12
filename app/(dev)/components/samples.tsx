@@ -26,11 +26,14 @@ function sampleProjects(): Project[] {
     }));
 }
 
-export const results: Results = [
-    { value: "12", label: "sample stat" },
-    { value: "345", label: "another sample stat" },
-    { value: "6.7K", label: "a third sample stat" }
-];
+export const results: Results = {
+    tiles: [
+        { value: "12", label: "sample stat" },
+        { value: "345", label: "another sample stat" },
+        { value: "6.7K", label: "a third sample stat" }
+    ],
+    source: "Sample numbers, Nov 2026."
+};
 
 export const screenshot = {
     src: "/screenshots/mathsplanner/image 10.png",

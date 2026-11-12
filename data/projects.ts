@@ -31,7 +31,11 @@ export function checkProjects(projects: Project[]) {
     if (orders.size !== projects.length) {
         throw new Error("content/projects: two projects have the same order");
     }
+    const first = Math.min(...orders);
     for (const item of projects) {
+        if (item.order !== first && item.card.tags.length > 2) {
+            throw new Error(`content/projects/${item.slug}.yaml: only the first card can have three tags`);
+        }
         const linked = [...(item.page?.moreWork ?? []), ...(item.page?.related?.slugs ?? [])];
         if (new Set(linked).size !== linked.length) {
             throw new Error(`content/projects/${item.slug}.yaml: a project is linked twice`);

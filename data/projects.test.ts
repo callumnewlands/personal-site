@@ -87,6 +87,24 @@ test("rejects two projects with the same order", () => {
     expect(() => checkProjects([one, parseProject("test.yaml", card(1))])).toThrow("same order");
 });
 
+test("allows three tags only on the first card", () => {
+    const first = parseProject("test.yaml", card(1).replace("tags: []", "tags: [A, B, C]"));
+    const second = parseProject("test.yaml", card(2).replace("tags: []", "tags: [A, B, C]"));
+    expect(() => checkProjects([first, two])).not.toThrow();
+    expect(() => checkProjects([one, second])).toThrow("only the first card can have three tags");
+});
+
+test("rejects results without a source line", () => {
+    const results = `
+    results:
+        tiles:
+            - { value: "1", label: One }
+            - { value: "2", label: Two }
+            - { value: "3", label: Three }
+`;
+    expect(() => parseProject("test.yaml", card(1) + page("one, two") + results)).toThrow(/results\.source/);
+});
+
 test("schema.json matches the schema", () => {
     const file = JSON.parse(readFileSync(join(directory, "schema.json"), "utf8"));
     expect(file).toEqual(projectJsonSchema());
