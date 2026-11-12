@@ -1,0 +1,48 @@
+name: Update snapshots
+
+# Add the "update snapshots" label to a PR (remove and re-add it to run again), or run this by hand,
+# then commit the files it uploads
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: read
+
+jobs:
+  version:
+    name: Read Playwright version
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'update snapshots'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      playwright: ${{ steps.playwright.outputs.version }}
+    steps:
+      - uses: actions/checkout@v7
+      # The container tag has to match the installed @playwright/test exactly
+      - id: playwright
+        run: echo "version=$(grep -m1 "^  '@playwright/test@" pnpm-lock.yaml | cut -d@ -f3 | cut -d"'" -f1)" >> "$GITHUB_OUTPUT"
+
+  update:
+    name: Update snapshots
+    needs: version
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    container:
+      image: mcr.microsoft.com/playwright:v${{ needs.version.outputs.playwright }}-noble
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm exec playwright test e2e/visual.spec.ts --project chromium --update-snapshots=changed
+      - uses: actions/upload-artifact@v7
+        with:
+          name: snapshots
+          path: e2e/visual.spec.ts-snapshots

@@ -25,7 +25,7 @@ export default function Footer() {
                 ))}
             </div>
             <p>
-                {`All content `}&copy;{` Callum Newlands 2020–${year}`}
+                All content &copy; Callum Newlands 2020–<span data-volatile>{year}</span>
             </p>
         </footer>
     );
