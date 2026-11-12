@@ -1,0 +1,16 @@
+@layer components {
+  .header {
+    max-width: var(--layout-reading-max);
+
+    p {
+      margin-block-start: var(--space-3);
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-block-start: var(--space-6);
+  }
+}

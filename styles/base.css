@@ -97,13 +97,13 @@
   }
 
   a {
-    color: var(--color-primary);
+    color: var(--link-color, var(--color-primary));
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
 
     &:hover,
     &:active {
-      color: var(--color-primary-hover);
+      color: var(--link-hover-color, var(--color-primary-hover));
       text-decoration-thickness: 2px;
     }
   }
@@ -149,6 +149,21 @@
     &:active {
       color: inherit;
       text-decoration: underline;
+    }
+  }
+
+  .prose > * + * {
+    margin-block-start: var(--space-4);
+  }
+
+  /* Rules in the text colour, for any panel fill. Lists using it need role="list" for Safari */
+  .rule-list {
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding-block: var(--space-3);
+      border-block-start: 1px solid color-mix(in srgb, currentColor 20%, transparent);
     }
   }
 }

@@ -17,13 +17,26 @@
     }
   }
 
+  .blocks {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+
+    @media (width < 48em) {
+      gap: var(--space-9);
+    }
+  }
+
   .band {
     padding-block-end: var(--layout-section-space);
     background: var(--color-band);
 
     /* Viridian is only 4.35:1 on the band */
-    a:not([class]) {
-      color: var(--color-primary-hover);
-    }
+    --link-color: var(--color-primary-hover);
+  }
+
+  /* The footer's treeline sits on the band when a page ends with one */
+  :global(main):has(> .band:last-child) + :global(footer) {
+    background: var(--color-band);
   }
 }
