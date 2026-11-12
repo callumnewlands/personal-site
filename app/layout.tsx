@@ -5,10 +5,10 @@ import Script from "next/script";
 import { siteMetadata } from "../common/metadata";
 import { structuredData } from "../common/structured-data";
 import { colorPrimary } from "../styles/tokens";
-import Footer from "./_components/Footer";
-import Nav from "./_components/Nav";
-import { LogoSymbol } from "./_components/Logo";
-import SkipLink from "./_components/SkipLink";
+import Footer from "./_components/shell/Footer";
+import Nav from "./_components/shell/Nav";
+import { LogoSymbol } from "./_components/shell/Logo";
+import SkipLink from "./_components/shell/SkipLink";
 import { fontVariables } from "./fonts";
 
 export const metadata = siteMetadata;

@@ -1,12 +1,12 @@
 import Link from "next/link";
-import ButtonLink from "./ButtonLink";
-import { Container } from "./Layout";
+import ButtonLink from "../ui/ButtonLink";
+import { Container } from "../layout/Layout";
 import Logo from "./Logo";
 import Treeline from "./Treeline";
-import { GitHubIcon, InstagramIcon, LinkedInIcon } from "./brand-icons";
+import { GitHubIcon, InstagramIcon, LinkedInIcon } from "../ui/brand-icons";
 import styles from "./Footer.module.css";
-import { cx } from "../../common/helpers";
-import { EMAIL, SOCIAL_LINKS } from "../../common/site";
+import { cx } from "../../../common/helpers";
+import { EMAIL, SOCIAL_LINKS } from "../../../common/site";
 
 const year = new Date().getFullYear();
 

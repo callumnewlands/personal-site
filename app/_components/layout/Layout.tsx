@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import styles from "./Layout.module.css";
-import { cx } from "../../common/helpers";
+import { cx } from "../../../common/helpers";
 
 interface ContainerProps {
     narrow?: boolean;

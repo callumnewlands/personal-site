@@ -1,11 +1,11 @@
 import { pageMetadata } from "../../../common/metadata";
 import { TITLE_SUFFIX } from "../../../data/pages";
 import tokens from "../../../tokens/tokens.json";
-import Button from "../../_components/Button";
-import ButtonLink from "../../_components/ButtonLink";
-import { Container, Section } from "../../_components/Layout";
-import Logo from "../../_components/Logo";
-import Treeline from "../../_components/Treeline";
+import Button from "../../_components/ui/Button";
+import ButtonLink from "../../_components/ui/ButtonLink";
+import { Container, Section } from "../../_components/layout/Layout";
+import Logo from "../../_components/shell/Logo";
+import Treeline from "../../_components/shell/Treeline";
 import styles from "./design.module.css";
 import { cx } from "../../../common/helpers";
 

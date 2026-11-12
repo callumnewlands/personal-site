@@ -1,5 +1,5 @@
 import styles from "./Button.module.css";
-import { cx } from "../../common/helpers";
+import { cx } from "../../../common/helpers";
 
 export type ButtonStyle = { variant?: "primary"; dark?: boolean } | { variant: "secondary"; dark?: never };
 
