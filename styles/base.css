@@ -64,14 +64,6 @@
     letter-spacing: -0.02em;
   }
 
-  h2 {
-    font-size: var(--font-size-section-title);
-  }
-
-  h3 {
-    font-size: var(--font-size-chapter-title);
-  }
-
   small {
     font-size: inherit;
   }
@@ -111,16 +103,6 @@
   :focus-visible {
     outline: var(--focus-ring-width) solid var(--focus-ring-color);
     outline-offset: var(--focus-ring-offset);
-  }
-
-  @media (width < 48em) {
-    h2 {
-      font-size: var(--font-size-section-title-phone);
-    }
-
-    h3 {
-      font-size: var(--font-size-chapter-title-phone);
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {

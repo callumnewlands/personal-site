@@ -18,7 +18,7 @@
     align-items: center;
     padding: 0;
     list-style: none;
-    gap: var(--space-1) clamp(0.875rem, 2.4vw, 1.75rem);
+    gap: var(--space-1) var(--space-5);
     font-size: var(--font-size-small);
   }
 
@@ -44,29 +44,25 @@
     color: var(--color-on-dark);
     background: var(--color-ink);
     text-decoration: none;
-    transition: transform var(--motion-duration) var(--motion-easing);
+    transition: background-color var(--motion-duration) var(--motion-easing);
 
     &:hover {
-      transform: translateY(-2px);
-
-      @media (prefers-reduced-motion: reduce) {
-        transform: none;
-      }
+      background: var(--color-muted);
     }
 
     &:active {
-      transform: none;
+      background: var(--color-footer);
     }
   }
 
   @media (width < 48em) {
     .links {
-      gap: var(--space-1) 0.875rem;
-      font-size: 1rem;
+      gap: var(--space-1) var(--space-4);
+      font-size: var(--font-size-small-phone);
     }
 
     .contact {
-      padding: 0 0.875rem;
+      padding: 0 var(--space-4);
     }
   }
 }
