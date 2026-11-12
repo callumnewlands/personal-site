@@ -23,8 +23,12 @@ jobs:
     timeout-minutes: 5
     outputs:
       site: ${{ steps.filter.outputs.site }}
+      playwright: ${{ steps.playwright.outputs.version }}
     steps:
       - uses: actions/checkout@v7
+      # The container tag has to match the installed @playwright/test exactly
+      - id: playwright
+        run: echo "version=$(grep -m1 "^  '@playwright/test@" pnpm-lock.yaml | cut -d@ -f3 | cut -d"'" -f1)" >> "$GITHUB_OUTPUT"
       - uses: dorny/paths-filter@v4
         id: filter
         with:
@@ -55,7 +59,10 @@ jobs:
     needs: changes
     if: needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 6
+    container:
+      image: mcr.microsoft.com/playwright:v${{ needs.changes.outputs.playwright }}-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -65,7 +72,6 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-      - run: pnpm exec playwright install --with-deps
       - run: pnpm test
       - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
@@ -78,7 +84,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 7
     strategy:
       fail-fast: false
       matrix:
