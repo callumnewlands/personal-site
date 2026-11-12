@@ -7,17 +7,15 @@
     font-weight: var(--font-weight-bold);
     text-decoration: none;
     cursor: pointer;
-    transition:
-      transform 0.15s,
-      background-color 0.15s,
-      border-color 0.15s,
-      color 0.15s;
+    transition-duration: var(--motion-duration);
+    transition-property: transform, background-color, border-color, color;
+    transition-timing-function: var(--motion-easing);
   }
 
   .primary {
     min-height: var(--size-button-primary);
     padding: 0 var(--space-5);
-    border: 0;
+    border: 1px solid transparent;
     font-size: 1.1875rem;
     color: var(--color-on-dark);
     background: var(--color-primary);
@@ -95,6 +93,12 @@
   @keyframes spin {
     to {
       rotate: 1turn;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .primary:hover {
+      transform: none;
     }
   }
 }
