@@ -1,0 +1,29 @@
+@layer components {
+  .gallery,
+  .tall {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .row {
+    display: flex;
+    align-items: start;
+    gap: var(--space-5);
+
+    > div {
+      flex-basis: 0;
+      min-width: 0;
+    }
+  }
+
+  @media (width < 48em) {
+    .tall {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .row {
+      display: contents;
+    }
+  }
+}

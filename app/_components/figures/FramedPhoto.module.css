@@ -1,0 +1,44 @@
+@layer components {
+  .frame {
+    padding: var(--space-2);
+    border: 1px solid transparent;
+    border-radius: var(--radius-tag);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-photo);
+
+    figcaption {
+      padding: var(--space-2) var(--space-1) var(--space-1);
+      font-size: var(--font-size-caption);
+      color: var(--color-subtle);
+    }
+  }
+
+  .left {
+    rotate: -2deg;
+  }
+
+  .right {
+    rotate: 2deg;
+  }
+
+  .picture {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--color-line);
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: var(--space-2);
+    font-size: var(--font-size-caption);
+    text-align: center;
+    color: var(--color-subtle);
+  }
+}

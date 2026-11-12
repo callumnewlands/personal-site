@@ -10,7 +10,7 @@ export interface SizedImage {
     height: number;
 }
 
-// Only call from getStaticProps
+// Only call on the server
 export async function sizedImage(src: string): Promise<SizedImage> {
     const { width, height } = imageSize(await readFile(path.join(process.cwd(), "public", src)));
     return { src, width, height };
