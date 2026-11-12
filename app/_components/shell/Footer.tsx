@@ -38,7 +38,7 @@ export default function Footer() {
                     <nav aria-label="Footer" className={styles.groups}>
                         <div>
                             <p className={styles.label}>This site</p>
-                            <ul className={styles.list}>
+                            <ul role="list" className={styles.list}>
                                 <li>
                                     <Link className="quiet-link" href="/#work">
                                         Work
@@ -58,7 +58,7 @@ export default function Footer() {
                         </div>
                         <div>
                             <p className={styles.label}>Elsewhere</p>
-                            <ul className={styles.list}>
+                            <ul role="list" className={styles.list}>
                                 {elsewhere.map(({ name, href, Icon }) => (
                                     <li key={name}>
                                         <a className="quiet-link" href={href}>

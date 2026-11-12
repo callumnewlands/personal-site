@@ -13,7 +13,7 @@ export default function NavLinks() {
     const pathname = usePathname() ?? "";
 
     return (
-        <ul className={styles.links}>
+        <ul role="list" className={styles.links}>
             <li>
                 <Link
                     href="/#work"
