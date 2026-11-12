@@ -1,0 +1,54 @@
+@layer components {
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    align-items: center;
+    gap: 0.875rem;
+    height: 100%;
+    padding: var(--space-2) 0.875rem var(--space-2) var(--space-2);
+    border: 1px solid var(--color-line-card);
+    border-radius: var(--radius-work-card);
+    color: inherit;
+    text-decoration: none;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    transition-duration: var(--motion-duration);
+    transition-property: border-color, box-shadow;
+    transition-timing-function: var(--motion-easing);
+
+    img {
+      aspect-ratio: 16 / 10;
+      border-radius: var(--radius-diagram);
+      object-fit: cover;
+    }
+  }
+
+  a.card:hover,
+  a.card:active {
+    border-color: var(--color-line-strong);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .line {
+    display: block;
+    font-size: var(--font-size-caption);
+    line-height: 1.5;
+    color: var(--color-muted);
+  }
+
+  .title {
+    display: block;
+    font-family: var(--font-family-heading);
+    font-size: 1.1875rem;
+    font-weight: var(--font-weight-heading);
+    line-height: 1.2;
+  }
+}
