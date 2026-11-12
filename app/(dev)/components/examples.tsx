@@ -1,3 +1,8 @@
+import Fan from "@/app/_components/figures/Fan";
+import FramedPhoto from "@/app/_components/figures/FramedPhoto";
+import Gallery from "@/app/_components/figures/Gallery";
+import NumberedScreenshot from "@/app/_components/figures/NumberedScreenshot";
+import Screenshot from "@/app/_components/figures/Screenshot";
 import SectionHeading from "@/app/_components/layout/SectionHeading";
 import Logo from "@/app/_components/shell/Logo";
 import Accordion from "@/app/_components/ui/Accordion";
@@ -5,7 +10,7 @@ import Button from "@/app/_components/ui/Button";
 import Tags from "@/app/_components/ui/Tags";
 import TextLink from "@/app/_components/ui/TextLink";
 import type { ExampleData } from "./Example";
-import { samplePanel } from "./samples";
+import { samplePanel, screenshot } from "./samples";
 
 export interface Group {
     heading: string;
@@ -160,6 +165,145 @@ export const groups: Group[] = [
                         Panel title
                     </SectionHeading>
                 )
+            }
+        ]
+    },
+    {
+        heading: "Screenshot",
+        examples: [
+            {
+                element: (
+                    <Screenshot
+                        image={{
+                            src: "/screenshots/mathsplanner/image 16.png",
+                            alt: "A times tables grid with a two-minute timer",
+                            caption: "A caption saying what the screenshot shows."
+                        }}
+                    />
+                ),
+                width: "narrow"
+            }
+        ]
+    },
+    {
+        heading: "Fan",
+        examples: [
+            {
+                element: (
+                    <Fan
+                        images={[
+                            {
+                                src: "/screenshots/mathsplanner/image 11.png",
+                                alt: "The weekly timetable where teachers save starters for each class"
+                            },
+                            {
+                                src: "/screenshots/mathsplanner/image 15a.PNG",
+                                alt: "The whiteboard, with a circle theorem answer worked through by hand"
+                            },
+                            {
+                                src: "/screenshots/mathsplanner.webp",
+                                alt: "A Maths Planner starter with six questions"
+                            }
+                        ]}
+                    />
+                ),
+                width: "narrow"
+            },
+            {
+                element: (
+                    <Fan
+                        variant="masthead"
+                        images={[
+                            {
+                                src: "/screenshots/mathsplanner.webp",
+                                alt: "",
+                                href: "/#work",
+                                label: "Example project"
+                            },
+                            {
+                                src: "/screenshots/forestgenerator.webp",
+                                alt: "",
+                                href: "/#work",
+                                label: "Research project"
+                            },
+                            {
+                                src: "/photos/callum-newlands.jpg",
+                                alt: "Callum, in front of a screen showing a generated forest",
+                                href: "/about",
+                                label: "About me"
+                            }
+                        ]}
+                    />
+                ),
+                width: "narrow"
+            }
+        ]
+    },
+    {
+        heading: "FramedPhoto",
+        examples: [
+            {
+                element: (
+                    <FramedPhoto
+                        photo={{ src: "/photos/archery.webp", alt: "Callum at full draw with a recurve bow" }}
+                        tilt="left"
+                    />
+                ),
+                width: "small"
+            },
+            {
+                element: (
+                    <FramedPhoto placeholder="[TBC: hiking photo]" caption="Where the photo was taken" tilt="right" />
+                ),
+                width: "small"
+            }
+        ]
+    },
+    {
+        heading: "NumberedScreenshot",
+        examples: [
+            {
+                element: (
+                    <NumberedScreenshot
+                        image={screenshot}
+                        markers={[
+                            { x: 79, y: 5.6, text: "What this part of the screen does." },
+                            { x: 33.4, y: 16, text: "Why it matters to the people using it." },
+                            { x: 5.5, y: 56, text: "Another detail worth pointing out." },
+                            { x: 30, y: 95.5, text: "A last point, kept to a line or two." }
+                        ]}
+                    />
+                ),
+                width: "medium"
+            }
+        ]
+    },
+    {
+        heading: "Gallery",
+        examples: [
+            {
+                element: (
+                    <Gallery
+                        screenshots={[
+                            {
+                                src: "/screenshots/mathsplanner/image 11.png",
+                                alt: "The weekly timetable where teachers save starters for each class",
+                                caption: "A wide screenshot, full width."
+                            },
+                            {
+                                src: "/screenshots/mathsplanner/image 17a.png",
+                                alt: "A starter shown on a phone",
+                                caption: "A tall screenshot."
+                            },
+                            {
+                                src: "/screenshots/dataviz.webp",
+                                alt: "A tall chart of emissions by country",
+                                caption: "Another, at the same height."
+                            }
+                        ]}
+                    />
+                ),
+                width: "medium"
             }
         ]
     }
