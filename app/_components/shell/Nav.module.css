@@ -45,6 +45,7 @@
     background: var(--color-ink);
     text-decoration: none;
     transition: background-color var(--motion-duration) var(--motion-easing);
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       background: var(--color-muted);
@@ -52,6 +53,7 @@
 
     &:active {
       background: var(--color-footer);
+      transition-duration: 0s;
     }
   }
 

@@ -10,6 +10,7 @@
     transition-duration: var(--motion-duration);
     transition-property: transform, background-color, border-color, color, box-shadow;
     transition-timing-function: var(--motion-easing);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .primary {
@@ -31,6 +32,7 @@
       background: var(--color-primary-hover);
       box-shadow: var(--shadow-button-pressed);
       transform: none;
+      transition-duration: 0s;
     }
 
     &:disabled {
@@ -65,6 +67,7 @@
       border-color: var(--color-primary-hover);
       color: var(--color-primary-hover);
       background: var(--color-band);
+      transition-duration: 0s;
     }
   }
 
