@@ -15,6 +15,8 @@
         "react/react-in-jsx-scope": "off",
         "react/jsx-no-useless-fragment": "warn",
         "jsx-a11y/alt-text": ["error", { "img": ["Image"] }],
+        // Components can have a role prop of their own, such as a person's job
+        "jsx-a11y/aria-role": ["error", { "ignoreNonDOM": true }],
         // Safari drops list semantics from lists styled with list-style: none
         "jsx-a11y/no-redundant-roles": ["error", { "ol": ["list"], "ul": ["list"] }],
         "import/no-anonymous-default-export": "error",

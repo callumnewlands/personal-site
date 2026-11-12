@@ -1,0 +1,42 @@
+@layer components {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--space-7) var(--space-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .link {
+    margin-block-start: var(--space-5);
+  }
+
+  .full {
+    grid-column: span 6;
+  }
+
+  .half {
+    grid-column: span 3;
+  }
+
+  .third {
+    grid-column: span 2;
+  }
+
+  @media (width < 64em) {
+    .third {
+      grid-column: span 3;
+    }
+  }
+
+  @media (width < 48em) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-6);
+
+      li {
+        grid-column: auto;
+      }
+    }
+  }
+}
