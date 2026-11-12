@@ -1,48 +1,59 @@
-"use client";
-
-import type { ButtonHTMLAttributes } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
+import Link from "next/link";
 import styles from "./Button.module.css";
-import type { ButtonStyle } from "./buttonStyle";
-import { buttonClassName } from "./buttonStyle";
-import { ArrowIcon } from "./icons";
+import { ArrowIcon, ExternalArrowIcon } from "./icons";
+import { cx } from "../../../common/helpers";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-    ButtonStyle & {
-        loading?: boolean;
-        loadingLabel?: string;
-    };
+type ButtonStyle = { variant?: "primary"; dark?: boolean } | { variant: "secondary"; dark?: never };
 
-export default function Button({
-    variant,
-    dark,
-    loading = false,
-    loadingLabel,
-    className,
-    onClick,
-    children,
-    ...props
-}: ButtonProps) {
+type LinkProps = ButtonStyle & { href: string; children: ReactNode };
+
+type ActionProps = ButtonStyle & {
+    href?: never;
+    type?: "button" | "submit";
+    disabled?: boolean;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+    loading?: boolean;
+    loadingLabel?: string;
+    children: ReactNode;
+};
+
+export default function Button(props: LinkProps | ActionProps) {
+    const { variant = "primary", dark = false } = props;
+    const className = cx(styles.button, styles[variant], dark && styles.dark, dark && "on-dark");
+
+    if (props.href !== undefined) {
+        const external = props.href.startsWith("http");
+        const icon = variant === "secondary" ? external && <ExternalArrowIcon /> : <ArrowIcon />;
+        return external ? (
+            <a href={props.href} className={className}>
+                {props.children}
+                {icon}
+            </a>
+        ) : (
+            <Link href={props.href} className={className}>
+                {props.children}
+                {icon}
+            </Link>
+        );
+    }
+
     return (
         <button
-            {...props}
-            className={buttonClassName(variant, dark, className)}
-            aria-disabled={loading || undefined}
-            onClick={(event) => {
-                if (loading) {
-                    event.preventDefault();
-                    return;
-                }
-                onClick?.(event);
-            }}
+            type={props.type ?? "button"}
+            disabled={props.disabled}
+            onClick={props.onClick}
+            className={className}
+            aria-disabled={props.loading || undefined}
         >
-            {loading ? (
+            {props.loading ? (
                 <>
                     <span className={styles.spinner} aria-hidden="true" />
-                    {loadingLabel ?? children}
+                    {props.loadingLabel ?? props.children}
                 </>
             ) : (
                 <>
-                    {children}
+                    {props.children}
                     {variant !== "secondary" && <ArrowIcon />}
                 </>
             )}

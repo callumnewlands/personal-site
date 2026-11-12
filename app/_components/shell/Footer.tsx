@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ButtonLink from "../ui/ButtonLink";
+import Button from "../ui/Button";
 import { Container } from "../layout/Layout";
 import Logo from "./Logo";
 import Treeline from "./Treeline";
@@ -25,9 +25,9 @@ export default function Footer() {
                     <div className={styles.message}>
                         <h2 className={styles.heading}>Not sure what your product needs next?</h2>
                         <div className={styles.actions}>
-                            <ButtonLink href="/contact" dark>
+                            <Button href="/contact" dark>
                                 Send me a message
-                            </ButtonLink>
+                            </Button>
                             <address>
                                 <a href={`mailto:${EMAIL}`} className={cx(styles.email, "quiet-link")}>
                                     {EMAIL}
