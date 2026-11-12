@@ -34,7 +34,6 @@
 
   .heading {
     max-width: 16ch;
-    font-size: clamp(2rem, 1rem + 3vw, 3.25rem);
     line-height: 1.02;
     color: var(--color-on-dark);
   }

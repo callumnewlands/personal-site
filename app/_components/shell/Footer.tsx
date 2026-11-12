@@ -23,7 +23,7 @@ export default function Footer() {
             <div className={styles.panel}>
                 <Container className={styles.top}>
                     <div className={styles.message}>
-                        <h2 className={styles.heading}>Not sure what your product needs next?</h2>
+                        <h2 className={cx(styles.heading, "panel-title")}>Not sure what your product needs next?</h2>
                         <div className={styles.actions}>
                             <Button href="/contact" dark>
                                 Send me a message

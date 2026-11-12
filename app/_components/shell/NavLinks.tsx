@@ -33,11 +33,7 @@ export default function NavLinks() {
                 </Link>
             </li>
             <li>
-                <Link
-                    href="/contact"
-                    className={cx(styles.contact, "on-dark")}
-                    aria-current={current(pathname === "/contact")}
-                >
+                <Link href="/contact" className={styles.contact} aria-current={current(pathname === "/contact")}>
                     Contact
                 </Link>
             </li>
