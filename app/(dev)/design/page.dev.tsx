@@ -1,17 +1,14 @@
 import { pageMetadata } from "../../../common/metadata";
 import { TITLE_SUFFIX } from "../../../data/pages";
 import tokens from "../../../tokens/tokens.json";
-import Button from "../../_components/ui/Button";
-import { Container, Section } from "../../_components/layout/Layout";
-import Logo from "../../_components/shell/Logo";
-import Treeline from "../../_components/shell/Treeline";
+import { Section } from "../../_components/layout/Layout";
+import PageHeader from "../../_components/layout/PageHeader";
 import styles from "./design.module.css";
-import { cx } from "../../../common/helpers";
 
 export const metadata = pageMetadata({
     path: "/design",
     title: `Design tokens | ${TITLE_SUFFIX}`,
-    description: "Tokens, type, the logo and buttons."
+    description: "Colour, type, spacing, radius and shadow tokens."
 });
 
 const colours: string[] = [];
@@ -41,23 +38,20 @@ export default function Design() {
     return (
         <>
             <Section>
-                <Container>
-                    <h1 className={styles.title}>Design tokens</h1>
-                    <h2 className={styles.heading}>Colour</h2>
-                    <ul className={styles.swatches}>
-                        {colours.map((name) => (
-                            <li key={name}>
-                                <span className={styles.swatch} style={{ background: `var(--color-${name})` }} />
-                                <span className="caption">{name}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </Container>
+                <PageHeader title="Design tokens" />
             </Section>
-            <Treeline variant="band-top" />
-            <Section band>
-                <Container>
-                    <h2 className={styles.heading}>Type</h2>
+            <Section heading="Colour">
+                <ul className={styles.swatches}>
+                    {colours.map((name) => (
+                        <li key={name}>
+                            <span className={styles.swatch} style={{ background: `var(--color-${name})` }} />
+                            <span className="caption">{name}</span>
+                        </li>
+                    ))}
+                </ul>
+            </Section>
+            <Section band treeline heading="Type">
+                <div className="prose">
                     {typeRoles.map((role) => (
                         <p key={role} className={role}>
                             {role}: Questions written once, varied every time
@@ -67,11 +61,10 @@ export default function Design() {
                         Body text runs to a reading width with <strong>600 for bold</strong>, a{" "}
                         <a href="#type">link in the text</a> and <code>const code = &quot;Red Hat Mono&quot;;</code>
                     </p>
-                </Container>
+                </div>
             </Section>
-            <Section>
-                <Container>
-                    <h2 className={styles.heading}>Spacing, radius and shadow</h2>
+            <Section heading="Spacing, radius and shadow">
+                <div className={styles.rows}>
                     <ul className={styles.row}>
                         {Object.keys(tokens.space).map((step) => (
                             <li key={step}>
@@ -94,40 +87,7 @@ export default function Design() {
                             </li>
                         ))}
                     </ul>
-                </Container>
-            </Section>
-            <Section>
-                <Container>
-                    <h2 id="buttons" className={styles.heading}>
-                        Logo and buttons
-                    </h2>
-                    <p className="caption">Hover, press and tab through these to see their states.</p>
-                    <div className={styles.row}>
-                        <Logo />
-                        <Button href="#buttons">Send me a message</Button>
-                        <Button href="https://cnewlands.dev" variant="secondary">
-                            Visit cnewlands.dev
-                        </Button>
-                        <Button href="#buttons" variant="secondary">
-                            All work
-                        </Button>
-                    </div>
-                    <div className={styles.row}>
-                        <Button type="button">Send it</Button>
-                        <Button type="button" disabled>
-                            Send it
-                        </Button>
-                        <Button type="button" loading loadingLabel="Sending">
-                            Send it
-                        </Button>
-                    </div>
-                    <div className={cx(styles.row, styles.dark, "on-dark")}>
-                        <Logo dark />
-                        <Button href="#buttons" dark>
-                            Send me a message
-                        </Button>
-                    </div>
-                </Container>
+                </div>
             </Section>
         </>
     );
