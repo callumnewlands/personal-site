@@ -96,3 +96,4 @@ export function projectJsonSchema() {
 }
 
 export type Project = z.infer<typeof projectSchema> & { slug: string };
+export type ProjectWithPage = Project & { page: NonNullable<Project["page"]> };

@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
 import { z } from "zod";
-import type { Project } from "./project-schema";
+import type { Project, ProjectWithPage } from "./project-schema";
 import { projectSchema } from "./project-schema";
 
 const directory = join(process.cwd(), "content", "projects");
@@ -52,7 +52,7 @@ export function getProjects() {
     return projects;
 }
 
-export function getProjectPage(slug: string) {
+export function getProjectPage(slug: string): ProjectWithPage | undefined {
     const item = getProjects().find((other) => other.slug === slug);
     return item?.page ? { ...item, page: item.page } : undefined;
 }

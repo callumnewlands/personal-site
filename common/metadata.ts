@@ -7,8 +7,10 @@ interface PageMetadataProps extends Pick<PageMeta, "path" | "title" | "descripti
     type?: "website" | "article" | "profile";
 }
 
-function ogImages(path: string) {
-    return [{ url: ogImagePath(path), width: 1200, height: 630 }];
+type OgImageDescriptor = Extract<NonNullable<Metadata["openGraph"]>["images"], { url: unknown }>;
+
+function ogImageMetadata(path: string): OgImageDescriptor {
+    return { url: ogImagePath(path), width: 1200, height: 630 };
 }
 
 export const siteMetadata: Metadata = {
@@ -25,12 +27,12 @@ export const siteMetadata: Metadata = {
         apple: "/apple-touch-icon.png"
     },
     manifest: "/site.webmanifest",
-    openGraph: { siteName: SITE_NAME, type: "website", locale: "en_GB", images: ogImages("/") },
-    twitter: { card: "summary_large_image", images: ogImages("/") }
+    openGraph: { siteName: SITE_NAME, type: "website", locale: "en_GB", images: ogImageMetadata("/") },
+    twitter: { card: "summary_large_image", images: ogImageMetadata("/") }
 };
 
 export function pageMetadata({ path, title, description, type = "website" }: PageMetadataProps): Metadata {
-    const images = ogImages(path);
+    const images = ogImageMetadata(path);
 
     return {
         title,

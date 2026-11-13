@@ -11,6 +11,6 @@ test("builds metadata from a page entry", () => {
         type: "profile",
         url: "/about",
         title: pages.about.title,
-        images: [{ url: "/og/about.jpg", width: 1200, height: 630 }]
+        images: { url: "/og/about.jpg", width: 1200, height: 630 }
     });
 });
