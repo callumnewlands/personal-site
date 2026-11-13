@@ -12,7 +12,7 @@ export interface ExampleData {
 const tokens = /((?<=<\/?)[\w.]+)|(\w+(?==))|("[^"]*")/g;
 const tokenClasses = [styles.tag, styles.prop, styles.string];
 
-// Colours tag names, props and strings
+/** Colours the tag names, props and strings in a JSX code snippet. */
 function highlight(code: string) {
     const parts: ReactNode[] = [];
     let last = 0;

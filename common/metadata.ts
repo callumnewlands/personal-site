@@ -31,6 +31,7 @@ export const siteMetadata: Metadata = {
     twitter: { card: "summary_large_image", images: ogImageMetadata("/") }
 };
 
+/** Builds a page's Next.js metadata, including its canonical URL and social sharing tags. */
 export function pageMetadata({ path, title, description, type = "website" }: PageMetadataProps): Metadata {
     const images = ogImageMetadata(path);
 

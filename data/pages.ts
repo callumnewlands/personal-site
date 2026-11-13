@@ -3,6 +3,7 @@
 export const TITLE_SUFFIX = "Callum Newlands | Freelance Web and Desktop Application Developer";
 
 export interface PageMeta {
+    /** From the site root, e.g. "/about" */
     path: string;
     title: string;
     description: string;
