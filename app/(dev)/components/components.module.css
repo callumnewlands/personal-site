@@ -35,19 +35,13 @@
   gap: var(--space-5);
 }
 
-.dark {
-  padding: var(--space-5);
-  border-radius: var(--radius-panel);
-  background: var(--color-footer);
-}
-
 .code {
   padding: var(--space-4);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   border-radius: var(--radius-diagram);
-  font-size: var(--font-size-caption);
-  color: var(--color-on-dark);
+  font-size: var(--font-size-code);
+  color: var(--color-fragment-code-text);
   background: var(--color-fragment-code);
 }
 
