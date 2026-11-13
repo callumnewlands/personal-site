@@ -22,7 +22,7 @@ export default function Screenshot({
             ) : (
                 picture
             )}
-            {caption && <figcaption>{caption}</figcaption>}
+            {caption && <figcaption className="caption">{caption}</figcaption>}
         </figure>
     );
 }
