@@ -1,0 +1,98 @@
+@layer components {
+  .fan {
+    container-type: inline-size;
+  }
+
+  /* Sized from the fan's width, so it keeps its shape at every width */
+  .stage {
+    position: relative;
+    height: calc(79cqw + var(--space-4));
+    padding: 0;
+    list-style: none;
+  }
+
+  .item {
+    position: absolute;
+    top: 6cqw;
+    left: 14%;
+    width: 72%;
+    padding: var(--space-2);
+    border: 1px solid transparent;
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-photo);
+
+    &:nth-child(1) {
+      translate: -18% 0;
+      rotate: -9deg;
+    }
+
+    &:nth-child(2) {
+      translate: 18% 0;
+      rotate: 9deg;
+    }
+
+    &:nth-child(3) {
+      top: 30cqw;
+      left: 11%;
+      z-index: 1;
+      width: 78%;
+    }
+  }
+
+  .picture {
+    position: relative;
+    aspect-ratio: 16 / 10;
+
+    img {
+      border-radius: var(--radius-image);
+      object-fit: cover;
+      object-position: 50% 0;
+    }
+  }
+
+  .link {
+    display: block;
+    border-radius: var(--radius-image);
+  }
+
+  .masthead {
+    .stage {
+      height: calc(56cqw + var(--space-4));
+    }
+
+    .item {
+      top: 6cqw;
+      width: 38%;
+      border-radius: var(--radius-image);
+
+      &:nth-child(1) {
+        left: 4%;
+        translate: none;
+        rotate: -7deg;
+      }
+
+      &:nth-child(2) {
+        right: 4%;
+        left: auto;
+        translate: none;
+        rotate: 7deg;
+      }
+
+      &:nth-child(3) {
+        top: 0;
+        left: 30%;
+        width: 40%;
+      }
+    }
+
+    .picture {
+      aspect-ratio: 4 / 5;
+
+      img {
+        border-radius: var(--radius-tag);
+        object-position: 50% 30%;
+      }
+    }
+  }
+}

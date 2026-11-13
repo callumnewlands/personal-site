@@ -1,6 +1,11 @@
 import SectionHeading from "@/app/_components/layout/SectionHeading";
 import { cx } from "@/common/helpers";
 
+export const screenshot = {
+    src: "/screenshots/mathsplanner/image 10.png",
+    alt: "A Maths Planner starter: six questions, a countdown timer and an extension question"
+};
+
 export function samplePanel(name: string, fill?: "primary" | "accent" | "pine") {
     return (
         <div key={name} className={cx("panel", fill && `panel-${fill}`)}>

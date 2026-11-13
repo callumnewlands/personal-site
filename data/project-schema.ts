@@ -101,3 +101,10 @@ export function projectJsonSchema() {
 
 export type Project = z.infer<typeof projectSchema> & { slug: string };
 export type ProjectWithPage = Project & { page: NonNullable<Project["page"]> };
+
+type ProjectPage = NonNullable<Project["page"]>;
+export type ProjectImage = ProjectPage["headerImages"][number];
+export type CaptionedImage = NonNullable<ProjectPage["inUse"]>["screenshots"][number];
+export type Marker = NonNullable<ProjectPage["inUse"]>["screenshot"]["markers"][number];
+export type Results = NonNullable<ProjectPage["results"]>;
+export type Quote = NonNullable<ProjectPage["quote"]>;
