@@ -19,6 +19,7 @@ import {
 import type { SummaryItem } from "./FormErrors";
 import { ErrorMessage, ErrorSummary } from "./FormErrors";
 import styles from "./EnquiryForm.module.css";
+import { cx } from "../../../common/helpers";
 import { EMAIL } from "../../../common/site";
 
 type Status = "editing" | "sending" | "sent";
@@ -50,7 +51,7 @@ function Step({ number, children }: { number: number; children: ReactNode }) {
 
 export function EnquirySent({ takeFocus = false }: { takeFocus?: boolean }) {
     return (
-        <div className={styles.card}>
+        <div className="panel panel-full-bleed">
             <p className={styles.sent} tabIndex={-1} ref={takeFocus ? (element) => element?.focus() : undefined}>
                 Thanks for reaching out
             </p>
@@ -154,7 +155,7 @@ export default function EnquiryForm() {
                     form.noValidate = true;
                 }
             }}
-            className={styles.card}
+            className={cx("panel panel-full-bleed", styles.form)}
             name={FORM_NAME}
             method="POST"
             action={SENT_PAGE}
