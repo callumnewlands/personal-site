@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
 import styles from "./components.module.css";
-import { cx } from "../../../common/helpers";
+import { cx } from "@/common/helpers";
 
 export interface ExampleData {
     element: ReactElement;

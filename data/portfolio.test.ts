@@ -2,7 +2,7 @@ import { existsSync, readdirSync } from "node:fs";
 import { extname, join } from "node:path";
 import { describe, expect, test } from "vitest";
 import { portfolio, projectsWithPages } from "./portfolio";
-import { SCREENSHOT_EXTENSIONS } from "../common/images";
+import { SCREENSHOT_EXTENSIONS } from "@/common/images";
 
 const publicFile = (path: string) => join(__dirname, "..", "public", path);
 

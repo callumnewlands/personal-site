@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Button from "../ui/Button";
+import Button from "@/app/_components/ui/Button";
 import styles from "./Nav.module.css";
-import { cx } from "../../../common/helpers";
+import { cx } from "@/common/helpers";
 
 /** Maps whether a nav link is active to its aria-current value, so screen readers announce the current page. */
 function current(active: boolean) {

@@ -1,5 +1,5 @@
-import SectionHeading from "../../_components/layout/SectionHeading";
-import { cx } from "../../../common/helpers";
+import SectionHeading from "@/app/_components/layout/SectionHeading";
+import { cx } from "@/common/helpers";
 
 export function samplePanel(name: string, fill?: "primary" | "accent" | "pine") {
     return (

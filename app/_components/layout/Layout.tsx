@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import { useId } from "react";
 import styles from "./Layout.module.css";
 import SectionHeading from "./SectionHeading";
-import Treeline from "../shell/Treeline";
-import { cx } from "../../../common/helpers";
+import Treeline from "@/app/_components/shell/Treeline";
+import { cx } from "@/common/helpers";
 
 interface ContainerProps {
     narrow?: boolean;

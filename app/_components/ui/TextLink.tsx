@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowIcon, ExternalArrowIcon } from "./icons";
 import styles from "./TextLink.module.css";
-import { cx } from "../../../common/helpers";
+import { cx } from "@/common/helpers";
 
 export default function TextLink({
     href,

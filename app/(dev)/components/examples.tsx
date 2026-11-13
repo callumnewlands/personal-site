@@ -1,9 +1,9 @@
-import SectionHeading from "../../_components/layout/SectionHeading";
-import Logo from "../../_components/shell/Logo";
-import Accordion from "../../_components/ui/Accordion";
-import Button from "../../_components/ui/Button";
-import Tags from "../../_components/ui/Tags";
-import TextLink from "../../_components/ui/TextLink";
+import SectionHeading from "@/app/_components/layout/SectionHeading";
+import Logo from "@/app/_components/shell/Logo";
+import Accordion from "@/app/_components/ui/Accordion";
+import Button from "@/app/_components/ui/Button";
+import Tags from "@/app/_components/ui/Tags";
+import TextLink from "@/app/_components/ui/TextLink";
 import type { ExampleData } from "./Example";
 import { samplePanel } from "./samples";
 

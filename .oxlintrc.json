@@ -31,6 +31,11 @@
     },
     "overrides": [
         {
+            // Use @/ for imports from outside the file's folder
+            "files": ["app/**", "common/**", "data/**", "e2e/**"],
+            "rules": { "import/no-relative-parent-imports": "error" }
+        },
+        {
             // Lighthouse CI only loads CommonJS config
             "files": ["lighthouserc.cjs"],
             "rules": { "typescript/no-require-imports": "off" }

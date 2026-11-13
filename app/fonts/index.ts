@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { cx } from "../../common/helpers";
+import { cx } from "@/common/helpers";
 
 // Named after the font family tokens so these self-hosted files take their place
 const headingFont = localFont({

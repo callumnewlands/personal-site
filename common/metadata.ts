@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import type { PageMeta } from "../data/pages";
-import { pages, TITLE_SUFFIX } from "../data/pages";
+import type { PageMeta } from "@/data/pages";
+import { pages, TITLE_SUFFIX } from "@/data/pages";
 import { ogImagePath, SITE_NAME, SITE_URL } from "./site";
 
 interface PageMetadataProps extends Pick<PageMeta, "path" | "title" | "description"> {

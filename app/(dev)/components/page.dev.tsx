@@ -1,7 +1,7 @@
-import { pageMetadata } from "../../../common/metadata";
-import { TITLE_SUFFIX } from "../../../data/pages";
-import { Section } from "../../_components/layout/Layout";
-import PageHeader from "../../_components/layout/PageHeader";
+import { pageMetadata } from "@/common/metadata";
+import { TITLE_SUFFIX } from "@/data/pages";
+import { Section } from "@/app/_components/layout/Layout";
+import PageHeader from "@/app/_components/layout/PageHeader";
 import Example from "./Example";
 import styles from "./components.module.css";
 import { groups } from "./examples";
