@@ -29,7 +29,8 @@ export default function Components() {
                     <div className={styles.examples}>
                         {group.examples.map((example, number) => {
                             const code = sources[group.heading][number];
-                            return <Example key={code} {...example} code={code} />;
+                            // oxlint-disable-next-line react/no-array-index-key -- the list is static and its order matches the source
+                            return <Example key={number} {...example} code={code} />;
                         })}
                     </div>
                 </Section>

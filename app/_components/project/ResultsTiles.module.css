@@ -1,0 +1,67 @@
+@layer components {
+  .container {
+    container-type: inline-size;
+  }
+
+  .source {
+    margin-block-start: var(--space-3);
+  }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .tile {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--padding-tile);
+    border: 1px solid transparent;
+    border-radius: var(--radius-button);
+    color: var(--color-primary);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-lift);
+    rotate: 1deg;
+
+    &:nth-child(2) {
+      color: var(--color-on-accent);
+      background: var(--color-accent);
+      rotate: -1.4deg;
+    }
+
+    &:nth-child(3) {
+      color: var(--color-on-dark);
+      background: var(--color-dark-block);
+      rotate: 0.8deg;
+    }
+  }
+
+  @media (48em <= width < 64em) {
+    .tiles {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @container (width < 40rem) {
+    .tiles {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tile {
+      rotate: -2deg;
+
+      &:nth-child(2) {
+        margin-inline-start: 2.25rem;
+        rotate: 1.5deg;
+      }
+
+      &:nth-child(3) {
+        margin-inline-start: 0.625rem;
+        rotate: -1deg;
+      }
+    }
+  }
+}

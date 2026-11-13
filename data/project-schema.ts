@@ -64,7 +64,13 @@ const page = z
             })
             .optional()
             .describe("The green band showing the product in use"),
-        results: z.tuple([stat, stat, stat]).optional().describe("Three results tiles"),
+        results: z
+            .strictObject({
+                tiles: z.tuple([stat, stat, stat]),
+                source: z.string().describe("Where the numbers come from, with dates written like Nov 2026")
+            })
+            .optional()
+            .describe("Three results tiles and the source line under them"),
         quote: z.strictObject({ text: z.string(), name: z.string(), role: z.string() }).optional(),
         related: z
             .strictObject({
@@ -85,7 +91,10 @@ export const projectSchema = z.strictObject({
             line: z.string().describe("One line on what the project is"),
             role: z.string().describe("Role and years, e.g. Tech lead, 2022 to now"),
             image,
-            tags: z.array(z.string()).max(3).describe("Quiet tags on the image")
+            tags: z
+                .array(z.string())
+                .max(3)
+                .describe("Quiet tags on the image. Up to three on the first card, two on the rest")
         })
         .describe("The work card on the home page and in More work"),
     page: page.optional()

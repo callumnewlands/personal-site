@@ -4,13 +4,19 @@ import Gallery from "@/app/_components/figures/Gallery";
 import NumberedScreenshot from "@/app/_components/figures/NumberedScreenshot";
 import Screenshot from "@/app/_components/figures/Screenshot";
 import SectionHeading from "@/app/_components/layout/SectionHeading";
+import Facts from "@/app/_components/project/Facts";
+import Quote from "@/app/_components/project/Quote";
+import ResultsTiles from "@/app/_components/project/ResultsTiles";
+import Timeline from "@/app/_components/project/Timeline";
+import TimelineProjects from "@/app/_components/project/TimelineProjects";
+import WorkGrid from "@/app/_components/project/WorkGrid";
 import Logo from "@/app/_components/shell/Logo";
 import Accordion from "@/app/_components/ui/Accordion";
 import Button from "@/app/_components/ui/Button";
 import Tags from "@/app/_components/ui/Tags";
 import TextLink from "@/app/_components/ui/TextLink";
 import type { ExampleData } from "./Example";
-import { samplePanel, screenshot } from "./samples";
+import { projects, results, samplePanel, screenshot } from "./samples";
 
 export interface Group {
     heading: string;
@@ -300,6 +306,87 @@ export const groups: Group[] = [
                                 alt: "A tall chart of emissions by country",
                                 caption: "Another, at the same height."
                             }
+                        ]}
+                    />
+                ),
+                width: "medium"
+            }
+        ]
+    },
+    {
+        heading: "WorkGrid",
+        intro: "The research project has no page, so it has no link or arrow. Only the wide card shows a third tag.",
+        examples: [
+            { element: <WorkGrid featureFirst projects={projects} /> },
+            {
+                element: <WorkGrid projects={projects.slice(0, 2)} link={{ href: "/#work", label: "All work" }} />
+            }
+        ]
+    },
+    {
+        heading: "Facts",
+        examples: [
+            {
+                element: (
+                    <Facts
+                        facts={[
+                            { label: "Client", value: "Example Ltd" },
+                            { label: "My role", value: "Lead developer" },
+                            { label: "When", value: "2021 to now" }
+                        ]}
+                    />
+                ),
+                width: "narrow"
+            }
+        ]
+    },
+    {
+        heading: "ResultsTiles",
+        examples: [
+            { element: <ResultsTiles {...results} /> },
+            { element: <ResultsTiles {...results} />, width: "narrow" }
+        ]
+    },
+    {
+        heading: "Quote",
+        examples: [
+            {
+                element: (
+                    <Quote
+                        text="Two sentences from a client on what working together was like."
+                        name="A. Client"
+                        role="Product owner, Example Ltd"
+                    />
+                )
+            }
+        ]
+    },
+    {
+        heading: "Timeline",
+        examples: [
+            {
+                element: (
+                    <Timeline
+                        entries={[
+                            {
+                                date: "2021 to now",
+                                title: "Lead developer, Example Ltd",
+                                text: "What the role covers, in a sentence.",
+                                current: true,
+                                children: <TimelineProjects projects={projects.slice(0, 2)} />
+                            },
+                            { date: "2019", title: "Degree, Example University", text: "A line about it." },
+                            { date: "2016", title: "First job", text: "A line about it." }
+                        ]}
+                    />
+                )
+            },
+            {
+                element: (
+                    <Timeline
+                        entries={[
+                            { date: "Jan 2024", title: "Prototype" },
+                            { date: "May 2024", title: "Launch" }
                         ]}
                     />
                 ),

@@ -1,0 +1,21 @@
+@layer components {
+  .quote {
+    text-align: center;
+
+    blockquote {
+      max-width: 30ch;
+      margin-inline: auto;
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-quote);
+      font-weight: var(--font-weight-heading);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+
+    figcaption {
+      margin-block-start: 1.125rem;
+      color: var(--color-muted);
+    }
+  }
+}

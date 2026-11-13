@@ -80,12 +80,14 @@ page:
         alt: A times tables grid with a two-minute timer
         caption: "[TBC: caption]"
   results:
-    - value: "[TBC]"
-      label: "[TBC]"
-    - value: "[TBC]"
-      label: "[TBC]"
-    - value: "[TBC]"
-      label: "[TBC]"
+    tiles:
+      - value: "[TBC]"
+        label: "[TBC]"
+      - value: "[TBC]"
+        label: "[TBC]"
+      - value: "[TBC]"
+        label: "[TBC]"
+    source: "[TBC: source, with dates written like Nov 2026]"
   quote:
     text: "[TBC: quote]"
     name: "[TBC: name]"

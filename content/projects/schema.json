@@ -43,7 +43,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Quiet tags on the image"
+                    "description": "Quiet tags on the image. Up to three on the first card, two on the rest"
                 }
             },
             "required": ["line", "role", "image", "tags"],
@@ -361,55 +361,66 @@
                     "additionalProperties": false
                 },
                 "results": {
-                    "description": "Three results tiles",
-                    "type": "array",
-                    "prefixItems": [
-                        {
-                            "type": "object",
-                            "properties": {
-                                "value": {
-                                    "type": "string",
-                                    "description": "The number, or [TBC]"
+                    "description": "Three results tiles and the source line under them",
+                    "type": "object",
+                    "properties": {
+                        "tiles": {
+                            "type": "array",
+                            "prefixItems": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string",
+                                            "description": "The number, or [TBC]"
+                                        },
+                                        "label": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["value", "label"],
+                                    "additionalProperties": false
                                 },
-                                "label": {
-                                    "type": "string"
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string",
+                                            "description": "The number, or [TBC]"
+                                        },
+                                        "label": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["value", "label"],
+                                    "additionalProperties": false
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string",
+                                            "description": "The number, or [TBC]"
+                                        },
+                                        "label": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["value", "label"],
+                                    "additionalProperties": false
                                 }
-                            },
-                            "required": ["value", "label"],
-                            "additionalProperties": false
+                            ],
+                            "items": false,
+                            "minItems": 3,
+                            "maxItems": 3
                         },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "value": {
-                                    "type": "string",
-                                    "description": "The number, or [TBC]"
-                                },
-                                "label": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": ["value", "label"],
-                            "additionalProperties": false
-                        },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "value": {
-                                    "type": "string",
-                                    "description": "The number, or [TBC]"
-                                },
-                                "label": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": ["value", "label"],
-                            "additionalProperties": false
+                        "source": {
+                            "type": "string",
+                            "description": "Where the numbers come from, with dates written like Nov 2026"
                         }
-                    ],
-                    "items": false,
-                    "minItems": 3,
-                    "maxItems": 3
+                    },
+                    "required": ["tiles", "source"],
+                    "additionalProperties": false
                 },
                 "quote": {
                     "type": "object",
