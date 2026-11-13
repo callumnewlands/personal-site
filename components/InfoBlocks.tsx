@@ -6,7 +6,7 @@ import { cx } from "../common/helpers";
 interface InfoBlockProps {
     icon: React.ReactNode;
     title: string;
-    content: string;
+    content: React.ReactNode;
 }
 
 interface InfoBlocksProps {
