@@ -17,16 +17,24 @@ export const fields = ["need", "situation", "name", "email"] as const;
 export type Field = (typeof fields)[number];
 export type Errors = Partial<Record<Field, string>>;
 
+/** Returns the id of a field's input. For the radio group, it's the id of the first option. */
 export function inputId(field: Field) {
     return `enquiry-${field}`;
 }
 
+/** Returns the id of a field's error message, for the input's `aria-describedby`. */
 export function errorId(field: Field) {
     return `enquiry-${field}-error`;
 }
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+/**
+ * Checks a value against its field's rule, ignoring surrounding spaces, and returns the message to show
+ * under the field if it fails.
+ *
+ * @returns undefined if the value is valid
+ */
 export function validateField(field: Field, value: string) {
     const trimmed = value.trim();
     switch (field) {
@@ -41,6 +49,10 @@ export function validateField(field: Field, value: string) {
     }
 }
 
+/**
+ * Checks every field before the form is sent and returns the messages for the ones that fail, keyed by
+ * field, or an empty object if everything is valid. A missing value counts as empty.
+ */
 export function validate(values: Partial<Record<Field, string>>) {
     const errors: Errors = {};
     for (const field of fields) {
