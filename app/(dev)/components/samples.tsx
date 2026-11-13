@@ -3,7 +3,10 @@ import { getProjects } from "@/data/projects";
 import SectionHeading from "@/app/_components/layout/SectionHeading";
 import { cx } from "@/common/helpers";
 
-// Sample projects for the demo. Only the first has a page, so it's the only one that links
+/**
+ * Builds sample projects for the demo cards. The first borrows a real project's page, so it is the only card
+ * that links.
+ */
 function sampleProjects(): Project[] {
     const page = getProjects().find((project) => project.page)?.page;
     const samples = [
