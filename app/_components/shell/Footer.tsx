@@ -29,7 +29,7 @@ export default function Footer() {
                                 Send me a message
                             </Button>
                             <address>
-                                <a href={`mailto:${EMAIL}`} className={cx(styles.email, "quiet-link")}>
+                                <a href={`mailto:${EMAIL}`} className="quiet-link">
                                     {EMAIL}
                                 </a>
                             </address>

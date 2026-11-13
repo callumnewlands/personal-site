@@ -42,10 +42,6 @@
     }
   }
 
-  .email {
-    font-size: 1.1875rem;
-  }
-
   .groups {
     flex: 0 1 20rem;
     display: grid;
@@ -78,12 +74,6 @@
 
     small {
       color: var(--color-footer-text-subtle);
-    }
-  }
-
-  @media (width < 48em) {
-    .email {
-      font-size: var(--font-size-small);
     }
   }
 }
