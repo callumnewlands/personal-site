@@ -1,0 +1,272 @@
+/* Registered so the radio's dot can grow when it's chosen */
+@property --radio-dot {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@layer components {
+  .form {
+    fieldset {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  .steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    container-type: inline-size;
+  }
+
+  .step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 1.25rem;
+    padding-block-end: 2.25rem;
+
+    &:last-child {
+      padding-block-end: 0;
+    }
+
+    &:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      top: 2.5rem;
+      bottom: 0.375rem;
+      left: 13px;
+      width: 2px;
+      background: var(--color-line);
+    }
+  }
+
+  .number {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    margin-block-start: var(--space-1);
+    border-radius: var(--radius-round);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-marker-number);
+    color: var(--color-on-dark);
+    background: var(--color-dark-block);
+  }
+
+  .question {
+    display: block;
+    margin-block: var(--space-1) 0.875rem;
+    padding: 0;
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-heading);
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--size-button-primary);
+    padding: 0.625rem var(--space-4);
+    border: 1.5px solid var(--color-line-strong);
+    border-radius: var(--radius-button);
+    font-size: var(--font-size-input);
+    line-height: 1.4;
+    background: var(--color-surface);
+    cursor: pointer;
+    transition: background-color var(--motion-duration) var(--motion-easing);
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      border-color: var(--color-line-control);
+    }
+
+    &:has(input:checked) {
+      border-color: var(--color-primary);
+      box-shadow: inset 0 0 0 1px var(--color-primary);
+      background: var(--color-selected);
+    }
+
+    /* Shows straight away so quick taps register; only the release is animated */
+    &:active,
+    &:has(input:checked):active {
+      background: var(--color-band);
+      transition-duration: 0s;
+    }
+
+    &:has(input:focus-visible) {
+      outline: var(--focus-ring-width) solid var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
+    }
+
+    input {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      border: 2px solid var(--color-line-input);
+      border-radius: var(--radius-round);
+      appearance: none;
+      cursor: inherit;
+      transition: --radio-dot var(--motion-duration) var(--motion-easing);
+
+      &:checked {
+        --radio-dot: 4px;
+
+        border-color: var(--color-primary);
+        background: radial-gradient(var(--color-primary) var(--radio-dot), transparent calc(var(--radio-dot) + 0.5px));
+      }
+
+      @media (forced-colors: active) {
+        appearance: auto;
+      }
+    }
+
+    input:focus-visible {
+      outline: none;
+    }
+  }
+
+  .field {
+    display: grid;
+    align-content: start;
+  }
+
+  .label {
+    margin-block-end: var(--space-2);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-input);
+  }
+
+  .input {
+    width: 100%;
+    min-height: var(--size-field);
+    padding: var(--space-3) var(--space-4);
+    border: 1.5px solid var(--color-line-input);
+    border-radius: var(--radius-input);
+    font-size: var(--font-size-input);
+    color: var(--color-ink);
+    background: var(--color-surface);
+
+    &:focus {
+      border-color: var(--color-primary);
+    }
+
+    /* A shadow thickens the border to 2px without changing the field's size */
+    &[aria-invalid="true"] {
+      border-color: var(--color-error);
+      box-shadow: inset 0 0 0 0.5px var(--color-error);
+    }
+  }
+
+  textarea.input {
+    min-height: 9.375rem;
+    line-height: 1.6;
+    resize: vertical;
+  }
+
+  .reply {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--space-3);
+  }
+
+  .error {
+    display: flex;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+    font-size: var(--font-size-caption);
+    color: var(--color-error);
+    overflow-wrap: anywhere;
+  }
+
+  .error svg,
+  .alert-title svg {
+    flex: none;
+    margin-block-start: calc((1lh - 1em) / 2);
+  }
+
+  .alert {
+    margin-block: var(--space-6) 0;
+    padding: 1.25rem 1.375rem;
+    border: 1.5px solid var(--color-error);
+    border-radius: var(--radius-button);
+    background: color-mix(in srgb, var(--color-error) 8%, var(--color-surface));
+    overflow-wrap: anywhere;
+
+    ul {
+      margin: var(--space-2) 0 0;
+      padding-inline-start: var(--space-5);
+    }
+
+    a {
+      color: var(--color-ink);
+    }
+  }
+
+  .summary {
+    margin-block: 0 var(--space-6);
+  }
+
+  .collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--motion-duration) var(--motion-easing);
+
+    &[data-open] {
+      grid-template-rows: 1fr;
+    }
+
+    > div {
+      min-height: 0;
+      overflow: clip;
+    }
+  }
+
+  .alert-title {
+    display: flex;
+    gap: var(--space-2);
+    font-family: var(--font-family-body);
+    font-size: inherit;
+    font-weight: var(--font-weight-bold);
+    line-height: inherit;
+
+    svg {
+      color: var(--color-error);
+    }
+  }
+
+  .submit {
+    margin-block-start: var(--space-6);
+  }
+
+  .sent {
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-heading);
+    font-size: var(--font-size-chapter-title);
+    line-height: 1.1;
+  }
+
+  @container (width < 34rem) {
+    .step {
+      gap: var(--space-3);
+    }
+
+    .options,
+    .reply {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}

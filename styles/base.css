@@ -156,6 +156,15 @@
     background: var(--color-surface);
   }
 
+  /* For the form card, which needs the full width of a phone for its fields */
+  .panel-full-bleed {
+    @media (width < 48em) {
+      margin-inline: calc(var(--layout-gutter) * -1);
+      border-inline: 0;
+      border-radius: 0;
+    }
+  }
+
   .panel-primary,
   .panel-pine {
     --focus-ring-color: var(--color-accent);
