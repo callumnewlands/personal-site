@@ -7,7 +7,11 @@ export function cx(...classes: (string | false | null | undefined)[]) {
     return classes.filter(Boolean).join(" ");
 }
 
-// Splits items into rows of at most max, as even as possible
+/**
+ * Splits items into rows of at most `max`, with row lengths as even as possible.
+ *
+ * @example evenRows([1, 2, 3, 4, 5], 3) // [[1, 2, 3], [4, 5]]
+ */
 export function evenRows<T>(items: T[], max: number) {
     const count = Math.ceil(items.length / max);
     const rows: T[][] = [];

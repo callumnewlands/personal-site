@@ -1,6 +1,7 @@
 import { expect, test } from "vitest";
 import { cx, evenRows } from "./helpers";
 
+/** Returns the row lengths {@link evenRows} gives for `count` items, with at most three to a row. */
 function rowSizes(count: number) {
     return evenRows(
         Array.from({ length: count }, (_, index) => index),

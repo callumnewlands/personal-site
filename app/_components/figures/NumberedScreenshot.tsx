@@ -10,11 +10,17 @@ import { sizedImage } from "@/common/images";
 const zoom = 2.6;
 const cropAspect = 16 / 10;
 
+/** Clamps a fraction to between 0 and 1 and returns it as a percentage. */
 function percent(value: number) {
     return Math.min(Math.max(value, 0), 1) * 100;
 }
 
-// Background position that centres the marker in a close-up, kept inside the image
+/**
+ * Positions the zoomed screenshot so the marker sits in the centre of its close-up without going past the
+ * image's edges, and returns that as a CSS background position.
+ *
+ * @param aspect the screenshot's width divided by its height
+ */
 function cropPosition(marker: Marker, aspect: number) {
     const x = (zoom * (marker.x / 100) - 0.5) / (zoom - 1);
     const zoomedHeight = zoom / aspect;
