@@ -31,6 +31,7 @@ Sitemap: ${SITE_URL}/sitemap.xml
     );
 }
 
+/** Reads the logo and photo as data URLs, for the OG images to embed. */
 async function loadAssets() {
     const [logo, photo] = await Promise.all([
         readFile(new URL("logo-vector-green.svg", publicDir)),
@@ -42,6 +43,7 @@ async function loadAssets() {
     };
 }
 
+/** Builds the element tree for a route's OG image, for ImageResponse to render. */
 function ogImage({ heading, subheading }, { logo, photo }) {
     return h(
         "div",
@@ -94,6 +96,7 @@ function ogImage({ heading, subheading }, { logo, photo }) {
     );
 }
 
+/** Renders an OG image for every route and writes it to public/og/ as a JPEG. */
 async function buildOgImages() {
     const assets = await loadAssets();
     await mkdir(new URL("og/", publicDir), { recursive: true });

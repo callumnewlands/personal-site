@@ -2,6 +2,11 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { SITE_URL } from "../common/site.ts";
 
+/**
+ * Reads a JSON manifest from the .next build output.
+ *
+ * @throws if the site hasn't been built
+ */
 const readManifest = async (file) => JSON.parse(await readFile(new URL(`../.next/${file}`, import.meta.url), "utf8"));
 const pagesManifest = await readManifest("server/pages-manifest.json");
 const prerenderManifest = await readManifest("prerender-manifest.json");

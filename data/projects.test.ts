@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test } from "vitest";
 import { projectJsonSchema } from "./project-schema";
-import { checkProjects, getProjectPage, getProjects, getProjectSlugs, loadProjects, parseProject } from "./projects";
+import { checkProjects, getProjectPage, getProjects, getProjectSlugs, parseProject } from "./projects";
 
 const directory = join("content", "projects");
 
@@ -33,7 +33,7 @@ const one = parseProject("one.yaml", card(1));
 const two = parseProject("two.yaml", card(2));
 
 test("every project file is valid", () => {
-    expect(() => loadProjects()).not.toThrow();
+    expect(() => getProjects()).not.toThrow();
 });
 
 test("sorts projects by order", () => {

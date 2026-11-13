@@ -10,10 +10,19 @@ export const SOCIAL_LINKS = {
     Instagram: "https://www.instagram.com/callumnewlands_archery/"
 };
 
+/**
+ * Turns a path from the site root into a full URL on {@link SITE_URL}, for places
+ * that need one, such as structured data.
+ */
 export function absoluteUrl(path: string) {
     return SITE_URL + path;
 }
 
+/**
+ * Maps a page's path to the path of its Open Graph (OG) image.
+ *
+ * @example ogImagePath("/portfolio/mathsplanner") // "/og/portfolio-mathsplanner.jpg"
+ */
 export function ogImagePath(path: string) {
     const slug = path === "/" ? "home" : path.slice(1).replace(/\//g, "-");
     return `/og/${slug}.jpg`;

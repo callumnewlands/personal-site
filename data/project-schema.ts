@@ -91,8 +91,13 @@ export const projectSchema = z.strictObject({
     page: page.optional()
 });
 
+/**
+ * Converts the project schema to a JSON Schema, which editors use to autocomplete
+ * and validate content/projects/*.yaml.
+ */
 export function projectJsonSchema() {
     return z.toJSONSchema(projectSchema, { io: "input" });
 }
 
 export type Project = z.infer<typeof projectSchema> & { slug: string };
+export type ProjectWithPage = Project & { page: NonNullable<Project["page"]> };

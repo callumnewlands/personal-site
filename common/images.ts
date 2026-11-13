@@ -10,7 +10,12 @@ export interface SizedImage {
     height: number;
 }
 
-// Only call from getStaticProps
+/**
+ * Reads the width and height of an image under public/, so the page can make room
+ * for it before it loads. Only call it at build time, since it reads from the file system.
+ *
+ * @throws if the file doesn't exist or isn't an image
+ */
 export async function sizedImage(src: string): Promise<SizedImage> {
     const { width, height } = imageSize(await readFile(path.join(process.cwd(), "public", src)));
     return { src, width, height };

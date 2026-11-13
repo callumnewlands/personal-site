@@ -13,6 +13,11 @@ function isNode(value: unknown): value is SyntaxNode {
     return typeof value === "object" && value !== null && "type" in value;
 }
 
+/**
+ * Looks up a property on an object literal node and returns its value.
+ *
+ * @returns undefined if the node isn't an object literal or doesn't have the property
+ */
 function property(node: SyntaxNode, name: string) {
     if (node.type !== "ObjectExpression") {
         return undefined;
@@ -23,7 +28,7 @@ function property(node: SyntaxNode, name: string) {
     return found?.value as SyntaxNode | undefined;
 }
 
-// Removes the indent the code had inside examples.tsx, keeping its own nesting
+/** Removes the indent a snippet had inside examples.tsx, keeping its own nesting. */
 function dedent(code: string) {
     const lines = code.split("\n");
     const indents = lines.slice(1).map((line) => line.match(/^ */)![0].length);
@@ -31,7 +36,11 @@ function dedent(code: string) {
     return lines.map((line, index) => (index === 0 ? line : line.slice(indent))).join("\n");
 }
 
-// The JSX of each example's element, as written in examples.tsx, by group heading
+/**
+ * Reads the JSX of each example's element from examples.tsx, keyed by group heading,
+ * so the components page can show the code beside each example. Only finds groups
+ * written as object literals with a string `heading` and an `examples` array.
+ */
 export function exampleSources() {
     const text = readFileSync(join(process.cwd(), "app/(dev)/components/examples.tsx"), "utf8");
     const sources: Record<string, string[]> = {};

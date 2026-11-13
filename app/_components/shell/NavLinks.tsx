@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import styles from "./Nav.module.css";
 import { cx } from "../../../common/helpers";
 
+/** Maps whether a nav link is active to its aria-current value, so screen readers announce the current page. */
 function current(active: boolean) {
     return active ? "page" : undefined;
 }
