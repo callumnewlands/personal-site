@@ -2,8 +2,8 @@
 
 import type { FormEvent, ReactNode } from "react";
 import { useRef, useState } from "react";
-import Button from "../ui/Button";
-import { WarningIcon } from "../ui/icons";
+import Button from "@/app/_components/ui/Button";
+import { WarningIcon } from "@/app/_components/ui/icons";
 import type { Errors, Field } from "./enquiry";
 import {
     FORM_ENDPOINT,
@@ -19,8 +19,8 @@ import {
 import type { SummaryItem } from "./FormErrors";
 import { ErrorMessage, ErrorSummary } from "./FormErrors";
 import styles from "./EnquiryForm.module.css";
-import { cx } from "../../../common/helpers";
-import { EMAIL } from "../../../common/site";
+import { cx } from "@/common/helpers";
+import { EMAIL } from "@/common/site";
 
 type Status = "editing" | "sending" | "sent";
 

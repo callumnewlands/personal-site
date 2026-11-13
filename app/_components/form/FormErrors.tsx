@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
-import { WarningIcon } from "../ui/icons";
+import { WarningIcon } from "@/app/_components/ui/icons";
 import type { Field } from "./enquiry";
 import { errorId, inputId } from "./enquiry";
 import styles from "./EnquiryForm.module.css";
-import { cx } from "../../../common/helpers";
+import { cx } from "@/common/helpers";
 
 // Keeps the last value while its message collapses; `version` changes whenever the value's content does
 function useLastShown<T>(value: T | undefined, version: string) {

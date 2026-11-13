@@ -1,8 +1,8 @@
-import { pageMetadata } from "../../../common/metadata";
-import { TITLE_SUFFIX } from "../../../data/pages";
-import EnquiryForm, { EnquirySent } from "../../_components/form/EnquiryForm";
-import { Section } from "../../_components/layout/Layout";
-import PageHeader from "../../_components/layout/PageHeader";
+import { pageMetadata } from "@/common/metadata";
+import { TITLE_SUFFIX } from "@/data/pages";
+import EnquiryForm, { EnquirySent } from "@/app/_components/form/EnquiryForm";
+import { Section } from "@/app/_components/layout/Layout";
+import PageHeader from "@/app/_components/layout/PageHeader";
 
 export const metadata = pageMetadata({
     path: "/form",
