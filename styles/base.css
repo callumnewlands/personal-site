@@ -129,7 +129,7 @@
 
     &:hover,
     &:active {
-      color: inherit;
+      color: var(--quiet-link-hover-color, inherit);
       text-decoration: underline;
     }
   }
@@ -218,9 +218,13 @@
     line-height: 0.95;
   }
 
-  .lead {
+  .lead,
+  .lead-size {
     font-size: var(--font-size-lead);
     line-height: 1.45;
+  }
+
+  .lead {
     color: var(--color-muted);
   }
 

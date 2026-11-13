@@ -4,9 +4,9 @@ import styles from "./Button.module.css";
 import { ArrowIcon, ExternalArrowIcon } from "./icons";
 import { cx } from "../../../common/helpers";
 
-type ButtonStyle = { variant?: "primary"; dark?: boolean } | { variant: "secondary"; dark?: never };
+type ButtonStyle = { variant?: "primary"; dark?: boolean } | { variant: "secondary" | "nav"; dark?: never };
 
-type LinkProps = ButtonStyle & { href: string; children: ReactNode };
+type LinkProps = ButtonStyle & { href: string; "aria-current"?: "page"; children: ReactNode };
 
 type ActionProps = ButtonStyle & {
     href?: never;
@@ -24,14 +24,14 @@ export default function Button(props: LinkProps | ActionProps) {
 
     if (props.href !== undefined) {
         const external = props.href.startsWith("http");
-        const icon = variant === "secondary" ? external && <ExternalArrowIcon /> : <ArrowIcon />;
+        const icon = variant === "primary" ? <ArrowIcon /> : external && <ExternalArrowIcon />;
         return external ? (
             <a href={props.href} className={className}>
                 {props.children}
                 {icon}
             </a>
         ) : (
-            <Link href={props.href} className={className}>
+            <Link href={props.href} className={className} aria-current={props["aria-current"]}>
                 {props.children}
                 {icon}
             </Link>
@@ -54,7 +54,7 @@ export default function Button(props: LinkProps | ActionProps) {
             ) : (
                 <>
                     {props.children}
-                    {variant !== "secondary" && <ArrowIcon />}
+                    {variant === "primary" && <ArrowIcon />}
                 </>
             )}
         </button>

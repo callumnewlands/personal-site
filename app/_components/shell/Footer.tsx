@@ -20,7 +20,7 @@ export default function Footer() {
     return (
         <footer className="on-dark">
             <Treeline />
-            <div className={styles.panel}>
+            <div className={styles.footer}>
                 <Container className={styles.top}>
                     <div className={styles.message}>
                         <h2 className={cx(styles.heading, "panel-title")}>Not sure what your product needs next?</h2>
@@ -29,7 +29,7 @@ export default function Footer() {
                                 Send me a message
                             </Button>
                             <address>
-                                <a href={`mailto:${EMAIL}`} className={cx(styles.email, "quiet-link")}>
+                                <a href={`mailto:${EMAIL}`} className="quiet-link">
                                     {EMAIL}
                                 </a>
                             </address>

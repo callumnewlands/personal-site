@@ -32,7 +32,7 @@ function highlight(code: string) {
 export default function Example({ element, variants, width, dark = false, code }: ExampleData & { code: string }) {
     return (
         <div className={styles.example}>
-            <div className={cx(styles.preview, width && styles[width], dark && styles.dark, dark && "on-dark")}>
+            <div className={cx(styles.preview, width && styles[width], dark && "panel panel-pine")}>
                 {variants ? (
                     <div className={styles.variants}>
                         {element}

@@ -14,9 +14,4 @@
   .section {
     margin-block-end: var(--space-6);
   }
-
-  .panel p {
-    font-size: var(--font-size-lead);
-    line-height: 1.45;
-  }
 }

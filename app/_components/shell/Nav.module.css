@@ -33,38 +33,10 @@
     }
   }
 
-  .contact {
-    display: inline-flex;
-    align-items: center;
-    min-height: var(--size-target-min);
-    padding: 0 1.125rem;
-    border: 1px solid transparent;
-    border-radius: var(--radius-tag);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-on-dark);
-    background: var(--color-ink);
-    text-decoration: none;
-    transition: background-color var(--motion-duration) var(--motion-easing);
-    -webkit-tap-highlight-color: transparent;
-
-    &:hover {
-      background: var(--color-muted);
-    }
-
-    &:active {
-      background: var(--color-footer);
-      transition-duration: 0s;
-    }
-  }
-
   @media (width < 48em) {
     .links {
       gap: var(--space-1) var(--space-4);
       font-size: var(--font-size-small-phone);
-    }
-
-    .contact {
-      padding: 0 var(--space-4);
     }
   }
 }

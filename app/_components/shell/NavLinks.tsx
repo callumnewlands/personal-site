@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Button from "../ui/Button";
 import styles from "./Nav.module.css";
 import { cx } from "../../../common/helpers";
 
@@ -34,9 +35,9 @@ export default function NavLinks() {
                 </Link>
             </li>
             <li>
-                <Link href="/contact" className={styles.contact} aria-current={current(pathname === "/contact")}>
+                <Button href="/contact" variant="nav" aria-current={current(pathname === "/contact")}>
                     Contact
-                </Link>
+                </Button>
             </li>
         </ul>
     );

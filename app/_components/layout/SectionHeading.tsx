@@ -21,7 +21,7 @@ export default function SectionHeading({
             <Heading id={id} className={`${size}-title`}>
                 {children}
             </Heading>
-            {intro && <p>{intro}</p>}
+            {intro && <p className={size === "panel" ? "lead-size" : undefined}>{intro}</p>}
         </hgroup>
     );
 }
