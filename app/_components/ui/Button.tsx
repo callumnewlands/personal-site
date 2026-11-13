@@ -2,7 +2,7 @@ import type { MouseEventHandler, ReactNode } from "react";
 import Link from "next/link";
 import styles from "./Button.module.css";
 import { ArrowIcon, ExternalArrowIcon } from "./icons";
-import { cx } from "../../../common/helpers";
+import { cx } from "@/common/helpers";
 
 type ButtonStyle = { variant?: "primary"; dark?: boolean } | { variant: "secondary" | "nav"; dark?: never };
 

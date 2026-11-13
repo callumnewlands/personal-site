@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { projectsWithPages } from "../data/portfolio";
+import { projectsWithPages } from "@/data/portfolio";
 
 // Built from the data, not the sitemap, so a page missing from the sitemap fails
 const sitemapPages = [

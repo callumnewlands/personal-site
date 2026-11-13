@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { pages } from "../data/pages";
+import { pages } from "@/data/pages";
 import { pageMetadata } from "./metadata";
 
 test("builds metadata from a page entry", () => {

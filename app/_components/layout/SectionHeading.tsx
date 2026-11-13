@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import styles from "./SectionHeading.module.css";
-import { cx } from "../../../common/helpers";
+import { cx } from "@/common/helpers";
 
 export default function SectionHeading({
     level = 2,

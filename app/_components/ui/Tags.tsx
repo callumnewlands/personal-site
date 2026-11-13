@@ -1,5 +1,5 @@
 import styles from "./Tags.module.css";
-import { cx } from "../../../common/helpers";
+import { cx } from "@/common/helpers";
 
 export default function Tags({ tags, variant = "outline" }: { tags: string[]; variant?: "outline" | "overlay" }) {
     return (
