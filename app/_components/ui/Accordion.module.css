@@ -30,10 +30,17 @@
     color: var(--color-ink);
     background: none;
     cursor: pointer;
+    transition: background-color var(--motion-duration) var(--motion-easing);
+    -webkit-tap-highlight-color: transparent;
 
     &:hover,
     &:active {
       color: var(--color-primary-hover);
+    }
+
+    &:active {
+      background: var(--color-band);
+      transition-duration: 0s;
     }
 
     svg {
