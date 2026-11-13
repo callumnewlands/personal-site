@@ -34,7 +34,7 @@ export function checkProjects(projects: Project[]) {
     }
 }
 
-export function loadProjects() {
+function loadProjects() {
     const projects: Project[] = [];
     for (const file of readdirSync(directory)) {
         if (file.endsWith(".yaml")) {
