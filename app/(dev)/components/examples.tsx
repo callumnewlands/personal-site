@@ -36,6 +36,13 @@ export const groups: Group[] = [
                     </Button>
                 )
             },
+            {
+                element: (
+                    <Button href="#buttons" variant="nav">
+                        Contact
+                    </Button>
+                )
+            },
             { element: <Button>Send it</Button> },
             { element: <Button disabled>Send it</Button> },
             {
