@@ -17,7 +17,7 @@
     min-height: var(--size-button-primary);
     padding: 0 var(--space-5);
     border: 1px solid transparent;
-    font-size: 1.1875rem;
+    font-size: var(--font-size-button);
     color: var(--color-on-dark);
     background: var(--color-primary);
     box-shadow: var(--shadow-button);
